@@ -80,6 +80,20 @@ class PropertiesController extends Controller
         }
          $amenity = $response['data'];
 
+
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyMgmtSystem');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $pms = $response['data'];
+
          try{
 
             $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
@@ -123,7 +137,7 @@ class PropertiesController extends Controller
 
          return view(
             'create_properties', compact(
-                'tax','amenity','statuses','host','property_type'
+                'tax','amenity','statuses','host','property_type','pms'
             )
     );
 

@@ -142,13 +142,13 @@
                                        <th>Location</th>
                                        <th>Host Name</th>
                                        <th>Property Images</th>
-                                       <th>Property System</th>
-                                       <th>central System</th>
+                                       <th>Property Management System</th>
+                                       <th>Central Management System</th>
                                        <th>Property Type Name</th>
                                        <th>Property Desc</th>
                                        <th>Taxes</th>
                                        <th>Amenity</th>
-                                    <th>Status Desc</th>
+                                        <th>Status Desc</th>
                                         <th>Created At</th>
                                       
                                     </tr>
@@ -213,7 +213,7 @@
                                         </td>
                                         <td><img src="{{ isset($propertys['Assets']['data'][0]['links']) ? $propertys['Assets']['data'][0]['links']['full'].'?width=52&height=52' : asset('img/no-image.gif')  }}"/></td>
                                         <td>
-                                            {{ $propertys['property_mgmt_system'] }}
+                                            {{ $propertys['property_mgmt_system_name'] }}
                                         </td>
                                         <td>
                                             {{ $propertys['central_res_system'] }}
