@@ -208,8 +208,8 @@ class PropertiesController extends Controller
                 'contents' => $request->host_type_id
             ],
             [
-                'name' => 'property_mgmt_system',
-                'contents' => $request->property_mgmt_system
+                'name' => 'property_mgmt_system_id',
+                'contents' => $request->property_mgmt_system_id
             ],
 
             [
@@ -225,6 +225,11 @@ class PropertiesController extends Controller
             [
                 'name' => 'general_description',
                 'contents' => $request->general_description
+            ],
+
+            [
+                'name' => 'room_start_price',
+                'contents' => $request->room_start_price
             ],
             [
                 'name' => 'status_id',
@@ -246,6 +251,8 @@ class PropertiesController extends Controller
 
 
         else{
+
+            // return $amenities;
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/property',
 
         [
@@ -254,10 +261,11 @@ class PropertiesController extends Controller
             "address"=>$request->address,
             "location"=>$request->location,
             "host_type_id"=>$request->host_type_id,
-            "property_mgmt_system"=>$request->property_mgmt_system,
+            "property_mgmt_system_id"=>$request->property_mgmt_system_id,
             "central_res_system"=>$request->central_res_system,
             "property_type_id"=>$request->property_type_id,
             "general_description"=>$request->general_description,
+            "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
             "taxes[]"=>$taxes,
             "amenities[]"=>$amenities
@@ -267,10 +275,10 @@ class PropertiesController extends Controller
 
         if($response->status()===201){
 
-return $response;
-            return redirect()->route('properties.create')->with('success','Properties Type Created Successfully!');
+// return $response;
+            return redirect()->route('properties.create')->with('success','Property is Created Successfully!');
         }else{
-            return $response;
+            // return $response;
 
             $request->flash();
 
@@ -351,6 +359,19 @@ return $response;
 
          try{
 
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyMgmtSystem');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $pms = $response['data'];
+
+         try{
+
             $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
 
             $response = json_decode($call->getBody()->getContents(), true);
@@ -403,7 +424,7 @@ return $response;
             //  return $properties;
 
             return view('edit_properties', compact(
-               'properties', 'tax','amenity','statuses','host','property_type'
+               'properties', 'tax','amenity','statuses','host','property_type','pms'
             ));
         }
     }
@@ -446,10 +467,11 @@ return $response;
             "address"=>$request->address,
             "location"=>$request->location,
             "host_type_id"=>$request->host_type_id,
-            "property_mgmt_system"=>$request->property_mgmt_system,
+            "property_mgmt_system_id"=>$request->property_mgmt_system_id,
             "central_res_system"=>$request->central_res_system,
             "property_type_id"=>$request->property_type_id,
             "general_description"=>$request->general_description,
+            "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
             "taxes"=>$taxes,
             "amenities"=>$amenities
@@ -464,7 +486,8 @@ return $response;
         if($response->status()===200){
             return redirect()->back()->with('success','Properties Updated Successfully!');
         }else{
-            return redirect()->back()->with('error',$response->json()['message']);
+            // return $response['errors'];
+            return redirect()->back()->with('error',$response->json()['errors']);
         }
 
     }

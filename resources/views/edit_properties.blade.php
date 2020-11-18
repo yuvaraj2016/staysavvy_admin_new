@@ -70,19 +70,20 @@
                                     {{ session('success') }}
                                 </div>
                             @endif -->
+                        
                             @if(session('error') !== null)
-
-                            {{-- @foreach(session('error') as $v)
+                         
+                            @foreach(session('error') as $v) 
                                @foreach($v as $e)
                                <div class='alert alert-red'>
                                    {{ $e }}
                                 </div>
                                @endforeach
 
-                            @endforeach --}}
-                            <div class='alert alert-red'>
+                             @endforeach
+                            {{-- <div class='alert alert-red'>
                                 {{ session('error') }}
-                             </div>
+                             </div> --}}
                         @endif
                         <div class="form-group row ">
                             <div class="col-sm-4">
@@ -120,9 +121,14 @@
                                                         </div>
 
                                                         <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Properties System</label>
-                                                        <input  id="property_mgmt_system" name="property_mgmt_system" value="{{ old('property_mgmt_system',$properties['property_mgmt_system']) }}" class="form-control" required>
-               
+                                                        <label class="col-form-label text-md-right ">Property Management System</label>
+                                                        {{-- <input  id="property_mgmt_system" name="property_mgmt_system" value="{{ old('property_mgmt_system',$properties['property_mgmt_system']) }}" class="form-control" required> --}}
+                                                        <select  class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                            <option value="">Select</option>
+                                                            @foreach($pms as $spms)
+                                                                <option value="{{ $spms['id'] }}" {{ ($properties['property_mgmt_system_id'] == $spms['id']) ? "selected":(old("property_management_system_id") == $spms['id'] ? "selected":"") }}>{{ $spms['name'] }}</option>
+                                                                @endforeach
+                                                        </select>
                                                         </div>
                           
 
@@ -137,7 +143,7 @@
 
 
                             <div class="form-group row ">
-                            <div class="col-sm-4">
+                                                        <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Property Type</label>
                                                         <select  class="js-example-basic-single col-sm-12" name="property_type_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
@@ -152,6 +158,11 @@
                                                         <input  id="general_description" name="general_description" value="{{ old('general_description',$properties['general_description']) }}" class="form-control" required>
 
                                                         </div>
+                                                        <div class="col-sm-4">
+                                                            <label class="col-form-label text-md-right ">Room Start Price</label>
+                                                            <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price',$properties['room_start_price']) }}" class="summernote-simple form-control" required>
+                   
+                                                        </div>
                           
 
                                                         <div class="col-sm-4">
@@ -164,17 +175,9 @@
                                         @endforeach
                                     </select>
                                                         </div>
-                          
-                            </div>
-               
 
-                                                    
 
-                                              
-                            <div class="form-group row ">
-                        
-                         
-@php
+                                                        @php
 
 $taxids = [];
 
@@ -232,6 +235,19 @@ e
                                     @endforeach
                                 </select>
                                                     </div>
+                          
+                            </div>
+
+                            
+               
+
+                                                    
+
+                                              
+                            <div class="form-group row ">
+                        
+                         
+
 
                                                     <div class="col-sm-4">
                                                             <label class="col-form-label text-md-right ">Click below to edit images</label><br>

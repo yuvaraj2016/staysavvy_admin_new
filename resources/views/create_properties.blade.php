@@ -125,9 +125,11 @@
 
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Properties Location</label>
-                                                        <input name="location" value="{{ old('location') }}" class="summernote-simple form-control" required>
-               
+                                                        <input name="location" id="address" value="{{ old('location') }}" class="summernote-simple form-control" required>
+                                                        {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
                                                         </div>
+                                                        {{-- <input type="text" id="input"/> --}}
+
                           
                             </div>
 
@@ -143,9 +145,15 @@
                                                         </div>
 
                                                         <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Properties System</label>
-                                                        <input name="property_mgmt_system" value="{{ old('property_mgmt_system') }}" class="summernote-simple form-control" required>
-               
+                                                        <label class="col-form-label text-md-right ">Property Management System</label>
+                                                        {{-- <input name="property_mgmt_system" value="{{ old('property_mgmt_system') }}" class="summernote-simple form-control" required> --}}
+                                                        
+                                                        <select  class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                            <option value="">Select</option>
+                                                            @foreach($pms as $spms)
+                                                                <option value="{{ $spms['id'] }}" {{ (old("property_mgmt_system_id") == $spms['id'] ? "selected":"") }}>{{ $spms['name'] }}</option>
+                                                            @endforeach
+                                                        </select>
                                                         </div>
                           
 
@@ -177,7 +185,11 @@
                                                         <input name="general_description" value="{{ old('general_description') }}" class="summernote-simple form-control" required>
                
                                                         </div>
-                          
+                                                        <div class="col-sm-4">
+                                                            <label class="col-form-label text-md-right ">Room Start Price</label>
+                                                            <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control" required>
+                   
+                                                        </div>
 
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Status</label>
@@ -188,6 +200,27 @@
                                         @endforeach
                                     </select>
                                                         </div>
+
+                                                        <div class="col-sm-4">
+                                                            <label class="col-form-label text-md-right ">Taxes</label>
+                                                            <select  class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric" required>
+                                            <option value="">Select</option>
+                                            @foreach($tax as $taxs)
+                                                <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                            <label class="col-form-label text-md-right ">Amenity</label>
+                                                            <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
+                                            <option value="">Select</option>
+                                            @foreach($amenity as $amenitys)
+                                                <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                                            </div>
+    
+                                
                           
                             </div>
 
@@ -199,25 +232,6 @@
 
                             <div class="form-group row ">
                         
-                            <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Taxes</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric" required>
-                                        <option value="">Select</option>
-                                        @foreach($tax as $taxs)
-                                            <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
-                                        @endforeach
-                                    </select>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Amenity</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
-                                        <option value="">Select</option>
-                                        @foreach($amenity as $amenitys)
-                                            <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
-                                        @endforeach
-                                    </select>
-                                                        </div>
-
                                                         <div class="col-sm-4">
                                                             <label class="col-form-label text-md-right ">Properties Image Picture</label>
                                                             <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control">
@@ -245,5 +259,43 @@
 </div>
 @endsection
 
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo0SYQmZUcTfSLx1rAzBiNiE7H0QvSgg8&libraries=places&callback=initMap"></script>
+<script>
+    $(document).ready(function(){
+	var map_input = $('#address')[0];
+	setTimeout(function(){initMap()},'5000');
+	function initMap() {
+		var map = new google.maps.Map($('form #map'), {
+			center: {lat: 33.8892846, lng: 35.539302},
+			zoom: 11
+		});
+		
+		var autocomplete = new google.maps.places.Autocomplete(map_input);
+		var marker = new google.maps.Marker({
+			map: map
+		});
 
+		autocomplete.addListener('place_changed', function() {
+			var place = autocomplete.getPlace();
+			if (!place.geometry) {
+				// User entered the name of a Place that was not suggested and
+				// pressed the Enter key, or the Place Details request failed.
+				window.alert("No details available for input: '" + place.name + "'");
+				return;
+			}
 
+			// If the place has a geometry, then present it on a map.
+			if (place.geometry.viewport) {
+				map.fitBounds(place.geometry.viewport);
+			} else {
+				//map.setCenter(place.geometry.location);
+				//map.setZoom(17);  // Why 17? Because it looks good.
+			}
+			
+			marker.setPosition(place.geometry.location);
+			marker.setVisible(true);
+		});
+	}
+});
+</script> --}}

@@ -146,6 +146,7 @@
                                        <th>Central Management System</th>
                                        <th>Property Type Name</th>
                                        <th>Property Desc</th>
+                                       <th>Room Start Price</th>
                                        <th>Taxes</th>
                                        <th>Amenity</th>
                                         <th>Status Desc</th>
@@ -223,6 +224,9 @@
                                         </td>
                                         <td>
                                             {{ $propertys['general_description'] }}
+                                        </td>
+                                        <td>
+                                            {{ $propertys['room_start_price'] }}
                                         </td>
 
                                         <td>
