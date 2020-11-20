@@ -338,12 +338,19 @@ margin-top:20px!important;
 border-bottom:0px!important;
 }
 
+.nav-tabs .nav-item
+{
+    width:255px!important;
+    /* border:2px solid #000; */
+    
+}
+
 .nav-tabs .nav-link
 {
 padding-top:10px;
-/* margin-left:20px!important; */
+
 height:60px!important;
-width:255px!important;
+/* width:255px!important; */
 margin:0!important;
 border:5px solid #1B476B!important;
 /* background-color:#1BF0B7!important; */
