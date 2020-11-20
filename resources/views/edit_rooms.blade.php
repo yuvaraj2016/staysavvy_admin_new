@@ -11,7 +11,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Edit Rooms</h4>
+                        <h4>Edit Room Type</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Edit Rooms</i>
+                                <i class="">Edit Room Type</i>
                           
                         </li>
                       
@@ -88,19 +88,19 @@
 
                                                     <div class="form-group row ">
                                                     <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right">Room Name</label>
+                                                        <label class="col-form-label text-md-right">Room Type Name</label>
                                                       
                                                             <input value="{{ old('name',$rooms['name']) }}" name="name" class="summernote-simple form-control" required>
                                                         </div>
 
                                                         <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right">Room Code</label>
+                                                        <label class="col-form-label text-md-right">Room Type Code</label>
                                                       
                                                             <input value="{{ old('code',$rooms['code']) }}" name="code" class="summernote-simple form-control" required>
                                                         </div>
 
                                                     <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right">Room Desc</label>
+                                                        <label class="col-form-label text-md-right">Room Type Desc</label>
                                                       
                                                             <textarea name="description" class="summernote-simple form-control" required>{{ old('description',$rooms['description']) }}</textarea>
                                                         </div>
@@ -139,7 +139,7 @@
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
                                     <button type="submit" class="btn btn-blue">Update </button>
-                                    <a href="{{ url('status_list') }}"
+                                    <a href="{{ url('booking_room_list') }}"
                         class=" d-inline text-center btn btn-blue back" ><i
                             class="icofont icofont-arrow-left" ></i>Back&nbsp;&nbsp;</a>
                                 </div>

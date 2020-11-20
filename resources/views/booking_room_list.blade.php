@@ -33,7 +33,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Booking Room List</h4>
+                        <h4>Room Type List</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Booking Room  List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Room Type List</a>
                         </li>
 
                     </ul>
@@ -136,10 +136,10 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
-                                    <th>Booking Name</th>
-                                        <th>Booking Room Code</th>
+                                    <th>Room Type Name</th>
+                                        <th>Room Type Code</th>
                                         
-                                        <th>Booking Romm Desc</th>
+                                        <th>Room Type Desc</th>
                                         <!-- <th>Room Location</th>
                                         <th>Max Adult</th>
                                         <th>Max Children</th>

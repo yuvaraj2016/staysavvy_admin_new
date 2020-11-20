@@ -134,7 +134,12 @@
 
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Central System</label>
-                                                        <input  id="central_res_system" name="central_res_system" value="{{ old('central_res_system',$properties['central_res_system']) }}" class="form-control" required>
+                                                        <select  class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                            <option value="">Select</option>
+                                                            @foreach($crs as $scrs)
+                                                                <option value="{{ $scrs['id'] }}" {{ ($properties['central_res_system_id'] == $scrs['id']) ? "selected":(old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option>
+                                                                @endforeach
+                                                        </select>
                                                         </div>
                           
                             </div>

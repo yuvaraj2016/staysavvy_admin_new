@@ -406,7 +406,7 @@ font-size:13px!important;
     <!-- themify-icons line icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('files/assets/icon/themify-icons/themify-icons.css') }}">
     
-    <link rel="stylesheet" type="text/css" href="{{ asset('files\assets\icon\material-design\css\material-design-iconic-font.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('files/assets/icon/material-design/css/material-design-iconic-font.min.css')}}">
     <!-- ico font -->
     <link rel="stylesheet" type="text/css" href="{{ asset('files/assets/icon/icofont/css/icofont.css') }}">
     <!-- feather Awesome -->
@@ -663,7 +663,7 @@ font-size:13px!important;
 @endif
                               <div class="dropdown-divider"></div>
                               @if(collect(session('permissions'))->contains('List room type'))
-                              <a class="dropdown-item {{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}">Booking Room</a>
+                              <a class="dropdown-item {{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}">Room Type</a>
 
 @endif
                               <div class="dropdown-divider"></div>

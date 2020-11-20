@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Create Properties</h4>
+                        <h4>Create Property</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Create Properties</i>
+                                <i class="">Create Property</i>
                           
                         </li>
                       
@@ -52,191 +52,219 @@
 
         <div class="row">
             <div class="col-12">
+               
+
+
                 <div class="card">
+
                     <div class="card-body">
                         <form action="{{ route('properties.store') }}" class="swa-confirm"  method="post" id="addstatus"
-                            enctype="multipart/form-data">
-                            @csrf
+                        enctype="multipart/form-data">
+                        @csrf
 
-               
-                            @if(session('success') !== null)
-                            <div class="succWrap">
-                            {{ session('success') }}
-                            </div>
-                                <!-- <div class='alert alert-success'>
-                                    {{ session('success') }}
-                                </div> -->
-                            @endif
-
-                            @if(session('error') !== null)
-
-                                @foreach(session('error') as $v)
-                                   @foreach($v as $e)
-
-                                   <div class="errorWrap"><strong>ERROR</strong>:  {{ $e }} </div>
-
-                                   <!-- <div class='alert alert-danger'>
-                                       {{ $e }}
-                                    </div> -->
-                                   @endforeach
-
-                                @endforeach
-                            @endif
-
-                            <!-- @if(session('success') !== null)
-                                <div class='alert alert-success'>
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                            @if(session('error') !== null)
-
-                                @foreach(session('error') as $v)
-                                   @foreach($v as $e)
-                                   <div class='alert alert-danger'>
-                                       {{ $e }}
-                                    </div>
-                                   @endforeach
-
-                                @endforeach
-                            @endif -->
-                            <!-- <div class="form-group row">
-                                                        <div class="col-sm-4 offset-5">
-                                                        <label class="col-form-label text-md-right ">Status Desc</label>
-                                                        <textarea name="status_desc" class="summernote-simple form-control" required>{{ old('status_desc') }}</textarea>
-                                                        </div>
+           
+                        @if(session('success') !== null)
+                        <div class="succWrap">
+                        {{ session('success') }}
+                        </div>
+                            <!-- <div class='alert alert-success'>
+                                {{ session('success') }}
                             </div> -->
+                        @endif
 
+                        @if(session('error') !== null)
 
+                            @foreach(session('error') as $v)
+                               @foreach($v as $e)
 
+                               <div class="errorWrap"><strong>ERROR</strong>:  {{ $e }} </div>
 
-                            <div class="form-group row ">
-                            <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Properties Name</label>
-                                                        <input name="name" value="{{ old('name') }}" class="summernote-simple form-control" required>
-               
-                                                        </div>
+                               <!-- <div class='alert alert-danger'>
+                                   {{ $e }}
+                                </div> -->
+                               @endforeach
 
-                                                        <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Properties Address</label>
-                                                        <input name="address" value="{{ old('address') }}" class="summernote-simple form-control" required>
-               
-                                                        </div>
-                          
+                            @endforeach
+                        @endif
 
-                                                        <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Properties Location</label>
-                                                        <input name="location" id="address" value="{{ old('location') }}" class="summernote-simple form-control" required>
-                                                        {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
-                                                        </div>
-                                                        {{-- <input type="text" id="input"/> --}}
-
-                          
+                        <!-- @if(session('success') !== null)
+                            <div class='alert alert-success'>
+                                {{ session('success') }}
                             </div>
+                        @endif
+                        @if(session('error') !== null)
 
-                            <div class="form-group row ">
-                            <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Host Type</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="host_type_id" id="" placeholder="status" required class="form-control selectric" required>
-                                        <option value="">Select</option>
-                                        @foreach($host as $hosts)
-                                            <option value="{{ $hosts['id'] }}" {{ (old("host_type_id") == $hosts['id'] ? "selected":"") }}>{{ $hosts['name'] }}</option>
-                                        @endforeach
-                                    </select>
-                                                        </div>
+                            @foreach(session('error') as $v)
+                               @foreach($v as $e)
+                               <div class='alert alert-danger'>
+                                   {{ $e }}
+                                </div>
+                               @endforeach
 
-                                                        <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Property Management System</label>
-                                                        {{-- <input name="property_mgmt_system" value="{{ old('property_mgmt_system') }}" class="summernote-simple form-control" required> --}}
-                                                        
-                                                        <select  class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id="" placeholder="status" required class="form-control selectric" required>
-                                                            <option value="">Select</option>
-                                                            @foreach($pms as $spms)
-                                                                <option value="{{ $spms['id'] }}" {{ (old("property_mgmt_system_id") == $spms['id'] ? "selected":"") }}>{{ $spms['name'] }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        </div>
-                          
-
-                                                        <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Central System</label>
-                                                        <input name="central_res_system" value="{{ old('central_res_system') }}" class="summernote-simple form-control" required>
-               
-                                                        </div>
-                          
-                            </div>
-
-
-
-
-
-                            <div class="form-group row ">
-                            <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Property Type</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="property_type_id" id="" placeholder="status" required class="form-control selectric" required>
-                                        <option value="">Select</option>
-                                        @foreach($property_type as $property_types)
-                                            <option value="{{ $property_types['id'] }}" {{ (old("property_type_id") == $property_types['id'] ? "selected":"") }}>{{ $property_types['name'] }}</option>
-                                        @endforeach
-                                    </select>
-                                                        </div>
-
-                                                        <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">General Desc</label>
-                                                        <input name="general_description" value="{{ old('general_description') }}" class="summernote-simple form-control" required>
-               
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <label class="col-form-label text-md-right ">Room Start Price</label>
-                                                            <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control" required>
-                   
-                                                        </div>
-
-                                                        <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Status</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
-                                        <option value="">Select</option>
-                                        @foreach($statuses as $status)
-                                            <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
-                                        @endforeach
-                                    </select>
-                                                        </div>
-
-                                                        <div class="col-sm-4">
-                                                            <label class="col-form-label text-md-right ">Taxes</label>
-                                                            <select  class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric" required>
-                                            <option value="">Select</option>
-                                            @foreach($tax as $taxs)
-                                                <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
-                                            @endforeach
-                                        </select>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                            <label class="col-form-label text-md-right ">Amenity</label>
-                                                            <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
-                                            <option value="">Select</option>
-                                            @foreach($amenity as $amenitys)
-                                                <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
-                                            @endforeach
-                                        </select>
-                                                            </div>
-    
-                                
-                          
-                            </div>
-
-
-
-
-
-
-
-                            <div class="form-group row ">
+                            @endforeach
+                        @endif -->
+                    
+                        <ul class="nav nav-tabs nav-fill">
+                            <li class="nav-item">
+                                <a href="#general-info" class="nav-link active" data-toggle="tab">General Info</a>
+                            </li>
                         
-                                                        <div class="col-sm-4">
-                                                            <label class="col-form-label text-md-right ">Properties Image Picture</label>
-                                                            <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control">
-                                                        </div>
+                            <li class="nav-item">
+                                <a href="#policies" class="nav-link" data-toggle="tab">Policies</a>
+                            </li>
+                               <li class="nav-item">
+                                <a href="#room-types" class="nav-link" data-toggle="tab">Room Types</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="general-info">
+                                <div class="form-group row ">
+                                    <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Properties Name</label>
+                                                                <input name="name" value="{{ old('name') }}" class="summernote-simple form-control" required>
+                       
+                                                                </div>
+        
+                                                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Properties Address</label>
+                                                                <input name="address" value="{{ old('address') }}" class="summernote-simple form-control" required>
+                       
+                                                                </div>
+                                  
+        
+                                                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Properties Location</label>
+                                                                <input name="location" id="address" value="{{ old('location') }}" class="summernote-simple form-control" required>
+                                                                {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
+                                                                </div>
+                                                                {{-- <input type="text" id="input"/> --}}
+        
+                                  
+                                    </div>
+        
+                                    <div class="form-group row ">
+                                    <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Host Type</label>
+                                                                <select  class="js-example-basic-single col-sm-12" name="host_type_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                <option value="">Select</option>
+                                                @foreach($host as $hosts)
+                                                    <option value="{{ $hosts['id'] }}" {{ (old("host_type_id") == $hosts['id'] ? "selected":"") }}>{{ $hosts['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                                                </div>
+        
+                                                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Property Management System</label>
+                                                                {{-- <input name="property_mgmt_system" value="{{ old('property_mgmt_system') }}" class="summernote-simple form-control" required> --}}
+                                                                
+                                                                <select  class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                                    <option value="">Select</option>
+                                                                    @foreach($pms as $spms)
+                                                                        <option value="{{ $spms['id'] }}" {{ (old("property_mgmt_system_id") == $spms['id'] ? "selected":"") }}>{{ $spms['name'] }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                </div>
+                                  
+        
+                                                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Central Reservation System</label>
+                                                                <select  class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric" required>
+                                                                    <option value="">Select</option>
+                                                                    @foreach($crs as $scrs)
+                                                                        <option value="{{ $scrs['id'] }}" {{ (old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option>
+                                                                    @endforeach
+                                                                </select>
+                       
+                                                                </div>
+                                  
+                                    </div>
+        
+        
+        
+        
+        
+                                    <div class="form-group row ">
+                                    <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Property Type</label>
+                                                                <select  class="js-example-basic-single col-sm-12" name="property_type_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                <option value="">Select</option>
+                                                @foreach($property_type as $property_types)
+                                                    <option value="{{ $property_types['id'] }}" {{ (old("property_type_id") == $property_types['id'] ? "selected":"") }}>{{ $property_types['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                                                </div>
+        
+                                                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">General Desc</label>
+                                                                <input name="general_description" value="{{ old('general_description') }}" class="summernote-simple form-control" required>
+                       
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Room Start Price</label>
+                                                                    <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control" required>
+                           
+                                                                </div>
+        
+                                                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Status</label>
+                                                                <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                <option value="">Select</option>
+                                                @foreach($statuses as $status)
+                                                    <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
+                                                @endforeach
+                                            </select>
+                                                                </div>
+        
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Taxes</label>
+                                                                    <select  class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric" required>
+                                                    <option value="">Select</option>
+                                                    @foreach($tax as $taxs)
+                                                        <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Amenity</label>
+                                                                    <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
+                                                    <option value="">Select</option>
+                                                    @foreach($amenity as $amenitys)
+                                                        <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                                    </div>
+
+                                                              
+                        
+                                                                        <div class="col-sm-4">
+                                                                            <label class="col-form-label text-md-right ">Photos</label>
+                                                                            <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control">
+                                                                        </div>
+                                                                
+            
+                                        
+                                  
+                                    </div>
+        
+        
+        
                             </div>
+                           
+                            <div class="tab-pane fade" id="policies">
+                                <p>Home tab content ...</p>
+                            </div>
+                            <div class="tab-pane fade" id="room-types">
+                                <p>Profile tab content ...</p>
+                            </div>
+                          
+                        </div>
+                      
+                         
+
+
+
+
+                          
 
 
 
@@ -299,3 +327,39 @@
 	}
 });
 </script> --}}
+<style>
+
+.nav-tabs
+{
+height: 80px;
+margin-top:20px!important;
+
+/* border:2px solid #000; */
+border-bottom:0px!important;
+}
+
+.nav-tabs .nav-link
+{
+padding-top:10px;
+/* margin-left:20px!important; */
+height:60px!important;
+width:255px!important;
+margin:0!important;
+border:5px solid #1B476B!important;
+/* background-color:#1BF0B7!important; */
+border-radius: 20px!important;
+color:#000!important;
+font-size:16px!important;
+
+}
+
+.nav-tabs .nav-link .active
+{
+padding-top:10px;
+height:60px!important;
+border:5px solid #1B476B;
+background-color:#1BF0B7!important;
+border-radius: 20px!important;
+
+}
+</style>

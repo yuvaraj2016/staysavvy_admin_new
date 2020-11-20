@@ -96,6 +96,19 @@ class PropertiesController extends Controller
 
          try{
 
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $crs = $response['data'];
+
+         try{
+
             $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
 
             $response = json_decode($call->getBody()->getContents(), true);
@@ -137,7 +150,7 @@ class PropertiesController extends Controller
 
          return view(
             'create_properties', compact(
-                'tax','amenity','statuses','host','property_type','pms'
+                'tax','amenity','statuses','host','property_type','pms','crs'
             )
     );
 
@@ -213,8 +226,8 @@ class PropertiesController extends Controller
             ],
 
             [
-                'name' => 'central_res_system',
-                'contents' => $request->central_res_system
+                'name' => 'central_res_system_id',
+                'contents' => $request->central_res_system_id
             ],
 
             [
@@ -262,7 +275,7 @@ class PropertiesController extends Controller
             "location"=>$request->location,
             "host_type_id"=>$request->host_type_id,
             "property_mgmt_system_id"=>$request->property_mgmt_system_id,
-            "central_res_system"=>$request->central_res_system,
+            "central_res_system_id"=>$request->central_res_system_id,
             "property_type_id"=>$request->property_type_id,
             "general_description"=>$request->general_description,
             "room_start_price"=>$request->room_start_price,
@@ -359,7 +372,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyMgmtSystem');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyMgmtSystem');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -369,6 +382,20 @@ class PropertiesController extends Controller
 
         }
          $pms = $response['data'];
+
+         try{
+
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $crs = $response['data'];
+
 
          try{
 
@@ -424,7 +451,7 @@ class PropertiesController extends Controller
             //  return $properties;
 
             return view('edit_properties', compact(
-               'properties', 'tax','amenity','statuses','host','property_type','pms'
+               'properties', 'tax','amenity','statuses','host','property_type','pms','crs'
             ));
         }
     }

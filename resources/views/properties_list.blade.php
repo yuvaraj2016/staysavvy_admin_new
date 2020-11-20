@@ -217,7 +217,7 @@
                                             {{ $propertys['property_mgmt_system_name'] }}
                                         </td>
                                         <td>
-                                            {{ $propertys['central_res_system'] }}
+                                            {{ $propertys['central_res_system_name'] }}
                                         </td>
                                         <td>
                                             {{ $propertys['property_type_name'] }}
