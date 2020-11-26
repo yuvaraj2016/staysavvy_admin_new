@@ -58,9 +58,7 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <form action="{{ route('properties.store') }}" class="swa-confirm"  method="post" id="addstatus"
-                        enctype="multipart/form-data">
-                        @csrf
+                       
 
            
                         @if(session('success') !== null)
@@ -118,6 +116,9 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="general-info">
+                                <form action="{{ route('properties.store') }}" class="swa-confirm"  method="post" id="addstatus"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group row ">
                                     <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Properties Name</label>
@@ -238,11 +239,14 @@
                         
                                                                         <div class="col-sm-4">
                                                                             <label class="col-form-label text-md-right ">Photos</label>
-                                                                            <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control">
+                                                                            <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required>
                                                                         </div>
                                                                 
-            
-                                        
+                                                                        <div class="col-sm-12 col-md-7 offset-5">
+                                                                            <button type="submit" id="submit" class="btn btn-primary btn-lg">Save</button>
+                                                                        </div>
+                                                                  
+                                                                    </form>
                                   
                                     </div>
         
@@ -251,31 +255,97 @@
                             </div>
                            
                             <div class="tab-pane fade" id="policies">
-                                <p>Home tab content ...</p>
+
+                                <div class="form-group row ">
+                                                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Cancellation Policies</label>
+                                                                <textarea name="cancellation_policies" class="summernote-simple form-control" required>{{ old('cancellation_policies') }}</textarea>
+                       
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Children Extra beds</label>
+                                                                    <textarea name="child_extrabeds" class="summernote-simple form-control" required>{{ old('child_extrabeds') }}</textarea>
+                           
+                                                                </div>
+        
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Internet</label>
+                                                                    <textarea name="internet" class="summernote-simple form-control" required>{{ old('internet') }}</textarea>
+                           
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Parking</label>
+                                                                    <textarea name="parking" class="summernote-simple form-control" required>{{ old('parking') }}</textarea>
+                           
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Pets</label>
+                                                                    <textarea name="pets" class="summernote-simple form-control" required>{{ old('pets') }}</textarea>
+                           
+                                                                </div>
+                                  
+        
+                                                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Check In Time</label>
+                                                                <input name="checkin_time" id="checkin_time" value="{{ old('checkin_time') }}" class="summernote-simple form-control" required>
+                                                      
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Check Out Time</label>
+                                                                    <input name="checkout_time" id="checkout_time" value="{{ old('checkout_time') }}" class="summernote-simple form-control" required>
+                                                          
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Age Limit</label>
+                                                                    <input type="number" name="age_limit" id="age_limit" value="{{ old('age_limit') }}" class="summernote-simple form-control" required>
+                                                          
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Curfew</label>
+                                                                    <textarea name="curfew" class="summernote-simple form-control" required>{{ old('curfew') }}</textarea>
+                           
+                                                                </div>
+                                                       
+                                                             
+                                                                   
+                                                                    <div class="col-sm-12 col-md-7 offset-5">
+                                                                        <button type="submit" id="submit" class="btn btn-primary btn-lg">Create Property</button>
+                                                                    </div>
+                                                              
+                                                   
+        
+                                  
+                                    </div>
+
+
                             </div>
                             <div class="tab-pane fade" id="room-types">
-                                <p>Profile tab content ...</p>
+                              
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right "></label>
+                                    <div class="col-sm-12 col-md-7 offset-5">
+                                        <a href="{{ route('rooms.create') }}" id="alert" class="btn btn-primary btn-lg" style="box-shadow: 0 2px 6px #acb5f6;
+                                        background-color: #6777ef;
+                                        border-color: #6777ef;border-radius:30px">Add New Room</a>
+                                    </div>
+                                </div>
                             </div>
                           
                         </div>
                       
+        
+
+
                          
 
-
-
-
-                          
-
-
-
-                            <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right "></label>
-                                <div class="col-sm-12 col-md-7 offset-5">
-                                    <button type="submit" id="submit" class="btn btn-primary">Create Property</button>
-                                </div>
-                            </div>
-
-                        </form>
+                      
                     </div>
                 </div>
             </div>

@@ -288,7 +288,7 @@ class PropertiesController extends Controller
 
         if($response->status()===201){
 
-// return $response;
+// return $response->json();
             return redirect()->route('properties.create')->with('success','Property is Created Successfully!');
         }else{
             // return $response;
