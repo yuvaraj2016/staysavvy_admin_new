@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('content')
-
+<script type="text/javascript">
+    jQuery(document).on("click", ".submit", function (e) {
+  
+    if( document.getElementById("filer_input").files.length == 0 ){
+    e.preventDefault();
+    alert('Please Upload Image');
+    }
+    
+    });
+    
+    </script>
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
 <div class="page-wrapper">
 
@@ -63,11 +73,16 @@
            
                         @if(session('success') !== null)
                         <div class="succWrap">
-                        {{ session('success') }}
+                        {{ session('success') }} 
                         </div>
-                            <!-- <div class='alert alert-success'>
-                                {{ session('success') }}
-                            </div> -->
+                        
+                        @endif
+
+                        @if(session('psuccess') !== null)
+                        <div class="succWrap">
+                        {{ session('psuccess') }} 
+                        </div>
+                        
                         @endif
 
                         @if(session('error') !== null)
@@ -85,9 +100,24 @@
                             @endforeach
                         @endif
 
+                        @if(session('perror') !== null)
+
+                        @foreach(session('perror') as $v)
+                           @foreach($v as $e)
+
+                           <div class="errorWrap"><strong>ERROR</strong>:  {{ $e }} </div>
+
+                           <!-- <div class='alert alert-danger'>
+                               {{ $e }}
+                            </div> -->
+                           @endforeach
+
+                        @endforeach
+                    @endif
+
                         <!-- @if(session('success') !== null)
                             <div class='alert alert-success'>
-                                {{ session('success') }}
+                                {{ session('success') }}  
                             </div>
                         @endif
                         @if(session('error') !== null)
@@ -104,18 +134,18 @@
                     
                         <ul class="nav nav-tabs nav-fill">
                             <li class="nav-item">
-                                <a href="#general-info" class="nav-link active" data-toggle="tab">General Info</a>
+                                <a href="#general-info" class="nav-link @if(session('success') !== null) disabled @elseif(session('psuccess') !== null) disabled @else active @endif" data-toggle="tab">General Info</a>
                             </li>
                         
                             <li class="nav-item">
-                                <a href="#policies" class="nav-link" data-toggle="tab">Policies</a>
+                                <a href="#policies" class="nav-link @if(session('success') !== null) active @else disabled @endif" data-toggle="tab">Policies</a>
                             </li>
                                <li class="nav-item">
-                                <a href="#room-types" class="nav-link" data-toggle="tab">Room Types</a>
+                                <a href="#room-types" class="nav-link @if(session('psuccess') !== null) active @else disabled @endif"" data-toggle="tab">Room Types</a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="general-info">
+                            <div class="tab-pane fade @if(session('success') !== null) @elseif(session('psuccess') !== null) @else show active @endif" id="general-info">
                                 <form action="{{ route('properties.store') }}" class="swa-confirm"  method="post" id="addstatus"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -243,7 +273,7 @@
                                                                         </div>
                                                                 
                                                                         <div class="col-sm-12 col-md-7 offset-5">
-                                                                            <button type="submit" id="submit" class="btn btn-primary btn-lg">Save</button>
+                                                                            <button type="submit" id="submit" class="btn btn-primary btn-lg submit">Create Property</button>
                                                                         </div>
                                                                   
                                                                     </form>
@@ -254,9 +284,13 @@
         
                             </div>
                            
-                            <div class="tab-pane fade" id="policies">
-
+                            <div class="tab-pane fade @if(session('success') !== null) show active @else @endif  @if(session('perror') !== null) show active @endif" id="policies">
+                                <form action="{{ route('policies.create') }}" class="swa-confirm"  method="post"                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group row ">
+
+                                                                <input name="property_id" type="hidden" id="property_id" value="@if(session('success') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
+
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Cancellation Policies</label>
                                                                 <textarea name="cancellation_policies" class="summernote-simple form-control" required>{{ old('cancellation_policies') }}</textarea>
@@ -315,20 +349,23 @@
                                                              
                                                                    
                                                                     <div class="col-sm-12 col-md-7 offset-5">
-                                                                        <button type="submit" id="submit" class="btn btn-primary btn-lg">Create Property</button>
+                                                                        <button type="submit" id="submit" class="btn btn-primary btn-lg">Save</button>
                                                                     </div>
                                                               
                                                    
-        
+                                                                    
                                   
                                     </div>
 
+                                </form>
+
 
                             </div>
-                            <div class="tab-pane fade" id="room-types">
+                            <div class="tab-pane @if(session('psuccess') !== null) show active @else @endif fade" id="room-types">
                               
 
                                 <div class="form-group row mb-4">
+                                    <input name="property_id" id="property_id" value="@if(session('psuccess') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
                                     <label class="col-form-label text-md-right "></label>
                                     <div class="col-sm-12 col-md-7 offset-5">
                                         <a href="{{ route('rooms.create') }}" id="alert" class="btn btn-primary btn-lg" style="box-shadow: 0 2px 6px #acb5f6;
@@ -438,5 +475,12 @@ border:5px solid #1B476B;
 background-color:#1BF0B7!important;
 border-radius: 20px!important;
 
+}
+
+.nav-tabs .nav-item .disabled
+{
+
+background-color:#cccccc!important;
+border:5px solid #cccccc!important;
 }
 </style>

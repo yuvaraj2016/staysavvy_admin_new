@@ -288,8 +288,9 @@ class PropertiesController extends Controller
 
         if($response->status()===201){
 
-// return $response->json();
-            return redirect()->route('properties.create')->with('success','Property is Created Successfully!');
+            $property_id= $response->json()['id'];
+
+            return redirect()->route('properties.create')->with('success','Property is Created Successfully!')->with('pid',$property_id);
         }else{
             // return $response;
 
@@ -539,6 +540,53 @@ class PropertiesController extends Controller
 
 
              return redirect()->route('properties.index')->with('error',$response->json()['message']);
+        }
+
+    }
+
+
+    public function createpolicies(Request $request)
+    {
+
+        // return $request->property_id;
+        $session = session()->get('token');
+
+        // $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confPolicy',
+
+        // [
+        //     "_method"=> 'POST',
+          
+        
+        // ]);
+
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confPolicy',
+
+        [
+            "property_id"=> $request->property_id,
+            "cancellation_policies"=>$request->cancellation_policies,
+            "child_extrabeds"=>$request->child_extrabeds,
+            "internet"=>$request->internet,
+            "parking"=>$request->parking,
+            "pets"=>$request->pets,
+            "checkin_time"=>$request->checkin_time,
+            "checkout_time"=>$request->checkout_time,
+            "age_limit"=>$request->age_limit,
+            "curfew"=>$request->curfew,
+    
+        ]);
+
+       
+        if($response->status()===201){
+
+            // $property_id= $response->json()['id'];
+
+            return redirect()->route('properties.create')->with('psuccess','Property Policies Are Saved Successfully!')->with('pid',$request->property_id);
+        }else{
+            // return $response;
+
+            $request->flash();
+
+            return redirect()->route('properties.create')->with('perror',$response['errors']);
         }
 
     }

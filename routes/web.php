@@ -57,7 +57,7 @@ Route::resource('properties', 'PropertiesController')->except('index')->middlewa
 
 Route::get('properties_list/{page?}','PropertiesController@index')->name('properties.index')->middleware('checktoken');
 
-
+Route::post('policies/create}','PropertiesController@createpolicies')->name('policies.create')->middleware('checktoken');
 
 
 Route::resource('tax', 'TaxController')->except('index')->middleware('checktoken');
