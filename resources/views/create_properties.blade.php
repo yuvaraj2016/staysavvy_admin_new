@@ -290,6 +290,33 @@
                                 <div class="form-group row ">
 
                                                                 <input name="property_id" type="hidden" id="property_id" value="@if(session('success') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
+                                                                @php
+                                                                $propdata = session('pdata');
+                                                              
+                                                                @endphp
+                                                             
+                                                                    <div class="col-sm-4">
+                                                                            <label class="col-form-label text-md-right ">Properties Name</label>
+                                                                            <input name="name" value=" @if(session('pdata') !== null) {{ $propdata['name'] }} @endif" class="summernote-simple form-control" disabled>
+                                    
+                                                                            </div>
+                    
+                                                                            <div class="col-sm-4">
+                                                                            <label class="col-form-label text-md-right ">Properties Address</label>
+                                                                            <input name="address" value=" @if(session('pdata') !== null) {{ $propdata['address'] }} @endif" class="summernote-simple form-control" disabled>
+                                    
+                                                                            </div>
+                                                
+                    
+                                                                            <div class="col-sm-4">
+                                                                            <label class="col-form-label text-md-right ">Properties Location</label>
+                                                                            <input name="location" id="address" value=" @if(session('pdata') !== null) {{ $propdata['location'] }} @endif" class="summernote-simple form-control" disabled>
+                                                                            {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
+                                                                            </div>
+                                                                            {{-- <input type="text" id="input"/> --}}
+                                        
+                                                                  
+                                                               
 
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Cancellation Policies</label>
@@ -365,9 +392,33 @@
                               
 
                                 <div class="form-group row mb-4">
-                                    <input name="property_id" id="property_id" value="@if(session('psuccess') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
-                                    <label class="col-form-label text-md-right "></label>
-                                    <div class="col-sm-12 col-md-7 offset-5">
+                                    <input type="hidden" name="property_id" id="property_id" value="@if(session('psuccess') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
+                                    @php
+                                    $propdata = session('pdata');
+                                  
+                                    @endphp
+                                 
+                                        <div class="col-sm-4">
+                                                <label class="col-form-label text-md-right ">Properties Name</label>
+                                                <input name="name" value=" @if(session('pdata') !== null) {{ $propdata['name'] }} @endif" class="summernote-simple form-control" disabled>
+        
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                <label class="col-form-label text-md-right ">Properties Address</label>
+                                                <input name="address" value=" @if(session('pdata') !== null) {{ $propdata['address'] }} @endif" class="summernote-simple form-control" disabled>
+        
+                                                </div>
+                    
+
+                                                <div class="col-sm-4">
+                                                <label class="col-form-label text-md-right ">Properties Location</label>
+                                                <input name="location" id="address" value=" @if(session('pdata') !== null) {{ $propdata['location'] }} @endif" class="summernote-simple form-control" disabled>
+                                                {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
+                                                </div>
+                                                {{-- <input type="text" id="input"/> --}}
+                        
+                                    <div class="col-sm-12 col-md-7 offset-5 mt-4">
                                         <a href="{{ route('rooms.create') }}" id="alert" class="btn btn-primary btn-lg" style="box-shadow: 0 2px 6px #acb5f6;
                                         background-color: #6777ef;
                                         border-color: #6777ef;border-radius:30px">Add New Room</a>

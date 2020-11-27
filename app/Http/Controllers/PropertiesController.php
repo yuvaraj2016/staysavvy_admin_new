@@ -148,9 +148,34 @@ class PropertiesController extends Controller
 
          
 
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $confRoomType = $response['data'];
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $amenity = $response['data'];
+
          return view(
             'create_properties', compact(
-                'tax','amenity','statuses','host','property_type','pms','crs'
+                'tax','amenity','statuses','host','property_type','pms','crs','confRoomType','amenity'
             )
     );
 
@@ -290,7 +315,26 @@ class PropertiesController extends Controller
 
             $property_id= $response->json()['id'];
 
-            return redirect()->route('properties.create')->with('success','Property is Created Successfully!')->with('pid',$property_id);
+            try{
+
+                $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id);
+    
+                $response = json_decode($call->getBody()->getContents(), true);
+                //  return $response;
+            }catch (\Exception $e){
+                //buy a beer
+    
+    
+            }
+             $propdata = $response['data'];
+
+            //  return $propdata['name'];
+
+             $pdata = ["name"=>$propdata['name'],"address"=>$propdata['address'],"location"=>$propdata['location']];
+             
+
+
+            return redirect()->route('properties.create')->with('success','Property is Created Successfully!')->with('pid',$property_id)->with('pdata',$pdata);
         }else{
             // return $response;
 
@@ -548,16 +592,10 @@ class PropertiesController extends Controller
     public function createpolicies(Request $request)
     {
 
-        // return $request->property_id;
+        $property_id = $request->property_id;
         $session = session()->get('token');
 
-        // $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confPolicy',
-
-        // [
-        //     "_method"=> 'POST',
-          
-        
-        // ]);
+     
 
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confPolicy',
 
@@ -578,9 +616,26 @@ class PropertiesController extends Controller
        
         if($response->status()===201){
 
-            // $property_id= $response->json()['id'];
+            $property_id= $request->property_id;
 
-            return redirect()->route('properties.create')->with('psuccess','Property Policies Are Saved Successfully!')->with('pid',$request->property_id);
+            try{
+
+                $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id);
+    
+                $response = json_decode($call->getBody()->getContents(), true);
+                //  return $response;
+            }catch (\Exception $e){
+                //buy a beer
+    
+    
+            }
+             $propdata = $response['data'];
+    
+            //  return $propdata['name'];
+    
+             $pdata = ["name"=>$propdata['name'],"address"=>$propdata['address'],"location"=>$propdata['location']];
+
+            return redirect()->route('properties.create')->with('psuccess','Property Policies Are Saved Successfully!')->with('pid',$request->property_id)->with('pdata',$pdata);
         }else{
             // return $response;
 
