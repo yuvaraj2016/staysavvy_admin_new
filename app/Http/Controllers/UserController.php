@@ -76,12 +76,16 @@ class UserController extends Controller
 
             $permissions =[];
 
+            $roles =[];
+
             if($userresponse->ok()){
 
                 $userdetails =  json_decode($userresponse->getBody()->getContents(), true);;
 
                 foreach($userdetails['data']['roles']['data'] as $userdetail)
                 {
+                    $roles[] =$userdetail['name'];
+
                     foreach($userdetail['permissions']['data'] as $permission)
                     {
                         $permissions[]= $permission['name'];
@@ -97,6 +101,8 @@ class UserController extends Controller
                 $request->session()->put('username',$username);
 
                 $request->session()->put('permissions',$permissions);
+
+                $request->session()->put('roles',$roles);
         
                 $request->session()->save();
 

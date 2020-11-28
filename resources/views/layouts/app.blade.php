@@ -468,12 +468,75 @@ font-size:13px!important;
 
                         <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;">
                             <div style="margin-left:25px!important; width:15%!important;float:left;">
-                                <a class="navbar-brand" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
+                                <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
                             </div>
             
-                            <div style="margin-left:24px!important;border:0px solid !important; width:77%!important;float:left;">
-                                <div class="mt-3" style="background-color:#1BF0B7; border-radius:20px; height:70%!important; font-weight:bold;">
-                                    <a class="pull-right mr-5 mt-3 text-bold" href="#"><b>Admin Account</b></a>
+                            <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
+                                <div class="mt-3" style="background-color:#1BF0B7; border-radius:20px; height:80%!important;font-weight:bold;">
+                                 @if(collect(session('roles'))->contains('Administrator'))  
+                                 
+                                 <div class="row"> 
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-1 d-flex mt-3">
+                                        {{-- <a class="d-inline" href="#">
+                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
+                                          
+                                        </a>
+            
+                                        <a class="d-inline ml-2" href="#">
+                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
+                                          
+                                        </a> --}}
+            
+                                    </div>
+                                    <div class="col-sm-3 mt-3 ml-2 text-center">
+                                        <a class="" href="#" style="font-weight: bold!important;"><b>Stay Savvy Admin Account</b></a><br>
+                                       
+                                    
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                        {{-- <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a> --}}
+                                    </div>
+                                 </div>
+
+                                 @elseif(collect(session('roles'))->contains('Vendor'))  
+
+
+                                 <div class="row"> 
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-1 d-flex mt-3">
+                                        <a class="d-inline" href="#">
+                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
+                                          
+                                        </a>
+            
+                                        <a class="d-inline ml-2" href="#">
+                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
+                                          
+                                        </a>
+            
+                                    </div>
+                                    <div class="col-sm-3 mt-3 ml-2 text-center">
+                                        <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
+                                        <a class="" href="#"><b>Stay Savvy Account</b></a>
+                                    
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                        <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a>
+                                    </div>
+                                 </div>
+
+
+                                 @endif
+                                
+                                    
+                                </div>
+                                <div style="margin-left:25px!important; width:15%!important;float:left;">
+                                   
                                 </div>
                             </div>
             
@@ -485,9 +548,9 @@ font-size:13px!important;
                     </button>
                   
                     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:#1B476B; color:#fff;width:100%;">
-                    {{-- @php
-                    print_r(session('permissions'));
-                    @endphp --}}
+                     @php
+                    // print_r(session('roles'));
+                    @endphp 
                       <ul class="navbar-nav ml-auto mt-1" style="margin-left:23%!important;">
                         {{-- <li class="nav-item {{ (request()->is('booking_list')) ? 'active' : '' }}">
                           <a class="nav-link" href="#">
@@ -540,11 +603,17 @@ font-size:13px!important;
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @if(collect(session('permissions'))->contains('List property'))
+                            @if(collect(session('roles'))->contains('Administrator'))    
+                                @if(collect(session('permissions'))->contains('List property'))
                                 <a class="dropdown-item {{ (request()->is('properties_list')) ? 'active' : '' }}" href="{{ route('properties.index') }}">Property</a>
                                 @endif
+                            @elseif(collect(session('roles'))->contains('Vendor'))    
+                                @if(collect(session('permissions'))->contains('Create property'))
+                                <a class="dropdown-item {{ (request()->is('properties/create')) ? 'active' : '' }}" href="{{ route('properties.create') }}">Property</a>
+                                @endif
+                            @endif  
                                 <div class="dropdown-divider"></div>
-                                @if(collect(session('permissions'))->contains('List room'))
+                            @if(collect(session('permissions'))->contains('List room'))
                                 <a class="dropdown-item {{ (request()->is('rooms_list')) ? 'active' : '' }}" href="{{ route('rooms.index') }}">Room</a>
                                
                             @endif
@@ -818,7 +887,7 @@ font-size:13px!important;
                         <div class="pcoded-inner-content">
 
                             <!-- Main-body start -->
-                            <div class="main-body" style="padding-top:70px;">
+                            <div class="main-body" style="padding-top:70px!important;">
                                
                                 @yield('content')
 
