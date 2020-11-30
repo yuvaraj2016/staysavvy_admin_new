@@ -65,6 +65,8 @@ class PropertiesController extends Controller
 
 
         }
+
+        
          $tax = $response['data'];
 
          try{

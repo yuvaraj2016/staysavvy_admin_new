@@ -47,16 +47,6 @@
 
 
 <section class="section" >
-    <!-- <div class="section-header">
-        <div class="section-header-back">
-            <a href="{{ route('status.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i>&nbsp;<b>Back</b></a>
-        </div>
-        <h1>Create Status</h1>
-        <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item"><a href="{{ route('status.index') }}">Statuses</a></div>
-            <div class="breadcrumb-item">Create Status</div>
-        </div>
-    </div> -->
 
     <div class="section-body">
 
@@ -78,74 +68,21 @@
                         
                         @endif
 
-                        @if(session('psuccess') !== null)
-                        <div class="succWrap">
-                        {{ session('psuccess') }} 
-                        </div>
                         
-                        @endif
-
                         @if(session('error') !== null)
 
                             @foreach(session('error') as $v)
                                @foreach($v as $e)
 
                                <div class="errorWrap"><strong>ERROR</strong>:  {{ $e }} </div>
-
-                               <!-- <div class='alert alert-danger'>
-                                   {{ $e }}
-                                </div> -->
-                               @endforeach
-
-                            @endforeach
-                        @endif
-
-                        @if(session('perror') !== null)
-
-                        @foreach(session('perror') as $v)
-                           @foreach($v as $e)
-
-                           <div class="errorWrap"><strong>ERROR</strong>:  {{ $e }} </div>
-
-                           <!-- <div class='alert alert-danger'>
-                               {{ $e }}
-                            </div> -->
-                           @endforeach
-
-                        @endforeach
-                    @endif
-
-                        <!-- @if(session('success') !== null)
-                            <div class='alert alert-success'>
-                                {{ session('success') }}  
-                            </div>
-                        @endif
-                        @if(session('error') !== null)
-
-                            @foreach(session('error') as $v)
-                               @foreach($v as $e)
-                               <div class='alert alert-danger'>
-                                   {{ $e }}
-                                </div>
-                               @endforeach
-
-                            @endforeach
-                        @endif -->
-                    
-                        <ul class="nav nav-tabs nav-fill">
-                            <li class="nav-item">
-                                <a href="#general-info" class="nav-link @if(session('success') !== null) disabled @elseif(session('psuccess') !== null) disabled @else active @endif" data-toggle="tab">General Info</a>
-                            </li>
                         
-                            <li class="nav-item">
-                                <a href="#policies" class="nav-link @if(session('success') !== null) active @else disabled @endif" data-toggle="tab">Policies</a>
-                            </li>
-                               <li class="nav-item">
-                                <a href="#room-types" class="nav-link @if(session('psuccess') !== null) active @else disabled @endif"" data-toggle="tab">Room Types</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade @if(session('success') !== null) @elseif(session('psuccess') !== null) @else show active @endif" id="general-info">
+                               @endforeach
+
+                            @endforeach
+                        @endif
+
+                        
+                      
                                 <form action="{{ route('properties.store') }}" class="swa-confirm"  method="post" id="addstatus"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -172,19 +109,19 @@
                                                                 {{-- <input type="text" id="input"/> --}}
         
                                   
-                                    </div>
-        
-                                    <div class="form-group row ">
-                                    <div class="col-sm-4">
-                                                                <label class="col-form-label text-md-right ">Host Type</label>
-                                                                <select  class="js-example-basic-single col-sm-12" name="host_type_id" id="" placeholder="status" required class="form-control selectric" required>
-                                                <option value="">Select</option>
-                                                @foreach($host as $hosts)
-                                                    <option value="{{ $hosts['id'] }}" {{ (old("host_type_id") == $hosts['id'] ? "selected":"") }}>{{ $hosts['name'] }}</option>
-                                                @endforeach
-                                            </select>
                                                                 </div>
-        
+                                    
+                                                                <div class="form-group row ">
+                                                                <div class="col-sm-4">
+                                                                                            <label class="col-form-label text-md-right ">Host Type</label>
+                                                                                            <select  class="js-example-basic-single col-sm-12" name="host_type_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                                            <option value="">Select</option>
+                                                                            @foreach($host as $hosts)
+                                                                                <option value="{{ $hosts['id'] }}" {{ (old("host_type_id") == $hosts['id'] ? "selected":"") }}>{{ $hosts['name'] }}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                  </div>
+                              
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Property Management System</label>
                                                                 {{-- <input name="property_mgmt_system" value="{{ old('property_mgmt_system') }}" class="summernote-simple form-control" required> --}}
@@ -215,15 +152,15 @@
         
         
         
-                                    <div class="form-group row ">
-                                    <div class="col-sm-4">
-                                                                <label class="col-form-label text-md-right ">Property Type</label>
-                                                                <select  class="js-example-basic-single col-sm-12" name="property_type_id" id="" placeholder="status" required class="form-control selectric" required>
-                                                <option value="">Select</option>
-                                                @foreach($property_type as $property_types)
-                                                    <option value="{{ $property_types['id'] }}" {{ (old("property_type_id") == $property_types['id'] ? "selected":"") }}>{{ $property_types['name'] }}</option>
-                                                @endforeach
-                                            </select>
+                                                                    <div class="form-group row ">
+                                                                    <div class="col-sm-4">
+                                                                                                <label class="col-form-label text-md-right ">Property Type</label>
+                                                                                        <select  class="js-example-basic-single col-sm-12" name="property_type_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                                        <option value="">Select</option>
+                                                                        @foreach($property_type as $property_types)
+                                                                            <option value="{{ $property_types['id'] }}" {{ (old("property_type_id") == $property_types['id'] ? "selected":"") }}>{{ $property_types['name'] }}</option>
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
         
                                                                 <div class="col-sm-4">
@@ -240,30 +177,30 @@
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Status</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
-                                                <option value="">Select</option>
-                                                @foreach($statuses as $status)
-                                                    <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
-                                                @endforeach
-                                            </select>
+                                                                    <option value="">Select</option>
+                                                                    @foreach($statuses as $status)
+                                                                        <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
+                                                                    @endforeach
+                                                                </select>
                                                                 </div>
         
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Taxes</label>
                                                                     <select  class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric" required>
-                                                    <option value="">Select</option>
-                                                    @foreach($tax as $taxs)
-                                                        <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
-                                                    @endforeach
-                                                </select>
+                                                                        <option value="">Select</option>
+                                                                        @foreach($tax as $taxs)
+                                                                            <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
+                                                                        @endforeach
+                                                                    </select>
                                                                     </div>
                                                                     <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Amenity</label>
                                                                     <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
-                                                    <option value="">Select</option>
-                                                    @foreach($amenity as $amenitys)
-                                                        <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
-                                                    @endforeach
-                                                </select>
+                                                                        <option value="">Select</option>
+                                                                        @foreach($amenity as $amenitys)
+                                                                            <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
+                                                                        @endforeach
+                                                                    </select>
                                                                     </div>
 
                                                               
@@ -285,7 +222,6 @@
         
                             </div>
                            
-                            <div class="tab-pane fade @if(session('success') !== null) show active @else @endif  @if(session('perror') !== null) show active @endif" id="policies">
                                 <form action="{{ route('policies.create') }}" class="swa-confirm"  method="post"                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row ">
@@ -389,7 +325,6 @@
 
 
                             </div>
-                            <div class="tab-pane @if(session('psuccess') !== null) show active @else @endif fade" id="room-types">
                               
 
                                 <div class="form-group row mb-4">
