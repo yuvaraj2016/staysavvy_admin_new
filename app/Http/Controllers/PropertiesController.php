@@ -632,10 +632,11 @@ class PropertiesController extends Controller
     
             }
              $propdata = $response['data'];
-    
+
             //  return $propdata['name'];
     
              $pdata = ["name"=>$propdata['name'],"address"=>$propdata['address'],"location"=>$propdata['location']];
+
 
             return redirect()->route('properties.create')->with('psuccess','Property Policies Are Saved Successfully!')->with('pid',$request->property_id)->with('pdata',$pdata);
         }else{
@@ -658,6 +659,7 @@ class PropertiesController extends Controller
       
         $amenities='';
 
+        // $roomdata =[];
  
 
         foreach($request->amenities as $amenity)
@@ -764,8 +766,44 @@ class PropertiesController extends Controller
 
         }
         if($response->status()===201){
+            $property_id= $request->property_id;
 
-            return redirect()->route('properties.create')->with('rsuccess','Rooms Created Successfully!');
+            try{
+
+                $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id);
+    
+                $response = json_decode($call->getBody()->getContents(), true);
+                //  return $response;
+            }catch (\Exception $e){
+                //buy a beer
+    
+    
+            }
+             $propdata = $response['data'];
+    
+            //  return $request->property_id;
+    
+             $pdata = ["name"=>$propdata['name'],"address"=>$propdata['address'],"location"=>$propdata['location']];
+
+             try{
+
+                $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id.'?include=Rooms');
+    
+                $response = json_decode($call->getBody()->getContents(), true);
+                //  return $response;
+            }catch (\Exception $e){
+                //buy a beer
+    
+    
+            }
+             $roomdata = $response['data']['Rooms']['data'];
+
+            //  return $roomdata;
+    
+ 
+
+            return redirect()->route('properties.create')->with('rsuccess','Rooms Created Successfully!')->with('pid',$request->property_id)->with('pdata',$pdata)->with('roomdata',compact('roomdata'));
+
         }else{
 
             $request->flash();

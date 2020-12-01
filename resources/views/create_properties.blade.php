@@ -134,22 +134,22 @@
                     
                         <ul class="nav nav-tabs nav-fill">
                             <li class="nav-item">
-                                <a href="#general-info" class="nav-link @if(session('success') !== null) disabled @elseif(session('psuccess') !== null) disabled @else active @endif" data-toggle="tab">General Info</a>
+                                <a href="#general-info" class="nav-link @if(session('success') !== null) disabled @elseif(session('psuccess') !== null) disabled @elseif(session('rsuccess') !== null) disabled @else active @endif" data-toggle="tab">General Info</a>
                             </li>
                         
                             <li class="nav-item">
                                 <a href="#policies" class="nav-link @if(session('success') !== null) active @else disabled @endif" data-toggle="tab">Policies</a>
                             </li>
                                <li class="nav-item">
-                                <a href="#room-types" class="nav-link @if(session('psuccess') !== null) active @else disabled @endif"" data-toggle="tab">Room Types</a>
+                                <a href="#room-types" class="nav-link @if(session('psuccess') !== null) active @elseif(session('rsuccess') !== null) active @else disabled @endif"" data-toggle="tab">Room Types</a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane fade @if(session('success') !== null) @elseif(session('psuccess') !== null) @else show active @endif" id="general-info">
+                            <div class="tab-pane fade @if(session('success') !== null) @elseif(session('psuccess') !== null) @elseif(session('rsuccess') !== null) @else show active @endif" id="general-info">
                                 <form action="{{ route('properties.store') }}" class="swa-confirm"  method="post" id="addstatus"
                                 enctype="multipart/form-data">
                                 @csrf
-                                @csrf
+                                
                                 <div class="form-group row ">
                                     <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Properties Name</label>
@@ -286,7 +286,7 @@
                             </div>
                            
                             <div class="tab-pane fade @if(session('success') !== null) show active @else @endif  @if(session('perror') !== null) show active @endif" id="policies">
-                                <form action="{{ route('policies.create') }}" class="swa-confirm"  method="post"                                enctype="multipart/form-data">
+                                <form action="{{ route('policies.create') }}" class="swa-confirm"  method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row ">
 
@@ -389,7 +389,7 @@
 
 
                             </div>
-                            <div class="tab-pane @if(session('psuccess') !== null) show active @else @endif fade" id="room-types">
+                            <div class="tab-pane @if(session('psuccess') !== null) show active @elseif(session('rsuccess') !== null) show active @else @endif fade" id="room-types">
                               
                                 <form action="{{ route('prooms.create') }}" class="swa-confirm"  method="post" id="addstatus"
                                 enctype="multipart/form-data">
@@ -418,7 +418,7 @@
 
 
                                 <div class="form-group row mb-4">
-                                    <input type="hidden" name="property_id" id="property_id" value="@if(session('psuccess') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
+                                    <input type="hidden" name="property_id" id="property_id" value="@if(session('psuccess') !== null) {{ session('pid') }} @elseif(session('rsuccess') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
                                     @php
                                     $propdata = session('pdata');
                                   
@@ -440,13 +440,58 @@
                                                 <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right ">Properties Location</label>
                                                 <input name="location" id="address" value=" @if(session('pdata') !== null) {{ $propdata['location'] }} @endif" class="summernote-simple form-control" disabled>
-                                                {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
                                                 </div>
+                                                {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
+                                                {{-- </div> --}}
                                                 {{-- <input type="text" id="input"/> --}}
 
-                                        
+                                                {{-- @dd(session('roomdata')) --}}
+                                                {{-- @if(session('roomdata') !== null)
                                                     
+                                                @php 
+                                                $roomdata=session('roomdata');
+                                               foreach($roomdata['roomdata'] as $image){
+                                                     return $image['Assets']['data'];
+                                               }
+                                                @dd($roomdata['roomdata']['Assets']['data']);
+                                                // var_dump($roomdata);
+                                                $imagedata = $roomdata['Assets']['data'];
+                                                if(count($imagedata)==0)
+                                                {
+                                                    echo "<h5 class='alert alert-red'>There is no rooms for this Property.</h5>";
 
+                                                }
+                                                else {
+                                                    # code...
+                                               
+                                            
+                                                @endphp 
+
+                                            @foreach ($imagedata as $image)
+                                             
+                                               <div class="col-sm-4">
+                                                <a href=""><img src="{{ isset($image['links']) ? $image['links']['full'].'?width=100&height=100' : asset('img/no-image.gif')  }}"/></a>
+                                               </div>
+
+                                             
+                                             
+                                             @endforeach
+
+                                            @php
+                                            }
+                                            @endphp
+
+                                             --}}
+
+                                                {{-- <div class="col-sm-4">
+                                                        @foreach($roomdata['Assets']['data'] as $rds)
+                                                            
+                                                        @endforeach
+                                                    
+                                                </div>
+                                                     --}}
+                                                {{-- @endif --}}
+                                           
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Room Type</label>
                                                         <select  class="js-example-basic-single col-sm-12" name="room_type_id" id="" placeholder="status" required class="form-control selectric" required>
@@ -536,18 +581,17 @@
 
                                                 <div class="form-group row mb-4">
                                                     <label class="col-form-label text-md-right "></label>
-                                                    <div class="col-sm-12 col-md-7 offset-5">
-                                                        <button type="submit" id="submit" class="btn btn-primary">Create Room</button>
+                                                    <div class="col-sm-12 col-md-12 offset-5">
+                                                        <button type="submit" id="submit" class="btn btn-primary btn-lg float-left">Create Room</button>
+                                                        <a href="{{ route('properties.create') }}" id="alert" class="btn btn-primary btn-lg float-left" style="box-shadow: 0 2px 6px #acb5f6;
+                                                        background-color: #6777ef; margin-left:8px!important;
+                                                        border-color: #6777ef;border-radius:30px">Save</a>
                                                     </div>
                                                 </div>
 
                                             </form>
                         
-                                            <div class="col-sm-12 col-md-7 offset-5 mt-4">
-                                                <a href="{{ route('rooms.create') }}" id="alert" class="btn btn-primary btn-lg" style="box-shadow: 0 2px 6px #acb5f6;
-                                                background-color: #6777ef;
-                                                border-color: #6777ef;border-radius:30px">Add New Room</a>
-                                            </div>
+                                            
 
                                 </div>
                             </div>
@@ -625,7 +669,7 @@ border-bottom:0px!important;
 .nav-tabs .nav-item
 {
     width:255px!important;
-    /* border:2px solid #000; */
+
     
 }
 
