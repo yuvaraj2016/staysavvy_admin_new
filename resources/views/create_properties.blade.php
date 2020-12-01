@@ -391,6 +391,31 @@
                             </div>
                             <div class="tab-pane @if(session('psuccess') !== null) show active @else @endif fade" id="room-types">
                               
+                                <form action="{{ route('prooms.create') }}" class="swa-confirm"  method="post" id="addstatus"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                
+                                @if(session('rsuccess') !== null)
+                                <div class="succWrap">
+                                {{ session('rsuccess') }}
+                                </div>
+                                @endif
+
+                                @if(session('rerror') !== null)
+
+                                    @foreach(session('rerror') as $v)
+                                    @foreach($v as $e)
+
+                                    <div class="errorWrap"><strong>ERROR</strong>:  {{ $e }} </div>
+
+                                    @endforeach
+
+                                    @endforeach
+                                @endif
+
+
+
 
                                 <div class="form-group row mb-4">
                                     <input type="hidden" name="property_id" id="property_id" value="@if(session('psuccess') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
@@ -418,12 +443,112 @@
                                                 {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
                                                 </div>
                                                 {{-- <input type="text" id="input"/> --}}
+
+                                        
+                                                    
+
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Room Type</label>
+                                                        <select  class="js-example-basic-single col-sm-12" name="room_type_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                            <option value="">Select</option>
+                                                            @foreach($confRoomType as $confRoomTypes)
+                                                                <option value="{{ $confRoomTypes['id'] }}" {{ (old("room_type_id") == $confRoomTypes['id'] ? "selected":"") }}>{{ $confRoomTypes['name'] }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        </div>
+                          
+
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">No Of Rooms</label>
+                                                        <input type="number"  name="no_of_rooms" value="{{ old('no_of_rooms') }}" class="summernote-simple form-control" required>
+               
+                                                        </div>
+                         
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Available Rooms</label>
+                                                        <input type="number" name="available_rooms" value="{{ old('available_rooms') }}" class="summernote-simple form-control" required>
+               
+                                                        </div>
+                          
+
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Max Adults</label>
+                                                        <input type="number" name="max_adults" value="{{ old('max_adults') }}" class="summernote-simple form-control" required>
+               
+                                                        </div>
+
+
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Max Children</label>
+                                                        <input type="number" name="max_children" value="{{ old('max_children') }}" class="summernote-simple form-control" required>
+               
+                                                        </div>
+                          
+                            
+
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Max Occupancy</label>
+                                                        <input type="number" name="max_occupancy" value="{{ old('max_occupancy') }}" class="summernote-simple form-control" required>
+               
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Room Location</label>
+                                                        <input  name="room_location" value="{{ old('room_location') }}" class="summernote-simple form-control" required>
+               
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Amount</label>
+                                                        <input type="number"  step="any" name="amount" value="{{ old('amount') }}" class="summernote-simple form-control" required>
+               
+                                                        </div>
+
+                                                
+                          
+                                                     <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Status</label>
+                                                        <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                            <option value="">Select</option>
+                                                            @foreach($statuses as $status)
+                                                                <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        </div>
                         
-                                    <div class="col-sm-12 col-md-7 offset-5 mt-4">
-                                        <a href="{{ route('rooms.create') }}" id="alert" class="btn btn-primary btn-lg" style="box-shadow: 0 2px 6px #acb5f6;
-                                        background-color: #6777ef;
-                                        border-color: #6777ef;border-radius:30px">Add New Room</a>
-                                    </div>
+ 
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Amenity</label>
+                                                        <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
+                                                            <option value="">Select</option>
+                                                            @foreach($amenity as $amenitys)
+                                                                <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                            <label class="col-form-label text-md-right ">Room Image Picture</label>
+                                                            <input type="file" name="file[]" class="filer_input" multiple="multiple" class="form-control">
+                                                        </div>
+                                                </div>
+
+
+
+                                                <div class="form-group row mb-4">
+                                                    <label class="col-form-label text-md-right "></label>
+                                                    <div class="col-sm-12 col-md-7 offset-5">
+                                                        <button type="submit" id="submit" class="btn btn-primary">Create Room</button>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                        
+                                            <div class="col-sm-12 col-md-7 offset-5 mt-4">
+                                                <a href="{{ route('rooms.create') }}" id="alert" class="btn btn-primary btn-lg" style="box-shadow: 0 2px 6px #acb5f6;
+                                                background-color: #6777ef;
+                                                border-color: #6777ef;border-radius:30px">Add New Room</a>
+                                            </div>
+
                                 </div>
                             </div>
                           
