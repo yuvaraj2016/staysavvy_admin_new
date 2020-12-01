@@ -108,7 +108,7 @@ class UserController extends Controller
 
             }
 
-            return redirect()->route('booking.index');
+            return redirect()->route('user.index');
        
         }
         else{

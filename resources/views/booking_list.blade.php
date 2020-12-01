@@ -15,7 +15,7 @@
     }
 </style>
 
-<div class="page-wrapper" style="margin-top:140px!important;">
+<div class="page-wrapper" style="margin-top:80px!important;">
     <!-- Page-header start -->
     <div class="page-header">
         <div class="row align-items-end">
