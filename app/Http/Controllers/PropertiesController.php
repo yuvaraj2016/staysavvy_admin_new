@@ -640,7 +640,7 @@ class PropertiesController extends Controller
 
             return redirect()->route('properties.create')->with('psuccess','Property Policies Are Saved Successfully!')->with('pid',$request->property_id)->with('pdata',$pdata);
         }else{
-             return $response;
+            //  return $response;
 
             $request->flash();
 
