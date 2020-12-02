@@ -606,7 +606,7 @@ font-size:13px!important;
                             {{-- @if(collect(session('roles'))->contains('Administrator'))     --}}
                                 @if(collect(session('permissions'))->contains('List property'))
                                 <a class="dropdown-item {{ (request()->is('properties_list')) ? 'active' : '' }}" href="{{ route('properties.index') }}">Property</a>
-                                {{-- @endif --}}
+                                @endif
                             {{-- @endif   --}}
                                 <div class="dropdown-divider"></div>
                             @if(collect(session('permissions'))->contains('List room'))
