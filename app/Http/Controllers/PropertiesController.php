@@ -806,6 +806,8 @@ class PropertiesController extends Controller
 
         }else{
 
+            return $response['errors'];
+
             $request->flash();
 
             return redirect()->route('properties.create')->with('rerror',$response['errors']);
