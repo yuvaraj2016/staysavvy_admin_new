@@ -603,15 +603,11 @@ font-size:13px!important;
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @if(collect(session('roles'))->contains('Administrator'))    
+                            {{-- @if(collect(session('roles'))->contains('Administrator'))     --}}
                                 @if(collect(session('permissions'))->contains('List property'))
                                 <a class="dropdown-item {{ (request()->is('properties_list')) ? 'active' : '' }}" href="{{ route('properties.index') }}">Property</a>
-                                @endif
-                            @elseif(collect(session('roles'))->contains('Vendor'))    
-                                @if(collect(session('permissions'))->contains('Create property'))
-                                <a class="dropdown-item {{ (request()->is('properties/create')) ? 'active' : '' }}" href="{{ route('properties.create') }}">Property</a>
-                                @endif
-                            @endif  
+                                {{-- @endif --}}
+                            {{-- @endif   --}}
                                 <div class="dropdown-divider"></div>
                             @if(collect(session('permissions'))->contains('List room'))
                                 <a class="dropdown-item {{ (request()->is('rooms_list')) ? 'active' : '' }}" href="{{ route('rooms.index') }}">Room</a>
