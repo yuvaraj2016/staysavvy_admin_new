@@ -29,7 +29,7 @@ class PropertiesController extends Controller
             $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?page='.$page);
 
             $response = json_decode($call->getBody()->getContents(), true);
-         // return $response;
+        //  return $response;
         }catch (\Exception $e){
             //buy a beer
 
@@ -559,7 +559,11 @@ class PropertiesController extends Controller
         }
         if($response->status()===200){
             return redirect()->back()->with('success','Properties Updated Successfully!');
-        }else{
+        }
+        else if($response->status()===403){
+            return redirect()->back()->with('error','You have created property already. You can create only one property through vendor account!');
+        }
+        else{
             // return $response['errors'];
             return redirect()->back()->with('error',$response->json()['errors']);
         }

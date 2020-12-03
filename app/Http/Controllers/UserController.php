@@ -98,7 +98,13 @@ class UserController extends Controller
                 
                 $username = $userresponse->json()['data']['name'];
 
+                $uid = $userresponse->json()['data']['id'];
+
+                // return $uid;
+
                 $request->session()->put('username',$username);
+
+                $request->session()->put('uid',$uid);
 
                 $request->session()->put('permissions',$permissions);
 
@@ -108,7 +114,7 @@ class UserController extends Controller
 
             }
 
-            return redirect()->route('user.index');
+            return redirect()->route('properties.index');
        
         }
         else{
