@@ -584,7 +584,7 @@
 
                                                         <div class="col-sm-4">
                                                             <label class="col-form-label text-md-right ">Room Image Picture</label>
-                                                            <input type="file" name="file[]" id="room_image" class="filer_input room_image" multiple="multiple" class="form-control">
+                                                            <input type="file" name="file[]" id="room_image" class="filer_input room_image" multiple="multiple" class="form-control"  required>
                                                         </div>
                                                 </div>
 
