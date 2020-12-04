@@ -151,22 +151,22 @@
                                 @csrf
                                 
                                 <div class="form-group row ">
-                                    <div class="col-sm-4">
+                                                                <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Properties Name</label>
-                                                                <input name="name" value="{{ old('name') }}" class="summernote-simple form-control" required>
+                                                                <input name="name" value="{{ old('name') }}" minlength="5" maxlength="500" class="summernote-simple form-control" required>
                        
                                                                 </div>
         
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Properties Address</label>
-                                                                <input name="address" value="{{ old('address') }}" class="summernote-simple form-control" required>
+                                                                <input name="address" value="{{ old('address') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
                        
                                                                 </div>
                                   
         
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Properties Location</label>
-                                                                <input name="location" id="address" value="{{ old('location') }}" class="summernote-simple form-control" required>
+                                                                <input name="location" id="address" value="{{ old('location') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
                                                                 {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
                                                                 </div>
                                                                 {{-- <input type="text" id="input"/> --}}
@@ -228,7 +228,7 @@
         
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">General Desc</label>
-                                                                <input name="general_description" value="{{ old('general_description') }}" class="summernote-simple form-control" required>
+                                                                <input name="general_description" value="{{ old('general_description') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
                        
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -321,44 +321,44 @@
 
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Cancellation Policies</label>
-                                                                <textarea name="cancellation_policies" class="summernote-simple form-control" required>{{ old('cancellation_policies') }}</textarea>
+                                                                <textarea name="cancellation_policies"  minlength="5" maxlength="500" class="summernote-simple form-control" required>{{ old('cancellation_policies') }}</textarea>
                        
                                                                 </div>
 
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Children Extra beds</label>
-                                                                    <textarea name="child_extrabeds" class="summernote-simple form-control" required>{{ old('child_extrabeds') }}</textarea>
+                                                                    <textarea name="child_extrabeds"  minlength="5" maxlength="500" class="summernote-simple form-control" required>{{ old('child_extrabeds') }}</textarea>
                            
                                                                 </div>
         
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Internet</label>
-                                                                    <textarea name="internet" class="summernote-simple form-control" required>{{ old('internet') }}</textarea>
+                                                                    <textarea name="internet"  minlength="5" maxlength="500" class="summernote-simple form-control" required>{{ old('internet') }}</textarea>
                            
                                                                 </div>
 
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Parking</label>
-                                                                    <textarea name="parking" class="summernote-simple form-control" required>{{ old('parking') }}</textarea>
+                                                                    <textarea name="parking"  minlength="5" maxlength="500" class="summernote-simple form-control" required>{{ old('parking') }}</textarea>
                            
                                                                 </div>
 
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Pets</label>
-                                                                    <textarea name="pets" class="summernote-simple form-control" required>{{ old('pets') }}</textarea>
+                                                                    <textarea name="pets"  minlength="5" maxlength="500" class="summernote-simple form-control" required>{{ old('pets') }}</textarea>
                            
                                                                 </div>
                                   
         
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Check In Time</label>
-                                                                <input name="checkin_time" id="checkin_time" value="{{ old('checkin_time') }}" class="summernote-simple form-control" required>
+                                                                <input name="checkin_time" id="checkin_time" value="{{ old('checkin_time') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
                                                       
                                                                 </div>
 
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Check Out Time</label>
-                                                                    <input name="checkout_time" id="checkout_time" value="{{ old('checkout_time') }}" class="summernote-simple form-control" required>
+                                                                    <input name="checkout_time" id="checkout_time" value="{{ old('checkout_time') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
                                                           
                                                                 </div>
 
@@ -370,7 +370,7 @@
 
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Curfew</label>
-                                                                    <textarea name="curfew" class="summernote-simple form-control" required>{{ old('curfew') }}</textarea>
+                                                                    <textarea name="curfew" class="summernote-simple form-control"  minlength="5" maxlength="500"  required>{{ old('curfew') }}</textarea>
                            
                                                                 </div>
                                                        
@@ -539,7 +539,7 @@
 
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Room Location</label>
-                                                        <input  name="room_location" value="{{ old('room_location') }}" class="summernote-simple form-control" required>
+                                                        <input  name="room_location" value="{{ old('room_location') }}"  minlength="2" maxlength="500" class="summernote-simple form-control" required>
                
                                                         </div>
                                                         <div class="col-sm-4">
