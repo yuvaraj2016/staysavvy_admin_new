@@ -5,11 +5,22 @@
   
     if( document.getElementById("filer_input").files.length == 0 ){
     e.preventDefault();
-    alert('Please Upload Image');
+    // alert('Please Upload Property Image');
+    swal("Error","Please upload Property Image");
     }
     
     });
+
+    jQuery(document).on("click", ".room_submit", function (e) {
+  
+    if( document.getElementById("room_image").files.length == 0 ){
+    e.preventDefault();
+    // alert('Please Upload Room Image');
+    swal("Error","Please upload Room Image");
+    }
     
+    });
+  
     </script>
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
 <div class="page-wrapper">
@@ -573,7 +584,7 @@
 
                                                         <div class="col-sm-4">
                                                             <label class="col-form-label text-md-right ">Room Image Picture</label>
-                                                            <input type="file" name="file[]" class="filer_input" multiple="multiple" class="form-control">
+                                                            <input type="file" name="file[]" id="room_image" class="filer_input room_image" multiple="multiple" class="form-control">
                                                         </div>
                                                 </div>
 
@@ -582,7 +593,7 @@
                                                 <div class="form-group row mb-4">
                                                     <label class="col-form-label text-md-right "></label>
                                                     <div class="col-sm-12 col-md-12 offset-5">
-                                                        <button type="submit" id="submit" class="btn btn-primary btn-lg float-left">Create Room</button>
+                                                        <button type="submit" id="submit" class="btn btn-primary btn-lg float-left room_submit">Create Room</button>
                                                         <a href="{{ route('properties.create') }}" id="alert" class="btn btn-primary btn-lg float-left" style="box-shadow: 0 2px 6px #acb5f6;
                                                         background-color: #6777ef; margin-left:8px!important;
                                                         border-color: #6777ef;border-radius:30px">Save</a>
