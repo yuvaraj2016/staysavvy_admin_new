@@ -13,7 +13,9 @@
     <!-- Meta -->
 <style>
 
-
+.fixed-top {
+position: absolute !important;
+}
 
 .nav-link,.navbar-brand
 {
@@ -475,10 +477,12 @@ font-size:13px!important;
                                 <div class="mt-3" style="background-color:#1BF0B7; border-radius:20px; height:80%!important;font-weight:bold;">
                                  @if(collect(session('roles'))->contains('Administrator'))  
                                  
+                                
+
                                  <div class="row"> 
                                     <div class="col-sm-6"></div>
-                                    <div class="col-sm-1 d-flex mt-3">
-                                        {{-- <a class="d-inline" href="#">
+                                    <div class="col-sm-1 ">
+                                        <!-- <a class="d-inline" href="#">
                                             <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
                                           
                                         </a>
@@ -486,36 +490,7 @@ font-size:13px!important;
                                         <a class="d-inline ml-2" href="#">
                                             <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
                                           
-                                        </a> --}}
-            
-                                    </div>
-                                    <div class="col-sm-3 mt-3 ml-2 text-center">
-                                        <a class="" href="#" style="font-weight: bold!important;"><b>Stay Savvy Admin Account</b></a><br>
-                                       
-                                    
-
-                                    </div>
-                                    <div class="col-sm-1">
-
-                                        {{-- <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a> --}}
-                                    </div>
-                                 </div>
-
-                                 @elseif(collect(session('roles'))->contains('Vendor'))  
-
-
-                                 <div class="row"> 
-                                    <div class="col-sm-6"></div>
-                                    <div class="col-sm-1 d-flex mt-3">
-                                        <a class="d-inline" href="#">
-                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
-                                          
-                                        </a>
-            
-                                        <a class="d-inline ml-2" href="#">
-                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
-                                          
-                                        </a>
+                                        </a> -->
             
                                     </div>
                                     <div class="col-sm-3 mt-3 ml-2 text-center">
@@ -524,9 +499,88 @@ font-size:13px!important;
                                     
 
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-1 d-flex mt-3">
+                                    <a class="d-inline" href="#">
+                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
+                                          
+                                        </a>
+            
+                                        <!-- <a class="d-inline ml-2" href="#">
+                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
+                                          
+                                        </a> -->
+                                          <li class="nav-item dropdown" style="list-style: none;">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i  class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;">
+                              
+                              </i>
+                              {{  ucfirst(session('username')) }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          
+                              <a class="dropdown-item {{ (request()->is('show_profiles')) ? 'active' : '' }}" href="{{ route('profile.index') }}">My Profile</a>
+                         
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item {{ (request()->is('logout')) ? 'active' : '' }}" href="{{ route('logout') }}">Logout</a>
+                            
+                              
+                            </div>
+                          </li>
+                                        <!-- <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a> -->
+                                    </div>
+                                 </div>
 
-                                        <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a>
+                                 @elseif(collect(session('roles'))->contains('Vendor'))  
+
+
+                                 <div class="row"> 
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-1 ">
+                                        <!-- <a class="d-inline" href="#">
+                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
+                                          
+                                        </a>
+            
+                                        <a class="d-inline ml-2" href="#">
+                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
+                                          
+                                        </a> -->
+            
+                                    </div>
+                                    <div class="col-sm-3 mt-3 ml-2 text-center">
+                                        <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
+                                        <a class="" href="#"><b>Stay Savvy Account</b></a>
+                                    
+
+                                    </div>
+                                    <div class="col-sm-1 d-flex mt-3">
+                                    <a class="d-inline" href="#">
+                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
+                                          
+                                        </a>
+            
+                                        <!-- <a class="d-inline ml-2" href="#">
+                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
+                                          
+                                        </a> -->
+                                          <li class="nav-item dropdown" style="list-style: none;">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i  class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;">
+                              
+                              </i>
+                              {{  ucfirst(session('username')) }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          
+                              <a class="dropdown-item {{ (request()->is('show_profiles')) ? 'active' : '' }}" href="{{ route('profile.index') }}">My Profile</a>
+                         
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item {{ (request()->is('logout')) ? 'active' : '' }}" href="{{ route('logout') }}">Logout</a>
+                            
+                              
+                            </div>
+                          </li>
+                                        <!-- <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a> -->
                                     </div>
                                  </div>
 
@@ -745,7 +799,7 @@ font-size:13px!important;
                             </div>
                           </li>
 
-                          <li class="nav-item dropdown">
+                          <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user" style="margin-left:14px!important;">
                               
@@ -761,7 +815,7 @@ font-size:13px!important;
                             
                               
                             </div>
-                          </li>
+                          </li> -->
                  
                       </ul>
 

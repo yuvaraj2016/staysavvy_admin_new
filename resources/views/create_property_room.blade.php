@@ -113,7 +113,7 @@
                             <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Property</label>
                                                         <select  class="js-example-basic-single col-sm-12" name="property_id" id="" placeholder="status" required class="form-control selectric" required>
-                                        <option value="">Select</option>
+                                        <option value="" disabled>Select</option>
                                         @foreach($property as $propertys)
                                             <option value="{{ $propertys['id'] }}" {{ (old("property_id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}</option>
                                         @endforeach
@@ -123,7 +123,7 @@
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Room Type</label>
                                                         <select  class="js-example-basic-single col-sm-12" name="room_type_id" id="" placeholder="status" required class="form-control selectric" required>
-                                        <option value="">Select</option>
+                                        <option value="" disabled>Select</option>
                                         @foreach($confRoomType as $confRoomTypes)
                                             <option value="{{ $confRoomTypes['id'] }}" {{ (old("room_type_id") == $confRoomTypes['id'] ? "selected":"") }}>{{ $confRoomTypes['name'] }}</option>
                                         @endforeach
@@ -204,7 +204,7 @@
                             <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Status</label>
                                                         <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
-                                        <option value="">Select</option>
+                                        <option value="" disabled>Select</option>
                                         @foreach($statuses as $status)
                                             <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
                                         @endforeach
@@ -215,7 +215,7 @@
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Amenity</label>
                                                         <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
-                                        <option value="">Select</option>
+                                        <option value="" disabled>Select</option>
                                         @foreach($amenity as $amenitys)
                                             <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
                                         @endforeach
