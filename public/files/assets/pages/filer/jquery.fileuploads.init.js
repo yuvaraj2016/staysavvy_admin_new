@@ -24,12 +24,12 @@ $(document).ready(function(){
         maxSize: 10,
         theme: "dragdropbox",
         extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
-        changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag & Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="btn btn-blue waves-effect waves-light">Browse Files</a></div></div>',
+        changeInput: '<div class="jFiler-input-dragDrop col-sm-3"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag & Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="btn btn-blue waves-effect waves-light">Browse Files</a></div></div>',
         showThumbs: true,
         addMore: true,
         templates: {
             box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
-            item: '<li class="jFiler-item">\
+            item: '<li class="jFiler-item col-sm-3">\
                         <div class="jFiler-item-container">\
                             <div class="jFiler-item-inner">\
                                 <div class="jFiler-item-thumb">\

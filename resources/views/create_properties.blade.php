@@ -130,18 +130,13 @@
                             <div class='alert alert-success'>
                                 {{ session('success') }}  
                             </div>
+                        @endif-->
+                        @if(session('pcreateerror') !== null)
+
+                                <div class="errorWrap"><strong>ERROR</strong>:  {{ session('pcreateerror') }} </div>
+
+                            
                         @endif
-                        @if(session('error') !== null)
-
-                            @foreach(session('error') as $v)
-                               @foreach($v as $e)
-                               <div class='alert alert-danger'>
-                                   {{ $e }}
-                                </div>
-                               @endforeach
-
-                            @endforeach
-                        @endif -->
                     
                         <ul class="nav nav-tabs nav-fill">
                             <li class="nav-item">
@@ -189,7 +184,7 @@
                                     <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="<b>Professional host</b> <br>Any party who rents out a property or properties for purposes relating to their trade, business, or profession (e.g. this is your main business, you're a property management company, collect VAT, have a business name, etc.)<br><b>Private / Non-professional host</b> <br>Any party who rents out a property or properties for purposes outside their trade, business, or profession. (e.g. this is a side business, you only rent out occasionally, etc.)">Host Type</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="host_type_id" id=""  required class="form-control selectric" required>
-                                                <option value="" disabled>Select</option>
+                                                <option value="" selected disabled>Select</option>
                                                 @foreach($host as $hosts)
                                                     <option value="{{ $hosts['id'] }}" {{ (old("host_type_id") == $hosts['id'] ? "selected":"") }}>{{ $hosts['name'] }}</option>
                                                 @endforeach
@@ -201,7 +196,7 @@
                                                                 {{-- <input name="property_mgmt_system" value="{{ old('property_mgmt_system') }}" class="summernote-simple form-control" required> --}}
                                                                 
                                                                 <select  class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id=""  required class="form-control selectric" required>
-                                                                    <option value="" disabled>Select</option>
+                                                                    <option value="" selected disabled>Select</option>
                                                                     @foreach($pms as $spms)
                                                                         <option value="{{ $spms['id'] }}" {{ (old("property_mgmt_system_id") == $spms['id'] ? "selected":"") }}>{{ $spms['name'] }}</option>
                                                                     @endforeach
@@ -212,7 +207,7 @@
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please put 'None' in the above boxes if none are used">Central Reservation System</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric" required>
-                                                                    <option value="" disabled>Select</option>
+                                                                    <option value="" selected disabled>Select</option>
                                                                     @foreach($crs as $scrs)
                                                                         <option value="{{ $scrs['id'] }}" {{ (old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option>
                                                                     @endforeach
@@ -230,7 +225,7 @@
                                     <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please state which best describes your property">Property Type</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="property_type_id" id=""  required class="form-control selectric" required>
-                                                <option value="" disabled>Select</option>
+                                                <option value="" selected disabled>Select</option>
                                                 @foreach($property_type as $property_types)
                                                     <option value="{{ $property_types['id'] }}" {{ (old("property_type_id") == $property_types['id'] ? "selected":"") }}>{{ $property_types['name'] }}</option>
                                                 @endforeach
@@ -251,7 +246,7 @@
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Status</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
-                                                <option value="" disabled>Select</option>
+                                                <option value="" selected disabled>Select</option>
                                                 @foreach($statuses as $status)
                                                     <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
                                                 @endforeach
@@ -279,9 +274,11 @@
 
                                                               
                         
-                                                                        <div class="col-sm-4">
+                                                                        <div class="col-sm-12">
+                                                                            
                                                                             <label class="col-form-label text-md-right ">Photos</label>
                                                                             <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required>
+                                                                            
                                                                         </div>
                                                                 
                                                                         <div class="col-sm-12 col-md-7 offset-5">
@@ -506,7 +503,7 @@
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Room Type</label>
                                                         <select  class="js-example-basic-single col-sm-12" name="room_type_id" id=""  required class="form-control selectric" required>
-                                                            <option value="" disabled>Select</option>
+                                                            <option value="" selected disabled>Select</option>
                                                             @foreach($confRoomType as $confRoomTypes)
                                                                 <option value="{{ $confRoomTypes['id'] }}" {{ (old("room_type_id") == $confRoomTypes['id'] ? "selected":"") }}>{{ $confRoomTypes['name'] }}</option>
                                                             @endforeach
@@ -564,7 +561,7 @@
                                                      <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Status</label>
                                                         <select  class="js-example-basic-single col-sm-12" name="status_id"  placeholder="status" required class="form-control selectric" required>
-                                                            <option value="" disabled>Select</option>
+                                                            <option value="" selected disabled>Select</option>
                                                             @foreach($statuses as $status)
                                                                 <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
                                                             @endforeach
@@ -582,7 +579,7 @@
                                                         </select>
                                                         </div>
 
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-12">
                                                             <label class="col-form-label text-md-right ">Room Image Picture</label>
                                                             <input type="file" name="file[]" id="room_image" class="filer_input room_image" multiple="multiple" class="form-control"  required>
                                                         </div>
@@ -715,4 +712,6 @@ border-radius: 20px!important;
 background-color:#cccccc!important;
 border:5px solid #cccccc!important;
 }
+
+
 </style>
