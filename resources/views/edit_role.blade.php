@@ -4,8 +4,10 @@
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
 <div class="page-wrapper">
 
+<div class="page-wrapper">
+
 <div class="page-header m-t-50">
-        <div class="row align-Users-end">
+        <div class="row align-items-end">
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
@@ -17,16 +19,15 @@
             <div class="col-lg-4">
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
-                        <li class="breadcrumb-User">
+                        <li class="breadcrumb-item">
                            
                                 <p class="">Edit Role</p>
-                          
                         </li>
                       
                         <li class="breadcrumb-item"><a href="{{ route('role.index') }}">Roles</a>
                         </li>
                        
-                    </ul>
+                        </ul>
                 </div>
             </div>
         </div>

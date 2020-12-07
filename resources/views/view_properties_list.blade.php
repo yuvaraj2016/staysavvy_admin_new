@@ -121,7 +121,7 @@
                       
 
                         <div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">property System</label>
+                            <label class="col-form-label text-md-right ">Property System</label>
                             <input type="text"  value="   {{ $properties['property_mgmt_system_name'] }}" class="form-control" readonly>
                             </div>
                             <div class="col-sm-4 ">
@@ -166,6 +166,7 @@
                             <div class="form-group row">
 
                             <div class="col ">
+                            <h5 style="padding:10px 10px 10px 10px">Property Images</h5>
                             @foreach($properties['Assets']['data'] as $prop)
                             <!-- <label class="col-form-label text-md-right ">Property Image</label> -->
                             <img src="{{ isset($prop['links']['thumb']) ? $prop['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>

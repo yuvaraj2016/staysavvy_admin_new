@@ -126,14 +126,14 @@
                                     <tr>
                                     <th>Actions</th>
                                     <th>Property Image</th>
-                                       <th>Property Name</th>
-                                       <th>Room Type Name</th>
-                                       <th>No Of Rooms</th>
-                                       <th>Available Rooms</th>
-                                       <th>Max Adults</th>
-                                       <th>Max Children</th>
-                                       <th>Max Occupancy</th>
-                                       <th>Room Location</th>
+                                       <th>Property<br> Name</th>
+                                       <th>Room <br>Type Name</th>
+                                       <th>No <br>Of Rooms</th>
+                                       <th>Available <br>Rooms</th>
+                                       <th>Max <br>Adults</th>
+                                       <th>Max<br> Children</th>
+                                       <th>Max<br> Occupancy</th>
+                                       <th>Room<br> Location</th>
                                        <th>Amount</th>
                                        
                                        <th>Amenity</th>

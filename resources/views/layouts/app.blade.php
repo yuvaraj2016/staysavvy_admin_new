@@ -659,7 +659,7 @@ label {
                      @php
                     // print_r(session('roles'));
                     @endphp 
-                      <ul class="navbar-nav ml-auto mt-1" style="margin-left:23%!important;">
+                      <ul class="navbar-nav ml-auto mt-1" style="margin-left:32%!important;">
                         {{-- <li class="nav-item {{ (request()->is('booking_list')) ? 'active' : '' }}">
                           <a class="nav-link" href="#">
                             <i class="fa fa-key" style="margin-left:5px!important;"></i>

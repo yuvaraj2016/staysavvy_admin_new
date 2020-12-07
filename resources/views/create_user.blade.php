@@ -5,11 +5,11 @@
 <div class="page-wrapper">
 
 <div class="page-header m-t-50">
-        <div class="row align-Users-end">
+        <div class="row align-items-end">
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Create User</h4>
+                        <h4>Create Property</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -17,15 +17,15 @@
             <div class="col-lg-4">
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
-                        <li class="breadcrumb-User">
+                        <li class="breadcrumb-item">
                            
-                                <p class="">Create User</p>
+                                <p class="">Create Property</p>
                           
                         </li>
                       
                         <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Users</a>
                         </li>
-                       
+                         
                     </ul>
                 </div>
             </div>
