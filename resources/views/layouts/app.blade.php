@@ -409,6 +409,11 @@ border: 1px solid #1B476B!important;
 label {
     color: #212121!important; 
 }
+/* input field alignment */
+/* input.form-control {
+    padding: 10px 10px 10px 1px !important;
+} */
+/* end input field alignment */
 /* end view page changes */
 .jFiler-items
 {

@@ -142,11 +142,11 @@
                                        <th>Location</th>
                                        <th>Host Name</th>
                                        <th>Property Images</th>
-                                       <th>Property Management System</th>
-                                       <th>Central Management System</th>
-                                       <th>Property Type Name</th>
+                                       <th>Property<br> Management System</th>
+                                       <th>Central<br> Management System</th>
+                                       <th>Property<br> Type Name</th>
                                        <th>Property Desc</th>
-                                       <th>Room Start Price</th>
+                                       <th>Room <br>Start Price</th>
                                        <th>Taxes</th>
                                        <th>Amenity</th>
                                         <th>Status Desc</th>
@@ -212,7 +212,7 @@
                                         <td>
                                             {{ $propertys['host_type_name'] }}
                                         </td>
-                                        <td><img src="{{ isset($propertys['Assets']['data'][0]['links']) ? $propertys['Assets']['data'][0]['links']['full'].'?width=52&height=52' : asset('img/no-image.gif')  }}"/></td>
+                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($propertys['Assets']['data'][0]['links']) ? $propertys['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
                                         <td>
                                             {{ $propertys['property_mgmt_system_name'] }}
                                         </td>
