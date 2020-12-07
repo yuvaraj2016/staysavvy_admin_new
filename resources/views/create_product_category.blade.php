@@ -19,7 +19,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Create Product Category</i>
+                                <p class="">Create Product Category</p>
                           
                         </li>
                       

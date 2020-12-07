@@ -40,7 +40,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Create Property</i>
+                                <p class="">Create Property</p>
                           
                         </li>
                       

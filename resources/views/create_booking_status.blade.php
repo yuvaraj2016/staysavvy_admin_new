@@ -19,7 +19,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Create Booking Status</i>
+                                <p>Create Booking Status</p>
                           
                         </li>
                       

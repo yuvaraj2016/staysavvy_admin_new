@@ -19,7 +19,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">View Property</i>
+                                <p class="">View Property</p>
                           
                         </li>
                       

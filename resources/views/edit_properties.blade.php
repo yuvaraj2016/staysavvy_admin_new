@@ -21,7 +21,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Edit Properties</i>
+                                <p>Edit Properties</p>
                           
                         </li>
                       

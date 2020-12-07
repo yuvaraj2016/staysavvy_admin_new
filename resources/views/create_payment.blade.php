@@ -19,7 +19,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Create Payment</i>
+                                <p class="">Create Payment</p>
                           
                         </li>
                       

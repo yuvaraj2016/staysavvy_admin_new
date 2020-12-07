@@ -21,7 +21,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Edit Tax</i>
+                                <p class="">Edit Tax</p>
                           
                         </li>
                       

@@ -21,7 +21,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Edit Room Type</i>
+                                <p class="">Edit Room Type</p>
                           
                         </li>
                       

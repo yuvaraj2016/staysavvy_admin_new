@@ -19,7 +19,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Create Booking Commission</i>
+                                <p class="">Create Booking Commission</p>
                           
                         </li>
                       

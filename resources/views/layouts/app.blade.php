@@ -377,6 +377,39 @@ font-size:13px!important;
     font-family: Montserrat !important;
 }
 
+
+/* navar on mobile view */
+.pcoded[theme-layout="horizontal"][pcoded-device-type="phone"] .pcoded-navbar {
+    height: auto;
+    padding: 10px 10px 0;
+        padding-top: 10px;
+        padding-bottom: 0px;
+    position: absolute;
+    opacity: 10 !important;
+    visibility: unset!important;
+    transform-origin: 50% 50%;
+    transition: none!important;
+    transform-style: preserve-3d;
+    transform: none!important;
+}
+/*end navar on mobile view */
+
+
+/* view page changes */
+
+.form-control:disabled, .form-control[readonly] {
+background-color: white!important;
+}
+.form-control {
+border: 1px solid #1B476B!important;
+}
+
+
+/* form lable color */
+label {
+    color: #212121!important; 
+}
+/* end view page changes */
 </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -470,7 +503,7 @@ font-size:13px!important;
 
                         <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;">
                             <div style="margin-left:25px!important; width:15%!important;float:left;">
-                                <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
+                                <a class="navbar-brand mt-4" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
                             </div>
             
                             <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
@@ -547,9 +580,9 @@ font-size:13px!important;
                                         </a> -->
             
                                     </div>
-                                    <div class="col-sm-3 mt-3 ml-2 text-center">
-                                        <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
-                                        <a class="" href="#"><b>Stay Savvy Account</b></a>
+                                    <div class="col-sm-3 mt-3 ml-4 text-center">
+                                        <p class=""  style="font-weight: bold!important;margin-left:54px"><b>TEWIN BERY FORM HOTEL</b></p><br>
+                                        <p class="" style="font-weight: bold!important;margin-left:54px;margin-top:-31px"><b>Stay Savvy Account</b></p>
                                     
 
                                     </div>

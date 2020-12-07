@@ -21,7 +21,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Edit Host</i>
+                                <p class="">Edit Host</p>
                           
                         </li>
                       

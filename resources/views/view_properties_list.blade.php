@@ -19,7 +19,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">View Properties List</i>
+                                <p>View Properties List</p>
                           
                         </li>
                       
@@ -122,11 +122,11 @@
 
                         <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">property System</label>
-                            <input type="text"  value="   {{ $properties['property_mgmt_system'] }}" class="form-control" readonly>
+                            <input type="text"  value="   {{ $properties['property_mgmt_system_name'] }}" class="form-control" readonly>
                             </div>
                             <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Central System</label>
-                            <input type="text"  value="   {{ $properties['central_res_system'] }}" class="form-control" readonly>
+                            <input type="text"  value="   {{ $properties['central_res_system_name'] }}" class="form-control" readonly>
                             </div>
              
                         </div>

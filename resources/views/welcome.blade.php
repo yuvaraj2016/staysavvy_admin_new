@@ -128,7 +128,7 @@
                                             <button type="submit" class="btn btn-primary btn-blue btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
                                         </div>
                                     </div>
-                                    <hr>
+                                    
                                     {{-- <div class="row">
                                         <div class="col-md-10">
                                             <p class="text-inverse text-left m-b-0">Thank you.</p>

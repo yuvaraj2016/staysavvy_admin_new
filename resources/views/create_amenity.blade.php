@@ -19,7 +19,7 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Create Amenity</i>
+                                <p>Create Amenity</p>
                           
                         </li>
                       
