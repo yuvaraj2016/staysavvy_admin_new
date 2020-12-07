@@ -410,6 +410,22 @@ label {
     color: #212121!important; 
 }
 /* end view page changes */
+.jFiler-items
+{
+
+    /* float:left!important;
+    /* width:150px!important; */
+    /* height:auto!important; */
+    /* border:5px solid red!important;  */
+}
+
+.jFiler-input-dragDrop{
+    /* float:left!important; */
+    /* width:10%!important;
+    height:auto!important;
+    border:5px solid red!important; */
+
+}
 </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">

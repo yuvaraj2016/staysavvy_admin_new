@@ -337,7 +337,15 @@ class PropertiesController extends Controller
 
 
             return redirect()->route('properties.create')->with('success','Property is Created Successfully!')->with('pid',$property_id)->with('pdata',$pdata);
-        }else{
+        }
+        else if($response->status()===403){
+            // return $response['message'];
+
+            $request->flash();
+
+            return redirect()->route('properties.create')->with('pcreateerror',$response['message']);
+        }
+        else{
             // return $response;
 
             $request->flash();
