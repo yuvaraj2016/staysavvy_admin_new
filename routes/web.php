@@ -149,6 +149,12 @@ Route::put('update_password', 'ProfileController@updatepassword')->name('update_
 Route::get('change_password','ProfileController@passwordedit')->name('change_password.index')->middleware('checktoken');
 
 
+
+
+Route::resource('coolthing', 'CoolthingController')->except('index')->middleware('checktoken');
+
+Route::get('coolthing_list/{page?}','CoolthingController@index')->name('coolthing.index')->middleware('checktoken');
+
 Route::get('getuser', function () {
     return 1;
 });

@@ -847,6 +847,11 @@ label {
                               @if(collect(session('permissions'))->contains('List config commission'))
                               <a class="dropdown-item {{ (request()->is('commission_list')) ? 'active' : '' }}" href="{{ route('commission.index') }}">Booking Commission</a>
                             @endif
+
+                            <div class="dropdown-divider"></div>
+                              @if(collect(session('permissions'))->contains('List coolthing'))
+                              <a class="dropdown-item {{ (request()->is('coolthing_list')) ? 'active' : '' }}" href="{{ route('coolthing.index') }}">Coolthing</a>
+                            @endif
                               <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item {{ (request()->is('settings/create')) ? 'active' : '' }}" href="{{ route('settings.create') }}">Settings</a> -->
                             
