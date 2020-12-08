@@ -70,10 +70,24 @@
                     <div class="card-header table-card-header">
                         <div class="row">
                             <div class="section-header-button col-md-4">
-                            @if(collect(session('permissions'))->contains('Create property'))
+                    @if(collect(session('permissions'))->contains('Create property'))
+
+                            {{-- {{ $prop_count['property_count'] }} --}}
+                                @if(collect(session('roles'))->contains('Vendor'))  
+
+                                @if($prop_count['property_count']==0)
                                 <a href="{{ route('properties.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
                     background-color: #6777ef;
                     border-color: #6777ef;border-radius:30px">Add New</a>
+                                @endif
+
+                                @else
+                    
+                                <a href="{{ route('properties.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
+                                background-color: #6777ef;
+                                border-color: #6777ef;border-radius:30px">Add New</a>
+
+                                @endif
                     @endif
                             </div>
                             <div class="section-header-button col-md-5">

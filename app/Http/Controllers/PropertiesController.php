@@ -39,9 +39,25 @@ class PropertiesController extends Controller
         $pagination = $response['meta']['pagination'];
 
         $lastpage = $pagination['total_pages'];
+
+        
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/PropertyCount');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $prop_count = $response['data'];
+
+
         
 
-          return view('properties_list', compact('property', 'pagination','lastpage'));
+          return view('properties_list', compact('property', 'pagination','lastpage','prop_count'));
     }
 
     /**
@@ -174,6 +190,7 @@ class PropertiesController extends Controller
 
         }
          $amenity = $response['data'];
+
 
          return view(
             'create_properties', compact(
