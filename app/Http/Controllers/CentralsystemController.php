@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class CoolthingController extends Controller
+class CentralsystemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class CoolthingController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing?page='.$page);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem?page='.$page);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -35,13 +35,13 @@ class CoolthingController extends Controller
 
 
         }
-        $coolthing = $response['data'];
+        $centralsys = $response['data'];
         $pagination = $response['meta']['pagination'];
 
         $lastpage = $pagination['total_pages'];
         
 
-          return view('config_coolthing_list', compact('coolthing', 'pagination','lastpage'));
+          return view('central_system_list', compact('centralsys', 'pagination','lastpage'));
     }
 
     /**
@@ -67,7 +67,7 @@ class CoolthingController extends Controller
          $statuses = $response['data'];
 
          return view(
-            'create_coolthings', compact(
+            'create_central_system', compact(
                 'statuses'
             )
             );
@@ -88,11 +88,12 @@ class CoolthingController extends Controller
         $session = session()->get('token');
 
 
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confCoolthing',
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confCentralResSystem',
 
         [
 
             "name"=>$request->name,
+            "description"=>$request->description,
             "status_id"=>$request->status_id,
            
         ]);
@@ -100,12 +101,12 @@ class CoolthingController extends Controller
 
         if($response->status()===201){
 
-            return redirect()->route('coolthing.create')->with('success','Coolthing Created Successfully!');
+            return redirect()->route('centralsystem.create')->with('success','Central System Created Successfully!');
         }else{
 
             $request->flash();
 
-            return redirect()->route('coolthing.create')->with('error',$response['errors']);
+            return redirect()->route('centralsystem.create')->with('error',$response['errors']);
         }
     }
 
@@ -120,22 +121,22 @@ class CoolthingController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing/'.$id);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem/'.$id);
 
             $response = json_decode($call->getBody()->getContents(), true);
-           //   return $response;
+            // return $response;
         }catch (\Exception $e){
             //buy a beer
 
 
         }
-         $coolthing = $response['data'];
+         $centralsystem = $response['data'];
 
 
 
             return view(
-                'view_coolthing', compact(
-                    'coolthing'
+                'view_central_system', compact(
+                    'centralsystem'
                 )
         );
     }
@@ -163,7 +164,7 @@ class CoolthingController extends Controller
         }
          $statuses = $response['data'];
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing/' . $id);
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem/' . $id);
 
        
      
@@ -171,12 +172,12 @@ class CoolthingController extends Controller
 
         if($response->ok()){
 
-            $coolthing =   $response->json()['data'];
+            $centralsystem =   $response->json()['data'];
 
-            // return $status;
+            //  return $centralsystem;
 
-            return view('edit_coolthing', compact(
-               'coolthing','statuses'
+            return view('edit_central_system', compact(
+               'centralsystem','statuses'
             ));
         }
     }
@@ -192,13 +193,12 @@ class CoolthingController extends Controller
     {
         $session = session()->get('token');
       
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/confCoolthing/'.$id, 
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/confCentralResSystem/'.$id, 
         [
             "_method"=> 'PUT',
             "name"=>$request->name,
-            // "percentage"=>$request->percentage,
-            // "amount"=>$request->amount,
-            "status_id"=>$request->status_id
+            "description"=>$request->description,
+            "status_id"=>$request->status_id,
         ]
         
       );
@@ -208,7 +208,7 @@ class CoolthingController extends Controller
             return redirect()->route('home');
         }
         if($response->status()===200){
-            return redirect()->back()->with('success','Coolthing Updated Successfully!');
+            return redirect()->back()->with('success','Central System Updated Successfully!');
         }else{
             return redirect()->back()->with('error',$response->json()['message']);
         }
@@ -225,16 +225,16 @@ class CoolthingController extends Controller
     {
         $session = session()->get('token');
 
-        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/confCoolthing/'.$id);
+        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/confCentralResSystem/'.$id);
 
         if($response->status()==204){
 
-             return redirect()->route('coolthing.index')->with('success','Coolthing Deleted Sucessfully !..');
+             return redirect()->route('centralsystem.index')->with('success','Central System Deleted Sucessfully !..');
         }
         else{
 
 
-             return redirect()->route('coolthing.index')->with('error',$response->json()['message']);
+             return redirect()->route('centralsystem.index')->with('error',$response->json()['message']);
         }
 
     }

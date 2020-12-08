@@ -33,7 +33,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Coolthing List</h4>
+                        <h4>Central System List</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -42,12 +42,12 @@
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index-1.htm">
-                                <i class="icofont icofont-home"></i>
-                            </a>
+                            
+                               <p>Central System List</p>
+                           
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('coolthing.index') }}">Coolthing List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central System List</a>
                         </li>
 
                     </ul>
@@ -70,11 +70,11 @@
                     <div class="card-header table-card-header">
                         <div class="row">
                             <div class="section-header-button col-md-4">
-                            @if(collect(session('permissions'))->contains('Create coolthing'))
-                                <a href="{{ route('coolthing.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
+                            @if(collect(session('permissions'))->contains('Create central res system'))
+                                <a href="{{ route('centralsystem.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
                     background-color: #6777ef;
                     border-color: #6777ef;border-radius:30px">Add New</a>
-@endif
+                    @endif
                             </div>
                             <div class="section-header-button col-md-5">
 
@@ -82,7 +82,7 @@
                             <div class="section-header-button col-md-3 ">
                                 <div class="col">
                                 <ul id="pagination" class="float-right m-0 p-0">
-                                        <li><a href="{{ route('coolthing.index',$page=1) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
+                                        <li><a href="{{ route('centralsystem.index',$page=1) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
                                         @php
                                         if(isset($pagination['links']['previous']))
                                         {
@@ -91,7 +91,7 @@
                                         $page = $endurl[1];
 
                                         @endphp
-                                        <li><a href="{{ route('coolthing.index',$page) }}" class="btn btn-primary">Previous</a></li>
+                                        <li><a href="{{ route('centralsystem.index',$page) }}" class="btn btn-primary">Previous</a></li>
                                         @php
                                         }
                                         @endphp
@@ -106,7 +106,7 @@
                                         $page = $endurl[1];
                                         // echo
                                         @endphp
-                                        <li> <a href="{{ route('coolthing.index',$page) }}" class="btn btn-primary">Next</a></li>
+                                        <li> <a href="{{ route('centralsystem.index',$page) }}" class="btn btn-primary">Next</a></li>
                                         @php
                                         }
 
@@ -116,7 +116,7 @@
                                         if($pagination['total_pages']>1)
                                         {
                                         @endphp
-                                        <li> <a href="{{ route('coolthing.index',$pagination['total_pages']) }}" class="btn btn-primary float-right">Last</a> </li>
+                                        <li> <a href="{{ route('centralsystem.index',$pagination['total_pages']) }}" class="btn btn-primary float-right">Last</a> </li>
 
                                         @php
                                         }
@@ -137,8 +137,7 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                    <!-- <th>Percentage</th>
-                                    <th>Amount</th> -->
+                                    <th>Description</th>
                                     <th>Status Desc</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
@@ -147,50 +146,53 @@
                                 <tbody>
 
                                 {{-- @dd($prodcategories) --}}
-                                    @foreach($coolthing as $coolthings )
+                                    @foreach($centralsys as $centralsystem )
                                     @php
-                                    $id=$coolthings['id'];
+                                    $id=$centralsystem['id'];
                                     @endphp
 
                                     <tr>
                                     <td>
-                                            {{ $coolthings['name'] }}
+                                            {{ $centralsystem['name'] }}
                                         </td>
-
 
                                         <td>
-                                            {{ $coolthings['status_desc'] }}
+                                            {{ $centralsystem['description'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $centralsystem['status_desc'] }}
                                         </td>
 
 
-                                        <td>{{ date("Y-m-d H:i:s",$coolthings['created_at']) }}</td>
+                                        <td>{{ date("Y-m-d H:i:s",$centralsystem['created_at']) }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('List coolthing'))
-                                                    <a href="{{ url('coolthing/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
+                                                    @if(collect(session('permissions'))->contains('List central res system'))
+                                                    <a href="{{ url('centralsystem/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
                                                 @endif
                                                 </li>
                                                     <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
                                                     <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('Update coolthing'))
-                                                    <a href="{{ url('coolthing/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                                    @if(collect(session('permissions'))->contains('Update central res system'))
+                                                    <a href="{{ url('centralsystem/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                                 @endif
                                                 </li>
-                                             
+                                           
 
                                                     <li class="list-group-item border1">
-                                                    <form id="delete_from_{{$coolthings['id']}}" method="POST" action="{{route('coolthing.destroy', $coolthings['id']) }}">
+                                                    <form id="delete_from_{{$centralsystem['id']}}" method="POST" action="{{route('centralsystem.destroy', $centralsystem['id']) }}">
                     {{ csrf_field() }}
     {{ method_field('DELETE') }}
 
     <div class="form-group">
-    @if(collect(session('permissions'))->contains('Delete coolthing'))
-        <a href="javascript:void(0);" data-id="{{$coolthings['id']}}" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">
+    @if(collect(session('permissions'))->contains('Delete central res system'))
+        <a href="javascript:void(0);" data-id="{{$centralsystem['id']}}" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">
         <i class="fa fa-trash" style="position: relative;top:-5;color:#01a9ac"></i>
-        </a>   
-        @endif                 
+        </a>  
+        @endif                  
     </div>
 </form></li>
                                                     <!-- <li class="list-group-item border1 btn-delete"><a href="{{ url('status/'.$id) }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Audit"><i class="fa fa-calculator"></i></a></li> -->

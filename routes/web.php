@@ -155,6 +155,16 @@ Route::resource('coolthing', 'CoolthingController')->except('index')->middleware
 
 Route::get('coolthing_list/{page?}','CoolthingController@index')->name('coolthing.index')->middleware('checktoken');
 
+
+Route::resource('centralsystem', 'CentralsystemController')->except('index')->middleware('checktoken');
+
+Route::get('central_system_list/{page?}','CentralsystemController@index')->name('centralsystem.index')->middleware('checktoken');
+
+
+Route::resource('property_management', 'PropertymanagementController')->except('index')->middleware('checktoken');
+
+Route::get('property_management_list/{page?}','PropertymanagementController@index')->name('property_management.index')->middleware('checktoken');
+
 Route::get('getuser', function () {
     return 1;
 });
