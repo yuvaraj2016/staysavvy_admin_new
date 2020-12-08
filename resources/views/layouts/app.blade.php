@@ -679,7 +679,57 @@ label {
                           </li>
 
                           @endif
+                          
+                          <?php
 
+use Illuminate\Support\Collection;
+
+/**
+ * List values from collection. Unlike $collection->lists('key'), this function allows using multiple keys.
+ *
+ * In newer Laravel versions things like that can be done with collection macros, but not in 5.0.
+ *
+ * @param Collection $collection
+ * @param array|string $properties
+ * @param string $id
+ * @return array
+ */
+
+
+
+function checkpermissionexist($permissionarray)
+{
+
+    $result = 0;
+
+    $coll = new collection(session('permissions'));
+
+    // $permarr = ['List users','List roles','List permissions'];
+
+    // retun $coll->contains('List users','List roles','List permissions');
+
+    foreach($coll as $item)
+    {
+
+        // echo $item;
+
+        if(in_array($item,$permissionarray))
+        {
+
+            $result++;
+        }
+
+    }
+
+    return $result;
+
+    
+}
+
+
+?>
+
+                @if(checkpermissionexist(['List users','List roles','List permissions']) > 0)
                         <li class="nav-item  dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user" style="margin-left:5px!important;"></i>
@@ -703,7 +753,7 @@ label {
                           </li>
 
                         
-
+                  @endif  
                           <li class="nav-item  dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-flag" style="margin-left:5px!important;"></i>
