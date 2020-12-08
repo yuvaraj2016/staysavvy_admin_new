@@ -268,6 +268,11 @@ class PropertiesController extends Controller
             ],
 
             [
+                'name' => 'what_we_offer',
+                'contents' => $request->what_we_offer
+            ],
+
+            [
                 'name' => 'room_start_price',
                 'contents' => $request->room_start_price
             ],
@@ -305,6 +310,7 @@ class PropertiesController extends Controller
             "central_res_system_id"=>$request->central_res_system_id,
             "property_type_id"=>$request->property_type_id,
             "general_description"=>$request->general_description,
+            "what_we_offer"=>$request->what_we_offer,
             "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
             "taxes[]"=>$taxes,
@@ -553,6 +559,7 @@ class PropertiesController extends Controller
             "central_res_system"=>$request->central_res_system,
             "property_type_id"=>$request->property_type_id,
             "general_description"=>$request->general_description,
+            "what_we_offer"=>$request->what_we_offer,
             "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
             "taxes"=>$taxes,

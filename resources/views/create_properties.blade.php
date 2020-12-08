@@ -234,9 +234,16 @@
         
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property... maybe a bit of history, your values, attractions nearby etc"> General Desc ( Min Character:5 )</label>
-                                                                <input name="general_description" value="{{ old('general_description') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
+                                                                <input name="general_description" value="{{ old('general_description') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required>
                        
                                                                 </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property's offer"> What We Offer ( Min Character:5 )</label>
+                                                                    <input name="what_we_offer" value="{{ old('what_we_offer') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required>
+                           
+                                                                </div>
+                                                                
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Room Start Price </label>
                                                                     <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control" required>
@@ -274,7 +281,7 @@
 
                                                               
                         
-                                                                        <div class="col-sm-12">
+                                                                        <div class="col-sm-12 text-center">
                                                                             
                                                                             <label class="col-form-label text-md-right ">Photos</label>
                                                                             <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required>
