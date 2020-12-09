@@ -165,6 +165,11 @@ Route::resource('property_management', 'PropertymanagementController')->except('
 
 Route::get('property_management_list/{page?}','PropertymanagementController@index')->name('property_management.index')->middleware('checktoken');
 
+
+Route::resource('review', 'ReviewController')->except('index')->middleware('checktoken');
+
+Route::get('review_list/{page?}','ReviewController@index')->name('review.index')->middleware('checktoken');
+
 Route::get('getuser', function () {
     return 1;
 });

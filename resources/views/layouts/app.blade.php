@@ -908,8 +908,13 @@ function checkpermissionexist($permissionarray)
                               <a class="dropdown-item {{ (request()->is('central_system_list')) ? 'active' : '' }}" href="{{ route('centralsystem.index') }}">Central System</a>
                             @endif
                             <div class="dropdown-divider"></div>
-                              @if(collect(session('permissions'))->contains('List central res system'))
+                              @if(collect(session('permissions'))->contains('List property mgmt system'))
                               <a class="dropdown-item {{ (request()->is('property_management_list')) ? 'active' : '' }}" href="{{ route('property_management.index') }}">Property Management</a>
+                            @endif
+
+                            <div class="dropdown-divider"></div>
+                              @if(collect(session('permissions'))->contains('List config review'))
+                              <a class="dropdown-item {{ (request()->is('review_list')) ? 'active' : '' }}" href="{{ route('review.index') }}">Review</a>
                             @endif
                               <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item {{ (request()->is('settings/create')) ? 'active' : '' }}" href="{{ route('settings.create') }}">Settings</a> -->
