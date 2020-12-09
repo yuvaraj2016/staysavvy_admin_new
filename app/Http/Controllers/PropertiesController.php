@@ -621,7 +621,7 @@ class PropertiesController extends Controller
             "location"=>$request->location,
             "host_type_id"=>$request->host_type_id,
             "property_mgmt_system_id"=>$request->property_mgmt_system_id,
-            "central_res_system"=>$request->central_res_system,
+            "central_res_system_id"=>$request->central_res_system_id,
             "property_type_id"=>$request->property_type_id,
             "general_description"=>$request->general_description,
             "what_we_offer"=>$request->what_we_offer,

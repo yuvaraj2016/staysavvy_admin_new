@@ -280,7 +280,7 @@
                                                                     </div>
 
                                                                     <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" >Coolthings</label>
+                                                                    <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" >Cool Things To Do</label>
                                                                     <select  class="js-example-basic-single col-sm-12" name="coolthings[]" id="" multiple  required class="form-control selectric" >
                                                     <option value="" disabled>Select</option>
                                                     @foreach($Coolthing as $Coolthings)

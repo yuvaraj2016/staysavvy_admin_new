@@ -250,6 +250,14 @@ e
 
                                               
                             <div class="form-group row ">
+
+                            <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property's offer"> What We Offer ( Min Character:5 )</label>
+                                                                    <input name="what_we_offer" value="{{ old('what_we_offer',$properties['what_we_offer']) }}" minlength="5" maxlength="800" class="summernote-simple form-control" required>
+                           
+                                                                </div>
+
+
                             @php
 
 $coolthingids = [];
@@ -262,7 +270,7 @@ foreach($properties['Coolthings']['data'] as $coolthingid)
 @endphp
                             <div class="col-sm-4">
                                                     <label class="col-form-label text-md-right ">Coolthing</label>
-                                                    <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
+                                                    <select  class="js-example-basic-single col-sm-12" name="coolthings[]" id="" multiple placeholder="status" required class="form-control selectric" >
                                     <option value="">Select</option>
                                     @foreach($Coolthing as $Coolthings)
                                      
