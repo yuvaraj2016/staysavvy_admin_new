@@ -608,7 +608,7 @@
                                                         <button type="submit" id="submit" class="btn btn-primary btn-lg float-left room_submit">Create Room</button>
                                                         <a href="{{ route('properties.create') }}" id="alert" class="btn btn-primary btn-lg float-left" style="box-shadow: 0 2px 6px #acb5f6;
                                                         background-color: #6777ef; margin-left:8px!important;
-                                                        border-color: #6777ef;border-radius:30px">Save</a>
+                                                        border-color: #6777ef;border-radius:30px">Create New Property</a>
                                                     </div>
                                                 </div>
 

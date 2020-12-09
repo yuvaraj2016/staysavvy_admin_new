@@ -125,6 +125,26 @@
 
                         <div class="form-group row">
                         <!-- status_desc -->
+                 @php
+$aminity = '';
+
+foreach($proproom['Amenities']['data'] as $amenityid)
+{
+$aminity .= $amenityid['name'] . ', ' ;
+
+}
+
+@endphp
+
+
+                 <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Aminity</label>
+                            
+                            <input type="text"  value="   {{ $aminity }}" class="form-control" readonly>
+                          
+                        </div>
+                       
+                       
                         <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Status</label>
                             <input type="text"  value="   {{ $proproom['status_desc'] }}" class="form-control" readonly>

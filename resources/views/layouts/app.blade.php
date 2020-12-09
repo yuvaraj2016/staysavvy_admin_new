@@ -565,7 +565,7 @@ label {
                                         </a> -->
                                           <li class="nav-item dropdown" style="list-style: none;">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i  class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;">
+                              <i  class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
                               
                               </i>
                               {{  ucfirst(session('username')) }}
