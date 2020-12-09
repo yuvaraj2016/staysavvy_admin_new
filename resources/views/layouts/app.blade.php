@@ -524,11 +524,11 @@ label {
 
                         <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;">
                             <div style="margin-left:25px!important; width:15%!important;float:left;">
-                                <a class="navbar-brand mt-4" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
+                                <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
                             </div>
             
                             <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
-                                <div class="mt-3" style="background-color:#1BF0B7; border-radius:20px; height:80%!important;font-weight:bold;">
+                                <div class="mt-3" style="background-color:#1BF0B7; border-radius:20px; height:65%!important;font-weight:bold;">
                                  @if(collect(session('roles'))->contains('Administrator'))  
                                  
                                 
@@ -548,8 +548,8 @@ label {
             
                                     </div>
                                     <div class="col-sm-3 mt-3 ml-2 text-center">
-                                        <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
-                                        <a class="" href="#"><b>Stay Savvy Account</b></a>
+                                        <!-- <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
+                                        <a class="" href="#"><b>Stay Savvy Account</b></a> -->
                                     
 
                                     </div>
@@ -565,7 +565,7 @@ label {
                                         </a> -->
                                           <li class="nav-item dropdown" style="list-style: none;">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i  class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;">
+                              <i  class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;">
                               
                               </i>
                               {{  ucfirst(session('username')) }}
