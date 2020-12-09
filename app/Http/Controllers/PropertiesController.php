@@ -191,10 +191,23 @@ class PropertiesController extends Controller
         }
          $amenity = $response['data'];
 
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $Coolthing = $response['data'];
+
 
          return view(
             'create_properties', compact(
-                'tax','amenity','statuses','host','property_type','pms','crs','confRoomType','amenity'
+                'tax','amenity','statuses','host','property_type','pms','crs','confRoomType','amenity','Coolthing'
             )
     );
 
@@ -214,6 +227,7 @@ class PropertiesController extends Controller
         $filename = '';
         $taxes='';
         $amenities='';
+        $coolthings='';
 
         foreach($request->taxes as $tax)
         {
@@ -227,9 +241,17 @@ class PropertiesController extends Controller
             $amenities .= $amenity.",";
         }
 
+        foreach($request->coolthings as $coolthink)
+        {
+
+            $coolthings .= $coolthink.",";
+        }
+
         $taxes = rtrim($taxes,",");
 
         $amenities = rtrim($amenities,",");
+
+        $coolthings = rtrim($coolthings,",");
 
         // return $amenities;
 
@@ -305,7 +327,10 @@ class PropertiesController extends Controller
                 'name' => 'amenities[]',
                 'contents' =>$amenities
             ],
-
+            [
+                'name' => 'coolthings[]',
+                'contents' =>$coolthings
+            ],
             ]);
 
 
@@ -331,7 +356,8 @@ class PropertiesController extends Controller
             "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
             "taxes[]"=>$taxes,
-            "amenities[]"=>$amenities
+            "amenities[]"=>$amenities,
+            "coolthings[]"=>$coolthings
         ]);
 
         }
@@ -515,6 +541,20 @@ class PropertiesController extends Controller
          $property_type = $response['data'];
 
 
+         try{
+
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $Coolthing = $response['data'];
+
+
 
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/' . $id);
 
@@ -529,7 +569,7 @@ class PropertiesController extends Controller
             //  return $properties;
 
             return view('edit_properties', compact(
-               'properties', 'tax','amenity','statuses','host','property_type','pms','crs'
+               'properties', 'tax','amenity','statuses','host','property_type','pms','crs','Coolthing'
             ));
         }
     }
@@ -546,6 +586,7 @@ class PropertiesController extends Controller
         $session = session()->get('token');
         $taxes='';
         $amenities='';
+        $coolthings='';
 
         foreach($request->taxes as $tax)
         {
@@ -559,10 +600,17 @@ class PropertiesController extends Controller
             $amenities .= $amenity.",";
         }
 
+        foreach($request->coolthings as $coolthink)
+        {
+
+            $coolthings .= $coolthink.",";
+        }
+
         $taxes = rtrim($taxes,",");
         // return  $taxes;
         $amenities = rtrim($amenities,",");
         //  return  $amenities;
+        $coolthings = rtrim($coolthings,",");
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/property/'.$id, 
         
         [
@@ -580,7 +628,9 @@ class PropertiesController extends Controller
             "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
             "taxes"=>$taxes,
-            "amenities"=>$amenities
+            "amenities"=>$amenities,
+            "coolthings"=>$coolthings
+
         ]
         
       );

@@ -250,8 +250,29 @@ e
 
                                               
                             <div class="form-group row ">
-                        
-                         
+                            @php
+
+$coolthingids = [];
+
+foreach($properties['Coolthings']['data'] as $coolthingid)
+{
+
+    $coolthingids[] = $coolthingid['id'];
+}
+@endphp
+                            <div class="col-sm-4">
+                                                    <label class="col-form-label text-md-right ">Coolthing</label>
+                                                    <select  class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric" >
+                                    <option value="">Select</option>
+                                    @foreach($Coolthing as $Coolthings)
+                                     
+                                   
+                                    <option value="{{ $Coolthings['id'] }}" {{ (collect($coolthingids)->contains($Coolthings['id'])) ? 'selected':((collect(old('amenitys'))->contains($Coolthings['id'])) ? 'selected':'') }}>{{ $Coolthings['name'] }}</option>
+e
+                                    
+                                    @endforeach
+                                </select>
+                                                    </div>
 
 
                                                     <div class="col-sm-4">
