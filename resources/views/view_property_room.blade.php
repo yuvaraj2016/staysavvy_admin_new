@@ -186,10 +186,10 @@ $aminity .= $amenityid['name'] . ', ' ;
 
                             <div class="form-group row">
 
-                            <div class="col ">
+                            <div class="col-sm-12 offset-1 ">
                             @foreach($proproom['Assets']['data'] as $propr)
                             <!-- <label class="col-form-label text-md-right ">Property Image</label> -->
-                            <img src="{{ isset($propr['links']['thumb']) ? $propr['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>
+                            <img style="padding: 30px;" src="{{ isset($propr['links']['thumb']) ? $propr['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>
                         @endforeach  
                                                         </div>
                                                    
