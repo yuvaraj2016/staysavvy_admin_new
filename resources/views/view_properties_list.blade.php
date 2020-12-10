@@ -139,6 +139,44 @@
                           
                             <img src="{{ isset($properties['Assets']['data'][0]['links']['thumb']) ? $properties['Assets']['data'][0]['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>
                             </div> -->
+
+                            @php
+$aminity = '';
+
+foreach($properties['Amenities']['data'] as $amenityid)
+{
+$aminity .= $amenityid['name'] . ', ' ;
+
+}
+
+@endphp
+
+
+                 <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Aminity</label>
+                            
+                            <input type="text"  value="   {{ $aminity }}" class="form-control" readonly>
+                          
+                        </div>
+
+                        @php
+$tax = '';
+
+foreach($properties['Taxes']['data'] as $amenityid)
+{
+$tax .= $amenityid['name'] . ', ' ;
+
+}
+
+@endphp
+
+
+                 <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Taxes</label>
+                            
+                            <input type="text"  value="   {{ $tax }}" class="form-control" readonly>
+                          
+                        </div>
                             <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Created At </label>
                             <input type="text"  value="    {{ date("Y-m-d H:i:s",$properties['created_at']) }}" class="form-control" readonly>
@@ -165,11 +203,11 @@
 
                             <div class="form-group row">
 
-                            <div class="col ">
+                            <div class="col-sm-12 offset-1 ">
                             <h5 style="padding:10px 10px 10px 10px">Property Images</h5>
                             @foreach($properties['Assets']['data'] as $prop)
                             <!-- <label class="col-form-label text-md-right ">Property Image</label> -->
-                            <img src="{{ isset($prop['links']['thumb']) ? $prop['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>
+                            <img style="padding: 30px;" src="{{ isset($prop['links']['thumb']) ? $prop['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>
                         @endforeach  
                                                         </div>
                                                    
