@@ -859,7 +859,7 @@ class PropertiesController extends Controller
                 $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id);
     
                 $response = json_decode($call->getBody()->getContents(), true);
-                //  return $response;
+                // return $response;
             }catch (\Exception $e){
                 //buy a beer
     
