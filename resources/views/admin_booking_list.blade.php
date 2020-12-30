@@ -213,7 +213,7 @@
                                         <td>
                                             {{ $bookings['card_type'] }}
                                         </td>
-                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($propertys['Assets']['data'][0]['links']) ? $propertys['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
+                                      
                                         <td>
                                             {{ $bookings['tax_name'] }}
                                         </td>

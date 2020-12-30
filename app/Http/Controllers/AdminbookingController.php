@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redis;
 use GuzzleHttp\Client;
-class RoomController extends Controller
+class AdminbookingController extends Controller
 {
     
   /**

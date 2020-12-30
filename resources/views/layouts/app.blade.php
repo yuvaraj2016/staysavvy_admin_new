@@ -777,15 +777,15 @@ function checkpermissionexist($permissionarray)
 
                        
                     
-                          {{-- <li class="nav-item {{ (request()->is('stock_master_list')) ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('stock_master.index') }}">
+                        <li class="nav-item {{ (request()->is('stock_master_list')) ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('adminbookings.index') }}">
                               <i class="fa fa-cubes" style="padding-left:2px;">
                                
                               </i>
                               
-                              Stock Master
+                            Booking
                             </a>
-                          </li> --}}
+                          </li> 
 
                           {{-- <li class="nav-item {{ (request()->is('stock_master_list')) ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('stock_master.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
