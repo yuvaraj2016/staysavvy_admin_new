@@ -524,7 +524,7 @@ label {
 
                         <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;">
                             <div style="margin-left:25px!important; width:15%!important;float:left;">
-                                <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
+                                <a class="navbar-brand mt-2" href="#"><img class="img-fluid" src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}"/></a>
                             </div>
             
                             <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
