@@ -69,7 +69,7 @@ class AdminbookingController extends Controller
          $property = $response['data'];
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confBookingStatus');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -78,10 +78,10 @@ class AdminbookingController extends Controller
 
 
         }
-         $confRoomType = $response['data'];
+         $bookingstauts = $response['data'];
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confTax');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -90,7 +90,20 @@ class AdminbookingController extends Controller
 
 
         }
-         $amenity = $response['data'];
+         $tax = $response['data'];
+
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPaymentStatus');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $paymentstatus= $response['data'];
 
          try{
 
@@ -105,14 +118,50 @@ class AdminbookingController extends Controller
         }
          $statuses = $response['data'];
 
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/room');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $rooms = $response['data'];
+
          return view(
-            'create_property_room', compact(
-                'statuses','property','confRoomType','amenity'
+            'create_admin_booking', compact(
+                'statuses','property','bookingstauts','tax','paymentstatus','rooms'
             )
             );
 
         //    return view('create_room');
     }
+
+
+
+    public function getprodrooms($prope_id)
+    {
+    //    return $prope_id;
+        $session = session()->get('token');
+
+
+        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url').'api/property/'.$prope_id.'?include=Rooms');
+
+        
+
+        if($response->ok()){
+
+            $room= $response->json()['data']['Rooms']['data'];
+
+            return $room;
+        }
+
+    }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -143,105 +192,41 @@ class AdminbookingController extends Controller
 
         // return $amenities;
 
-        if ($request->file('file') !== null) {
-
-            $files =$request->file('file');
-            $response = Http::withToken($session);
-       
-
-            // return $request->amenities;
-            foreach($files as $k => $ufile)
-            {
-                $filename = fopen($ufile, 'r');
-                $fileext = $ufile->getClientOriginalName();
-                $response = $response->attach('file['.$k.']', $filename,$fileext);
-            }
-            $response = $response->withHeaders(['Accept'=>'application/vnd.api.v1+json'])->post(config('global.url') . '/api/room',
-            [
-            [
-                'name' => 'property_id',
-                'contents' => $request->property_id
-            ],
-            [
-                'name' => 'room_type_id',
-                'contents' => $request->room_type_id
-            ],
-            [
-                'name' => 'no_of_rooms',
-                'contents' => $request->no_of_rooms
-            ],
-            [
-                'name' => 'available_rooms',
-                'contents' => $request->available_rooms
-            ],
-            [
-                'name' => 'max_adults',
-                'contents' => $request->max_adults
-            ],
-
-            [
-                'name' => 'max_children',
-                'contents' => $request->max_children
-            ],
-            [
-                'name' => 'max_occupancy',
-                'contents' => $request->max_occupancy
-            ],
-            [
-                'name' => 'room_location',
-                'contents' => $request->room_location
-            ],
-            [
-                'name' => 'amount',
-                'contents' => $request->amount
-            ],
-            [
-                'name' => 'status_id',
-                'contents' => $request->status_id
-            ],
-            [
-                'name' => 'amenities[]',
-                'contents' =>$amenities
-            ],
-      
-
-            ]);
-
-
-        }
-        else{
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/room',
+    
+    
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/booking',
 
         [
 
             "property_id"=>$request->property_id,
-            "room_type_id"=>$request->room_type_id,
+            "check_in_date"=>$request->check_in_date,
 
-            "no_of_rooms"=>$request->no_of_rooms,
-         "available_rooms"=>$request->available_rooms,
+            "check_out_date"=>$request->check_out_date,
+         "booked_on"=>$request->booked_on,
 
-         "max_adults"=>$request->max_adults,
-         "max_children"=>$request->max_children,
+         "booking_status_id"=>$request->booking_status_id,
+         "length_of_stay"=>$request->length_of_stay,
 
-         "max_occupancy"=>$request->max_occupancy,
-         "room_location"=>$request->room_location,
+         "card_type"=>$request->card_type,
+         "card_no"=>$request->card_no,
 
-         "amount"=>$request->amount,
-         "amenities[]"=>$amenities,
+         "tax_id"=>$request->tax_id,
+         "tax_percentage"=>$request->tax_percentage,
+         "payment_status_id"=>$request->payment_status_id,
 
             "status_id"=>$request->status_id,
            
         ]);
 
-        }
+    
         if($response->status()===201){
 
-            return redirect()->route('rooms.create')->with('success','Rooms Created Successfully!');
+            return redirect()->route('adminbookings.create')->with('success','Booking Created Successfully!');
         }else{
 
             $request->flash();
 
-            return redirect()->route('rooms.create')->with('error',$response['errors']);
+            return redirect()->route('adminbookings.create')->with('error',$response['errors']);
         }
     }
 
