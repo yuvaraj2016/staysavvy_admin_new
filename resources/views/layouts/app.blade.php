@@ -31,6 +31,7 @@ margin-right:30px!important;
 
 margin-right:30px!important;
 
+
 }
 
 .navbar-toggler
@@ -227,6 +228,15 @@ color:black !important;
     text-align: center;
     
 }
+
+
+.navbar-nav .nav-item
+{
+
+    border:0px solid red;
+    margin-right:90px!important;
+}
+
 
 .bg-blue
 {
@@ -443,9 +453,9 @@ label {
     <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset('files/assets/images/favicon.png') }}" type="image/png" sizes="96x96">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('files/assets/images/favicon.ico') }}" type="image/x-icon">
 
-    <!-- Google font-->
+      <!-- Google font-->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
 <!-- datatable -->
@@ -587,7 +597,7 @@ label {
                                  @elseif(collect(session('roles'))->contains('Vendor'))  
 
 
-                                 <div class="row"> 
+                                 <div class="row pb-2"> 
                                     <div class="col-sm-6"></div>
                                     <div class="col-sm-1 ">
                                         <!-- <a class="d-inline" href="#">
@@ -601,15 +611,15 @@ label {
                                         </a> -->
             
                                     </div>
-                                    <div class="col-sm-3 mt-3 ml-4 text-center">
-                                        <p class=""  style="font-weight: bold!important;margin-left:54px"><b>TEWIN BERY FORM HOTEL</b></p><br>
-                                        <p class="" style="font-weight: bold!important;margin-left:54px;margin-top:-31px"><b>Stay Savvy Account</b></p>
+                                    <div class="col-sm-3 mt-2 ml-3 text-center">
+                                        <p class=""  style="font-weight: bold!important;margin-left:44px"><b>TEWIN BERY FORM HOTEL</b></p><br>
+                                        <p class="" style="font-weight: bold!important;margin-left:44px;margin-top:-31px"><b>Stay Savvy Account</b></p>
                                     
 
                                     </div>
-                                    <div class="col-sm-1 d-flex mt-3">
+                                    <div class="col-sm-1 d-flex mt-2">
                                     <a class="d-inline" href="#">
-                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
+                                            <i class="fa fa-question-circle" style="margin-left:5px!important;color:#1B476B!important;font-size:40px!important;"></i>
                                           
                                         </a>
             
@@ -618,8 +628,8 @@ label {
                                           
                                         </a> -->
                                           <li class="nav-item dropdown" style="list-style: none;">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i  class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1B476B!important;">
+                              <i  class="fa fa-user-circle-o" style="margin-left:2px!important;font-size:35px!important;margin-top:-7px!important; color:#1B476B!important;">
                               
                               </i>
                               {{  ucfirst(session('username')) }}
@@ -659,7 +669,7 @@ label {
                      @php
                     // print_r(session('roles'));
                     @endphp 
-                      <ul class="navbar-nav ml-auto mt-1" style="margin-left:32%!important;">
+                      <ul class="navbar-nav ml-auto mt-1" style="margin-left:22%!important;">
                         {{-- <li class="nav-item {{ (request()->is('booking_list')) ? 'active' : '' }}">
                           <a class="nav-link" href="#">
                             <i class="fa fa-key" style="margin-left:5px!important;"></i>
@@ -728,7 +738,7 @@ function checkpermissionexist($permissionarray)
 
 
 ?>
-
+              @if(collect(session('roles'))->contains('Administrator'))  
                 @if(checkpermissionexist(['List users','List roles','List permissions']) > 0)
                         <li class="nav-item  dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -754,6 +764,7 @@ function checkpermissionexist($permissionarray)
 
                         
                   @endif  
+            @endif
                           <li class="nav-item  dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-flag" style="margin-left:5px!important;"></i>
@@ -844,7 +855,7 @@ function checkpermissionexist($permissionarray)
                           </li>
 
                       
-                       
+                    @if(collect(session('roles'))->contains('Administrator'))     
                           <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-cog">
@@ -921,7 +932,7 @@ function checkpermissionexist($permissionarray)
                             
                             </div>
                           </li>
-
+                    @endif
                           <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user" style="margin-left:14px!important;">
