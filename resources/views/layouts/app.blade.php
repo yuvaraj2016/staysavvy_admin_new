@@ -523,8 +523,8 @@ label {
                 <nav class="pcoded-navbar navbar-icon-top navbar-expand-lg navbar-light bg-blue fixed-top" style="border:0px solid red!important;padding-top:0px!important;padding-bottom:0px!important;height:auto;" >
 
                         <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;">
-                            <div style="margin-left:25px!important; width:15%!important;float:left;">
-                                <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" /></a>
+                            <div style="margin-left:10px!important; width:15%!important;float:left; margin-top:10px;">
+                                <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" width="210px" height="auto"/></a>
                             </div>
             
                             <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
