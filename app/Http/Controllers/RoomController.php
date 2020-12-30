@@ -38,6 +38,7 @@ class RoomController extends Controller
 
         }
         $room = $response['data'];
+        
         $pagination = $response['meta']['pagination'];
 
         $lastpage = $pagination['total_pages'];
