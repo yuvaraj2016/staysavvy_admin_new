@@ -453,9 +453,9 @@ label {
     <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset('files/assets/images/favicon.png') }}" type="image/png" sizes="96x96">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('files/assets/images/favicon.ico') }}" type="image/x-icon">
 
-    <!-- Google font-->
+      <!-- Google font-->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
 <!-- datatable -->
