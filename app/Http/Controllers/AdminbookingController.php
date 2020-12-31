@@ -161,7 +161,24 @@ class AdminbookingController extends Controller
 
     }
 
+    public function getrooms($room_id)
+    {
+    //    return $prope_id;
+        $session = session()->get('token');
 
+
+        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url').'api/room/'.$room_id);
+
+        
+
+        if($response->ok()){
+
+            $rooms= $response->json()['data'];
+
+            return $rooms;
+        }
+
+    }
 
     /**
      * Store a newly created resource in storage.

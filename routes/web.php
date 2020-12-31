@@ -45,6 +45,8 @@ Route::get('adminbooking_list/{page?}','AdminbookingController@index')->name('ad
 
 Route::get('getprodroom/{id}','AdminbookingController@getprodrooms')->name('getprodrooms')->middleware('checktoken');
 
+Route::get('getrooms/{id}','AdminbookingController@getrooms')->name('getrooms')->middleware('checktoken');
+
 Route::resource('status', 'StatusController')->except('index')->middleware('checktoken');
 
 Route::get('status_list/{page?}','StatusController@index')->name('status.index')->middleware('checktoken');

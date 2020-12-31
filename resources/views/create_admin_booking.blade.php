@@ -407,7 +407,66 @@ if (prope_id) {
             });
 
 
-
+            $('#rooms').on('change',function(e) {
+             
+             var room_id = e.target.value;
+         
+                     // alert(room_id);
+         
+         //              $.ajaxSetup({
+         //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+         //     'Content-Type':'application/json',
+         //     'Accept' : 'application/vnd.api.v1+json'
+         // });
+         if (room_id) {
+                      $.ajax({
+                         
+                         headers: {  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+             'Content-Type':'application/json',
+             'Accept' : 'application/vnd.api.v1+json' },
+             url:"{{ url('getrooms')}}" + "/" + room_id,
+                        
+                            type:"GET",
+                        
+                             // data: {
+                             //   id : cat_id
+                             // },
+         
+                            crossDomain:true,
+                            beforeSend: function() {
+                                 $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+                             },
+         
+                            success:function (responsedata) {
+                             $('#response').html('');
+         
+                             // var data = JSON.parse(responsedata);
+                           //console.log(responsedata);
+         
+                            //  var rooms = responsedata;
+         
+                           //   console.log(rooms);
+         
+                            // $('#rooms').empty();
+                            // $('#rooms').append('<option value="">Select</option>');
+         
+                            //  $.each(rooms,function(index,room){
+                            //       alert(room.id);
+                            //      $('#rooms').append('<option value="'+room.id+'{{ (old("room_id") =='. room.id '? "selected":"") }}">'+room.room_type_name +'</option>');
+                            //  })
+         
+                            }
+                        })
+         
+         
+         }
+         
+         
+         
+         
+         
+         
+                     });
 
 
 
