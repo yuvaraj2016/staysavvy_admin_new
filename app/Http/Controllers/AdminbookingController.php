@@ -190,36 +190,89 @@ class AdminbookingController extends Controller
     {
         $session = session()->get('token');
       
-        $fileext = '';
-        $filename = '';
+        // $fileext = '';
+        // $filename = '';
       
-        $amenities='';
+        // $amenities='';
 
- 
-
-        foreach($request->amenities as $amenity)
+        $room_id = [];
+        foreach($request->room_id as $room)
         {
 
-            $amenities .= $amenity.",";
+            $room_id[] = $room;
+
         }
+// return  $room_id;
+        $no_of_rooms = [];
+        foreach($request->no_of_rooms as $no_room)
+        {
+
+            $no_of_rooms[] = $no_room;
+
+        }
+
+        $no_of_adults = [];
+        foreach($request->no_of_adults as $no_adult)
+        {
+
+            $no_of_adults[] = $no_adult;
+
+        }
+        $no_of_childs = [];
+        foreach($request->no_of_childs as $no_child)
+        {
+
+            $no_of_childs[] = $no_child;
+
+        }
+        
+        $total_guests = [];
+        foreach($request->total_guests as $total_gust)
+        {
+
+            $total_guests[] = $total_gust;
+          
+        }
+       
+        $amount = [];
+      
+        foreach($request->amount as $amnt)
+        {
+
+            $amount[] = $amnt;
+            
+        }
+        // return $amount;
+        // foreach($request->amenities as $amenity)
+        // {
+
+        //     $amenities .= $amenity.",";
+        // }
 
      
 
-        $amenities = rtrim($amenities,",");
+        // $amenities = rtrim($amenities,",");
 
         // return $amenities;
 
-    
+        $checkin = null;
+        $checkin = $request->check_in_date .' ' . $request->check_in_date_time;
+
+        $checkout = null;
+        $checkout = $request->check_out_date .' ' . $request->check_out_date_time;
+
+        $booked_on = null;
+        $booked_on = $request->booked_on .' ' . $request->booked_on_time;
     
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/booking',
 
         [
 
             "property_id"=>$request->property_id,
-            "check_in_date"=>$request->check_in_date,
+            "check_in_date"=>$checkin,
 
-            "check_out_date"=>$request->check_out_date,
-         "booked_on"=>$request->booked_on,
+            "check_out_date"=>$checkout,
+         "booked_on"=>$booked_on,
 
          "booking_status_id"=>$request->booking_status_id,
          "length_of_stay"=>$request->length_of_stay,
@@ -230,12 +283,31 @@ class AdminbookingController extends Controller
          "tax_id"=>$request->tax_id,
          "tax_percentage"=>$request->tax_percentage,
          "payment_status_id"=>$request->payment_status_id,
-
+         "room_id" => $room_id,
+         "no_of_rooms"=>$no_of_rooms,
+         "no_of_adults"=>$no_of_adults,
+         "no_of_childs"=>$no_of_childs,
+         "total_guests"=>$total_guests,
+         "amount"=>$amount,
             "status_id"=>$request->status_id,
            
         ]);
+ return $response;
+    //    return $request->all();
+    //  return $request->check_in_date;
+    //  return $request->check_out_date;
 
-    
+    //  return $request->booked_on;
+
+    //  return $request->booking_status_id;
+    //  return $request->length_of_stay;
+    //  return $request->card_type;
+    //  return $request->tax_id;
+    //  return $request->room_id;
+
+    //   return $request->amount;
+
+
         if($response->status()===201){
 
             return redirect()->route('adminbookings.create')->with('success','Booking Created Successfully!');

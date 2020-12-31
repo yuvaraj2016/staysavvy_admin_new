@@ -225,10 +225,10 @@
                                     <div class="form-group row ">
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Taxes</label>
-                                            <select class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric" required>
+                                            <select class="js-example-basic-single col-sm-12" name="tax_id" id=""  required class="form-control selectric" >
                                                 <option value="">Select</option>
                                                 @foreach($tax as $taxs)
-                                                <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
+                                                <option value="{{ $taxs['id'] }}" {{ (old("tax_id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -250,7 +250,7 @@
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Payment Status</label>
-                                            <select class="js-example-basic-single col-sm-12" name="payment_status_id" id="" multiple placeholder="status" required class="form-control selectric">
+                                            <select class="js-example-basic-single col-sm-12" name="payment_status_id" id=""  placeholder="status" required class="form-control selectric">
                                                 <option value="" disabled>Select</option>
                                                 @foreach($paymentstatus as $paymentstatuss)
                                                 <option value="{{ $paymentstatuss['id'] }}" {{ (old("id") == $paymentstatuss['id'] ? "selected":"") }}>{{ $paymentstatuss['payment_status_desc'] }}</option>
@@ -278,67 +278,7 @@
             </div>
 
         </section>
-        <script>
-            // $(document).ready(function () {
-
-
-
-            // $('#property').on('change',function(e) {
-
-            //  var prope_id = e.target.value;
-
-            //   alert(prope_id);
-
-
-            // if (prope_id) {
-            //  $.ajax({
-
-            //     headers: {  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            // 'Content-Type':'application/json',
-            // 'Accept' : 'application/vnd.api.v1+json' },
-            //        url:"{{ url('getprodroom')}}" + "/" + prope_id,
-
-            //        type:"GET",
-
-
-
-            //        crossDomain:true,
-            //        beforeSend: function() {
-            //             $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
-            //         },
-
-            //        success:function (responsedata) {
-            //          console.log(responsedata);
-            //         $('#response').html('');
-
-
-
-            //         var subcategories = responsedata.SubCategories.data;
-
-            //         $('#sub_category').empty();
-            //         $('#sub_category').append('<option value="">Select</option>');
-
-            //         $.each(subcategories,function(index,subcategory){
-            //             // alert(subcategory.id);
-            //             $('#sub_category').append('<option value="'+subcategory.id+'{{ (old("sub_category_id") =='. subcategory.id '? "selected":"") }}">'+subcategory.sub_category_desc +'</option>');
-            //         })
-
-            //        }
-            //    })
-
-
-            // }
-
-
-
-
-
-
-            // });
-
-
-            // });
-        </script>
+     
         <script>
             $(document).ready(function() {
 
@@ -392,15 +332,30 @@
                                 $.each(rooms, function(index, room) {
                                     //  alert(room.id);
 
-                                    aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type_name" class="summernote-simple form-control" value="' + room.room_type_name + '"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Available Room</label><input name="room_type_name" class="summernote-simple form-control" value="' + room.available_rooms + '"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Max Adult</label><input name="room_type_name" class="summernote-simple form-control" value="' + room.max_adults + '"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Max Children</label><input name="room_type_name" class="summernote-simple form-control" value="' + room.max_children + '"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Max Occupancy</label><input name="room_type_name" class="summernote-simple form-control" value="' + room.max_occupancy + '"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input name="room_type_name" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
+                                    aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input max="'+ room.available_rooms+'" name="no_of_rooms[]" class="summernote-simple form-control" ></div>' +
+                                       
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: '+ room.max_adults +')</label><input id="sub1" max="'+room.max_adults+'" type="number" name="no_of_adults[]" class="summernote-simple form-control" ></div>' +
 
 
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" class="summernote-simple form-control"></div>' +
 
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" name="total_guests[]" class="summernote-simple form-control" ></div>' +
+
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input name="amount[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
+  
+                                        $(function () {
+        $("#sub1, #sub2").on("keydown keyup", diff);
+        function diff() {
+            //alert('test');
+            $("#diff").val(parseFloat(Number((Number($("#sub1").val()) + Number($("#sub2").val())))));
+//            $("#yrdiff").val(Number($("#plan1").val()) + Number($("#plan2").val()) + Number($("#plan3").val()) + Number($("#plan4").val()) + Number($("#plan5").val()));
+        }
+  
+                });
+    
 
                                 })
                                 $('#room').html(aaaa);
@@ -417,7 +372,7 @@
 
                 });
 
-
+         
                 //     $('#rooms').on('change',function(e) {
 
                 //      var room_id = e.target.value;
@@ -474,7 +429,7 @@
 
 
 
-
+       
 
 
 
