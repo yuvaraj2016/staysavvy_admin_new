@@ -28,6 +28,12 @@ Route::post('/login', 'UserController@login')->name('userlogin');
 
 Route::get('/logout', 'UserController@logout')->name('logout')->middleware('checktoken');
 
+Route::get('/forgot_password', function () {
+    return view('forgot_password');
+})->name('forgot_password');
+
+Route::post('/reset_password_first', 'UserController@ResetPasswordFirst')->name('reset_password_first');
+
 // Route::resource('albums', 'AlbumController');
 // Route::resource('albums.photo', 'PhotoController');
 // Route::resource('testimonials', 'TestimonialsController');

@@ -75,7 +75,7 @@
                             </div>
                             <div class="auth-box card">
                                 <a class="navbar-brand mt-4 text-center" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
-                                <form action="{{ route('userlogin') }}" method="post">
+                                <form action="{{ route('reset_password_first') }}" method="post">
                                     @csrf
                                    
                                 <div class="card-block">
@@ -92,43 +92,20 @@
                             @endif
                                     <div class="row m-b-20">
                                         <div class="col-md-12">
-                                            <h3 class="text-center">Sign In</h3>
+                                            <h3 class="text-center">Forgot Password</h3>
                                         </div>
                                     </div>
                                     <div class="form-group form-primary">
-                                        <input id="username" type="text"
-                                        class="form-control @error('username') is-invalid @enderror"
-                                        name="username" value="{{ old('username') }}" required
-                                        autocomplete="username" autofocus placeholder="Username">
+                                        <input id="email" type="email"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('username') }}" required
+                                        autocomplete="email" autofocus placeholder="Enter Your Email Address">
                                         <span class="form-bar"></span>
                                     </div>
-                                    <div class="form-group form-primary">
-                                        <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror"
-                                        name="password" value="{{ old('password') }}" required
-                                        autocomplete="username" autofocus  placeholder="Password">
-                                        <span class="form-bar"></span>
-                                    </div>
-                                    {{-- <div class="row m-t-25 text-left">
-                                        <div class="col-12">
-                                            <div class="checkbox-fade fade-in-primary d-">
-                                                <label>
-                                                    <input type="checkbox" value="">
-                                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                    <span class="text-inverse">Remember me</span>
-                                                </label>
-                                            </div>
-                                            <div class="forgot-phone text-right f-right">
-                                                <a href="auth-reset-password.htm" class="text-right f-w-600"> Forgot Password?</a>
-                                            </div>
-                                        </div>
-                                    </div> --}}
+                               
                                     <div class="row m-t-30">
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary btn-blue btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <a href="{{ route('forgot_password') }}" class="btn btn-primary btn-blue btn-block waves-effect waves-light text-center m-b-20">Forgot Password?</a>
+                                            <button type="submit" class="btn btn-primary btn-blue btn-block waves-effect waves-light text-center m-b-20">Reset Password</button>
                                         </div>
                                     </div>
                                     
