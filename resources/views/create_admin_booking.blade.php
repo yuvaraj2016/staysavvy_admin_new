@@ -225,7 +225,7 @@
                                     <div class="form-group row ">
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Taxes</label>
-                                            <select class="js-example-basic-single col-sm-12" name="tax_id" id=""  required class="form-control selectric" >
+                                            <select class="js-example-basic-single col-sm-12" name="tax_id" id="" required class="form-control selectric">
                                                 <option value="">Select</option>
                                                 @foreach($tax as $taxs)
                                                 <option value="{{ $taxs['id'] }}" {{ (old("tax_id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
@@ -250,7 +250,7 @@
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Payment Status</label>
-                                            <select class="js-example-basic-single col-sm-12" name="payment_status_id" id=""  placeholder="status" required class="form-control selectric">
+                                            <select class="js-example-basic-single col-sm-12" name="payment_status_id" id="" placeholder="status" required class="form-control selectric">
                                                 <option value="" disabled>Select</option>
                                                 @foreach($paymentstatus as $paymentstatuss)
                                                 <option value="{{ $paymentstatuss['id'] }}" {{ (old("id") == $paymentstatuss['id'] ? "selected":"") }}>{{ $paymentstatuss['payment_status_desc'] }}</option>
@@ -278,7 +278,7 @@
             </div>
 
         </section>
-     
+
         <script>
             $(document).ready(function() {
 
@@ -287,6 +287,7 @@
                 $('#property').on('change', function(e) {
 
                     var prope_id = e.target.value;
+                    $('#room').empty('');
 
                     //  alert(vendor_id);
 
@@ -333,9 +334,9 @@
                                     //  alert(room.id);
 
                                     aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input max="'+ room.available_rooms+'" name="no_of_rooms[]" class="summernote-simple form-control" ></div>' +
-                                       
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: '+ room.max_adults +')</label><input id="sub1" max="'+room.max_adults+'" type="number" name="no_of_adults[]" class="summernote-simple form-control" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input max="' + room.available_rooms + '" name="no_of_rooms[]" class="summernote-simple form-control" ></div>' +
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" class="summernote-simple form-control" ></div>' +
 
 
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" class="summernote-simple form-control"></div>' +
@@ -345,17 +346,18 @@
 
 
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input name="amount[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
-  
-                                        $(function () {
-        $("#sub1, #sub2").on("keydown keyup", diff);
-        function diff() {
-            //alert('test');
-            $("#diff").val(parseFloat(Number((Number($("#sub1").val()) + Number($("#sub2").val())))));
-//            $("#yrdiff").val(Number($("#plan1").val()) + Number($("#plan2").val()) + Number($("#plan3").val()) + Number($("#plan4").val()) + Number($("#plan5").val()));
-        }
-  
-                });
-    
+
+                                    $(function() {
+                                        $("#sub1, #sub2").on("keydown keyup", diff);
+
+                                        function diff() {
+                                            //alert('test');
+                                            $("#diff").val(parseFloat(Number((Number($("#sub1").val()) + Number($("#sub2").val())))));
+                                            //            $("#yrdiff").val(Number($("#plan1").val()) + Number($("#plan2").val()) + Number($("#plan3").val()) + Number($("#plan4").val()) + Number($("#plan5").val()));
+                                        }
+
+                                    });
+
 
                                 })
                                 $('#room').html(aaaa);
@@ -372,7 +374,7 @@
 
                 });
 
-         
+
                 //     $('#rooms').on('change',function(e) {
 
                 //      var room_id = e.target.value;
@@ -429,7 +431,7 @@
 
 
 
-       
+
 
 
 
