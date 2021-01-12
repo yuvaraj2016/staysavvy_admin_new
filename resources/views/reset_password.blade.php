@@ -75,7 +75,7 @@
                             </div>
                             <div class="auth-box card">
                                 <a class="navbar-brand mt-4 text-center" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
-                                <form action="{{ route('reset_password_first') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('reset_password_first') }}" method="post">
                                     @csrf
                                    
                                 <div class="card-block">
@@ -98,7 +98,7 @@
                                     <div class="form-group form-primary">
                                         <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" required
+                                        name="email" value="{{ old('username') }}" required
                                         autocomplete="email" autofocus placeholder="Enter Your Email Address">
                                         <span class="form-bar"></span>
                                     </div>

@@ -34,6 +34,12 @@ Route::get('/forgot_password', function () {
 
 Route::post('/reset_password_first', 'UserController@ResetPasswordFirst')->name('reset_password_first');
 
+Route::get('/reset_password', function () {
+    return view('reset_password');
+})->name('reset_password');
+
+Route::post('/reset_password_sec', 'UserController@ResetPasswordSec')->name('reset_password_sec');
+
 // Route::resource('albums', 'AlbumController');
 // Route::resource('albums.photo', 'PhotoController');
 // Route::resource('testimonials', 'TestimonialsController');
