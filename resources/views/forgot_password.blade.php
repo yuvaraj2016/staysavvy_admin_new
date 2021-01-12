@@ -90,6 +90,14 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
+
+                            @if(session('errors') !== null)
+                            @foreach(session('errors') as $k =>$v)
+                                <div class='alert alert-danger'>
+                                    {{ $v[0] }}
+                                </div>
+                            @endforeach
+                        @endif
                                     <div class="row m-b-20">
                                         <div class="col-md-12">
                                             <h3 class="text-center">Forgot Password</h3>
@@ -97,7 +105,7 @@
                                     </div>
                                     <div class="form-group form-primary">
                                         <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror"
+                                        class="form-control"
                                         name="email" value="{{ old('email') }}" required
                                         autocomplete="email" autofocus placeholder="Enter Your Email Address">
                                         <span class="form-bar"></span>
