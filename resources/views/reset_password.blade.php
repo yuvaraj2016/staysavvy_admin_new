@@ -137,7 +137,7 @@
 
                                     <div class="row m-t-5">
                                         <div class="col-md-12">
-                                            <a href="{{ route('forgot_password') }}" class="btn btn-primary btn-blue btn-block waves-effect waves-light text-center m-b-20">Back to Forgot Password</a>
+                                            <a href="{{ route('/') }}" class="btn btn-primary btn-blue btn-block waves-effect waves-light text-center m-b-20">Back to Login</a>
                                         </div>
                                     </div>
                                     
