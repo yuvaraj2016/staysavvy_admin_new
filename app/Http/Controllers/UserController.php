@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
@@ -402,6 +403,16 @@ class UserController extends Controller
 
                       
         ]);
+
+       if(password_hash($request->token,PASSWORD_DEFAULT)==true)
+       {
+           echo "ok";
+       }
+       else
+       {
+        echo "notok";
+
+       }
         // dd($request->all());
 
         // dd($response);

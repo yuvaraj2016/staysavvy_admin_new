@@ -123,8 +123,12 @@
                                         autocomplete="password_confirmation" autofocus placeholder="Confirm Your Password">
                                         <span class="form-bar"></span>
                                     </div>
-                               
                                     <div class="row m-t-30">
+                                        <div class="col-md-12">
+                                            <a href="{{ route('forgot_password') }}" class="btn btn-primary btn-blue btn-block waves-effect waves-light text-center m-b-20">Back</a>
+                                        </div>
+                                    </div>
+                                    <div class="row m-t-10">
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-primary btn-blue btn-block waves-effect waves-light text-center m-b-20">Reset Password</button>
                                         </div>
