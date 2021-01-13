@@ -412,8 +412,8 @@ class UserController extends Controller
         // return $response;
         // echo $response->status();exit;
 
-        if($response->status()===201 && $response->status()===200){
-
+        if($response->status()==201 || $response->status()==200){
+            // return $response;
             return redirect()->route('home')->with('success','Password is changed successfully!');
         }else{
             // dd($response);exit;
