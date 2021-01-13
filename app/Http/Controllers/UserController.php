@@ -404,15 +404,7 @@ class UserController extends Controller
                       
         ]);
 
-       if(password_hash($request->token,PASSWORD_DEFAULT)==true)
-       {
-           echo "ok";
-       }
-       else
-       {
-        echo "notok";
-
-       }
+     
         // dd($request->all());
 
         // dd($response);
