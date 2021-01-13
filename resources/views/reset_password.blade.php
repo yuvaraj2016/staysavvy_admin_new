@@ -75,31 +75,52 @@
                             </div>
                             <div class="auth-box card">
                                 <a class="navbar-brand mt-4 text-center" href="#"><img src="{{  asset('files/assets/images/ss_logo.png') }}"/></a>
-                                <form action="{{ route('reset_password_first') }}" method="post">
+                                <form action="{{ route('reset_password_sec') }}" method="post">
                                     @csrf
-                                   
+                                   <input type="hidden" name="email" value="{{ request()->email }}"/>
+                                   <input type="hidden" name="token" value="{{ request()->token }}"/>
                                 <div class="card-block">
                                     @if(session('error') !== null)
                                     <div class='alert alert-danger'>
                                         {{ session('error') }}
                                     </div>
                                 @endif
+                                
+
+                                @if(session('errors') !== null)
+                                    @foreach(session('errors') as $k =>$v)
+                                        <div class='alert alert-danger'>
+                                            {{ $v[0] }}
+                                        </div>
+                                    @endforeach
+                               @endif
+
 
                                 @if(session('success') !== null)
                                 <div class='alert alert-success'>
                                     {{ session('success') }}
                                 </div>
                             @endif
-                                    <div class="row m-b-20">
-                                        <div class="col-md-12">
-                                            <h3 class="text-center">Forgot Password</h3>
-                                        </div>
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center">Reset Password</h3>
                                     </div>
+                                </div>
+                                  
+
                                     <div class="form-group form-primary">
-                                        <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('username') }}" required
-                                        autocomplete="email" autofocus placeholder="Enter Your Email Address">
+                                        <input id="password" type="password"
+                                        class="form-control"
+                                        name="password" value="{{ old('password') }}" required
+                                        autocomplete="password" autofocus placeholder="Enter Your Password">
+                                        <span class="form-bar"></span>
+                                    </div>
+
+                                    <div class="form-group form-primary">
+                                        <input id="password_confirmation" type="password"
+                                        class="form-control" 
+                                        name="password_confirmation" value="{{ old('password_confirmation') }}" required
+                                        autocomplete="password_confirmation" autofocus placeholder="Confirm Your Password">
                                         <span class="form-bar"></span>
                                     </div>
                                

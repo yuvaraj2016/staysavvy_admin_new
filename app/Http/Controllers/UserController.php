@@ -389,29 +389,41 @@ class UserController extends Controller
 
     public function ResetPasswordSec(Request $request)
     {
-        $request["url"]="http://adminnew.getstaysavvy.co.uk/reset_password";
+    //   return $request->password;
 
-        $response = Http::withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/forgot_password',
+        $response = Http::withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/reset_password',
 
         [
 
             "email"=>$request->email,
+            "token"=>$request->token,
+            "password"=>$request->password,
+            "password_confirmation"=>$request->password_confirmation,
 
                       
         ]);
-        dd($request->all());
+        // dd($request->all());
 
         // dd($response);
+
+        // return $response;
         // echo $response->status();exit;
 
         if($response->status()===201 && $response->status()===200){
 
-            return redirect()->back()->with('success','Reset link is sent to your email!');
+            return redirect()->route('home')->with('success','Password is changed successfully!');
         }else{
-            dd($response);exit;
+            // dd($response);exit;
           // return dd($response->json());
             $request->flash();
-            return redirect()->back()->with('error',$response['errors']);
+            if(isset($response['errors']) && isset($response['message']))
+            {
+                 return redirect()->back()->with('errors',$response['errors']);
+            }
+            else if(isset($response['message'])){
+
+                return redirect()->back()->with('error',$response['message']);
+            }
         }
 
 
