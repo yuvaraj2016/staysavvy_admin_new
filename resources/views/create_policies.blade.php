@@ -180,7 +180,7 @@
                                                                
 
                                                                 <label class="col-form-label text-md-right ">confic Policies</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="id"  id="policies" placeholder="status" required class="form-control selectric" required>
+                                                        <select  class="js-example-basic-single col-sm-12"  data-index="0" onchange=validateField(event) name="id[]"  id="policies_0" placeholder="status" required class="form-control selectric" required>
                                                             <option value="" selected >Select</option>
                                                             @foreach($confpolicies as $confpoliciess)
                                                                 <option value="{{ $confpoliciess['id'] }}" {{ (old("id") == $confpoliciess['id'] ? "selected":"") }}>{{ $confpoliciess['name'] }}</option>
@@ -334,24 +334,62 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('#policies').on('change', function() {
+        $('#policies_0').on('change', function() {
 
     var value = $(this).val();
-    $('#pol').empty();
+    $('#pol').empty('');
+    if(value !== '')
     $("#pol").append(' <label class="col-form-label text-md-right ">POL-'+value+' </label> <textarea name="description" class="summernote-simple form-control"></textarea>');
 });
 });
 
-
+function validateField(event){
+            console.log(event.target);
+            const selectedValue = event.target.value;
+            const selectedId = event.target.id;
+            const selectedField = selectedId.split('_');
+            console.log(selectedField[1]);
+            var selectData = $('select[name= "id[]"]').map(function() { return $(this).val(); }).get();
+            selectData.splice(selectData.length-1, 1);
+            console.log(selectData);
+            const selectOptionFound = selectData.some(
+                y => y == selectedValue
+            );
+            console.log(selectData);
+            console.log(selectOptionFound);
+            if(selectOptionFound){
+                alert('Already selected')
+            $('#policies_'+selectedField[1]).val('');
+            }
+            
+            
+            
+        };
 
 $(document).ready(function(){
+    var selectOptionArray = @json($confpolicies);
+    var index = $("input[name='id[]']").length;
         $(".add-row").click(function(){
+            index ++;
             // var name = $("#name").val();
             // var email = $("#email").val();
             //  var mobile = $("#mobile").val();
-            var markup = "<tr class='col-md-12'><td class='col-md-12'><select  class='js-example-basic-single col-sm-12' name='id' ><option>dd</option></select></td><td class='col-md-12'><input type='text' name='desc'></td></tr>";
-            $("table tbody").append(markup);
+            var markUp = '<tr class="col-md-12">'
+            +'<td class="col-md-12">'
+            +'<select class="js-example-basic-single col-sm-12" id=policies_'+index+'  data-index="'+index+'" onchange=validateField(event) name="id[]" class="form-control selectric">'
+            +'</select></td><td class="col-md-12">'
+            +'<input type="text" name="desc"></td></tr>'
+            $("table tbody").append(markUp);
+            selectOptionArray.forEach( item => {
+                $('select[name="id[]"]').append(
+                        '<option value="' + item.id + '">' + item.name + "</option>"
+                    );
+            });
         });
+
+       
+
+
         
         // Find and remove selected table rows
         $(".delete-row").click(function(){
