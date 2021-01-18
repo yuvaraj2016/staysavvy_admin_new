@@ -73,15 +73,21 @@ Route::resource('host', 'HosttypeController')->except('index')->middleware('chec
 
 Route::get('host_list/{page?}','HosttypeController@index')->name('host.index')->middleware('checktoken');
 
+Route::resource('policies', 'PoliciesController')->except('index')->middleware('checktoken');
 
+Route::get('policies_list/{page?}','PoliciesController@index')->name('policies.index')->middleware('checktoken');
 
 Route::resource('properties', 'PropertiesController')->except('index')->middleware('checktoken');
 
 Route::get('properties_list/{page?}','PropertiesController@index')->name('properties.index')->middleware('checktoken');
 
-Route::post('policies/create}','PropertiesController@createpolicies')->name('policies.create')->middleware('checktoken');
 
-Route::post('prooms/create}','PropertiesController@createrooms')->name('prooms.create')->middleware('checktoken');
+
+
+
+// Route::post('policies/create}','PropertiesController@createpolicies')->name('policies.create')->middleware('checktoken');
+
+// Route::post('prooms/create}','PropertiesController@createrooms')->name('prooms.create')->middleware('checktoken');
 
 
 Route::resource('tax', 'TaxController')->except('index')->middleware('checktoken');
