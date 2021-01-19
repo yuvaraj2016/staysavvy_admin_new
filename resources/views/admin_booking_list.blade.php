@@ -142,11 +142,11 @@
                                        <th>Property Name</th>
                                        <th>Booking Ref</th>
                                        <th>Booking Status</th>
-                                       <th>Card Type</th>
+                                       <!-- <th>Card Type</th> -->
                                        <th>Tax Name</th>
                                        <th>Tax Percentage</th>
                                        <th>Tax Amount</th>
-                                       <th>Payment Status</th>
+                                       <!-- <th>Payment Status</th> -->
                                        <th>Booking Amount</th>
                                        <th>Commission Amount</th>
                                       
@@ -169,13 +169,13 @@
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('List property'))
+                                                    @if(collect(session('permissions'))->contains('List booking'))
                                                     <a href="{{ url('adminbookings/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
                                                 @endif
                                                 </li>
                                                     <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
                                                     <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('Update property'))
+                                                    @if(collect(session('permissions'))->contains('Update booking'))
                                                     <a href="{{ url('adminbookings/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                                 @endif
                                                 </li>
@@ -187,7 +187,7 @@
     {{ method_field('DELETE') }}
 
     <div class="form-group">
-    @if(collect(session('permissions'))->contains('Delete property'))
+    @if(collect(session('permissions'))->contains('Delete booking'))
         <a href="javascript:void(0);" data-id="{{$bookings['id']}}" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">
         <i class="fa fa-trash" style="position: relative;top:-5;color:#01a9ac"></i>
         </a>    
@@ -210,9 +210,7 @@
                                         <td>
                                             {{ $bookings['booking_status_desc'] }}
                                         </td>
-                                        <td>
-                                            {{ $bookings['card_type'] }}
-                                        </td>
+                                   
                                       
                                         <td>
                                             {{ $bookings['tax_name'] }}
@@ -223,9 +221,7 @@
                                         <td>
                                             {{ $bookings['tax_amount'] }}
                                         </td>
-                                        <td>
-                                            {{ $bookings['payment_status_desc'] }}
-                                        </td>
+                                      
                                     
 
                                         <td>

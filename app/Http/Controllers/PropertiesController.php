@@ -203,11 +203,23 @@ class PropertiesController extends Controller
 
         }
          $Coolthing = $response['data'];
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendors_list');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $vendors = $response['data'];
 
 
          return view(
             'create_properties', compact(
-                'tax','amenity','statuses','host','property_type','pms','crs','confRoomType','amenity','Coolthing'
+                'tax','amenity','statuses','host','property_type','pms','crs','confRoomType','amenity','Coolthing','vendors'
             )
     );
 
@@ -331,6 +343,10 @@ class PropertiesController extends Controller
                 'name' => 'coolthings[]',
                 'contents' =>$coolthings
             ],
+            [
+                'name' => 'vendor_id',
+                'contents' => $request->vendor_id
+            ],
             ]);
 
 
@@ -355,6 +371,7 @@ class PropertiesController extends Controller
             "what_we_offer"=>$request->what_we_offer,
             "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
+            "vendor_id"=>$request->vendor_id,
             "taxes[]"=>$taxes,
             "amenities[]"=>$amenities,
             "coolthings[]"=>$coolthings

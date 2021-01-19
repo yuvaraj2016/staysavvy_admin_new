@@ -157,6 +157,15 @@
                                 @csrf
                                 
                                 <div class="form-group row ">
+                                <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right " >Vendor Name</label>
+                                                                <select  class="js-example-basic-single col-sm-12" name="vendor_id" id=""  required class="form-control selectric" required>
+                                                <option value="" selected disabled>Select</option>
+                                                @foreach($host as $hosts)
+                                                    <option value="{{ $vendors['id'] }}" {{ (old("vendor_id") == $vendors['id'] ? "selected":"") }}>{{ $vendors['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                                                </div>
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right" >Properties Name ( Min Character:5 )</label>
                                                                 <input name="name" value="{{ old('name') }}" minlength="5" maxlength="500" class="summernote-simple form-control" required>
@@ -170,17 +179,18 @@
                                                                 </div>
                                   
         
-                                                                <div class="col-sm-4">
-                                                                <label class="col-form-label text-md-right ">Properties Location ( Min Character:5 )</label>
-                                                                <input name="location" id="address" value="{{ old('location') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
-                                                                {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
-                                                                </div>
-                                                                {{-- <input type="text" id="input"/> --}}
+                                                            
         
                                   
                                     </div>
         
                                     <div class="form-group row ">
+                                    <div class="col-sm-4">
+                                                                <label class="col-form-label text-md-right ">Properties Location ( Min Character:5 )</label>
+                                                                <input name="location" id="address" value="{{ old('location') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
+                                                                {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
+                                                                </div>
+                                                                {{-- <input type="text" id="input"/> --}}
                                     <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="<b>Professional host</b> <br>Any party who rents out a property or properties for purposes relating to their trade, business, or profession (e.g. this is your main business, you're a property management company, collect VAT, have a business name, etc.)<br><b>Private / Non-professional host</b> <br>Any party who rents out a property or properties for purposes outside their trade, business, or profession. (e.g. this is a side business, you only rent out occasionally, etc.)">Host Type</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="host_type_id" id=""  required class="form-control selectric" required>
@@ -204,7 +214,16 @@
                                                                 </div>
                                   
         
-                                                                <div class="col-sm-4">
+                                                     
+                                  
+                                    </div>
+        
+        
+        
+        
+        
+                                    <div class="form-group row ">
+                                    <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please put 'None' in the above boxes if none are used">Central Reservation System</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric" required>
                                                                     <option value="" selected disabled>Select</option>
@@ -214,14 +233,6 @@
                                                                 </select>
                        
                                                                 </div>
-                                  
-                                    </div>
-        
-        
-        
-        
-        
-                                    <div class="form-group row ">
                                     <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please state which best describes your property">Property Type</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="property_type_id" id=""  required class="form-control selectric" required>

@@ -330,7 +330,7 @@ class AdminbookingController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/room/'.$id);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/booking/'.$id);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -339,13 +339,13 @@ class AdminbookingController extends Controller
 
 
         }
-         $proproom = $response['data'];
+         $bookingroom = $response['data'];
 
 
 
             return view(
-                'view_property_room', compact(
-                    'proproom'
+                'view_admin_booking', compact(
+                    'bookingroom'
                 )
         );
     }
