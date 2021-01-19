@@ -199,7 +199,7 @@
 
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <!-- <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Card Type</label>
                                             <input name="card_type" value="{{ old('card_type') }}" class="summernote-simple form-control" required>
 
@@ -209,20 +209,8 @@
                                             <label class="col-form-label text-md-right ">Card Number</label>
                                             <input type="number" step="any" name="card_no" value="{{ old('card_no') }}" class="summernote-simple form-control" required>
 
-                                        </div>
+                                        </div> -->
 
-
-
-
-                                    </div>
-
-
-
-
-
-
-
-                                    <div class="form-group row ">
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Taxes</label>
                                             <select class="js-example-basic-single col-sm-12" name="tax_id" id="" required class="form-control selectric">
@@ -232,10 +220,22 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Tax Percentage</label>
                                             <input type="number" step="any" name="tax_percentage" value="{{ old('tax_percentage') }}" class="summernote-simple form-control" required>
                                         </div>
+                                    </div>
+
+
+
+
+
+
+
+                                    <div class="form-group row ">
+                                 
+                                      
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Status</label>
@@ -248,7 +248,7 @@
                                         </div>
 
 
-                                        <div class="col-sm-4">
+                                        <!-- <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Payment Status</label>
                                             <select class="js-example-basic-single col-sm-12" name="payment_status_id" id="" placeholder="status" required class="form-control selectric">
                                                 <option value="" disabled>Select</option>
@@ -256,7 +256,7 @@
                                                 <option value="{{ $paymentstatuss['id'] }}" {{ (old("id") == $paymentstatuss['id'] ? "selected":"") }}>{{ $paymentstatuss['payment_status_desc'] }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> -->
 
 
                                     </div>

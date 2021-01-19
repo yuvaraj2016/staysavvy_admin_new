@@ -277,12 +277,12 @@ class AdminbookingController extends Controller
          "booking_status_id"=>$request->booking_status_id,
          "length_of_stay"=>$request->length_of_stay,
 
-         "card_type"=>$request->card_type,
-         "card_no"=>$request->card_no,
+        //  "card_type"=>$request->card_type,
+        //  "card_no"=>$request->card_no,
 
          "tax_id"=>$request->tax_id,
          "tax_percentage"=>$request->tax_percentage,
-         "payment_status_id"=>$request->payment_status_id,
+        //  "payment_status_id"=>$request->payment_status_id,
          "room_id" => $room_id,
          "no_of_rooms"=>$no_of_rooms,
          "no_of_adults"=>$no_of_adults,
@@ -292,7 +292,7 @@ class AdminbookingController extends Controller
             "status_id"=>$request->status_id,
            
         ]);
- return $response;
+//  return $response;
     //    return $request->all();
     //  return $request->check_in_date;
     //  return $request->check_out_date;
