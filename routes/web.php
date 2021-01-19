@@ -83,7 +83,9 @@ Route::get('properties_list/{page?}','PropertiesController@index')->name('proper
 
 
 
+Route::resource('config_policies', 'ConfigpoliciesController')->except('index')->middleware('checktoken');
 
+Route::get('config_policies_list/{page?}','ConfigpoliciesController@index')->name('config_policies.index')->middleware('checktoken');
 
 // Route::post('policies/create}','PropertiesController@createpolicies')->name('policies.create')->middleware('checktoken');
 

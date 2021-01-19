@@ -927,6 +927,11 @@ function checkpermissionexist($permissionarray)
                               @if(collect(session('permissions'))->contains('List config review'))
                               <a class="dropdown-item {{ (request()->is('review_list')) ? 'active' : '' }}" href="{{ route('review.index') }}">Review</a>
                             @endif
+                           
+                            <div class="dropdown-divider"></div>
+                              @if(collect(session('permissions'))->contains('List config policy'))
+                              <a class="dropdown-item {{ (request()->is('config_policies_list')) ? 'active' : '' }}" href="{{ route('config_policies.index') }}">Policy</a>
+                            @endif
                               <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item {{ (request()->is('settings/create')) ? 'active' : '' }}" href="{{ route('settings.create') }}">Settings</a> -->
                             
