@@ -114,7 +114,7 @@
 
 
 <div class="col-sm-4 ">
-<label class="col-form-label text-md-right ">Booking Details </label>
+<label class="col-form-label text-md-right ">Booking Amount </label>
 @foreach($bookingroom['BookingDetails']['data'] as $property)
                                         
                                            

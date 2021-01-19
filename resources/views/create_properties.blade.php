@@ -150,7 +150,7 @@
                                 <a href="#room-types" class="nav-link @if(session('psuccess') !== null) active @elseif(session('rsuccess') !== null) active @else disabled @endif"" data-toggle="tab">Room Types</a>
                             </li>
                         </ul> -->
-                      
+                    
                             <div class="tab-pane fade @if(session('success') !== null) @elseif(session('psuccess') !== null) @elseif(session('rsuccess') !== null) @else show active @endif" id="general-info">
                                 <form action="{{ route('properties.store') }}" class="swa-confirm"  method="post" id="addstatus"
                                 enctype="multipart/form-data">
@@ -161,8 +161,8 @@
                                                                 <label class="col-form-label text-md-right " >Vendor Name</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="vendor_id" id=""  required class="form-control selectric" required>
                                                 <option value="" selected disabled>Select</option>
-                                                @foreach($host as $hosts)
-                                                    <option value="{{ $vendors['id'] }}" {{ (old("vendor_id") == $vendors['id'] ? "selected":"") }}>{{ $vendors['name'] }}</option>
+                                                @foreach($vendors as $vendorss)
+                                                    <option value="{{ $vendorss['user_id'] }}" {{ (old("user_id") == $vendorss['id'] ? "selected":"") }}>{{ $vendorss['name'] }}</option>
                                                 @endforeach
                                             </select>
                                                                 </div>
