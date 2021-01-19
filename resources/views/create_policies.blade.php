@@ -130,24 +130,24 @@
                             </div>
                         @endif-->
                         <!-- after on click funtion to remeove command lines start -->
-                        <!-- @if(session('pcreateerror') !== null)
+                        @if(session('pcreateerror') !== null)
 
                                 <div class="errorWrap"><strong>ERROR</strong>:  {{ session('pcreateerror') }} </div>
 
                             
-                        @endif -->
+                        @endif
                     <!-- after on click funtion to remeove command lines end -->
              
                      
                            <!-- after on click funtion to remeove command lines start -->
-                            <!-- <div class="tab-pane fade @if(session('success') !== null) show active @else @endif  @if(session('perror') !== null) show active @endif" id="policies"> -->
+                            <div class="tab-pane fade @if(session('success') !== null) show active @else @endif  @if(session('perror') !== null) show active @endif" id="policies">
                              <!-- after on click funtion to remeove command lines end -->
                             <form action="{{ route('policies.store') }}" class="swa-confirm"  method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row ">
 <!-- after on click funtion to remeove command lines start -->
-                                                                <!-- <input name="property_id" type="hidden" id="property_id" value="@if(session('success') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required> -->
-                                                                <!-- @php
+                                                                <input name="property_id" type="hidden" id="property_id" value="@if(session('success') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
+                                                                @php
                                                                 $propdata = session('pdata');
                                                                 var_dump($propdata);                                                             
                                                                 @endphp
@@ -169,7 +169,7 @@
                                                                             <label class="col-form-label text-md-right ">Properties Location</label>
                                                                             <input name="location" id="address" value=" @if(session('pdata') !== null) {{ $propdata['location'] }} @endif" class="summernote-simple form-control" disabled>
                                                                             {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
-                                                                            </div> -->
+                                                                            </div>
                                                                             <!-- after on click funtion to remeove command lines end -->
                                                                             {{-- <input type="text" id="input"/> --}}
                                         
@@ -180,10 +180,10 @@
                                                                
 
                                                                 <label class="col-form-label text-md-right ">confic Policies</label>
-                                                        <select  class="js-example-basic-single col-sm-12"  data-index="0" onchange=validateField(event) name="id[]"  id="policies_0" placeholder="status" required class="form-control selectric" required>
+                                                        <select  class="js-example-basic-single col-sm-12 form-control selectric"  data-index="0" onchange=validateField(event) name="policy_id[]"  id="policies_0" placeholder="status" required  >
                                                             <option value="" selected >Select</option>
                                                             @foreach($confpolicies as $confpoliciess)
-                                                                <option value="{{ $confpoliciess['id'] }}" {{ (old("id") == $confpoliciess['id'] ? "selected":"") }}>{{ $confpoliciess['name'] }}</option>
+                                                                <option value="{{ $confpoliciess['id'] }}" {{ (old("policy_id") == $confpoliciess['id'] ? "selected":"") }}>{{ $confpoliciess['name'] }}</option>
                                                             @endforeach
                                                         </select>
                     
@@ -194,8 +194,8 @@
                                                                 </div>
                                                                 <div class="col-sm-4" >
                                                                 <label class="col-form-label text-md-right "></label><br><br>
-                                                                <input type="button" name="add" value="+Add" class="add-row" id="addrows" style="color:#3300FF; font-size:16px; " />
-</div>
+                                                                <input type="button" name="add" value="+Add" class="add-row" id="addrows" style="color:#3300FF; font-size:16px; " /><br><br><br>
+</div><br><br><br>
 <div class="col-sm-6" >
 <table>
      
@@ -204,7 +204,7 @@
               
             </tr>
         </tbody>
-    </table>
+    </table><br><br><br>
 </div>     
 
                                           <!-- <div class="col-sm-4">
@@ -344,21 +344,21 @@
 });
 
 function validateField(event){
-            console.log(event.target);
+            // console.log(event.target);
             const selectedValue = event.target.value;
             const selectedId = event.target.id;
             const selectedField = selectedId.split('_');
-            console.log(selectedField[1]);
+            // console.log(selectedField[1]);
             var selectData = $('select[name= "id[]"]').map(function() { return $(this).val(); }).get();
             selectData.splice(selectData.length-1, 1);
-            console.log(selectData);
+            // console.log(selectData);
             const selectOptionFound = selectData.some(
                 y => y == selectedValue
             );
-            console.log(selectData);
-            console.log(selectOptionFound);
+            // console.log(selectData);
+            // console.log(selectOptionFound);
             if(selectOptionFound){
-                alert('Already selected')
+              swal('Already selected')
             $('#policies_'+selectedField[1]).val('');
             }
             
@@ -376,12 +376,12 @@ $(document).ready(function(){
             //  var mobile = $("#mobile").val();
             var markUp = '<tr class="col-md-12">'
             +'<td class="col-md-12">'
-            +'<select class="js-example-basic-single col-sm-12" id=policies_'+index+'  data-index="'+index+'" onchange=validateField(event) name="id[]" class="form-control selectric">'
+            +'<select class="js-example-basic-single col-sm-12" id=policies_'+index+'  data-index="'+index+'" onchange=validateField(event) name="policy_id[]" class="form-control selectric">'
             +'</select></td><td class="col-md-12">'
-            +'<input type="text" name="desc"></td></tr>'
+            +'<input type="text" name="description[]"></td></tr>'
             $("table tbody").append(markUp);
             selectOptionArray.forEach( item => {
-                $('select[name="id[]"]').append(
+                $('select[name="policy_id[]"]').append(
                         '<option value="' + item.id + '">' + item.name + "</option>"
                     );
             });

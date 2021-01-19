@@ -234,23 +234,18 @@ public function store(Request $request)
 
  
 
-    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confPolicy',
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/policy',
 
     [
         "property_id"=> $request->property_id,
-        "cancellation_policies"=>$request->cancellation_policies,
-        "child_extrabeds"=>$request->child_extrabeds,
-        "internet"=>$request->internet,
-        "parking"=>$request->parking,
-        "pets"=>$request->pets,
-        "checkin_time"=>$request->checkin_time,
-        "checkout_time"=>$request->checkout_time,
-        "age_limit"=>$request->age_limit,
-        "curfew"=>$request->curfew,
+        "policy_id[]"=>$request->policy_id,
+        "description[]"=>$request->description
+       
 
     ]);
-
-   
+//  return $request->description;
+ return $request->all();
+// return $request->description;
     if($response->status()===201){
 
         $property_id= $request->property_id;
