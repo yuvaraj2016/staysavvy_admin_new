@@ -102,15 +102,27 @@
                                 @endforeach
                             @endif -->
                             <div class="form-group row">
-                                                        <div class="col-sm-3 ml-5">
+                                                        <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">User name</label>
                                                         <input type="text" name="name" value="{{ old('name',$user['name']) }}" class="form-control" required>
                                                         </div>
 
 
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Email Address</label>
                                                         <input type="email" name="email" value="{{ old('email',$user['email']) }}" class="summernote-simple form-control" required>
+                                          
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Password</label>
+                                                        <input type="password" name="password"  class="summernote-simple form-control" required>
+                                          
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Password Conformation</label>
+                                                        <input type="password" name="password_confirmation"  class="summernote-simple form-control" required>
                                           
                                                         </div>
 

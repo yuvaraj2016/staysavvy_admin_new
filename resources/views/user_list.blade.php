@@ -282,13 +282,13 @@
                                         <td>
             <div class="d-flex">
             <ul class="list-group list-inline ml-1">
-  <li class="list-group-item border1">
+  <!-- <li class="list-group-item border1">
   @if(collect(session('permissions'))->contains('List users'))    
   <a href="{{  url('users/'.$id) }}"
                         class=" d-inline font1 " data-toggle="tooltip" data-placement="top" title="View"><i
                             class="fa fa-eye"></i></a>
                         @endif
-                        </li>
+                        </li> -->
   <li class="list-group-item border1">
   @if(collect(session('permissions'))->contains('Update users'))       
   <a href="{{ url('users/'.$id.'/edit') }}"

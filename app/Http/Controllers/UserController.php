@@ -290,6 +290,8 @@ class UserController extends Controller
             "name"=>$request->name,
             "email"=>$request->email,
             "roles"=>$request->roles,
+            "password_confirmation"=>$request->password_confirmation,
+            "password"=>$request->password
            
             
         ]
