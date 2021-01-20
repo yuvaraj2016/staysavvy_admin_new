@@ -374,6 +374,44 @@ class AdminbookingController extends Controller
          $property = $response['data'];
          try{
 
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confBookingStatus');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $bookingstauts = $response['data'];
+         try{
+
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confTax');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $tax = $response['data'];
+
+         try{
+
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPaymentStatus');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $paymentstatus= $response['data'];
+
+         try{
+
             $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
 
             $response = json_decode($call->getBody()->getContents(), true);
@@ -384,21 +422,10 @@ class AdminbookingController extends Controller
 
         }
          $statuses = $response['data'];
+
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
-
-            $response = json_decode($call->getBody()->getContents(), true);
-           
-        }catch (\Exception $e){
-            
-
-
-        }
-         $amenity = $response['data'];
-         try{
-
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/room');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -407,9 +434,9 @@ class AdminbookingController extends Controller
 
 
         }
-         $confRoomType = $response['data'];
+         $rooms = $response['data'];
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/room/' . $id);
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/booking/' . $id);
 
        
      
@@ -417,12 +444,12 @@ class AdminbookingController extends Controller
 
         if($response->ok()){
 
-            $rooms =   $response->json()['data'];
+            $Booking =   $response->json()['data'];
 
-        //   return $rooms;
+        //   return $Booking;
 
-            return view('edit_property_room', compact(
-               'rooms','statuses','property','confRoomType','amenity'
+            return view('edit_admin_booking', compact(
+                'statuses','property','bookingstauts','tax','paymentstatus','rooms','Booking'
             ));
         }
     }
@@ -438,51 +465,39 @@ class AdminbookingController extends Controller
     {
         $session = session()->get('token');
       
-        $amenities='';
+        // $amenities='';
 
      
 
-        foreach($request->amenities as $amenity)
-        {
+        // foreach($request->amenities as $amenity)
+        // {
 
-            $amenities .= $amenity.",";
-        }
+        //     $amenities .= $amenity.",";
+        // }
 
       
-        $amenities = rtrim($amenities,",");
+        // $amenities = rtrim($amenities,",");
         //  return  $amenities;
 
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/room/'.$id, 
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/booking/'.$id, 
         [
             "_method"=> 'PUT',
-            "property_id"=>$request->property_id,
-            "room_type_id"=>$request->room_type_id,
+       
 
-            "no_of_rooms"=>$request->no_of_rooms,
-         "available_rooms"=>$request->available_rooms,
-
-         "max_adults"=>$request->max_adults,
-         "max_children"=>$request->max_children,
-
-         "max_occupancy"=>$request->max_occupancy,
-         "room_location"=>$request->room_location,
-
-         "amount"=>$request->amount,
-        //  "amenities[]"=>$amenities,
-
-            "status_id"=>$request->status_id,
-            "amenities"=>$amenities
+            "booking_status_id"=>$request->booking_status_id
+           
         ]
         
       );
 
-        // return $response;
+        // return $request->all();
         if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
             return redirect()->route('home');
         }
         if($response->status()===200){
-            return redirect()->back()->with('success','Rooms Updated Successfully!');
+            return redirect()->back()->with('success','Booking Details Updated Successfully!');
         }else{
+            // return $response;
             return redirect()->back()->with('error',$response->json()['message']);
         }
 
@@ -498,16 +513,16 @@ class AdminbookingController extends Controller
     {
         $session = session()->get('token');
 
-        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/room/'.$id);
+        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/booking/'.$id);
 
         if($response->status()==204){
             // roomtype.index
-             return redirect()->route('rooms.index')->with('success','Rooms Deleted Sucessfully !..');
+             return redirect()->route('adminbookings.index')->with('success','Booking Deleted Sucessfully !..');
         }
         else{
 
 
-             return redirect()->route('rooms.index')->with('error',$response->json()['message']);
+             return redirect()->route('adminbookings.index')->with('error',$response->json()['message']);
         }
 
     }
