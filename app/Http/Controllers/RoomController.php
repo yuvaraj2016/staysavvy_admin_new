@@ -248,7 +248,7 @@ class RoomController extends Controller
 
 // new store code written on 17.01.2021
 
-public function createrooms(Request $request)
+public function store(Request $request)
 {
     $session = session()->get('token');
   
@@ -400,7 +400,7 @@ public function createrooms(Request $request)
 
 
 
-        return redirect()->route('properties.create')->with('rsuccess','Rooms Created Successfully!')->with('pid',$request->property_id)->with('pdata',$pdata)->with('roomdata',compact('roomdata'));
+        return redirect()->route('properties.index')->with('rsuccess','Rooms Created Successfully!')->with('pid',$request->property_id)->with('pdata',$pdata)->with('roomdata',compact('roomdata'));
 
     }else{
 
@@ -408,7 +408,7 @@ public function createrooms(Request $request)
 
         $request->flash();
 
-        return redirect()->route('properties.create')->with('rerror',$response['errors']);
+        return redirect()->route('properties.index')->with('rerror',$response['errors']);
     }
 }
 

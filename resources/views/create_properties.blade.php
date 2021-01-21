@@ -245,13 +245,13 @@
         
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property... maybe a bit of history, your values, attractions nearby etc"> General Desc ( Min Character:5 )</label>
-                                                                <input name="general_description" value="{{ old('general_description') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required>
+                                                                <textarea name="general_description" value="{{ old('general_description') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
                        
                                                                 </div>
 
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property's offer"> What We Offer ( Min Character:5 )</label>
-                                                                    <input name="what_we_offer" value="{{ old('what_we_offer') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required>
+                                                                    <textarea name="what_we_offer" value="{{ old('what_we_offer') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
                            
                                                                 </div>
                                                                 

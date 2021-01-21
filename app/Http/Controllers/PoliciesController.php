@@ -228,8 +228,38 @@ class PoliciesController extends Controller
 
 public function store(Request $request)
 {
+// return $request->policies;
+        $property_id = $request->property_id;
 
-    $property_id = $request->property_id;
+        $data = [];
+
+        foreach($request->policies as $policy)
+        {
+
+            $desc = "desc_".$policy;
+            // echo $desc;
+            if(!empty($request->$desc))
+            {
+                // echo $request->$desc;
+                $data[] = [
+                    'property_id' => $property_id,
+                    'policy_id' => $policy,
+                    'description' => $request->$desc,
+                    
+                ];
+
+            }
+        }
+
+
+
+
+     
+
+        
+    
+
+
     $session = session()->get('token');
 
  
@@ -237,14 +267,14 @@ public function store(Request $request)
     $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/policy',
 
     [
-        "property_id"=> $request->property_id,
-        "policy_id[]"=>$request->policy_id,
-        "description[]"=>$request->description
-       
+        "policy"=> $data,
+        
 
     ]);
+
+    // return $response;
 //  return $request->description;
- return $request->all();
+//  return $request->all();
 // return $request->description;
     if($response->status()===201){
 
@@ -255,7 +285,7 @@ public function store(Request $request)
             $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id);
 
             $response = json_decode($call->getBody()->getContents(), true);
-              return $response;
+            //   return $response;
         }catch (\Exception $e){
             //buy a beer
 
@@ -270,11 +300,19 @@ public function store(Request $request)
 // return $response;
         return redirect()->route('rooms.create')->with('psuccess','Property Policies Are Saved Successfully!')->with('pid',$request->property_id)->with('pdata',$pdata);
     }else{
-         return $response;
+        //  return $response;
 
         $request->flash();
+        if(isset($response['errors']))
+        {
+            return redirect()->route('policies.create')->with('error',$response['errors']);
+        }
+        else if(isset($response['message']))
+        {
 
-        return redirect()->route('properties.create')->with('perror',$response['errors']);
+            return redirect()->route('policies.create')->with('errorm',$response['message']);
+        }
+        // return redirect()->route('policies.create')->with('perror',$response['errors']);
     }
 
 }
