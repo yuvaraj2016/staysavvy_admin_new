@@ -347,6 +347,22 @@ class PropertiesController extends Controller
                 'name' => 'vendor_id',
                 'contents' => $request->vendor_id
             ],
+            [
+                'name' => 'latitude',
+                'contents' => $request->latitude
+            ],
+            [
+                'name' => 'longitude',
+                'contents' => $request->longitude
+            ],
+            [
+                'name' => 'area',
+                'contents' => $request->area
+            ],
+            [
+                'name' => 'pincode',
+                'contents' => $request->pincode
+            ],
             ]);
 
 
@@ -372,6 +388,10 @@ class PropertiesController extends Controller
             "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
             "vendor_id"=>$request->vendor_id,
+            "latitude"=>$request->latitude,
+            "longitude"=>$request->longitude,
+            "area"=>$request->area,
+            "pincode"=>$request->pincode,
             "taxes[]"=>$taxes,
             "amenities[]"=>$amenities,
             "coolthings[]"=>$coolthings
@@ -570,6 +590,18 @@ class PropertiesController extends Controller
 
         }
          $Coolthing = $response['data'];
+         try{
+
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendors_list');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+           
+        }catch (\Exception $e){
+            
+
+
+        }
+         $vendors = $response['data'];
 
 
 
@@ -582,11 +614,16 @@ class PropertiesController extends Controller
         if($response->ok()){
 
             $properties =   $response->json()['data'];
-
-            //  return $properties;
+            $str_arr = explode (",", $properties['location']);  
+            $str_arr1 = explode (",", $properties['location']);  
+            // $latitude= $str_arr[0];
+            // $longitud= $str_arr[1];
+            $properties['latitude'] = $str_arr1[0];
+            $properties['longitude'] = $str_arr[1]; 
+            //    return $str_arr1;
 
             return view('edit_properties', compact(
-               'properties', 'tax','amenity','statuses','host','property_type','pms','crs','Coolthing'
+               'properties', 'tax','amenity','statuses','host','property_type','pms','crs','Coolthing','vendors'
             ));
         }
     }
@@ -601,6 +638,10 @@ class PropertiesController extends Controller
     public function update(Request $request, $id)
     {
         $session = session()->get('token');
+
+        $str_arr = $request->latitude ;
+        $str_arr1 = $request->longitude ;
+
         $taxes='';
         $amenities='';
         $coolthings='';
@@ -644,7 +685,16 @@ class PropertiesController extends Controller
             "what_we_offer"=>$request->what_we_offer,
             "room_start_price"=>$request->room_start_price,
             "status_id"=>$request->status_id,
+
+
+            "area"=>$request->area,
+            "pincode"=>$request->pincode,
+
+            "latitude"=>$str_arr,
+            "longitude"=>$str_arr1,
+
             "taxes"=>$taxes,
+            "vendor_id"=>$request->vendor_id,
             "amenities"=>$amenities,
             "coolthings"=>$coolthings
 

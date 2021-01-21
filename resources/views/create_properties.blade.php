@@ -299,6 +299,27 @@
                                                     @endforeach
                                                 </select>
                                                                     </div>
+                                                                    <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Latitude </label>
+                                                                    <input type="number" name="latitude" step="any" value="{{ old('latitude') }}" class="summernote-simple form-control" required>
+                           
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Longitude </label>
+                                                                    <input type="number" name="longitude" step="any" value="{{ old('longitude') }}" class="summernote-simple form-control" required>
+                           
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Area </label>
+                                                                    <input  name="area"  value="{{ old('area') }}" class="summernote-simple form-control" required>
+                           
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <label class="col-form-label text-md-right ">Pincode </label>
+                                                                    <input type="number" name="pincode" step="any" value="{{ old('pincode') }}" class="summernote-simple form-control" required>
+                           
+                                                                </div>
                         
                                                                         <div class="col-sm-12 text-center">
                                                                             
