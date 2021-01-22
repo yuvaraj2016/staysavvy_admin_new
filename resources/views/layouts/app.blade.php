@@ -938,6 +938,10 @@ function checkpermissionexist($permissionarray)
                               @if(collect(session('permissions'))->contains('List config policy'))
                               <a class="dropdown-item {{ (request()->is('config_policies_list')) ? 'active' : '' }}" href="{{ route('config_policies.index') }}">Policy</a>
                             @endif
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ (request()->is('highlight_list')) ? 'active' : '' }}" href="{{ route('highlight.index') }}">Eco Highlight</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ (request()->is('reward_list')) ? 'active' : '' }}" href="{{ route('reward.index') }}">Reward</a>
                               <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item {{ (request()->is('settings/create')) ? 'active' : '' }}" href="{{ route('settings.create') }}">Settings</a> -->
                             
