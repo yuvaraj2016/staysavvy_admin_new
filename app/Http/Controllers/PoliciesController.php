@@ -25,26 +25,26 @@ class PoliciesController extends Controller
     {
         //
 
-        // $token = session()->get('token');
-        // try{
+        $token = session()->get('token');
+        try{
 
-        //     $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/room?page='.$page);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/policy?page='.$page);
 
-        //     $response = json_decode($call->getBody()->getContents(), true);
-        //     //  return $response;
-        // }catch (\Exception $e){
-        //     //buy a beer
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
 
 
-        // }
-        // $room = $response['data'];
+        }
+        $policy= $response['data'];
         
-        // $pagination = $response['meta']['pagination'];
+        $pagination = $response['meta']['pagination'];
 
-        // $lastpage = $pagination['total_pages'];
+        $lastpage = $pagination['total_pages'];
         
 
-        //   return view('property_room_list', compact('room', 'pagination','lastpage'));
+          return view('policy_list', compact('policy', 'pagination','lastpage'));
     }
 
     /**
@@ -329,7 +329,7 @@ public function store(Request $request)
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/room/'.$id);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/policy/'.$id);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -338,13 +338,13 @@ public function store(Request $request)
 
 
         }
-         $proproom = $response['data'];
+         $policy = $response['data'];
 
 
 
             return view(
-                'view_property_room', compact(
-                    'proproom'
+                'view_policy', compact(
+                    'policy'
                 )
         );
     }
@@ -371,9 +371,10 @@ public function store(Request $request)
 
         }
          $property = $response['data'];
+
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPolicy');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -382,33 +383,10 @@ public function store(Request $request)
 
 
         }
-         $statuses = $response['data'];
-         try{
-
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
-
-            $response = json_decode($call->getBody()->getContents(), true);
-           
-        }catch (\Exception $e){
-            
-
-
-        }
-         $amenity = $response['data'];
-         try{
-
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType');
-
-            $response = json_decode($call->getBody()->getContents(), true);
-            //  return $response;
-        }catch (\Exception $e){
-            //buy a beer
-
-
-        }
-         $confRoomType = $response['data'];
+         $confpolicy = $response['data'];
+   
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/room/' . $id);
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/policy/' . $id);
 
        
      
@@ -416,12 +394,12 @@ public function store(Request $request)
 
         if($response->ok()){
 
-            $rooms =   $response->json()['data'];
+            $policy =   $response->json()['data'];
 
         //   return $rooms;
 
-            return view('edit_property_room', compact(
-               'rooms','statuses','property','confRoomType','amenity'
+            return view('edit_policies', compact(
+               'property','policy','confpolicy'
             ));
         }
     }
@@ -437,50 +415,24 @@ public function store(Request $request)
     {
         $session = session()->get('token');
       
-        $amenities='';
-
-     
-
-        foreach($request->amenities as $amenity)
-        {
-
-            $amenities .= $amenity.",";
-        }
-
       
-        $amenities = rtrim($amenities,",");
-        //  return  $amenities;
 
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/room/'.$id, 
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/policy/'.$id, 
         [
-            "_method"=> 'PUT',
+            "_method"=> 'put',
             "property_id"=>$request->property_id,
-            "room_type_id"=>$request->room_type_id,
-
-            "no_of_rooms"=>$request->no_of_rooms,
-         "available_rooms"=>$request->available_rooms,
-
-         "max_adults"=>$request->max_adults,
-         "max_children"=>$request->max_children,
-
-         "max_occupancy"=>$request->max_occupancy,
-         "room_location"=>$request->room_location,
-
-         "amount"=>$request->amount,
-        //  "amenities[]"=>$amenities,
-
-            "status_id"=>$request->status_id,
-            "amenities"=>$amenities
+            "policy_id"=>$request->policy_id
+            
         ]
         
       );
 
-        // return $response;
+        //  return $response;
         if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
             return redirect()->route('home');
         }
         if($response->status()===200){
-            return redirect()->back()->with('success','Rooms Updated Successfully!');
+            return redirect()->back()->with('success','Policy Updated Successfully!');
         }else{
             return redirect()->back()->with('error',$response->json()['message']);
         }
@@ -497,16 +449,16 @@ public function store(Request $request)
     {
         $session = session()->get('token');
 
-        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/room/'.$id);
+        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/policy/'.$id);
 
         if($response->status()==204){
             // roomtype.index
-             return redirect()->route('rooms.index')->with('success','Rooms Deleted Sucessfully !..');
+             return redirect()->route('policies.index')->with('success','Rooms Deleted Sucessfully !..');
         }
         else{
 
 
-             return redirect()->route('rooms.index')->with('error',$response->json()['message']);
+             return redirect()->route('policies.index')->with('error',$response->json()['message']);
         }
 
     }
