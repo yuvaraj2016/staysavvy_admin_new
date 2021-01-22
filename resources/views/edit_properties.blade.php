@@ -263,13 +263,13 @@ $amenid[] = $amenityid['id'];
 
 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " > Latitude</label>
-                                    <input type="number" name="latitude" value="{{ old('latitude',$properties['latitude']) }}"  class="summernote-simple form-control" required>
+                                    <input  name="latitude" value="{{ old('latitude',$properties['latitude']) }}"  class="summernote-simple form-control" required>
 
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " > Longitude </label>
-                                    <input type="number" name="longitude" value="{{ old('longitude',$properties['longitude']) }}"  class="summernote-simple form-control" required>
+                                    <input  name="longitude" value="{{ old('longitude',$properties['longitude']) }}"  class="summernote-simple form-control" required>
 
                                 </div>
 
