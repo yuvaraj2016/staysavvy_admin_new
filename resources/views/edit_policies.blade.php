@@ -50,7 +50,7 @@
 
 
 
-                        <form class="dropzone" action="{{route('policies.update',['policy'=>$policy['id']]) }}" method="post" id="editstatus"
+                        <form class="dropzone" action="{{route('policies.update',['policy'=>'1']) }}" method="post" id="editstatus"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
@@ -84,49 +84,38 @@
                                 {{ session('error') }}
                              </div>
                         @endif
-                       
+                      
 
-                                                    <div class="form-group row ">
-       
-                                                    <!-- <div class="col-sm-4 ">
-                                                        <label class="col-form-label text-md-right">Policy Name</label>
-                                                      
-                                                            <input  value="{{ old('from',$policy['policy_name']) }}" class="summernote-simple form-control" readonly>
-                                                        </div> -->
+                                                 
+
+                                                    <div class="form-group row mt-4">
+@foreach($confpolicy as $confpoliciess)
 
 
-                                                        <div class="col-sm-4">
-<label class="col-form-label text-md-right ">Policy</label>
-<select  class="js-example-basic-single col-sm-12 form-control selectric" name="policy_id"  required>
-<option value="">Select</option>
-@foreach($confpolicy as $confpolicys)
+<div class="col-sm-4 offset-1">
+      <label class="col-form-label float-right ">{{ ucfirst($confpoliciess['name'])}} (Min Charecters 5 )</label>
+      <input type="hidden"  name="policies[]" value="{{ $confpoliciess['id']}}" />
+                      
+    
 
-<option value="{{ $confpolicys['id'] }}" {{ ($policy['policy_id'] == $confpolicys['id']) ? "selected":(old("policy_id") == $confpolicys['id'] ? "selected":"") }}>{{ $confpolicys['name'] }}</option>
-@endforeach
-
-</select>
 
 </div>
 
-                                                        <div class="col-sm-4">
-<label class="col-form-label text-md-right ">Property</label>
-<select  class="js-example-basic-single col-sm-12 form-control selectric" name="property_id"  required>
-<option value="">Select</option>
-@foreach($property as $propertys)
+<div class="col-sm-6 mb-3">
+    
 
-<option value="{{ $propertys['id'] }}" {{ ($policy['property_id'] == $propertys['id']) ? "selected":(old("property_id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}</option>
-@endforeach
-
-</select>
-
+      <textarea   cols="30" rows="4" name="desc_{{$confpoliciess['id']}}" >
+      @foreach($policy as $polics)
+      @if($policy['property_id'] == $confpolicy['id'])
+      {{ $polics['description'] }}
+      @endif
+      @endforeach  
+      </textarea>
 </div>
-
-<div class="col-sm-4 ">
-                                                        <label class="col-form-label text-md-right">Description</label>
-                                                      
-                                                            <textarea  class="summernote-simple form-control" >{{ old('description',$policy['description']) }}</textarea>
-                                                        </div>
-                                                    </div>
+ 
+ @endforeach             
+                                    
+</div>
                                                                                               
                                                                                   
                                                                         

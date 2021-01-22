@@ -363,30 +363,30 @@ public function store(Request $request)
 
             $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
 
-            $response = json_decode($call->getBody()->getContents(), true);
+            $propresponse = json_decode($call->getBody()->getContents(), true);
             //  return $response;
         }catch (\Exception $e){
             //buy a beer
 
 
         }
-         $property = $response['data'];
+         $property = $propresponse['data'];
 
          try{
 
             $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPolicy');
 
-            $response = json_decode($call->getBody()->getContents(), true);
+            $conresponse = json_decode($call->getBody()->getContents(), true);
             //  return $response;
         }catch (\Exception $e){
             //buy a beer
 
 
         }
-         $confpolicy = $response['data'];
+         $confpolicy = $conresponse['data'];
    
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/policy/' . $id);
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/' . $id .'?includes=Rooms');
 
        
      
@@ -394,9 +394,9 @@ public function store(Request $request)
 
         if($response->ok()){
 
-            $policy =   $response->json()['data'];
+            $policy =   $response->json()['data']['Policies']['data'];
 
-        //   return $rooms;
+            // return $policy;
 
             return view('edit_policies', compact(
                'property','policy','confpolicy'
@@ -413,6 +413,31 @@ public function store(Request $request)
      */
     public function update(Request $request, $id)
     {
+
+
+        $property_id = $request->property_id;
+
+        $data = [];
+
+        foreach($request->policies as $policy)
+        {
+
+            $desc = "desc_".$policy;
+            // echo $desc;
+            if(!empty($request->$desc))
+            {
+                // echo $request->$desc;
+                $data[] = [
+                    'property_id' => $property_id,
+                    'policy_id' => $policy,
+                    'description' => $request->$desc,
+                    
+                ];
+
+            }
+        }
+
+
         $session = session()->get('token');
       
       
@@ -420,14 +445,15 @@ public function store(Request $request)
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/policy/'.$id, 
         [
             "_method"=> 'put',
-            "property_id"=>$request->property_id,
-            "policy_id"=>$request->policy_id
+            "policy"=> $data,
+            // "property_id"=> $data,
+            // "description"=> $data
             
         ]
         
       );
 
-        //  return $response;
+          //return $response;
         if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
             return redirect()->route('home');
         }
