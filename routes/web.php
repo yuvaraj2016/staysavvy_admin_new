@@ -95,6 +95,12 @@ Route::resource('highlight', 'HighlightController')->except('index')->middleware
 Route::get('highlight_list/{page?}','HighlightController@index')->name('highlight.index')->middleware('checktoken');
 
 
+
+Route::resource('charity', 'CharityController')->except('index')->middleware('checktoken');
+
+Route::get('charity_list/{page?}','CharityController@index')->name('charity.index')->middleware('checktoken');
+
+
 Route::resource('config_policies', 'ConfigpoliciesController')->except('index')->middleware('checktoken');
 
 Route::get('config_policies_list/{page?}','ConfigpoliciesController@index')->name('config_policies.index')->middleware('checktoken');
