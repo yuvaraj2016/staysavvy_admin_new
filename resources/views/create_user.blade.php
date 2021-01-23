@@ -114,6 +114,12 @@
                                                         </div>
 
                                                         <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Mobile Number</label>
+                                                        <input type="number" name="mobile" value="{{ old('mobile') }}" class="summernote-simple form-control" required>
+                                          
+                                                        </div>
+
+                                                        <div class="col-sm-4">
                                                             <label class="col-form-label text-md-right ">Password</label>
                                                             <input type="password" name="password" id="password" minlength=8 value="{{ old('password') }}" class="summernote-simple form-control" required>
                                               
@@ -125,7 +131,7 @@
                                           
                                                         </div>
 
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-3">
                                                         <label class="col-form-label text-md-right ">Roles</label>
                                                         <select  class="js-example-basic-single col-sm-12"  name="roles[]" id="" placeholder="Role" required class="form-control selectric" multiple required>
                                                             <option value="">Select</option>
