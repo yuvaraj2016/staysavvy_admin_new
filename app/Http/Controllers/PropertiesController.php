@@ -290,10 +290,10 @@ class PropertiesController extends Controller
                 'name' => 'address',
                 'contents' => $request->address
             ],
-            [
-                'name' => 'location',
-                'contents' => $request->location
-            ],
+            // [
+            //     'name' => 'location',
+            //     'contents' => $request->location
+            // ],
             [
                 'name' => 'host_type_id',
                 'contents' => $request->host_type_id
@@ -378,7 +378,7 @@ class PropertiesController extends Controller
 
             "name"=>$request->name,
             "address"=>$request->address,
-            "location"=>$request->location,
+            // "location"=>$request->location,
             "host_type_id"=>$request->host_type_id,
             "property_mgmt_system_id"=>$request->property_mgmt_system_id,
             "central_res_system_id"=>$request->central_res_system_id,

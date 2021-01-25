@@ -116,11 +116,11 @@
 
 
                             <div class="form-group row ">
-                            <div class="col-sm-4">
+                            <!-- <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Properties Location</label>
                                     <input type="text" id="location" name="location" value="{{ old('location',$properties['location']) }}" class="form-control" required>
 
-                                </div>
+                                </div> -->
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Host Type</label>
                                     <select class="js-example-basic-single col-sm-12" name="host_type_id" id="" placeholder="status" required class="form-control selectric" required>
@@ -143,15 +143,7 @@
                                 </div>
 
 
-                          
-
-                            </div>
-
-
-
-
-                            <div class="form-group row ">
-                            <div class="col-sm-4">
+                                <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Central System</label>
                                     <select class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
@@ -160,6 +152,14 @@
                                         @endforeach
                                     </select>
                                 </div>
+
+                            </div>
+
+
+
+
+                            <div class="form-group row ">
+                       
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Property Type</label>
                                     <select class="js-example-basic-single col-sm-12" name="property_type_id" id="" placeholder="status" required class="form-control selectric" required>
@@ -227,16 +227,7 @@
 
                                     ?>
                                 </div>
-
-
-                            </div>
-
-
-
-                            <div class="form-group row ">
-
-
-                            @php
+                                @php
 
 $amenid = [];
 
@@ -261,6 +252,16 @@ $amenid[] = $amenityid['id'];
     </select>
 </div>
 
+
+                            </div>
+
+
+
+                            <div class="form-group row ">
+
+
+              
+
 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " > Latitude</label>
                                     <input  name="latitude" value="{{ old('latitude',$properties['latitude']) }}"  class="summernote-simple form-control" required>
@@ -272,16 +273,16 @@ $amenid[] = $amenityid['id'];
                                     <input  name="longitude" value="{{ old('longitude',$properties['longitude']) }}"  class="summernote-simple form-control" required>
 
                                 </div>
-
-
-                            </div>
-
-                            <div class="form-group row ">
-                            <div class="col-sm-4">
+                                <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " >Area</label>
                                     <input name="area" value="{{ old('area',$properties['area']) }}" class="summernote-simple form-control" required>
 
                                 </div>
+
+                            </div>
+
+                            <div class="form-group row ">
+                      
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " > Pincode</label>
                                     <input type="number" name="pincode" value="{{ old('pincode',$properties['pincode']) }}"  class="summernote-simple form-control" required>
@@ -292,13 +293,6 @@ $amenid[] = $amenityid['id'];
                                     <input name="what_we_offer" value="{{ old('what_we_offer',$properties['what_we_offer']) }}" minlength="5" maxlength="800" class="summernote-simple form-control" required>
 
                                 </div>
-
-                            </div>
-
-                            <div class="form-group row ">
-
-                            
-
 
                                 @php
 
@@ -323,6 +317,14 @@ $amenid[] = $amenityid['id'];
                                         @endforeach
                                     </select>
                                 </div>
+
+                            </div>
+
+                            <div class="form-group row ">
+
+                            
+
+
 
 
                                 <div class="col-sm-4">
