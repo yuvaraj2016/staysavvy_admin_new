@@ -93,6 +93,48 @@ class PoliciesController extends Controller
         //    return view('create_room');
     }
 
+
+    public function policycreate()
+    {
+
+        $token = session()->get('token');
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $property = $response['data'];
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPolicy');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $confpolicies = $response['data'];
+     
+
+   
+
+         return view(
+            'store_policies', compact(
+                'property','confpolicies'
+            )
+            );
+
+        //    return view('create_room');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -251,14 +293,7 @@ public function store(Request $request)
             }
         }
 
-
-
-
-     
-
         
-    
-
 
     $session = session()->get('token');
 
@@ -317,6 +352,88 @@ public function store(Request $request)
 
 }
 
+
+
+public function newpolicies(Request $request)
+{
+    // return 1;
+// return $request->policies;
+        $property_id = $request->property_id;
+
+        $data = [];
+
+        foreach($request->policies as $policy)
+        {
+
+            $desc = "desc_".$policy;
+            // echo $desc;
+            if(!empty($request->$desc))
+            {
+                // echo $request->$desc;
+                $data[] = [
+                    'property_id' => $property_id,
+                    'policy_id' => $policy,
+                    'description' => $request->$desc,
+                    
+                ];
+
+            }
+        }
+
+        
+
+    $session = session()->get('token');
+
+ 
+
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/policy',
+
+    [
+        "policy"=> $data,
+        
+
+    ]);
+
+     if($response->status()===201){
+
+        // $property_id= $request->property_id;
+
+        // try{
+
+        //     $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id);
+
+        //     $response = json_decode($call->getBody()->getContents(), true);
+        //     //   return $response;
+        // }catch (\Exception $e){
+        //     //buy a beer
+
+
+        // }
+        //  $propdata = $response['data'];
+
+        //  return $propdata['name'];
+
+        //  $pdata = ["name"=>$propdata['name'],"address"=>$propdata['address'],"location"=>$propdata['location']];
+
+//  return $response;
+        return redirect()->route('store_policies')->with('psuccess',' Policies Are Saved Successfully!');
+    }else{
+        //   return $response;
+
+        $request->flash();
+        if(isset($response['errors']))
+        {
+            return redirect()->route('store_policies')->with('error',$response['errors']);
+        }
+        else if(isset($response['message']))
+        {
+
+            return redirect()->route('store_policies')->with('errorm',$response['message']);
+        }
+        // return redirect()->route('policies.create')->with('perror',$response['errors']);
+    }
+
+}
 
     /**
      * Display the specified resource.

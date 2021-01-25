@@ -105,6 +105,11 @@ Route::resource('config_policies', 'ConfigpoliciesController')->except('index')-
 
 Route::get('config_policies_list/{page?}','ConfigpoliciesController@index')->name('config_policies.index')->middleware('checktoken');
 
+Route::post('store_policies','PoliciesController@newpolicies')->name('store_policies')->middleware('checktoken');
+
+Route::get('store_policies/{page?}','PoliciesController@policycreate')->name('store_policies')->middleware('checktoken');
+
+
 // Route::post('policies/create}','PropertiesController@createpolicies')->name('policies.create')->middleware('checktoken');
 
 // Route::post('prooms/create}','PropertiesController@createrooms')->name('prooms.create')->middleware('checktoken');
