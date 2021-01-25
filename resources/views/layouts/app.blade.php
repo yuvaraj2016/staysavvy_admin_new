@@ -785,7 +785,7 @@ function checkpermissionexist($permissionarray)
 
                             <div class="dropdown-divider"></div>
                             @if(collect(session('permissions'))->contains('List policy'))
-                                <a class="dropdown-item {{ (request()->is('policy_list')) ? 'active' : '' }}" href="{{ route('policies.index') }}">Policy</a>
+                                <a class="dropdown-item {{ (request()->is('property_policies_list')) ? 'active' : '' }}" href="{{ route('property_policies_list') }}">Policy</a>
                                
                             @endif
                               </div>

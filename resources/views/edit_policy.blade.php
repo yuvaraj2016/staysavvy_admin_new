@@ -120,7 +120,8 @@
                                     </div>
                                     @endif
                               
-                                    <form class="dropzone" action="{{route('policies.update',[1]) }}" method="post" id="editstatus"
+                                 @dd($policy);
+                                    <form class="dropzone" action="{{route('policies.update',['id'=>$policy->id]) }}" method="post" id="editstatus"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
@@ -188,13 +189,20 @@
 
 
 
-
+                                            @dd($policies);
 <div class="col-sm-4">
 <label class="col-form-label text-md-right ">Status</label>
 <select  class="js-example-basic-single col-sm-12" name="property_id" id="" placeholder="Status" required class="form-control selectric" required>
 <option value="">Select</option>
 @foreach($property as $propertys)
-<option value="{{ $propertys['id'] }}" {{ ($policy['property_id'] == $propertys['id']) ? "selected":(old("property_id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}</option>
+{{-- @dd($propertys['id']); --}}
+<option value="{{ $propertys['id'] }}" 
+
+
+{{ ($policy['property_id'] == $propertys['id']) ? "selected":(old("property_id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}
+
+
+</option>
 <!-- <option value="{{ $properties['id'] }}" {{ ($policy['property_id'] == $properties['id']) ? "selected":(old("property_id") == $properties['id'] ? "selected":"") }}>{{ $properties['name'] }}</option> -->
 @endforeach
 

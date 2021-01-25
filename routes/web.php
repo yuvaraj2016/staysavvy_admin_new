@@ -75,7 +75,9 @@ Route::get('host_list/{page?}','HosttypeController@index')->name('host.index')->
 
 Route::resource('policies', 'PoliciesController')->except('index')->middleware('checktoken');
 
-Route::get('policies_list/{page?}','PoliciesController@index')->name('policies.index')->middleware('checktoken');
+Route::get('property_policies_list/{page?}','PoliciesController@propertyList')->name('property_policies_list')->middleware('checktoken');
+
+Route::get('policy_list/{property}','PoliciesController@policyList')->name('policy_list')->middleware('checktoken');
 
 Route::resource('properties', 'PropertiesController')->except('index')->middleware('checktoken');
 
@@ -105,7 +107,7 @@ Route::resource('config_policies', 'ConfigpoliciesController')->except('index')-
 
 Route::get('config_policies_list/{page?}','ConfigpoliciesController@index')->name('config_policies.index')->middleware('checktoken');
 
-Route::post('store_policies','PoliciesController@newpolicies')->name('store_policies')->middleware('checktoken');
+Route::put('store_policies','PoliciesController@newpolicies')->name('store_policies')->middleware('checktoken');
 
 Route::get('store_policies/{page?}','PoliciesController@policycreate')->name('store_policies')->middleware('checktoken');
 

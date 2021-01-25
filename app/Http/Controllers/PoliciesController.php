@@ -47,6 +47,73 @@ class PoliciesController extends Controller
           return view('policy_list', compact('policy', 'pagination','lastpage'));
     }
 
+    public function propertyList(Request $request,$page = 1)
+    {
+        $token = session()->get('token');
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?page='.$page);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+        $properties= $response['data'];
+        
+        $pagination = $response['meta']['pagination'];
+
+        $lastpage = $pagination['total_pages'];
+        
+
+          return view('property_policy_list', compact('properties', 'pagination','lastpage'));
+
+    }
+
+
+    public function policyList(Request $request,$id)
+    {
+        // return $id;
+        $token = session()->get('token');
+
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPolicy');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $confpolicies = $response['data'];
+
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$id);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+        $policies= $response['data']['Policies']['data'];
+        
+        // $pagination = $response['meta']['pagination'];
+
+        // $lastpage = $pagination['total_pages'];
+        
+
+          return view('policy_list', compact('policies','confpolicies'));
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -381,54 +448,37 @@ public function newpolicies(Request $request)
         }
 
         
-
+        // return $data;
     $session = session()->get('token');
 
  
 
-    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/policy',
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'api/policy/1',
 
     [
         "policy"=> $data,
-        
+        "_method"=> "PUT",
 
     ]);
 
-     if($response->status()===201){
 
-        // $property_id= $request->property_id;
+     if($response->status()===201 || $response->status()===200){
 
-        // try{
-
-        //     $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id);
-
-        //     $response = json_decode($call->getBody()->getContents(), true);
-        //     //   return $response;
-        // }catch (\Exception $e){
-        //     //buy a beer
-
-
-        // }
-        //  $propdata = $response['data'];
-
-        //  return $propdata['name'];
-
-        //  $pdata = ["name"=>$propdata['name'],"address"=>$propdata['address'],"location"=>$propdata['location']];
-
-//  return $response;
-        return redirect()->route('store_policies')->with('psuccess',' Policies Are Saved Successfully!');
-    }else{
+        return redirect()->route('policy_list', [$property_id])->with('success',' Policies Are Saved Successfully!');
+        
+        }
+    else{
         //   return $response;
 
         $request->flash();
         if(isset($response['errors']))
         {
-            return redirect()->route('store_policies')->with('error',$response['errors']);
+            return redirect()->back()->with('error',$response['errors']);
         }
         else if(isset($response['message']))
         {
 
-            return redirect()->route('store_policies')->with('errorm',$response['message']);
+            return redirect()->back()->with('errorm',$response['message']);
         }
         // return redirect()->route('policies.create')->with('perror',$response['errors']);
     }
