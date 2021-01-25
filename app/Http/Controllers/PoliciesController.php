@@ -560,7 +560,7 @@ public function newpolicies(Request $request)
       
       
 
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/policy/'.$id, 
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/policy/'.$id, 
         [
             "_method"=> 'put',
             "policy"=> $data,
