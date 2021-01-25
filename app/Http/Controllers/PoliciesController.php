@@ -503,7 +503,8 @@ public function newpolicies(Request $request)
          $confpolicy = $conresponse['data'];
    
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/' . $id .'?includes=Rooms');
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/policy');
+        // $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/' . $id .'?includes=Rooms');
 
        
      
@@ -511,11 +512,11 @@ public function newpolicies(Request $request)
 
         if($response->ok()){
 
-            $policy =   $response->json()['data']['Policies']['data'];
+            $policy =   $response->json()['data'];
 
-            // return $policy;
+            //  return $policy;
 
-            return view('edit_policies', compact(
+            return view('edit_policy', compact(
                'property','policy','confpolicy'
             ));
         }
