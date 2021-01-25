@@ -119,26 +119,9 @@
                                         {{ session('errorm') }}
                                     </div>
                                     @endif
-                                <!-- @if(session('success') !== null)
-                            <div class='alert alert-success'>
-                                {{ session('success') }}  
-                            </div>
-                        @endif-->
-                                <!-- after on click funtion to remeove command lines start -->
-                                <!-- @if(session('pcreateerror') !== null)
-
-                                <div class="errorWrap"><strong>ERROR</strong>: {{ session('pcreateerror') }} </div>
-
-
-                                @endif -->
-                                <!-- after on click funtion to remeove command lines end -->
-
-
-                                <!-- after on click funtion to remeove command lines start -->
-                                <!-- <div class="tab-pane fade @if(session('success') !== null) show active @else @endif  @if(session('perror') !== null) show active @endif" id="policies"> -->
-                                    <!-- after on click funtion to remeove command lines end -->
-                                    <form class="dropzone" action="{{route('policies.update',['policies'=>'1']) }}" method="post" id="editstatus" >
-                           
+                              
+                                    <form class="dropzone" action="{{route('policies.update',[1]) }}" method="post" id="editstatus"
+                            enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
 
@@ -146,11 +129,17 @@
                             <div class="succWrap">
                             {{ session('success') }}
                             </div>
-                              
+                                <!-- <div class='alert alert-success'>
+                                    {{ session('success') }}
+                                </div> -->
                             @endif
 
                        
-                
+                            <!-- @if(session('success') !== null)
+                                <div class='alert alert-green'>
+                                    {{ session('success') }}
+                                </div>
+                            @endif -->
                             @if(session('error') !== null)
 
                             {{-- @foreach(session('error') as $v)
@@ -166,11 +155,37 @@
                              </div>
                         @endif
                                         <div class="form-group row ">
+                                            <!-- after on click funtion to remeove command lines start -->
+                                            <!-- <input name="property_id" type="hidden" id="property_id" value="@if(session('success') !== null) {{ session('pid') }} @endif" class="summernote-simple form-control" required>
+                                            @php
+                                            $propdata = session('pdata');
                                           
+                                            @endphp
+
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label text-md-right ">Properties Name</label>
+                                                <input name="name" value=" @if(session('pdata') !== null) {{ $propdata['name'] }} @endif" class="summernote-simple form-control" disabled>
+
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label text-md-right ">Properties Address</label>
+                                                <input name="address" value=" @if(session('pdata') !== null) {{ $propdata['address'] }} @endif" class="summernote-simple form-control" disabled>
+
+                                            </div>
+
+
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label text-md-right ">Properties Location</label>
+                                                <input name="location" id="address" value=" @if(session('pdata') !== null) {{ $propdata['location'] }} @endif" class="summernote-simple form-control" disabled>
+                                                {{-- <div id="map" style="width: 200px; height: 200px;"></div>     --}}
+                                            </div> -->
+                                            <!-- after on click funtion to remeove command lines end -->
                                             {{-- <input type="text" id="input"/> --}}
 
-                                        
-                                     
+                                          
+                                          
+
 
 
 
@@ -178,15 +193,25 @@
 <label class="col-form-label text-md-right ">Status</label>
 <select  class="js-example-basic-single col-sm-12" name="property_id" id="" placeholder="Status" required class="form-control selectric" required>
 <option value="">Select</option>
-@foreach($property as $properties)
-
-<option value="{{ $properties['id'] }}" {{ ($policy['property_id'] == $properties['id']) ? "selected":(old("property_id") == $properties['id'] ? "selected":"") }}>{{ $properties['name'] }}</option>
+@foreach($property as $propertys)
+<option value="{{ $propertys['id'] }}" {{ ($policy['property_id'] == $propertys['id']) ? "selected":(old("property_id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}</option>
+<!-- <option value="{{ $properties['id'] }}" {{ ($policy['property_id'] == $properties['id']) ? "selected":(old("property_id") == $properties['id'] ? "selected":"") }}>{{ $properties['name'] }}</option> -->
 @endforeach
 
 </select>
 
 </div>
-
+<!-- <div class="form-group row mb-4 offset-3 col-md-6">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Property</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <select name="property_id" id="" placeholder="Status" required class="form-control js-example-basic-single selectric"  required>
+                                        <option value="">Select</option>
+                                        @foreach($property as $properties)
+                                            <option value="{{ $properties['id'] }}" {{ (old("property_id") == $properties['id'] ? "selected":"") }}>{{ $properties['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div> -->
 <div class="form-group row mt-4">
 @foreach($confpolicies as $confpoliciess)
 <div class="col-sm-4 offset-1">
