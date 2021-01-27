@@ -130,7 +130,7 @@
                                             <div class="row mt-3">
 
                                                 <div class="col-sm-6 my-auto">
-                                                    <a href=""><img src="{{ isset($image['links']) ? $image['links']['full'].'?width=100&height=100' : asset('img/no-image.gif')  }}" /></a>
+                                                    <a href=""><img src="{{ isset($image['links']) ? $image['links']['full'].'' : asset('img/no-image.gif')  }}" /></a>
                                                 </div>
 
                                                 <div class="col-sm-6 my-auto">
@@ -295,9 +295,9 @@
                             <div class="form-group row">
 
                                 @foreach ($imagedata as $image)
-                                <div class="col-md-3 " style="float:right">
-                                    <img src="{{ isset($image['links']) ? $image['links']['full'].'?width=100&height=100' : asset('img/no-image.gif')  }}" /><br><br>
-                                    <button id="formsubmit" type="submit" class=" job-delete d-inline btn btn-red "> <i class="icofont icofont-trash"></i>Delete</button>
+                                <div class="col-sm-3" style="float:right">
+                                    <img style="width:200px;height:200px;" class="img-fluid" src="{{ isset($image['links']) ? $image['links']['full'].'' : asset('img/no-image.gif')  }}" /><br><br>
+                                    <button id="formsubmit" type="submit" class=" job-delete d-inline btn btn-red  ml-5"> <i class="icofont icofont-trash"></i>Delete</button>
                                 </div>
                                 @endforeach
                                 @php
