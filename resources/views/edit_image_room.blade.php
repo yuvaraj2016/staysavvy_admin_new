@@ -295,9 +295,9 @@
                             <div class="form-group row">
 
                                 @foreach ($imagedata as $image)
-                                <div class="col-sm-3" style="float:right">
-                                    <img style="width:200px;height:200px;" class="img-fluid" src="{{ isset($image['links']) ? $image['links']['full'].'' : asset('img/no-image.gif')  }}" /><br><br>
-                                    <button id="formsubmit" type="submit" class=" job-delete d-inline btn btn-red  ml-5"> <i class="icofont icofont-trash"></i>Delete</button>
+                                <div class="col-sm-3 mb-4" style="float:right">
+                                    <img class="img-fluid" src="{{ isset($image['links']) ? $image['links']['full'].'?width=230&height=150' : asset('img/no-image.gif')  }}" /><br><br>
+                                    <button id="formsubmit" type="submit" class=" job-delete d-inline btn btn-red offset-3"> <i class="icofont icofont-trash"></i>Delete</button>
                                 </div>
                                 @endforeach
                                 @php
