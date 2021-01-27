@@ -169,7 +169,7 @@
                                 </div>
 
                             </div> -->
-                            <div class="col-sm-6 offset-2 card">
+                            <div class="col-sm-10 offset-1 card">
 
                                 <div class="card-header">
                                     <h5>File Upload</h5>
@@ -205,7 +205,7 @@
                                         <p id="msg"></p>
                                         <div class="sub-title">Room Picture</div>
                                         <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control">
-                                        <input type="button" id="formsubmit" class="btn btn-blue" value="Upload Image" onclick="javascript:upload();" />
+                                        <input type="button" id="formsubmit" class="btn btn-blue offset-5" value="Upload Image" onclick="javascript:upload();" />
                                     </form>
                                 </div>
                             </div>
@@ -393,6 +393,17 @@
     </script>
 
     <style>
+        .jFiler-item-assets .jFiler-row
+        {
+            width:90%!important;
+            padding:0px!important;
+        }
+
+        .jFiler-item-container
+        {
+            width:210px!important;
+
+        }
         @media only screen and (max-width:480px) {
             .card {
                 margin-left: 0px !important;

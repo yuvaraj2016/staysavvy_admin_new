@@ -393,6 +393,23 @@
 });
 </script> --}}
 <style>
+.jFiler-item-container
+{
+    width:210px!important;
+    
+}
+
+.jFiler-item
+{
+    width:240px!important;
+    
+}
+
+.jFiler-row
+{
+    margin-left:100px!important;
+
+}
 
 .nav-tabs
 {

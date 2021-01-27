@@ -221,11 +221,16 @@
                                         @endforeach
                                     </select>
                                                         </div>
-
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-12 text-center">
+                                                                            
+                                                            <label class="col-form-label text-md-right ">Photos</label>
+                                                            <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required>
+                                                            
+                                                        </div>
+                                                        {{-- <div class="col-sm-4">
                                                             <label class="col-form-label text-md-right ">Room Image Picture</label>
                                                             <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control">
-                                                        </div>
+                                                        </div> --}}
                             </div>
 
 
@@ -247,6 +252,26 @@
 </section>
     </div>
 </div>
+<style>
+.jFiler-item-container
+{
+    width:210px!important;
+    
+}
+
+.jFiler-item
+{
+    width:240px!important;
+    
+}
+
+.jFiler-row
+{
+    margin-left:100px!important;
+
+}
+
+</style>
 @endsection
 
 
