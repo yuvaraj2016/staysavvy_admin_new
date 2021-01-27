@@ -289,23 +289,29 @@
                     @endphp <div class="card-block filesuploaded">
 
 
-                        <form id="myForm" action="{{ route('assets.destroy',$image['id']) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
+                       
                             <div class="form-group row">
 
                                 @foreach ($imagedata as $image)
-                                <div class="col-sm-3 mb-4" style="float:right">
-                                    <img class="img-fluid" src="{{ isset($image['links']) ? $image['links']['full'].'?width=230&height=150' : asset('img/no-image.gif')  }}" /><br><br>
-                                    <button id="formsubmit" type="submit" class=" job-delete d-inline btn btn-red offset-3"> <i class="icofont icofont-trash"></i>Delete</button>
+                                <form id="myForm" action="{{ route('assets.destroy',$image['id']) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+
+                                <div class="col-md-3  mb-4">
+                                  
+                                  <img class="" src="{{ isset($image['links']) ? $image['links']['full'].'?width=230&height=150' : asset('img/no-image.gif')  }}" /><br><br>
+                                  <button id="formsubmit" type="submit" class=" job-delete d-inline btn btn-red" style="margin-left:67px;"> <i class="icofont icofont-trash"></i>Delete</button>
                                 </div>
+
+                                
+                               </form>
                                 @endforeach
                                 @php
                                 }
                                 @endphp
                             </div>
                     </div>
-                    </form>
+                   
 
                 </div>
 
