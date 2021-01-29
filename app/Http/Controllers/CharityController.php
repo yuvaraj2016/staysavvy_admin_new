@@ -53,28 +53,28 @@ class CharityController extends Controller
     {
 
         $token = session()->get('token');
-        // try{
+        try{
 
-        //     $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/configEcoHighlight');
 
-        //     $response = json_decode($call->getBody()->getContents(), true);
-        //     //  return $response;
-        // }catch (\Exception $e){
-        //     //buy a beer
-
-
-        // }
-        //  $statuses = $response['data'];
-
-        //  return view(
-        //     'create_review', compact(
-        //         'statuses'
-        //     )
-        //     );
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
 
 
+        }
+         $highlight = $response['data'];
 
-           return view('create_charity');
+         return view(
+            'create_charity', compact(
+                'highlight'
+            )
+            );
+
+
+
+        //    return view('create_charity');
     }
 
     /**
@@ -95,7 +95,8 @@ class CharityController extends Controller
             "name"=>$request->name,
             "ref"=>$request->ref,
            
-            "impact_area"=>$request->impact_area
+            // "impact_area"=>$request->impact_area,
+            "con_eco_hig_id"=>$request->con_eco_hig_id
         ]);
 
 
@@ -103,7 +104,7 @@ class CharityController extends Controller
 
             return redirect()->route('charity.create')->with('success','Ecocharity Created Successfully!');
         }else{
-
+// return $response;
             $request->flash();
 
             return redirect()->route('charity.create')->with('error',$response['errors']);
@@ -151,18 +152,21 @@ class CharityController extends Controller
     {
         $session = session()->get('token');
 
-        // try{
+        try{
 
-        //     $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/configEcoHighlight');
 
-        //     $response = json_decode($call->getBody()->getContents(), true);
-        //     //  return $response;
-        // }catch (\Exception $e){
-        //     //buy a beer
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
 
 
-        // }
-        //  $statuses = $response['data'];
+        }
+         $highlight = $response['data'];
+
+
+   
        
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/ecoCharity/' . $id);
 
@@ -177,7 +181,7 @@ class CharityController extends Controller
             // return $status;
 
             return view('edit_charity', compact(
-               'charity'
+               'charity','highlight'
             ));
         }
     }
@@ -198,8 +202,7 @@ class CharityController extends Controller
             "_method"=> 'PUT',
             "name"=>$request->name,
             "ref"=>$request->ref,
-           
-            "impact_area"=>$request->impact_area
+            "con_eco_hig_id"=>$request->con_eco_hig_id
           
         ]
         

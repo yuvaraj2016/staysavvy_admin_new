@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Create Eco Area</h4>
+                        <h4>Create Charity</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">Create Eco Area</p>
+                                <p class="">Create Charity</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('highlight.index') }}">Eco Area</a>
+                        <li class="breadcrumb-item"><a href="{{ route('charity.index') }}">Charity</a>
                         </li>
                        
                     </ul>
@@ -37,7 +37,6 @@
 
 
 <section class="section" >
-  
 
     <div class="section-body">
 
@@ -45,7 +44,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('highlight.store') }}" class="swa-confirm"  method="post" id="addstatus"
+                        <form action="{{ route('charity.store') }}" class="swa-confirm"  method="post" id="addstatus"
                             enctype="multipart/form-data">
                             @csrf
 
@@ -54,9 +53,7 @@
                             <div class="succWrap">
                             {{ session('success') }}
                             </div>
-                                <!-- <div class='alert alert-success'>
-                                    {{ session('success') }}
-                                </div> -->
+                               
                             @endif
 
                             @if(session('error') !== null)
@@ -66,36 +63,49 @@
 
                                    <div class="errorWrap"><strong>ERROR</strong>:  {{ $e }} </div>
 
-                                   <!-- <div class='alert alert-danger'>
-                                       {{ $e }}
-                                    </div> -->
+                                
                                    @endforeach
 
                                 @endforeach
                             @endif
 
-                      
-
-
-
-
+                       
                             <div class="form-group row ">
-                  
-                            <div class="col-sm-4 offset-4">
-                                <label class="col-form-label text-md-right c"> Description</label>
+                            <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right "> Name</label>
+                                                        <input name="name" value="{{ old('name') }}" class="summernote-simple form-control" required>
+               
+                                                        </div>
+                            <div class="col-sm-4">
+                                <label class="col-form-label text-md-right c">Referance</label>
                                 
-                                    <textarea name="desc" class="summernote-simple form-control" required></textarea>
+                                    <input name="ref" class="summernote-simple form-control" required>
                                
                             </div>
-                        
-                            </div>
 
+                            <!-- <div class="col-sm-4">
+                                <label class="col-form-label text-md-right c">Imapact Area</label>
+                                
+                                    <input name="impact_area" class="summernote-simple form-control" required>
+                               
+                            </div> -->
+
+                            <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Eco Area </label>
+                                                        <select  class="js-example-basic-single col-sm-12" name="con_eco_hig_id" id="" placeholder="status" required class="form-control selectric" required>
+                                        <option value="">Select</option>
+                                        @foreach($highlight as $highlights)
+                                            <option value="{{ $highlights['id'] }}" {{ (old("con_eco_hig_id") == $highlights['id'] ? "selected":"") }}>{{ $highlights['desc'] }}</option>
+                                        @endforeach
+                                    </select>
+                                                        </div>
+                            </div>
 
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
-                                    <button type="submit" id="submit" class="btn btn-primary">Create Echo Highlight</button>
+                                    <button type="submit" id="submit" class="btn btn-primary">Create Charity</button>
                                 </div>
                             </div>
 

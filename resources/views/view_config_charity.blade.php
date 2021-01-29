@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>View Eco Area</h4>
+                        <h4>View Charity</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">View Eco Area</p>
+                                <p class="">View Charity</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('highlight.index') }}">Eco Area</a>
+                        <li class="breadcrumb-item"><a href="{{ route('charity.index') }}">Charity</a>
                         </li>
                        
                     </ul>
@@ -45,7 +45,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('highlight.store') }}" method="post" id="addstatus"
+                        <form action="{{ route('charity.store') }}" method="post" id="addstatus"
                             enctype="multipart/form-data">
                             @csrf
                             @if(session('success') !== null)
@@ -65,21 +65,40 @@
                                 @endforeach
                             @endif
 
-                
-
-                                                    <div class="form-group row">
-                                                    <div class="col-sm-4 offset-2 ">
-                                                        <label class="col-form-label text-md-right ">Description</label>
-                                                        <input type="text"  value="   {{ $highlight['desc'] }}" class="form-control" readonly>
-                                                        </div>
+                            <div class="form-group row">
 
                             <div class="col-sm-4 ">
+                                                        <label class="col-form-label text-md-right "> Name</label>
+                                                        <input type="text"  value="   {{ $charity['name'] }}" class="form-control" readonly>
+                                                        </div>
+
+                                                        <div class="col-sm-4 ">
+                                                        <label class="col-form-label text-md-right "> Referance</label>
+                                                        <input type="text"  value="   {{ $charity['ref'] }}" class="form-control" readonly>
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Eco Area Desc</label>
+                            <input type="text"  value="   {{ $charity['highlight_desc'] }}" class="form-control" readonly>
+                            </div>
+                           
+                            <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Created At </label>
-                            <input type="text"  value="    {{ date("Y-m-d H:i:s",$highlight['created_at']) }}" class="form-control" readonly>
+                            <input type="text"  value="    {{ date("Y-m-d H:i:s",$charity['created_at']) }}" class="form-control" readonly>
               
                             </div>
+                                                    </div>
+
+
+<!-- 
+                                                    <div class="form-group row">
+
+
              
-                        </div>
+                        </div> -->
+
+
+
 
 
 
