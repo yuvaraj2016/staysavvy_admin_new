@@ -161,8 +161,8 @@
                                                                 <label class="col-form-label text-md-right " >Vendor Name</label>
 
                                                                 @if(collect(session('roles'))->contains('Vendor'))  
-                                                                <input type="hidden" name="name" value="{{ session('user_id') }}" class="summernote-simple form-control" required>
-                                             
+                                                                <input type="text" name="vendor_name" value="{{ session('username') }}" class="summernote-simple form-control" readonly>
+                                                                <input type="hidden" name="vendor_id" value="{{ session('user_id') }}" class="summernote-simple form-control" required>
                                                                 @else
                                                                 <select  class="js-example-basic-single col-sm-12" name="vendor_id" id=""  required class="form-control selectric" required>
                                                                     <option value="" selected disabled>Select</option>

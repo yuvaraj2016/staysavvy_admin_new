@@ -165,7 +165,7 @@
                     </div>
                     <div class="card-block">
                         <div class="dt-responsive table-responsive">
-                            <table id="basic-btn" class="table table-striped table-bordered">
+                            <table id="dt-fixedheader" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                     <th>Actions</th>
