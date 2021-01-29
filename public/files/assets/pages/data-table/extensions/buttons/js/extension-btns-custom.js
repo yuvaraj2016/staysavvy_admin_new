@@ -154,6 +154,12 @@ $(document).ready(function() {
         }]
     });
     $('#basic-btn').DataTable({
+     
+        dom: 'Bfrtip',
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+    });
+
+    $('#dt-fixedheader').DataTable({
         "scrollY": "400px",
         "scrollX": true,
         // "scrollCollapse": true,
@@ -162,6 +168,8 @@ $(document).ready(function() {
         dom: 'Bfrtip',
         buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
     });
+
+
     $('#custom-btn').DataTable({
         dom: 'Bfrtip',
         buttons: [{
