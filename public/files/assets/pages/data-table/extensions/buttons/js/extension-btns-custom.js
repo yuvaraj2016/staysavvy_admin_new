@@ -156,7 +156,7 @@ $(document).ready(function() {
     $('#basic-btn').DataTable({
         "scrollY": "400px",
         "scrollX": true,
-        "scrollCollapse": true,
+        // "scrollCollapse": true,
         fixedHeader: true,
        
         dom: 'Bfrtip',
