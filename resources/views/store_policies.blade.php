@@ -43,7 +43,7 @@
 
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('policies.index') }}">Policy</a>
+                        <li class="breadcrumb-item"><a href="{{ route('property_policies_list') }}">Policy</a>
                         </li>
 
                     </ul>

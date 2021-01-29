@@ -111,6 +111,7 @@ Route::put('store_policies','PoliciesController@newpolicies')->name('store_polic
 
 Route::get('store_policies/{page?}','PoliciesController@policycreate')->name('store_policies')->middleware('checktoken');
 
+Route::post('store_policies','PoliciesController@policystore')->name('store_policies')->middleware('checktoken');
 
 // Route::post('policies/create}','PropertiesController@createpolicies')->name('policies.create')->middleware('checktoken');
 
