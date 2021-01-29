@@ -159,12 +159,18 @@
                                 <div class="form-group row ">
                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " >Vendor Name</label>
+
+                                                                @if(collect(session('roles'))->contains('Vendor'))  
+                                                                <input type="hidden" name="name" value="{{ session('user_id') }}" class="summernote-simple form-control" required>
+                                             
+                                                                @else
                                                                 <select  class="js-example-basic-single col-sm-12" name="vendor_id" id=""  required class="form-control selectric" required>
-                                                <option value="" selected disabled>Select</option>
-                                                @foreach($vendors as $vendorss)
-                                                    <option value="{{ $vendorss['user_id'] }}" {{ (old("user_id") == $vendorss['id'] ? "selected":"") }}>{{ $vendorss['name'] }}</option>
-                                                @endforeach
-                                            </select>
+                                                                    <option value="" selected disabled>Select</option>
+                                                                    @foreach($vendors as $vendorss)
+                                                                        <option value="{{ $vendorss['user_id'] }}" {{ (old("user_id") == $vendorss['id'] ? "selected":"") }}>{{ $vendorss['name'] }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @endif
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right" >Properties Name ( Min Character:5 )</label>

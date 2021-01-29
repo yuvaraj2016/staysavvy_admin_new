@@ -101,11 +101,16 @@ class UserController extends Controller
 
                 $uid = $userresponse->json()['data']['id'];
 
+                $userid = $userresponse->json()['data']['user_id'];
+
+
                 // return $uid;
 
                 $request->session()->put('username',$username);
 
                 $request->session()->put('uid',$uid);
+
+                $request->session()->put('user_id',$userid);
 
                 $request->session()->put('permissions',$permissions);
 

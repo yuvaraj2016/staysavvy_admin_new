@@ -25,6 +25,24 @@
         margin-left: 10px;
         /* float:right; */
     }
+
+    #basic-btn td{
+
+        word-wrap: break-word;
+
+/* white-space: normal !important; */
+/* width:300px!important; */
+    }
+
+    .longtext
+    {
+        word-wrap: break-word;
+        white-space: normal !important;
+        width:300px!important;
+
+    }
+
+   
 </style>
 <div class="page-wrapper">
 
@@ -147,7 +165,7 @@
                     </div>
                     <div class="card-block">
                         <div class="dt-responsive table-responsive">
-                            <table id="basic-btn" class="table table-striped table-bordered nowrap">
+                            <table id="basic-btn" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                     <th>Actions</th>
@@ -159,7 +177,7 @@
                                        <th>Property<br> Management System</th>
                                        <th>Central<br> Management System</th>
                                        <th>Property<br> Type Name</th>
-                                       <th>Property Desc</th>
+                                       <th width="20%">Property Desc</th>
                                        <th>Room <br>Start Price</th>
                                        <th>Taxes</th>
                                        <th>Amenity</th>
@@ -196,27 +214,27 @@
 
                                                     <li class="list-group-item border1">
                                                     <form id="delete_from_{{$propertys['id']}}" method="POST" action="{{route('properties.destroy', $propertys['id']) }}">
-                    {{ csrf_field() }}
-    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
 
-    <div class="form-group">
-    @if(collect(session('permissions'))->contains('Delete property'))
-        <a href="javascript:void(0);" data-id="{{$propertys['id']}}" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">
-        <i class="fa fa-trash" style="position: relative;top:-5;color:#01a9ac"></i>
-        </a>    
-        @endif                
-    </div>
-</form></li>
+                                                    <div class="form-group">
+                                                    @if(collect(session('permissions'))->contains('Delete property'))
+                                                        <a href="javascript:void(0);" data-id="{{$propertys['id']}}" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">
+                                                        <i class="fa fa-trash" style="position: relative;top:-5;color:#01a9ac"></i>
+                                                        </a>    
+                                                        @endif                
+                                                    </div>
+                                                </form></li>
                                                     <!-- <li class="list-group-item border1 btn-delete"><a href="{{ url('status/'.$id) }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Audit"><i class="fa fa-calculator"></i></a></li> -->
                                                 </ul>
 
 
                                             </div>
                                         </td>
-                                    <td>
+                                         <td class="longtext">
                                             {{ $propertys['name'] }}
                                         </td>
-                                        <td>
+                                        <td class="longtext">
                                             {{ $propertys['address'] }}
                                         </td>
                                         
@@ -227,17 +245,22 @@
                                             {{ $propertys['host_type_name'] }}
                                         </td>
                                         <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($propertys['Assets']['data'][0]['links']) ? $propertys['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
-                                        <td>
+                                        <td class="longtext">
                                             {{ $propertys['property_mgmt_system_name'] }}
                                         </td>
-                                        <td>
+                                        <td  class="longtext">
                                             {{ $propertys['central_res_system_name'] }}
                                         </td>
-                                        <td>
+                                        <td  class="longtext">
                                             {{ $propertys['property_type_name'] }}
                                         </td>
-                                        <td>
-                                            {{ $propertys['general_description'] }}
+                                        <td class="longtext">
+                                            @if(strlen($propertys['general_description']) > 200)
+                                           
+                                             {{ Str::limit($propertys['general_description'], 200)."..." }}
+                                             @else
+                                             {{ $propertys['general_description'] }}
+                                             @endif
                                         </td>
                                         <td>
                                             {{ $propertys['room_start_price'] }}
@@ -283,7 +306,7 @@
                                        
                                         </td>
 
-                                        <td>
+                                        <td class="longtext">
                                       
                                       @foreach($propertys['Amenities']['data'] as $amen)
                                       

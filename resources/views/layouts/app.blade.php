@@ -374,6 +374,15 @@ margin:0!important;
 font-size:13px!important;
 
 }
+.basic-btn
+{
+   
+    /* height: 150px!important; */
+    /* overflow-y: scroll; */
+    
+}
+
+
 
 .dataTable th, td, #basic-btn_filter label
 {
@@ -441,6 +450,8 @@ label {
     border:5px solid red!important; */
 
 }
+
+
 </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
