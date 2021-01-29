@@ -155,7 +155,7 @@
                             <div class="col-sm-7 mb-3">
                                 
                             
-                                  <textarea cols="80" rows="4" name="desc_{{$confpoliciess['id']}}" style="overflow:hidden;resize:none;white-space: normal">@foreach($policies as $policy)@if($confpoliciess['id']==$policy['policy_id'])  {{ trim($policy['description']) }} @endif   @endforeach  </textarea>
+                                  <textarea cols="60" rows="4" name="desc_{{$confpoliciess['id']}}" style="overflow:hidden;resize:none;white-space: normal">@foreach($policies as $policy)@if($confpoliciess['id']==$policy['policy_id'])  {{ trim($policy['description']) }} @endif   @endforeach  </textarea>
                             </div>
                             
                              @endforeach             
