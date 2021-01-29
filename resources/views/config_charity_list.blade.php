@@ -138,7 +138,7 @@
                                     <tr>
                                         <th>Name</th>
                                     <th>Reference</th>
-                                    <th>Impact Area</th>
+                                    <th>Highlight Desc</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
                                     </tr>
@@ -161,7 +161,7 @@
                                         </td>
 
                                         <td>
-                                            {{ $Charitys['impact_area'] }}
+                                            {{ $Charitys['highlight_desc'] }}
                                         </td>
 
 
