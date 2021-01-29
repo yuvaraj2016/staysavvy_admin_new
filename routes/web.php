@@ -103,6 +103,12 @@ Route::resource('charity', 'CharityController')->except('index')->middleware('ch
 Route::get('charity_list/{page?}','CharityController@index')->name('charity.index')->middleware('checktoken');
 
 
+
+Route::resource('ecoarea', 'EcoareaController')->except('index')->middleware('checktoken');
+
+Route::get('ecoarea_list/{page?}','EcoareaController@index')->name('ecoarea.index')->middleware('checktoken');
+
+
 Route::resource('config_policies', 'ConfigpoliciesController')->except('index')->middleware('checktoken');
 
 Route::get('config_policies_list/{page?}','ConfigpoliciesController@index')->name('config_policies.index')->middleware('checktoken');

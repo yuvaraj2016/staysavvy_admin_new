@@ -116,7 +116,7 @@
                                 <thead>
                                     <tr>
                                         <th>Description</th>
-                                    
+                                    <th>Eco Image</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
                                     </tr>
@@ -133,7 +133,7 @@
                                     <td>
                                             {{ $Highlights['desc'] }}
                                         </td>
-
+                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($Highlights['Assets']['data'][0]['links']) ? $Highlights['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
                                      
 
 
@@ -141,11 +141,11 @@
                                         <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
-                                                    <li class="list-group-item border1">
+                                                    <!-- <li class="list-group-item border1"> -->
                                                     <!-- @if(collect(session('permissions'))->contains('List tax')) -->
-                                                    <a href="{{ url('highlight/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
+                                                    <!-- <a href="{{ url('highlight/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a> -->
                                                 <!-- @endif -->
-                                                </li>
+                                                <!-- </li> -->
                                                     <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
                                                     <li class="list-group-item border1">
                                                     <!-- @if(collect(session('permissions'))->contains('Update tax')) -->

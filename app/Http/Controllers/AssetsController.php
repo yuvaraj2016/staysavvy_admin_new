@@ -52,7 +52,11 @@ elseif($module=="rooms")
     $apicall = "api/room/".$id;
     // $view = "edit_image_room";
 }
-    
+elseif($module=="highlight")
+{
+    $apicall = "api/configEcoHighlight/".$id;
+    // $view = "edit_image_room";
+}
        
        
         // echo $session;exit;
@@ -142,6 +146,11 @@ elseif($module=="rooms")
        {
            $apicall = "api/room/".$id;
            $view = "edit_image_room";
+       }
+       elseif($module=="highlight")
+       {
+           $apicall = "api/configEcoHighlight/".$id;
+           $view = "edit_image_ecoarea";
        }
 // return $apicall;
        

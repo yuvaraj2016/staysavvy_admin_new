@@ -864,7 +864,7 @@ function checkpermissionexist($permissionarray)
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link {{ (request()->is('ecoarea_list')) ? 'active' : '' }}" href="{{ route('ecoarea.index') }}">
                                 <i class="fa fa-heart" style=""></i>
                              
                               Eco Area

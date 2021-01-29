@@ -94,6 +94,12 @@
                                                       
                                                             <textarea name="desc" class="summernote-simple form-control" required>{{ old('desc',$highlight['desc']) }}</textarea>
                                                         </div>
+
+
+                                                        <div class="col-sm-4">
+                                    <label class="col-form-label text-md-right ">Click below to edit images</label><br>
+                                    <a href="{{ url('ecoarea/'.$highlight['id'].'/edit/assets') }}" class="btn btn-blue">Edit Image</a>
+                                </div>
        
                                                     </div>
                         
