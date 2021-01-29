@@ -167,6 +167,7 @@ $(document).ready(function() {
         fixedHeader: true,
        
         dom: 'Bfrtip',
+        pageLength: 15,
         buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
     });
 
