@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>View Highlight</h4>
+                        <h4>View Eco Area</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">View Highlight</p>
+                                <p class="">View Eco Area</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('highlight.index') }}">Highlight</a>
+                        <li class="breadcrumb-item"><a href="{{ route('highlight.index') }}">Eco Area</a>
                         </li>
                        
                     </ul>

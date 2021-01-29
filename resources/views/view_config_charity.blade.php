@@ -78,7 +78,7 @@
                                                         </div>
                                                         
                                                         <div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">Highlight Desc</label>
+                            <label class="col-form-label text-md-right ">Eco Area Desc</label>
                             <input type="text"  value="   {{ $charity['highlight_desc'] }}" class="form-control" readonly>
                             </div>
                            

@@ -17,7 +17,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Eco Highlight List</h4>
+                        <h4>Eco Area List</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('highlight.index') }}">Eco Highlight  List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('highlight.index') }}">Eco Area  List</a>
                         </li>
 
                     </ul>

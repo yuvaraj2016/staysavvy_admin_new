@@ -138,7 +138,7 @@
                                     <tr>
                                         <th>Name</th>
                                     <th>Reference</th>
-                                    <th>Highlight Desc</th>
+                                    <th>Eco Area Desc</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
                                     </tr>

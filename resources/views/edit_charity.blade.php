@@ -91,7 +91,7 @@
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right ">Highlight Desc</label>
+                                    <label class="col-form-label text-md-right ">Eco Area Desc</label>
                                     <select class="js-example-basic-single col-sm-12" name="con_eco_hig_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($highlight as $highlights)
