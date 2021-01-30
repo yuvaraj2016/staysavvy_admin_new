@@ -951,10 +951,10 @@ function checkpermissionexist($permissionarray)
                             @endif
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ (request()->is('highlight_list')) ? 'active' : '' }}" href="{{ route('highlight.index') }}">Eco Area</a>
-                            <div class="dropdown-divider"></div>
+                            <!-- <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ (request()->is('reward_list')) ? 'active' : '' }}" href="{{ route('reward.index') }}">Reward</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ (request()->is('charity_list')) ? 'active' : '' }}" href="{{ route('charity.index') }}">Charity</a>
+                            <a class="dropdown-item {{ (request()->is('charity_list')) ? 'active' : '' }}" href="{{ route('charity.index') }}">Charity</a> -->
                               <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item {{ (request()->is('settings/create')) ? 'active' : '' }}" href="{{ route('settings.create') }}">Settings</a> -->
                             

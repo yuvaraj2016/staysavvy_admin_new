@@ -89,12 +89,21 @@
                                                     <div class="form-group row ">
                                                  
 
-                                                    <div class="col-sm-4 offset-4">
-                                                        <label class="col-form-label text-md-right"> Description</label>
+                                                    <div class="col-sm-4 col-offset-1">
+                                                        <label class="col-form-label text-md-right"> Eco Name</label>
                                                       
-                                                            <textarea name="desc" class="summernote-simple form-control" required>{{ old('desc',$highlight['desc']) }}</textarea>
+                                                            <input name="name" value="{{ old('name',$highlight['name']) }}" class="summernote-simple form-control" required>
                                                         </div>
+                                                        <div class="col-sm-4">
+                                    <label class="col-form-label text-md-right ">Status</label>
+                                    <select class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
+                                        <option value="">Select</option>
+                                        @foreach($statuses as $status)
+                                        <option value="{{ $status['id'] }}" {{ ($highlight['status_id'] == $status['id']) ? "selected":(old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
 
+                                        @endforeach
+                                    </select>
+                                </div>
 
                                                         <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Click below to edit images</label><br>

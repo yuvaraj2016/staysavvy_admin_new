@@ -70,7 +70,7 @@
                         <div class="form-group row">
                                             <div class="col-sm-4 offset-4">
                                             <label class="col-form-label text-md-right ">Property Name : </label>
-                                            <b>{{ $editdata['desc'] }}</b>
+                                            <b>{{ $editdata['name'] }}</b>
                                             </div>
                                           
 

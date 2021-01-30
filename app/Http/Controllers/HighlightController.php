@@ -26,7 +26,7 @@ class HighlightController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/configEcoHighlight?page='.$page);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confEcoArea?page='.$page);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -53,28 +53,28 @@ class HighlightController extends Controller
     {
 
         $token = session()->get('token');
-        // try{
+        try{
 
-        //     $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
 
-        //     $response = json_decode($call->getBody()->getContents(), true);
-        //     //  return $response;
-        // }catch (\Exception $e){
-        //     //buy a beer
-
-
-        // }
-        //  $statuses = $response['data'];
-
-        //  return view(
-        //     'create_review', compact(
-        //         'statuses'
-        //     )
-        //     );
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
 
 
+        }
+         $statuses = $response['data'];
 
-           return view('create_highlight');
+         return view(
+            'create_highlight', compact(
+                'statuses'
+            )
+            );
+
+
+
+        //    return view('create_highlight');
     }
 
     /**
@@ -99,13 +99,16 @@ class HighlightController extends Controller
                 $fileext = $ufile->getClientOriginalName();
                 $response = $response->attach('file['.$k.']', $filename,$fileext);
             }
-            $response = $response->withHeaders(['Accept'=>'application/vnd.api.v1+json'])->post(config('global.url') . '/api/configEcoHighlight',
+            $response = $response->withHeaders(['Accept'=>'application/vnd.api.v1+json'])->post(config('global.url') . '/api/confEcoArea',
             [
             [
-                'name' => 'desc',
-                'contents' => $request->desc
+                'name' => 'name',
+                'contents' => $request->name
             ],
-       
+            [
+                'name' => 'status_id',
+                'contents' => $request->status_id
+            ],
 
        
             ]);
@@ -114,12 +117,13 @@ class HighlightController extends Controller
         }
 
         else{
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/configEcoHighlight',
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confEcoArea',
 
         [
 
 
             "desc"=>$request->desc,
+            "status_id"=>$request->status_id
             // "total_credits"=>$request->total_credits,
            
             // "status_id"=>$request->status_id,
@@ -128,7 +132,7 @@ class HighlightController extends Controller
 
         if($response->status()===201){
 
-            return redirect()->route('highlight.create')->with('success','EcoHighlight Created Successfully!');
+            return redirect()->route('highlight.create')->with('success','Eco Area Created Successfully!');
         }else{
 
             $request->flash();
@@ -178,20 +182,20 @@ class HighlightController extends Controller
     {
         $session = session()->get('token');
 
-        // try{
+        try{
 
-        //     $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
 
-        //     $response = json_decode($call->getBody()->getContents(), true);
-        //     //  return $response;
-        // }catch (\Exception $e){
-        //     //buy a beer
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
 
 
-        // }
-        //  $statuses = $response['data'];
+        }
+         $statuses = $response['data'];
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/configEcoHighlight/' . $id);
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confEcoArea/' . $id);
 
        
      
@@ -204,7 +208,7 @@ class HighlightController extends Controller
             // return $status;
 
             return view('edit_highlight', compact(
-               'highlight'
+               'highlight','statuses'
             ));
         }
     }
@@ -220,21 +224,22 @@ class HighlightController extends Controller
     {
         $session = session()->get('token');
       
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/configEcoHighlight/'.$id, 
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/confEcoArea/'.$id, 
         [
             "_method"=> 'PUT',
-            "desc"=>$request->desc,
+            "name"=>$request->name,
+            "status_id"=>$request->status_id
           
         ]
         
       );
 
-        
+        // return $response;
         if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
             return redirect()->route('home');
         }
         if($response->status()===200){
-            return redirect()->back()->with('success','EcoHighlight Updated Successfully!');
+            return redirect()->back()->with('success','Eco Area Updated Successfully!');
         }else{
             return redirect()->back()->with('error',$response->json()['message']);
         }
@@ -251,11 +256,11 @@ class HighlightController extends Controller
     {
         $session = session()->get('token');
 
-        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/configEcoHighlight/'.$id);
+        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/confEcoArea/'.$id);
 
         if($response->status()==204){
 
-             return redirect()->route('highlight.index')->with('success','Reward Deleted Sucessfully !..');
+             return redirect()->route('highlight.index')->with('success','Eco Area Deleted Sucessfully !..');
         }
         else{
 

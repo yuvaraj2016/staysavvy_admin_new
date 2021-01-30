@@ -54,7 +54,7 @@ elseif($module=="rooms")
 }
 elseif($module=="ecoarea")
 {
-    $apicall = "api/configEcoHighlight/".$id;
+    $apicall = "api/confEcoArea/".$id;
     // $view = "edit_image_room";
 }
 elseif($module=="amenity")
@@ -153,7 +153,7 @@ elseif($module=="amenity")
        }
        elseif($module=="ecoarea")
        {
-           $apicall = "api/configEcoHighlight/".$id;
+           $apicall = "api/confEcoArea/".$id;
            $view = "edit_image_ecoarea";
        }
        elseif($module=="amenity")

@@ -115,7 +115,7 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
-                                        <th>Description</th>
+                                        <th>Eco Name</th>
                                     <th>Eco Image</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
@@ -131,7 +131,7 @@
 
                                     <tr>
                                     <td>
-                                            {{ $Highlights['desc'] }}
+                                            {{ $Highlights['name'] }}
                                         </td>
                                         <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($Highlights['Assets']['data'][0]['links']) ? $Highlights['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
                                      
