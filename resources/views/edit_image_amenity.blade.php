@@ -11,7 +11,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Edit Ecoarea Image</h4>
+                        <h4>Edit Amenity Image</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -21,11 +21,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <i class="">Edit Ecoarea Image</i>
+                                <i class="">Edit Amenity Image</i>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('highlight.index') }}">Ecoarea</a>
+                        <li class="breadcrumb-item"><a href="{{ route('amenity.index') }}">Amenity</a>
                         </li>
                        
                     </ul>
@@ -68,12 +68,20 @@
                             @endforeach
                         @endif
                         <div class="form-group row">
-                                            <div class="col-sm-4 offset-4">
+                                            <div class="col-sm-4 offset-1">
                                             <label class="col-form-label text-md-right ">Property Name : </label>
-                                            <b>{{ $editdata['desc'] }}</b>
+                                            <b>{{ $editdata['name'] }}</b>
                                             </div>
                                           
+                                            <div class="col-sm-4 ">
+                                            <label class="col-form-label text-md-right ">Property Name : </label>
+                                            <b>{{ $editdata['location'] }}</b>
+                                            </div>
 
+                                            <!-- <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Property Name : </label>
+                                            <b>{{ $editdata['status_desc'] }}</b>
+                                            </div> -->
                                            
                                             
 
@@ -199,7 +207,7 @@
                                                             
 
                                                             <div class="card-block">
-                                                                <form id="uploadform" action="{{url('assets/storeimage/ecoarea/'.$editdata['id']) }}" method="post" id="addprocat"
+                                                                <form id="uploadform" action="{{url('assets/storeimage/amenity/'.$editdata['id']) }}" method="post" id="addprocat"
                                                                     enctype="multipart/form-data">
                                                                     {{-- @method('PATCH') --}}
                                                                   @csrf
@@ -228,7 +236,7 @@
                                 <label class="col-form-label text-md-right"></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
                                  
-                                        <a href="{{ url('highlight/'.$editdata['id'].'/edit') }}"
+                                        <a href="{{ url('amenity/'.$editdata['id'].'/edit') }}"
                         class=" d-inline text-center btn btn-black font1 back" ><i
                             class="icofont icofont-arrow-left" ></i>Back&nbsp;&nbsp;</a>
                                 </div>
