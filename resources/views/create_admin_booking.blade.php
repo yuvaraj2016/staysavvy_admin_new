@@ -195,7 +195,7 @@
                                     <div class="form-group row ">
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Length Of Stay</label>
-                                            <input type="number" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control" required>
+                                            <input id="lens" type="number" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
 
                                         </div>
 
@@ -235,8 +235,23 @@
 
                                     <div class="form-group row ">
                                  
-                                      
-
+                                    <div class="col-sm-2">
+                                            <label class="col-form-label text-md-right ">Total Adults</label>
+                                            <input id="toats"  name="total_adults" value="{{ old('total_adults') }}" class="summernote-simple form-control toats" readonly>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label class="col-form-label text-md-right ">Total Childrents</label>
+                                            <input id="tocds"  name="total_childs" value="{{ old('total_childs') }}" class="summernote-simple form-control tocds" readonly>
+                                        </div>
+                                        
+                                        <div class="col-sm-2">
+                                            <label class="col-form-label text-md-right ">Total Gust</label>
+                                            <input id="togst"  name="total_guests" value="{{ old('total_guests') }}" class="summernote-simple form-control togst" readonly>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label class="col-form-label text-md-right ">Total Amount</label>
+                                            <input id="toamt"  name="total_amount" value="{{ old('total_amount') }}" class="summernote-simple form-control toamt" readonly>
+                                        </div>
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Status</label>
                                             <select class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
@@ -266,6 +281,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right "></label>
                                         <div class="col-sm-12 col-md-7 offset-5">
+                                        <button id="generate" type="button" class="btn btn-warning waves-effect waves-light" >Generate</button>
                                             <button type="submit" id="submit" class="btn btn-primary">Create Booking</button>
                                         </div>
                                     </div>
@@ -334,18 +350,18 @@
                                     //  alert(room.id);
 
                                     aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input max="' + room.available_rooms + '" name="no_of_rooms[]" class="summernote-simple form-control" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" class="summernote-simple form-control norms" ></div>' +
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" class="summernote-simple form-control" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" class="summernote-simple form-control sub1" required ></div>' +
 
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" class="summernote-simple form-control"></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" class="summernote-simple form-control sub2" required></div>' +
 
 
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" name="total_guests[]" class="summernote-simple form-control" ></div>' +
 
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input name="amount[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input id="amt" name="amount[]" class="summernote-simple form-control amt" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
 
                                     $(function() {
                                         $("#sub1, #sub2").on("keydown keyup", diff);
@@ -439,7 +455,51 @@
 
             });
         </script>
+<script>
 
+$(document).on("keydown keyup", ".sub1", function() {
+    var sum = 0;
+    $(".sub1").each(function(){
+        sum += +$(this).val();
+    });
+    $(".toats").val(sum);
+});
+$(document).on("keydown keyup", ".sub2", function() {
+    var sum = 0;
+    $(".sub2").each(function(){
+        sum += +$(this).val();
+    });
+    $(".tocds").val(sum);
+});
+
+$(document).ready(function () {
+
+$('#generate').on("click", function () {
+    var totaladults = parseInt($("#toats").val());
+    var totalchild = parseInt($("#tocds").val());
+    // alert(totalchild+totaladults);
+    var tar = totaladults+totalchild;
+                        
+                            $('#togst').val(tar);
+
+                          
+                            var noofrooms = parseInt($(".norms").val());
+                            // $(".norms").each(function(){
+                            //     $(this).val();
+                            // })
+                            
+                            var amt = parseInt($(".amt").val()); 
+                            //  $(".norms").each(function(){
+                            //     $(this).val();
+                            // }) 
+                            var lens = parseInt($(".lens").val());  
+var amount = ((noofrooms * (amt)) * (lens)).toFixed(2); 
+// alert(amount);                 
+$('.toamt').val(amount);
+
+});
+});
+    </script>
 
     </div>
 </div>

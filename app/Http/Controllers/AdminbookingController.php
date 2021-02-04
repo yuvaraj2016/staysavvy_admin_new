@@ -210,39 +210,41 @@ class AdminbookingController extends Controller
             $no_of_rooms[] = $no_room;
 
         }
+// hidden on 04.02.2020
+        // $no_of_adults = [];
+        // foreach($request->no_of_adults as $no_adult)
+        // {
 
-        $no_of_adults = [];
-        foreach($request->no_of_adults as $no_adult)
-        {
+        //     $no_of_adults[] = $no_adult;
 
-            $no_of_adults[] = $no_adult;
+        // }
+        // $no_of_childs = [];
+        // foreach($request->no_of_childs as $no_child)
+        // {
 
-        }
-        $no_of_childs = [];
-        foreach($request->no_of_childs as $no_child)
-        {
+        //     $no_of_childs[] = $no_child;
 
-            $no_of_childs[] = $no_child;
+        // }
+        // ens hidden on 04.02.2020
+        // hidden on 04.02.2020
+        // $total_guests = [];
+        // foreach($request->total_guests as $total_gust)
+        // {
 
-        }
-        
-        $total_guests = [];
-        foreach($request->total_guests as $total_gust)
-        {
-
-            $total_guests[] = $total_gust;
+        //     $total_guests[] = $total_gust;
           
-        }
+        // }
        
-        $amount = [];
+        // $amount = [];
       
-        foreach($request->amount as $amnt)
-        {
+        // foreach($request->amount as $amnt)
+        // {
 
-            $amount[] = $amnt;
+        //     $amount[] = $amnt;
             
-        }
+        // }
         // return $amount;
+        //end hidden on 04.02.2020
         // foreach($request->amenities as $amenity)
         // {
 
@@ -274,6 +276,7 @@ class AdminbookingController extends Controller
             "check_out_date"=>$checkout,
          "booked_on"=>$booked_on,
 
+
          "booking_status_id"=>$request->booking_status_id,
          "length_of_stay"=>$request->length_of_stay,
 
@@ -285,10 +288,16 @@ class AdminbookingController extends Controller
         //  "payment_status_id"=>$request->payment_status_id,
          "room_id" => $room_id,
          "no_of_rooms"=>$no_of_rooms,
-         "no_of_adults"=>$no_of_adults,
-         "no_of_childs"=>$no_of_childs,
-         "total_guests"=>$total_guests,
-         "amount"=>$amount,
+
+         "total_adults"=>$request->total_adults,
+         "total_childs"=>$request->total_childs,
+         "total_guests"=>$request->total_guests,
+         "total_amount"=>$request->total_amount,
+
+        //  "no_of_adults"=>$no_of_adults,
+        //  "no_of_childs"=>$no_of_childs,
+        //  "total_guests"=>$total_guests,
+        //  "amount"=>$amount,
             "status_id"=>$request->status_id,
            
         ]);
