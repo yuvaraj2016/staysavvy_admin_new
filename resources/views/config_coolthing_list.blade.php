@@ -139,6 +139,7 @@
                                         <th>Name</th>
                                     <!-- <th>Percentage</th>
                                     <th>Amount</th> -->
+                                    <th>Images</th>
                                     <th>Status Desc</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
@@ -156,7 +157,7 @@
                                     <td>
                                             {{ $coolthings['name'] }}
                                         </td>
-
+                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($coolthings['Assets']['data'][0]['links']) ? $coolthings['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
 
                                         <td>
                                             {{ $coolthings['status_desc'] }}

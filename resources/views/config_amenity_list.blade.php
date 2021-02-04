@@ -138,6 +138,7 @@
                                     <tr>
                                         <th>Name</th>
                                     <th>Location</th>
+                                    <th>Images</th>
                                     <th>Status Desc</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
@@ -159,6 +160,7 @@
                                         <td>
                                             {{ $amenitys['location'] }}
                                         </td>
+                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($amenitys['Assets']['data'][0]['links']) ? $amenitys['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
 
                                         <td>
                                             {{ $amenitys['status_desc'] }}

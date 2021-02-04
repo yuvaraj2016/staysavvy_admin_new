@@ -87,6 +87,41 @@ class CoolthingController extends Controller
     {
         $session = session()->get('token');
 
+        if ($request->file('file') !== null) {
+
+            $files =$request->file('file');
+            $response = Http::withToken($session);
+       
+
+            // return $request->amenities;
+            foreach($files as $k => $ufile)
+            {
+                $filename = fopen($ufile, 'r');
+                $fileext = $ufile->getClientOriginalName();
+                $response = $response->attach('file['.$k.']', $filename,$fileext);
+            }
+            $response = $response->withHeaders(['Accept'=>'application/vnd.api.v1+json'])->post(config('global.url') . '/api/confCoolthing',
+            [
+            [
+                'name' => 'name',
+                'contents' => $request->name
+            ],
+            
+            [
+                'name' => 'status_id',
+                'contents' => $request->status_id
+            ],
+       
+
+       
+            ]);
+
+
+        }
+        else{
+
+
+
 
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confCoolthing',
 
@@ -96,7 +131,7 @@ class CoolthingController extends Controller
             "status_id"=>$request->status_id,
            
         ]);
-
+        }
 
         if($response->status()===201){
 

@@ -105,6 +105,11 @@
 </select>
 
 </div>
+
+<div class="col-sm-4">
+                                    <label class="col-form-label text-md-right ">Click below to edit images</label><br>
+                                    <a href="{{ url('coolthing/'.$coolthing['id'].'/edit/assets') }}" class="btn btn-blue">Edit Image</a>
+                                </div>
                                                     </div>
                         
 

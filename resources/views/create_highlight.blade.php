@@ -87,7 +87,7 @@
                                     <input name="name" class="summernote-simple form-control" required>
                                
                             </div>
-
+<!-- 
                             <div class="col-sm-4 offset-1">
                                                                 <label class="col-form-label text-md-right ">Status</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
@@ -96,7 +96,7 @@
                                                     <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
                                                 @endforeach
                                             </select>
-                                                                </div>
+                                                                </div> -->
 
                             <div class="col-sm-9 offset-2 text-center">
                                                                             

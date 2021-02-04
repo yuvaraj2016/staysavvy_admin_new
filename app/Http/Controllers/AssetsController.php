@@ -61,7 +61,13 @@ elseif($module=="amenity")
 {
     $apicall = "api/confAmenity/".$id;
     // $view = "edit_image_room";
-}     
+} 
+elseif($module=="coolthing")
+{
+    $apicall = "api/confCoolthing/".$id;
+    // $view = "edit_image_room";
+}
+  
        
         // echo $session;exit;
         // dd($session);
@@ -160,6 +166,11 @@ elseif($module=="amenity")
        {
            $apicall = "api/confAmenity/".$id;
            $view = "edit_image_amenity";
+       }
+       elseif($module=="coolthing")
+       {
+           $apicall = "api/confCoolthing/".$id;
+           $view = "edit_image_coolthings";
        }
 // return $apicall;
        
