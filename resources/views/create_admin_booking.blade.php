@@ -234,23 +234,23 @@
 
 
                                     <div class="form-group row ">
-                                 
-                                    <div class="col-sm-2">
+
+                                        <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Adults</label>
-                                            <input id="toats"  name="total_adults" value="{{ old('total_adults') }}" class="summernote-simple form-control toats" readonly>
+                                            <input id="toats" name="total_adults" value="{{ old('total_adults') }}" class="summernote-simple form-control toats" readonly>
                                         </div>
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Childrents</label>
-                                            <input id="tocds"  name="total_childs" value="{{ old('total_childs') }}" class="summernote-simple form-control tocds" readonly>
+                                            <input id="tocds" name="total_childs" value="{{ old('total_childs') }}" class="summernote-simple form-control tocds" readonly>
                                         </div>
-                                        
+
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Gust</label>
-                                            <input id="togst"  name="total_guests" value="{{ old('total_guests') }}" class="summernote-simple form-control togst" readonly>
+                                            <input id="togst" name="total_guests" value="{{ old('total_guests') }}" class="summernote-simple form-control togst" readonly>
                                         </div>
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Amount</label>
-                                            <input id="toamt"  name="total_amount" value="{{ old('total_amount') }}" class="summernote-simple form-control toamt" readonly>
+                                            <input id="toamt" name="total_amount" value="{{ old('total_amount') }}" class="summernote-simple form-control toamt" readonly>
                                         </div>
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Status</label>
@@ -281,7 +281,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right "></label>
                                         <div class="col-sm-12 col-md-7 offset-5">
-                                        <button id="generate" type="button" class="btn btn-warning waves-effect waves-light" >Generate</button>
+                                            <button id="generate" type="button" class="btn btn-warning waves-effect waves-light">Generate</button>
                                             <button type="submit" id="submit" class="btn btn-primary">Create Booking</button>
                                         </div>
                                     </div>
@@ -455,51 +455,83 @@
 
             });
         </script>
-<script>
+        <script>
+            $(document).on("keydown keyup", ".sub1", function() {
+                var sum = 0;
+                $(".sub1").each(function() {
+                    sum += +$(this).val();
+                });
+                $(".toats").val(sum);
+            });
+            $(document).on("keydown keyup", ".sub2", function() {
+                var sum = 0;
+                $(".sub2").each(function() {
+                    sum += +$(this).val();
+                });
+                $(".tocds").val(sum);
+            });
 
-$(document).on("keydown keyup", ".sub1", function() {
-    var sum = 0;
-    $(".sub1").each(function(){
-        sum += +$(this).val();
-    });
-    $(".toats").val(sum);
-});
-$(document).on("keydown keyup", ".sub2", function() {
-    var sum = 0;
-    $(".sub2").each(function(){
-        sum += +$(this).val();
-    });
-    $(".tocds").val(sum);
-});
+            $(document).ready(function() {
 
-$(document).ready(function () {
+                $('#generate').on("click", function() {
+                    const selectedPropertyVal = $('#property').val();
+                    if (selectedPropertyVal !== '') {
+                        var totaladults = $("#toats").val() !== '' ? parseInt($("#toats").val()) : 0;
+                        var totalchild = $("#tocds").val() !== '' ? parseInt($("#tocds").val()) : 0;
+                        // alert(totalchild+totaladults);
+                        var tar = totaladults + totalchild;
 
-$('#generate').on("click", function () {
-    var totaladults = parseInt($("#toats").val());
-    var totalchild = parseInt($("#tocds").val());
-    // alert(totalchild+totaladults);
-    var tar = totaladults+totalchild;
-                        
+
+
+
+                        // var noofrooms = parseInt($(".norms").val());
+                        // // $(".norms").each(function(){
+                        // //     $(this).val();
+                        // // })
+
+                        // var amt = parseInt($(".amt").val());
+                        // //  $(".norms").each(function(){
+                        // //     $(this).val();
+                        // // }) 
+                        // var lens = parseInt($(".lens").val());
+                        // var amount = ((noofrooms * (amt)) * (lens)).toFixed(2);
+                        // // alert(amount);                 
+                        // $('.toamt').val(amount);
+
+
+                        const noOfRoomsData = $('#addstatus').find('input[name= "no_of_rooms[]"]').map(function() {
+                            return $(this).val();
+                        }).get();
+                        const roomAmtData = $('#addstatus').find('input[name= "amount[]"]').map(function() {
+                            return $(this).val();
+                        }).get();
+                        const lengthOfStayValue = $(".lens").val() !== '' ? $(".lens").val() : 0;
+                        var totalAmt = 0;
+                        noOfRoomsData.forEach((item, idx) => {
+                            let roomValue = item !== '' ? item : 0;
+                            let roomAmt = roomAmtData[idx] !== '' ? roomAmtData[idx] : 0;
+                            totalAmt += parseInt(roomValue) * parseFloat(roomAmt) * parseInt(lengthOfStayValue);
+                        });
+                        let alertMsg = '';
+                        if (parseFloat(tar) > 0)
                             $('#togst').val(tar);
+                        else
+                            alertMsg = 'Total Adults, Total Children';
 
-                          
-                            var noofrooms = parseInt($(".norms").val());
-                            // $(".norms").each(function(){
-                            //     $(this).val();
-                            // })
-                            
-                            var amt = parseInt($(".amt").val()); 
-                            //  $(".norms").each(function(){
-                            //     $(this).val();
-                            // }) 
-                            var lens = parseInt($(".lens").val());  
-var amount = ((noofrooms * (amt)) * (lens)).toFixed(2); 
-// alert(amount);                 
-$('.toamt').val(amount);
+                        if (parseFloat(totalAmt) > 0)
+                            $('.toamt').val(totalAmt);
+                        else
+                            alertMsg += ' & No of Rooms';
 
-});
-});
-    </script>
+                        if (alertMsg !== '')
+                            swal(`Please enter ${alertMsg}`);
+
+                    } else {
+                        swal('Please choose a Property');
+                    }
+                });
+            });
+        </script>
 
     </div>
 </div>
