@@ -1047,11 +1047,19 @@ function checkpermissionexist($permissionarray)
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                         
+                                            <li class="">
+                                                <a class="{{ (request()->is('charity_list')) ? 'active' : '' }}" href="{{ route('charity.index') }}" data-i18n="nav.e-commerce.product">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext"> Charity</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
                                         
 
                                         </ul>
                                     </li>
+
+
                                     <li class="pcoded-hasmenu ">
                                         <a href="javascript:void(0)" data-i18n="nav.email.main">
                                             <span class="pcoded-micon"><i class="ti-email"></i></span>

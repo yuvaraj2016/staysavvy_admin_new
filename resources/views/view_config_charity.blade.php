@@ -72,14 +72,11 @@
                                                         <input type="text"  value="   {{ $charity['name'] }}" class="form-control" readonly>
                                                         </div>
 
-                                                        <div class="col-sm-4 ">
-                                                        <label class="col-form-label text-md-right "> Referance</label>
-                                                        <input type="text"  value="   {{ $charity['ref'] }}" class="form-control" readonly>
-                                                        </div>
+                                                    
                                                         
                                                         <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Eco Area Desc</label>
-                            <input type="text"  value="   {{ $charity['highlight_desc'] }}" class="form-control" readonly>
+                            <input type="text"  value="   {{ $charity['eco_area'] }}" class="form-control" readonly>
                             </div>
                            
                             <div class="col-sm-4 ">

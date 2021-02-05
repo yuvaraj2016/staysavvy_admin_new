@@ -78,25 +78,20 @@
 
 
                             <div class="form-group row ">
-                                <div class="col-sm-4">
+                                <div class="col-sm-4 offset-2">
                                     <label class="col-form-label text-md-right"> Name</label>
 
                                     <input value="{{ old('name',$charity['name']) }}" name="name" class="summernote-simple form-control" required>
                                 </div>
 
-                                <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right">Payment Status Desc</label>
-
-                                    <input value="{{ old('ref',$charity['ref']) }}" name="ref" class="summernote-simple form-control" required>
-                                </div>
+                           
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Eco Area Desc</label>
-                                    <select class="js-example-basic-single col-sm-12" name="con_eco_hig_id" id="" placeholder="status" required class="form-control selectric" required>
+                                    <select class="js-example-basic-single col-sm-12" name="conf_eco_area_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($highlight as $highlights)
-                                        <!-- <option value="{{ $highlights['id'] }}" {{ (old("con_eco_hig_id") == $highlights['id'] ? "selected":"") }}>{{ $highlights['desc'] }}</option> -->
-                                        <option value="{{ $highlights['id'] }}" {{ ($charity['con_eco_hig_id'] == $highlights['id']) ? "selected":(old("con_eco_hig_id") == $highlights['id'] ? "selected":"") }}>{{ $highlights['desc'] }}</option>
+                                        <option value="{{ $highlights['id'] }}" {{ ($charity['conf_eco_area_id'] == $highlights['id']) ? "selected":(old("conf_eco_area_id") == $highlights['id'] ? "selected":"") }}>{{ $highlights['name'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>

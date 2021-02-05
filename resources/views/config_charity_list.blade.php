@@ -137,7 +137,7 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                    <th>Reference</th>
+                                    <!-- <th>Reference</th> -->
                                     <th>Eco Area Desc</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
@@ -157,12 +157,10 @@
                                         </td>
 
                                         <td>
-                                            {{ $Charitys['ref'] }}
+                                            {{ $Charitys['eco_area'] }}
                                         </td>
 
-                                        <td>
-                                            {{ $Charitys['highlight_desc'] }}
-                                        </td>
+                                    
 
 
                                         <td>{{ date("Y-m-d H:i:s",$Charitys['created_at']) }}</td>
