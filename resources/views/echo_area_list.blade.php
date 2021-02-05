@@ -137,9 +137,9 @@
                                     <tr>
                                     <th>Actions</th>
                                        <th>Name</th>
-                                     
+                                       <th>Address</th>
                                        
-                                        <th>Created At</th>
+                                        <!-- <th>Created At</th> -->
                                       
                                     </tr>
                                 </thead>
@@ -179,13 +179,15 @@
                                          <td class="longtext">
                                             {{ $ecoareas['name'] }}
                                         </td>
-                                  
+                                        <td class="">
+                                            {{ $ecoareas['address'] }}
+                                        </td>
                                        
                                      
                                       
 
 
-                                        <td>{{ date("Y-m-d H:i:s",$ecoareas['created_at']) }}</td>
+                                      
                                   
                                     </tr>
 

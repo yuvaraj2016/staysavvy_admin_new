@@ -28,7 +28,7 @@ class EcoareaController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?page='.$page);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations?page='.$page);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -223,156 +223,11 @@ public function store(Request $request)
 
 
 
-public function policystore(Request $request)
-{
-// return $request->policies;
-        $property_id = $request->property_id;
-
-        $data = [];
-
-        foreach($request->policies as $policy)
-        {
-
-            $desc = "desc_".$policy;
-            // echo $desc;
-            if(!empty($request->$desc))
-            {
-                // echo $request->$desc;
-                $data[] = [
-                    'property_id' => $property_id,
-                    'policy_id' => $policy,
-                    'description' => $request->$desc,
-                    
-                ];
-
-            }
-        }
-
-        
-
-    $session = session()->get('token');
-
- 
-
-    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/policy',
-
-    [
-        "policy"=> $data,
-        
-
-    ]);
-
-    // return $response;
-//  return $request->description;
-//  return $request->all();
-// return $request->description;
-    if($response->status()===201){
-
-        // $property_id= $request->property_id;
-
-        // try{
-
-        //     $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$property_id);
-
-        //     $response = json_decode($call->getBody()->getContents(), true);
-        //     //   return $response;
-        // }catch (\Exception $e){
-        //     //buy a beer
-
-
-        // }
-        //  $propdata = $response['data'];
-
-        // //  return $propdata['name'];
-
-        //  $pdata = ["name"=>$propdata['name'],"address"=>$propdata['address'],"location"=>$propdata['location']];
-
-// return $response;
-        return redirect()->route('store_policies')->with('psuccess','Property Policies Created Successfully!');
-        // ->with('pid',$request->property_id)->with('pdata',$pdata);
-    }else{
-        //  return $response;
-
-        $request->flash();
-        if(isset($response['errors']))
-        {
-            return redirect()->route('store_policies')->with('error',$response['errors']);
-        }
-        else if(isset($response['message']))
-        {
-
-            return redirect()->route('store_policies')->with('errorm',$response['message']);
-        }
-        // return redirect()->route('policies.create')->with('perror',$response['errors']);
-    }
-
-}
 
 
 
-public function newpolicies(Request $request)
-{
-    // return 1;
-// return $request->policies;
-        $property_id = $request->property_id;
-
-        $data = [];
-
-        foreach($request->policies as $policy)
-        {
-
-            $desc = "desc_".$policy;
-            // echo $desc;
-            if(!empty($request->$desc))
-            {
-                // echo $request->$desc;
-                $data[] = [
-                    'property_id' => $property_id,
-                    'policy_id' => $policy,
-                    'description' => $request->$desc,
-                    
-                ];
-
-            }
-        }
-
-        
-        // return $data;
-    $session = session()->get('token');
-
- 
-
-    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'api/policy/1',
-
-    [
-        "policy"=> $data,
-        "_method"=> "PUT",
-
-    ]);
 
 
-     if($response->status()===201 || $response->status()===200){
-
-        return redirect()->route('policy_list', [$property_id])->with('success',' Policies Are Saved Successfully!');
-        
-        }
-    else{
-        //   return $response;
-
-        $request->flash();
-        if(isset($response['errors']))
-        {
-            return redirect()->back()->with('error',$response['errors']);
-        }
-        else if(isset($response['message']))
-        {
-
-            return redirect()->back()->with('errorm',$response['message']);
-        }
-        // return redirect()->route('policies.create')->with('perror',$response['errors']);
-    }
-
-}
 
     /**
      * Display the specified resource.
@@ -417,20 +272,20 @@ public function newpolicies(Request $request)
 
         try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confEcoArea');
 
-            $propresponse = json_decode($call->getBody()->getContents(), true);
+            $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
         }catch (\Exception $e){
             //buy a beer
 
 
         }
-         $property = $propresponse['data'];
+         $confecoarea = $response['data'];
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPolicy');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCharity');
 
             $conresponse = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -439,10 +294,10 @@ public function newpolicies(Request $request)
 
 
         }
-         $confpolicy = $conresponse['data'];
+         $charity = $conresponse['data'];
    
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/policy');
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations/'.$id.'?include=ProEcoareas,EcoSummary,Impacts');
         // $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/' . $id .'?includes=Rooms');
 
        
@@ -451,12 +306,12 @@ public function newpolicies(Request $request)
 
         if($response->ok()){
 
-            $policy =   $response->json()['data'];
+            $property =   $response->json()['data'];
 
-            //  return $policy;
+            //  return $property;
 
-            return view('edit_policy', compact(
-               'property','policy','confpolicy'
+            return view('edit_ecoarea', compact(
+               'property','confecoarea','charity'
             ));
         }
     }
@@ -468,54 +323,46 @@ public function newpolicies(Request $request)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-
-
-        $property_id = $request->property_id;
-
-        $data = [];
-
-        foreach($request->policies as $policy)
-        {
-
-            $desc = "desc_".$policy;
-            // echo $desc;
-            if(!empty($request->$desc))
-            {
-                // echo $request->$desc;
-                $data[] = [
-                    'property_id' => $property_id,
-                    'policy_id' => $policy,
-                    'description' => $request->$desc,
-                    
-                ];
-
-            }
-        }
-
 
         $session = session()->get('token');
       
+    $ecoareas=[];
+    $charities=[];
+
+    foreach($request->ecoareas as $ecoarea)
+    {
+
+        $ecoareas[] = $ecoarea;
+    }
+    foreach($request->charities as $charitie)
+    {
+
+        $charities[] = $charitie;
+    }
+    // $ecoareas = rtrim($ecoareas,",");
+    // return $ecoareas;
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/saveSummaryWithSync',
+
+    [
+        "property_id"=>$request->property_id,
+        "description"=>$request->description,
+        "ecoareas"=>$ecoareas,
+        "charities"=>$charities
+        
+
+    ]);
       
 
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/policy/'.$id, 
-        [
-            "_method"=> 'put',
-            "policy"=> $data,
-            // "property_id"=> $data,
-            // "description"=> $data
-            
-        ]
-        
-      );
+
 
           //return $response;
         if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
             return redirect()->route('home');
         }
-        if($response->status()===200){
-            return redirect()->back()->with('success','Policy Updated Successfully!');
+        if($response->status()===201){
+            return redirect()->back()->with('success','Eco Area Saved Updated Successfully!');
         }else{
             return redirect()->back()->with('error',$response->json()['message']);
         }
