@@ -110,7 +110,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <!-- <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Booking Status</label>
                                             <select class="js-example-basic-single col-sm-12" name="booking_status_id" id="" placeholder="status" required class="form-control selectric" required>
                                                 <option value="" disabled>Select</option>
@@ -118,32 +118,7 @@
                                                 <option value="{{ $bookingstautss['id'] }}" {{ (old("booking_status_id") == $bookingstautss['id'] ? "selected":"") }}>{{ $bookingstautss['description'] }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
-
-
-
-                                    </div>
-                                    <div class="form-group  ">
-                                        <div class="" id="room">
-                                            <!-- <label class="col-form-label text-md-right ">Rooms</label>
-                                                        <select  class="js-example-basic-single col-sm-12"  name="room_id[]" id="rooms" placeholder="Vendor" required class="form-control selectric" required>
-                                                        <option value="">Select</option>
-                                        @foreach($rooms as $roomss)
-                                        <option value="{{ $roomss['id'] }}" {{ (old("room_id[]") == $roomss['id'] ? "selected":"") }}>{{ $roomss['room_type_name'] }}</option>
-                                           
-                                        @endforeach
-                                    </select>
-
-                                                        <div id="response" style="position: absolute;
-                                                        top: 10%;
-                                                        left: 50%;
-                                                        "></div> -->
-
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row ">
-
+                                        </div> -->
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check In Date </label>
                                             <input type="date" name="check_in_date" value="{{ old('starts_at') }}" class="summernote-simple form-control" required>
@@ -170,6 +145,31 @@
                                         </div>
 
 
+                                    </div>
+                                    <div class="form-group  ">
+                                        <div class="" id="room">
+                                            <!-- <label class="col-form-label text-md-right ">Rooms</label>
+                                                        <select  class="js-example-basic-single col-sm-12"  name="room_id[]" id="rooms" placeholder="Vendor" required class="form-control selectric" required>
+                                                        <option value="">Select</option>
+                                        @foreach($rooms as $roomss)
+                                        <option value="{{ $roomss['id'] }}" {{ (old("room_id[]") == $roomss['id'] ? "selected":"") }}>{{ $roomss['room_type_name'] }}</option>
+                                           
+                                        @endforeach
+                                    </select>
+
+                                                        <div id="response" style="position: absolute;
+                                                        top: 10%;
+                                                        left: 50%;
+                                                        "></div> -->
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row ">
+
+                                
+
+
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Book On Date </label>
                                             <input type="date" name="booked_on" value="{{ old('starts_at') }}" class="summernote-simple form-control" required>
@@ -184,7 +184,20 @@
                                         </div>
 
 
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Length Of Stay</label>
+                                            <input id="lens" type="number" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
 
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Taxes</label>
+                                            <select class="js-example-basic-single col-sm-12" name="tax_id" id="" required class="form-control selectric">
+                                                <option value="">Select</option>
+                                                @foreach($tax as $taxs)
+                                                <option value="{{ $taxs['id'] }}" {{ (old("tax_id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
 
                                     </div>
 
@@ -193,11 +206,7 @@
 
 
                                     <div class="form-group row ">
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label text-md-right ">Length Of Stay</label>
-                                            <input id="lens" type="number" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
-
-                                        </div>
+                                     
 
                                         <!-- <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Card Type</label>
@@ -211,30 +220,12 @@
 
                                         </div> -->
 
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label text-md-right ">Taxes</label>
-                                            <select class="js-example-basic-single col-sm-12" name="tax_id" id="" required class="form-control selectric">
-                                                <option value="">Select</option>
-                                                @foreach($tax as $taxs)
-                                                <option value="{{ $taxs['id'] }}" {{ (old("tax_id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                  
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Tax Percentage</label>
                                             <input type="number" step="any" name="tax_percentage" value="{{ old('tax_percentage') }}" class="summernote-simple form-control" required>
                                         </div>
-                                    </div>
-
-
-
-
-
-
-
-                                    <div class="form-group row ">
-
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Adults</label>
                                             <input id="toats" name="total_adults" value="{{ old('total_adults') }}" class="summernote-simple form-control toats" readonly>
@@ -252,6 +243,17 @@
                                             <label class="col-form-label text-md-right ">Total Amount</label>
                                             <input id="toamt" name="total_amount" value="{{ old('total_amount') }}" class="summernote-simple form-control toamt" readonly>
                                         </div>
+                                    </div>
+
+
+
+
+
+
+
+                                    <div class="form-group row ">
+
+                                      
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Status</label>
                                             <select class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>

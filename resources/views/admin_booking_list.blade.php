@@ -149,14 +149,14 @@
                                        <!-- <th>Payment Status</th> -->
                                        <th>Booking Amount</th>
                                        <th>Commission Amount</th>
-                                      
+                                      <th>Total Amount</th>
                                         <th>Status Desc</th>
                                         <th>Created At</th>
                                       
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
+                           
                                 {{-- @dd($prodcategories) --}}
                                     @foreach($booking as $bookings )
                                   
@@ -304,7 +304,9 @@
                                      
                                       </td>
                                    
-
+                                      <td>
+                                            {{ $bookings['total_amount'] }}
+                                        </td>
                                         <td>
                                             {{ $bookings['status_desc'] }}
                                         </td>

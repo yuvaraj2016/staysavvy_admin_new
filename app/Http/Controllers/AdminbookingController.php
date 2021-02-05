@@ -277,7 +277,7 @@ class AdminbookingController extends Controller
          "booked_on"=>$booked_on,
 
 
-         "booking_status_id"=>$request->booking_status_id,
+        //  "booking_status_id"=>$request->booking_status_id,
          "length_of_stay"=>$request->length_of_stay,
 
         //  "card_type"=>$request->card_type,
