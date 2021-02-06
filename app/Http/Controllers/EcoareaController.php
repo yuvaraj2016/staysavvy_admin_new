@@ -189,7 +189,7 @@ public function store(Request $request)
     $session = session()->get('token');
 
     $ecoareas=[];
-    $charities=[];
+    $newCharities=[];
   
 
     foreach($request->ecoareas as $ecoarea)
@@ -199,9 +199,11 @@ public function store(Request $request)
     }
     foreach($request->charities as $charitie)
     {
-
-        $charities[] = $charitie;
+        if($charitie !== null)
+        array_push($newCharities, $charitie);
     }
+
+    // dd($newCharities);
     // $ecoareas = rtrim($ecoareas,",");
     // return $ecoareas;
 
@@ -217,7 +219,7 @@ public function store(Request $request)
     [
         "property_id"=>$request->property_id,
         "ecoareas"=>$ecoareas,
-        "charities"=>$charities,
+        "charities"=>$newCharities,
         "description"=>$request->description
         
 

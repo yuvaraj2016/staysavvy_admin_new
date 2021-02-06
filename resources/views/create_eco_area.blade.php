@@ -183,7 +183,7 @@
 
                                                     <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Charity2</label>
-                                                        <select class="js-example-basic-single col-sm-12 form-control selectric" name="charities[]" placeholder="status" required>
+                                                        <select class="js-example-basic-single col-sm-12 form-control selectric" name="charities[]" placeholder="status" >
                                                             <option value="" >Select</option>
                                                             @foreach($confCharity as $confCharitys)
                                                             <option value="{{ $confCharitys['id'] }}" {{ (old("id") == $confCharitys['id'] ? "selected":"") }}>{{ $confCharitys['name'] }}</option>
@@ -197,7 +197,7 @@
 
                                                     <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Charity3</label>
-                                                        <select class="js-example-basic-single col-sm-12 form-control selectric" name="charities[]" placeholder="status" required>
+                                                        <select class="js-example-basic-single col-sm-12 form-control selectric" name="charities[]" placeholder="status" >
                                                             <option value="" >Select</option>
                                                             @foreach($confCharity as $confCharitys)
                                                             <option value="{{ $confCharitys['id'] }}" {{ (old("id") == $confCharitys['id'] ? "selected":"") }}>{{ $confCharitys['name'] }}</option>
@@ -210,7 +210,7 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Charity4</label>
-                                                        <select class="js-example-basic-single col-sm-12 form-control selectric" name="charities[]" placeholder="status" required>
+                                                        <select class="js-example-basic-single col-sm-12 form-control selectric" name="charities[]" placeholder="status" >
                                                             <option value="" >Select</option>
                                                             @foreach($confCharity as $confCharitys)
                                                             <option value="{{ $confCharitys['id'] }}" {{ (old("id") == $confCharitys['id'] ? "selected":"") }}>{{ $confCharitys['name'] }}</option>
