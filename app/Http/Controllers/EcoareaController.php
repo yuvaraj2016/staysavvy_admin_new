@@ -184,7 +184,7 @@ class EcoareaController extends Controller
 
 public function store(Request $request)
 {
-      
+    //   dd($request);
 
     $session = session()->get('token');
 
@@ -204,6 +204,14 @@ public function store(Request $request)
     }
     // $ecoareas = rtrim($ecoareas,",");
     // return $ecoareas;
+
+    // $data =[
+    //     "property_id"=>$request->property_id,
+    //     "ecoareas"=>$ecoareas,
+    //     "charities"=>$charities,
+    //     "description"=>$request->description
+    // ];
+    // dd($data);
     $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/saveSummaryWithSync',
 
     [
@@ -218,13 +226,14 @@ public function store(Request $request)
     //  return $request->all();
 
     if($response->status()===201 || $response->status()===200 ){
-      
+    //   dd($response);
 
 // return $response;
         return redirect()->route('ecoarea.create')->with('success','Property To Ecoareas Successfully Created!');
     }else{
         //  return $response;
 
+        // dd($response);
         $request->flash();
         if(isset($response['errors']))
         {
