@@ -268,7 +268,7 @@ public function store(Request $request)
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/policy/'.$id);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations/'.$id.'?include=ProEcoareas,EcoSummary,Impacts');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -277,13 +277,13 @@ public function store(Request $request)
 
 
         }
-         $policy = $response['data'];
+         $ecoarea = $response['data'];
 
 
 
             return view(
-                'view_policy', compact(
-                    'policy'
+                'view_eco_area', compact(
+                    'ecoarea'
                 )
         );
     }

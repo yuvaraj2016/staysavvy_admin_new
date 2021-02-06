@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
+<style>
+/* .select2-selection__rendered{
+    height: 41px!important;
+} */
 
+
+</style>
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
 <div class="page-wrapper">
 
@@ -95,7 +101,7 @@
 
 
                                                     <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Property To Ecoarea</label>
+                                                        <label class="col-form-label text-md-right "> Eco-Area</label>
                                                         <select class="js-example-basic-single col-sm-12 form-control selectric" name="ecoareas[]" multiple placeholder="status" required>
                                                             <option value="" disabled>Select</option>
                                                             @foreach($confecoarea as $confecoareas)
@@ -114,7 +120,7 @@
                                             <div class="card-body">
                                                 <div class="form-group row">
                                                     <div class="col-md-4 ">
-                                                        <h5 style="padding:10px 10px 10px 10px">Your Eco-summary</h5>
+                                                        <h5 style="padding:10px 10px 10px 10px;margin-left:-9px">Your Eco-summary</h5>
                                                     </div>
 
                                                 </div>
@@ -155,7 +161,7 @@
                                             <div class="card-body">
                                                 <div class="form-group row">
                                                     <div class="col-md-4 ">
-                                                        <h5 style="padding:10px 10px 10px 10px">Eco-Impact</h5>
+                                                        <h5 style="padding:10px 10px 10px 10px;margin-left:-9px">Eco-Impact</h5>
                                                     </div>
 
                                                 </div>
