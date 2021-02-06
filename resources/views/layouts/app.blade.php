@@ -825,7 +825,7 @@ function checkpermissionexist($permissionarray)
                                   <li class="{{ (request()->is('ecoarea_list')) ? 'active' : '' }}" style="margin-right: 80px!important;"> 
                                    
 
-                                   <a  href="{{ route('ecoarea.index') }}">        <span class="pcoded-micon"><i class="fa fa-heart text-white"></i><b>N</b></span>        <span class="pcoded-mtext text-white" data-i18n="nav.navigate.main"><b>Eco Area</b></span>        <span class="pcoded-mcaret"></span>    </a>
+                                   <a  href="{{ route('ecoarea.index') }}" style="background: none !important;">        <span class="pcoded-micon"><i class="fa fa-heart text-white"></i><b>N</b></span>        <span class="pcoded-mtext text-white" data-i18n="nav.navigate.main"><b>Eco Area</b></span>        <span class="pcoded-mcaret"></span>    </a>
                                 
                                   </li>
 

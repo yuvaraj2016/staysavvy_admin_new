@@ -120,10 +120,10 @@
                                                 </div>
                                             <div class="form-group row">
 
-                                                <div class="col-md-4 ">
+                                                <div class="col-md-4 " style="margin-top: -33px;">
 
 
-                                                    <label class="col-form-label text-md-right ">Eco Description (200 words)</label>
+                                                    <label class="col-form-label text-md-right " >Eco Description (200 words)</label>
                                                     <textarea name="description" rows="4" class="summernote-simple form-control" readonly>{{ old('description',$ecoarea['EcoSummary']['data']['description']) }}</textarea>
 
 
@@ -161,7 +161,7 @@ $eco .= $ecoid['name'] . ', ' ;
 
 
                  <div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">Imapact</label>
+                            <label class="col-form-label text-md-right ">Impact</label>
                             
                             <textarea type="text" rows="4" value="   " class="form-control" readonly>{{ $eco }}</textarea>
                           
