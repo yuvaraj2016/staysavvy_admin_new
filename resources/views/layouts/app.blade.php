@@ -823,10 +823,10 @@ function checkpermissionexist($permissionarray)
                                   </li>
 
                                   <li class="{{ (request()->is('ecoarea_list')) ? 'active' : '' }}" style="margin-right: 80px!important;"> 
-                                   
+                                  @if(collect(session('permissions'))->contains('List eco area'))
 
                                    <a  href="{{ route('ecoarea.index') }}" style="background: none !important;">        <span class="pcoded-micon"><i class="fa fa-heart text-white"></i><b>N</b></span>        <span class="pcoded-mtext text-white" data-i18n="nav.navigate.main"><b>Eco Area</b></span>        <span class="pcoded-mcaret"></span>    </a>
-                                
+                                @endif
                                   </li>
 
                               

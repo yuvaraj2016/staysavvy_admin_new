@@ -157,15 +157,15 @@
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
-                                                    <!-- @if(collect(session('permissions'))->contains('List property')) -->
+                                                    @if(collect(session('permissions'))->contains('List eco area'))
                                                     <a href="{{ url('ecoarea/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
-                                                <!-- @endif -->
+                                                @endif
                                                 </li>
                                                     <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
                                                     <li class="list-group-item border1">
-                                                    <!-- @if(collect(session('permissions'))->contains('Update property')) -->
+                                                    @if(collect(session('permissions'))->contains('Update eco area'))
                                                     <a href="{{ url('ecoarea/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                                <!-- @endif -->
+                                                @endif
                                                 </li>
                                            
 
