@@ -148,12 +148,23 @@ class EcoareaController extends Controller
         }
          $confecoarea = $response['data'];
      
+         try{
 
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCharity');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $confCharity = $response['data'];
    
 
          return view(
             'create_eco_area', compact(
-                'property','confecoarea'
+                'property','confecoarea','confCharity'
             )
             );
 
@@ -178,6 +189,7 @@ public function store(Request $request)
     $session = session()->get('token');
 
     $ecoareas=[];
+    $charities=[];
   
 
     foreach($request->ecoareas as $ecoarea)
@@ -185,13 +197,20 @@ public function store(Request $request)
 
         $ecoareas[] = $ecoarea;
     }
+    foreach($request->charities as $charitie)
+    {
+
+        $charities[] = $charitie;
+    }
     // $ecoareas = rtrim($ecoareas,",");
     // return $ecoareas;
-    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/addPropertytoEcoareas',
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/saveSummaryWithSync',
 
     [
         "property_id"=>$request->property_id,
-        "ecoareas"=>$ecoareas
+        "ecoareas"=>$ecoareas,
+        "charities"=>$charities,
+        "description"=>$request->description
         
 
     ]);

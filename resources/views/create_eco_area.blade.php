@@ -77,7 +77,9 @@
                           
 
 
-
+                            <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
 
                             <div class="form-group row ">
                             <div class="col-sm-4 offset-2">
@@ -105,12 +107,81 @@
                                         
                           
                             </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                        <div class="form-group row">
+                                        <div class="col-md-4 ">
+                                            <h5 style="padding:10px 10px 10px 10px">Your Eco-summary</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                        <address>After reviewing the credentials & eco-proof docs, we will summarise the sustainability areas. The hotel can review it
+below and this will appear on their StaySavvy profile. We never write anything negative but they can write to us at
+sam@staysavvy.net if they believe something else should be mentioned or something should be edited.</address>
 
-                               
+                                        </div>
+                                        </div>
+                                            <div class="form-group row">
+
+                                                <div class="col-md-4 ">
+
+
+                                                    <label class="col-form-label text-md-right offset-1">Eco Description (200 words)</label>
+
+
+
+                                                </div>
+                                                <div class="col-md-4 offset-2">
+                                                                                                
+                                                                                                    
+                                                    <textarea name="description" class="summernote-simple form-control"></textarea>
+                                                   
+                                                </div>
+
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
                        
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                        <div class="form-group row">
+                                        <div class="col-md-4 ">
+                                            <h5 style="padding:10px 10px 10px 10px">Eco-Impact</h5>
+                                        </div>
+                                        
+                                        </div>
+                                            <div class="form-group row">
+
+                                            <div class="col-sm-4">
+                                                        <label class="col-form-label text-md-right ">Charity</label>
+                                                        <select  class="js-example-basic-single col-sm-12 form-control selectric" name="charities[]"  multiple placeholder="status" required >
+                                        <option value="" disabled>Select</option>
+                                        @foreach($confCharity as $confCharitys)
+                                        <option value="{{ $confCharitys['id'] }}" {{ (old("id") == $confCharitys['id'] ? "selected":"") }}>{{ $confCharitys['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                                        </div>
+
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
