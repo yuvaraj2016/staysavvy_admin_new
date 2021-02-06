@@ -49,8 +49,7 @@
 
 
 
-                                <form class="dropzone" action="{{route('ecoarea.update',['ecoarea'=>'1']) }}" method="post" id="addprocat" enctype="multipart/form-data">
-                                    @method('PUT')
+                            <form action="{{ route('edit_ecoarea') }}" class="swa-confirm" method="post" id="addstatus" enctype="multipart/form-data">
                                     @csrf
 
                                     @if(session('success') !== null)
@@ -83,7 +82,7 @@
                                     <div class="card">
                                         <div class="card-body">
 
-                                            <h5 style="padding:10px 10px 10px 10px"> {{ old('name',$property['name']) }} Credentials</h5>
+                                            <h5 style="padding:10px 10px 10px 10px;margin-left:-9px"> {{ old('name',$property['name']) }} Credentials</h5>
                                             <input type="hidden" name="property_id" value="{{$property['id']}}">
                                             <div class="form-group row">
 
@@ -136,25 +135,29 @@
                                     <div class="card">
                                         <div class="card-body">
 
-                                            <h5 style="padding:10px 10px 10px 10px">Your Eco-summary</h5>
+                                            <h5 style="padding:10px 10px 10px 10px;margin-left:-9px">Your Eco-summary</h5>
                                             <div class="form-group row">
+                                                    <div class="col-md-12 ">
+                                                        <address>After reviewing the credentials & eco-proof docs, we will summarise the sustainability areas. The hotel can review it
+                                                            below and this will appear on their StaySavvy profile. We never write anything negative but they can write to us at
+                                                            support@staysavvy.net if they believe something else should be mentioned or something should be edited.</address>
+                                                    </div>
+                                                </div>
+                                           <div class="form-group row">
 
                                                 <div class="col-md-4 ">
 
 
-                                                    <label class="col-form-label text-md-right offset-1">Eco Description (200 words)</label>
+                                                    <label class="col-form-label text-md-right">Eco Description (200 words)</label>
 
-
-
-                                                </div>
-                                                <div class="col-md-4 offset-2">
-                                                    <!-- <h5 style="padding:10px 10px 10px 10px">Your Eco-summary</h5> -->
                                                     @if(isset($property['EcoSummary']['data']['description']))
-                                                    <textarea name="description" class="summernote-simple form-control">{{ old('description',$property['EcoSummary']['data']['description']) }}</textarea>
+                                                    <textarea name="description" rows="8" class="summernote-simple form-control">{{ old('description',$property['EcoSummary']['data']['description']) }}</textarea>
                                                     @else
-                                                    <textarea name="description" class="summernote-simple form-control"></textarea>
+                                                    <textarea name="description" rows="8" class="summernote-simple form-control"></textarea>
                                                     @endif
+
                                                 </div>
+                                             
 
 
                                             </div>
@@ -172,7 +175,7 @@
                                     <div class="card">
                                         <div class="card-body">
 
-                                            <h5 style="padding:10px 10px 10px 10px">Eco-Impact</h5>
+                                            <h5 style="padding:10px 10px 10px 10px;margin-left:-9px">Eco-Impact</h5>
                                             <div class="form-group row">
 
 

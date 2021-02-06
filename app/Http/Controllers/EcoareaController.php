@@ -255,6 +255,73 @@ public function store(Request $request)
 
 
 
+public function neweco(Request $request)
+{
+    //   dd($request);
+
+    $session = session()->get('token');
+
+    $ecoareas=[];
+    $charities=[];
+  
+
+    foreach($request->ecoareas as $ecoarea)
+    {
+
+        $ecoareas[] = $ecoarea;
+    }
+    foreach($request->charities as $charitie)
+    {
+
+        $charities[] = $charitie;
+    }
+    // $ecoareas = rtrim($ecoareas,",");
+    // return $ecoareas;
+
+    // $data =[
+    //     "property_id"=>$request->property_id,
+    //     "ecoareas"=>$ecoareas,
+    //     "charities"=>$charities,
+    //     "description"=>$request->description
+    // ];
+    // dd($data);
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/saveSummaryWithSync',
+
+    [
+        "property_id"=>$request->property_id,
+        "ecoareas"=>$ecoareas,
+        "charities"=>$charities,
+        "description"=>$request->description
+        
+
+    ]);
+//  return $response;
+    //  return $request->all();
+
+    if($response->status()===201 || $response->status()===200 ){
+    //   dd($response);
+
+// return $response;
+        return redirect()->back()->with('success',' Ecoareas updated Successfully Created!');
+    }else{
+        //  return $response;
+
+        // dd($response);
+        $request->flash();
+        if(isset($response['errors']))
+        {
+            return redirect()->back()->with('error',$response['errors']);
+        }
+        else if(isset($response['message']))
+        {
+
+            return redirect()->back()->with('errorm',$response['message']);
+        }
+        // return redirect()->route('policies.create')->with('perror',$response['errors']);
+    }
+
+}
+
 
 
     /**
