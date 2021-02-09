@@ -69,7 +69,7 @@
                     <div class="card-header table-card-header">
                         <div class="row">
                             <div class="section-header-button col-md-4">
-                            @if(collect(session('permissions'))->contains('Create eco area'))
+                            @if(collect(session('permissions'))->contains('Create eco summary'))
                                 <a href="{{ route('ecoarea.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
                     background-color: #6777ef;
                     border-color: #6777ef;border-radius:30px">Add New</a>
@@ -157,13 +157,13 @@
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('List eco area'))
+                                                    @if(collect(session('permissions'))->contains('List eco summary'))
                                                     <a href="{{ url('ecoarea/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
                                                 @endif
                                                 </li>
                                                     <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
                                                     <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('Update eco area'))
+                                                    @if(collect(session('permissions'))->contains('Update eco summary'))
                                                     <a href="{{ url('ecoarea/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                                 @endif
                                                 </li>
