@@ -90,9 +90,9 @@
                                                 
 
                                                     <div class="col-sm-4 offset-4">
-                                                        <label class="col-form-label text-md-right"> Description</label>
+                                                        <label class="col-form-label text-md-right"> Name</label>
                                                       
-                                                            <textarea name="desc" class="summernote-simple form-control" required>{{ old('desc',$reward['desc']) }}</textarea>
+                                                            <textarea name="name" class="summernote-simple form-control" required>{{ old('name',$reward['name']) }}</textarea>
                                                         </div>
                                                     </div>
                         

@@ -123,7 +123,7 @@
                                 <thead>
                                     <tr>
                                       
-                                    <th>Description</th>
+                                    <th>Name</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
                                     </tr>
@@ -138,7 +138,7 @@
 
                                     <tr>
                                     <td>
-                                            {{ $rewards['desc'] }}
+                                            {{ $rewards['name'] }}
                                         </td>
 
                                    

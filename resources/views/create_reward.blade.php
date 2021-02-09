@@ -105,9 +105,9 @@
 
                              
                             <div class="col-sm-4 offset-4">
-                                <label class="col-form-label text-md-right c">Description</label>
+                                <label class="col-form-label text-md-right c">Name</label>
                                 
-                                    <input name="desc" value="{{ old('desc') }}" class="summernote-simple form-control" required>
+                                    <input name="desc" value="{{ old('name') }}" class="summernote-simple form-control" required>
                                
                             </div>
                      

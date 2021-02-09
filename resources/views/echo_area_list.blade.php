@@ -69,11 +69,11 @@
                     <div class="card-header table-card-header">
                         <div class="row">
                             <div class="section-header-button col-md-4">
-                 
+                            @if(collect(session('permissions'))->contains('Create eco area'))
                                 <a href="{{ route('ecoarea.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
                     background-color: #6777ef;
                     border-color: #6777ef;border-radius:30px">Add New</a>
-                      
+                      @endif
                             </div>
                             <div class="section-header-button col-md-5">
 

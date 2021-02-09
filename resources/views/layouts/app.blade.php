@@ -810,8 +810,9 @@ function checkpermissionexist($permissionarray)
                           
                             <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }}" style="margin-right: 80px!important;"> 
                                    
-
+                            @if(collect(session('permissions'))->contains('List booking'))
                                      <a  href="{{ route('adminbookings.index') }}">        <span class="pcoded-micon"><i class="fa fa-cubes text-white"></i><b>N</b></span>        <span class="pcoded-mtext text-white" data-i18n="nav.navigate.main"><b>Booking</b></span>        <span class="pcoded-mcaret"></span>    </a>
+                                  @endif
                                   
                                     </li>
 
@@ -1087,6 +1088,17 @@ function checkpermissionexist($permissionarray)
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                                 @endif
+                                            </li>
+
+                                            <li class="">
+                                            <!-- @if(collect(session('permissions'))->contains('List config payment status')) -->
+
+                                                <a class=" {{ (request()->is('reward_list')) ? 'active' : '' }}" href="{{ route('reward.index') }}" data-i18n="nav.email.inbox">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext">Reward Status</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                <!-- @endif -->
                                             </li>
                                          
                                         

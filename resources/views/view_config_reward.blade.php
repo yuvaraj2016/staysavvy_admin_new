@@ -72,8 +72,8 @@
                                                     <div class="form-group row">
 
 <div class="col-sm-4 offset-2">
-                            <label class="col-form-label text-md-right ">Description</label>
-                            <input type="text"  value="   {{ $reward['desc'] }}" class="form-control" readonly>
+                            <label class="col-form-label text-md-right ">Name</label>
+                            <input type="text"  value="   {{ $reward['name'] }}" class="form-control" readonly>
                             </div>
                            
                             <div class="col-sm-4 ">
