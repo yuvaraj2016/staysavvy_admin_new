@@ -902,7 +902,7 @@ margin-top: 0px !important;
                                 <ul class="pcoded-submenu">
                                     <li class="">
                                         @if(collect(session('permissions'))->contains('List eco summary'))
-                                        <a class=" {{ (request()->is('ecoarea_list')) ? 'active' : '' }}" href="{{ route('ecoarea.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Eco Imapact</span> <span class="pcoded-mcaret"></span> </a>
+                                        <a class=" {{ (request()->is('ecoarea_list')) ? 'active' : '' }}" href="{{ route('ecoarea.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Eco Impact</span> <span class="pcoded-mcaret"></span> </a>
                                         @endif
                                     </li>
                                     <li class="">

@@ -129,8 +129,11 @@
                                       
                                     <th>Name</th>
                                         <th>Address</th>
-                                        <th>Active Reward</th>
+                                        <th>Current Reward</th>
+                                        <th style="display: none;"></th>
+                                        @if(collect(session('permissions'))->contains('Update vendor reward'))
                                         <th>Actions</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -156,7 +159,7 @@
                                         </td>
 @else
 <td class="">
-N/A
+No Reward Configurate
                                         </td>
 
 
@@ -174,9 +177,9 @@ N/A
                                                 <!-- </li> -->
                                                     <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
                                                     <li class="list-group-item border1">
-                                                    <!-- @if(collect(session('permissions'))->contains('Update amenity')) -->
+                                                    @if(collect(session('permissions'))->contains('Update vendor reward'))
                                                     <a href="{{ url('ecoreward/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                                <!-- @endif -->
+                                                @endif
                                                 </li>
                                            
 
