@@ -26,7 +26,7 @@ class RewardController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCharity?page='.$page);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRewardStatus?page='.$page);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -88,11 +88,11 @@ class RewardController extends Controller
         $session = session()->get('token');
 
 
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confCharity',
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/confRewardStatus',
 
         [
 
-            "name"=>$request->name,
+            "name"=>$request->name
             // "total_credits"=>$request->total_credits,
            
             // "status_id"=>$request->status_id,
@@ -121,7 +121,7 @@ class RewardController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCharity/'.$id);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRewardStatus/'.$id);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -164,7 +164,7 @@ class RewardController extends Controller
         // }
         //  $statuses = $response['data'];
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCharity/' . $id);
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRewardStatus/' . $id);
 
        
      
@@ -193,7 +193,7 @@ class RewardController extends Controller
     {
         $session = session()->get('token');
       
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/confCharity/'.$id, 
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/confRewardStatus/'.$id, 
         [
             "_method"=> 'PUT',
             "name"=>$request->name,
@@ -224,7 +224,7 @@ class RewardController extends Controller
     {
         $session = session()->get('token');
 
-        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/configRewardStatus/'.$id);
+        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->delete(config('global.url').'api/confRewardStatus/'.$id);
 
         if($response->status()==204){
 
