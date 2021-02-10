@@ -19,7 +19,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Reward List</h4>
+                        <h4>Eco Reward List</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('reward.index') }}">Reward List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('ecoreward.index') }}">Eco Reward List</a>
                         </li>
 
                     </ul>
@@ -42,6 +42,8 @@
         </div>
     </div>
     <div class="page-body">
+
+ 
         <div class="row">
             <!-- @if(session('success') !== null)
             <div class='alert alert-success'>
@@ -52,15 +54,17 @@
             <div class="col-sm-12">
                 <!-- HTML5 Export Buttons table start -->
                 <div class="card">
-
+           
                     <div class="card-header table-card-header">
+      
                         <div class="row">
+                        
                             <div class="section-header-button col-md-4">
-                            @if(collect(session('permissions'))->contains('Create config reward status'))
-                                <a href="{{ route('reward.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
+                            <!-- @if(collect(session('permissions'))->contains('Create amenity')) -->
+                                <!-- <a href="{{ route('ecoreward.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
                     background-color: #6777ef;
-                    border-color: #6777ef;border-radius:30px">Add New</a>
-                    @endif
+                    border-color: #6777ef;border-radius:30px">Add New</a> -->
+                    <!-- @endif -->
                             </div>
                             <div class="section-header-button col-md-5">
 
@@ -68,7 +72,7 @@
                             <div class="section-header-button col-md-3 ">
                                 <div class="col">
                                 <ul id="pagination" class="float-right m-0 p-0">
-                                        <li><a href="{{ route('reward.index',$page=1) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
+                                        <li><a href="{{ route('ecoreward.index',$page=1) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
                                         @php
                                         if(isset($pagination['links']['previous']))
                                         {
@@ -77,7 +81,7 @@
                                         $page = $endurl[1];
 
                                         @endphp
-                                        <li><a href="{{ route('reward.index',$page) }}" class="btn btn-primary">Previous</a></li>
+                                        <li><a href="{{ route('ecoreward.index',$page) }}" class="btn btn-primary">Previous</a></li>
                                         @php
                                         }
                                         @endphp
@@ -92,7 +96,7 @@
                                         $page = $endurl[1];
                                         // echo
                                         @endphp
-                                        <li> <a href="{{ route('reward.index',$page) }}" class="btn btn-primary">Next</a></li>
+                                        <li> <a href="{{ route('ecoreward.index',$page) }}" class="btn btn-primary">Next</a></li>
                                         @php
                                         }
 
@@ -102,7 +106,7 @@
                                         if($pagination['total_pages']>1)
                                         {
                                         @endphp
-                                        <li> <a href="{{ route('reward.index',$pagination['total_pages']) }}" class="btn btn-primary float-right">Last</a> </li>
+                                        <li> <a href="{{ route('ecoreward.index',$pagination['total_pages']) }}" class="btn btn-primary float-right">Last</a> </li>
 
                                         @php
                                         }
@@ -124,56 +128,71 @@
                                     <tr>
                                       
                                     <th>Name</th>
-                                        <th>Created At</th>
+                                        <th>Address</th>
+                                        <th>Active Reward</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                 {{-- @dd($prodcategories) --}}
-                                    @foreach($reward as $rewards )
+                                    @foreach($ecoreward as $rewards )
                                     @php
                                     $id=$rewards['id'];
                                     @endphp
 
                                     <tr>
-                                    <td>
+                                   <td class="">
                                             {{ $rewards['name'] }}
                                         </td>
+                                        <td class="">
+                                            {{ $rewards['address'] }}
+                                        </td>
 
-                                   
+                                     
+                                        @if(isset($rewards['ActiveRewards']['data'][0]['reward_name'] ))
+                                        <td class="">
+                                            {{ $rewards['ActiveRewards']['data'][0]['reward_name'] }}
+                                        </td>
+@else
+<td class="">
+N/A
+                                        </td>
 
 
-                                        <td>{{ date("Y-m-d H:i:s",$rewards['created_at']) }}</td>
+                                        @endif
+
+
+                                        
                                         <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
-                                                    <li class="list-group-item border1">
+                                                    <!-- <li class="list-group-item border1"> -->
                                                     <!-- @if(collect(session('permissions'))->contains('List amenity')) -->
-                                                    <a href="{{ url('reward/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
+                                                    <!-- <a href="{{ url('ecoreward/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a> -->
                                                 <!-- @endif -->
-                                                </li>
+                                                <!-- </li> -->
                                                     <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
                                                     <li class="list-group-item border1">
                                                     <!-- @if(collect(session('permissions'))->contains('Update amenity')) -->
-                                                    <a href="{{ url('reward/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{ url('ecoreward/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                                 <!-- @endif -->
                                                 </li>
                                            
 
-                                                    <li class="list-group-item border1">
+                                                    <!-- <li class="list-group-item border1">
                                                     <form id="delete_from_{{$rewards['id']}}" method="POST" action="{{route('reward.destroy', $rewards['id']) }}">
                     {{ csrf_field() }}
     {{ method_field('DELETE') }}
 
-    <div class="form-group">
+    <div class="form-group"> -->
     <!-- @if(collect(session('permissions'))->contains('Delete amenity')) -->
-        <a href="javascript:void(0);" data-id="{{$rewards['id']}}" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">
+        <!-- <a href="javascript:void(0);" data-id="{{$rewards['id']}}" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">
         <i class="fa fa-trash" style="position: relative;top:-5;color:#01a9ac"></i>
-        </a>  
+        </a>   -->
         <!-- @endif                   -->
-    </div>
-</form></li>
+    <!-- </div>
+</form></li> -->
                                                     <!-- <li class="list-group-item border1 btn-delete"><a href="{{ url('status/'.$id) }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Audit"><i class="fa fa-calculator"></i></a></li> -->
                                                 </ul>
 

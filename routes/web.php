@@ -109,6 +109,13 @@ Route::resource('ecoarea', 'EcoareaController')->except('index')->middleware('ch
 Route::get('ecoarea_list/{page?}','EcoareaController@index')->name('ecoarea.index')->middleware('checktoken');
 
 
+
+
+Route::resource('ecoreward', 'EcorewardController')->except('index')->middleware('checktoken');
+
+Route::get('eco_reward_list/{page?}','EcorewardController@index')->name('ecoreward.index')->middleware('checktoken');
+
+
 Route::post('edit_ecoarea', 'EcoareaController@neweco')->name('edit_ecoarea')->middleware('checktoken');
 
 

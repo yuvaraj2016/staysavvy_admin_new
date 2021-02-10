@@ -123,7 +123,16 @@
 
 
                                                             <label class="col-form-label text-md-right ">Eco Description (200 words)</label>
+                                                            @if(isset($ecoarea['EcoSummary']['data']['description']))
                                                             <textarea name="description" rows="4" class="summernote-simple form-control" readonly>{{ old('description',$ecoarea['EcoSummary']['data']['description']) }}</textarea>
+                                            @else
+                                            <textarea name="description" rows="4" class="summernote-simple form-control" readonly></textarea>
+                                           
+                                            @endif
+                                                          
+                                                          
+                                                          
+                                                           
 
 
                                                         </div>
@@ -163,12 +172,7 @@
                                                         </div>
 
 
-                                                        <!-- <div class="col-sm-4 ">
-                                                            <label class="col-form-label text-md-right ">Impact</label> -->
-
-                                                            <!-- <textarea type="text" rows="4" value="   " class="form-control" readonly>{{$ecoid['name'] }}</textarea> -->
-
-                                                        <!-- </div> -->
+                                                       
 
 
 
