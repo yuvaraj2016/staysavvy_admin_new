@@ -141,7 +141,7 @@ class EcorewardController extends Controller
         // }
         //  $statuses = $response['data'];
        
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations/' . $id.'?include=ActiveRewards');
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations/' . $id.'?include=ActiveRewards,UserRewards');
 
        
      
@@ -159,6 +159,40 @@ class EcorewardController extends Controller
         }
     }
 
+    public function userreward($id)
+    {
+      
+        $session = session()->get('token');
+
+        try{
+
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRewardStatus');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $user = $response['data'];
+
+             
+        $response1 = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations/' . $id.'?include=ActiveRewards,UserRewards');
+                
+
+        if($response1->ok()){
+
+            $rewards =   $response1->json()['data']['UserRewards']['data'][0];
+
+            //  return $rewards;
+
+            return view('user_reward', compact(
+               'rewards','user'
+            ));
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -166,6 +200,33 @@ class EcorewardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function newreward(Request $request, $id)
+    {
+        $session = session()->get('token');
+
+       
+      
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/confRewardStatus/'.$id, 
+        [
+            "_method"=> 'PUT',
+            "name"=>$request->name
+          
+        ]
+        
+      );
+
+      
+        if($response->status()===200){
+            return redirect()->route('user_reward')->with('success','Eco Area Updated Successfully!');
+        }else{
+            return redirect()->route('user_reward')->with('error',$response->json()['message']);
+        }
+
+    }
+
+
+
+
     public function update(Request $request, $id)
     {
         $session = session()->get('token');
