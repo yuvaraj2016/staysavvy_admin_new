@@ -71,6 +71,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="card">
+                                                    
+                                    @if(count($ecoarea['ProEcoareas']['data'])>0)
+
                                                 <div class="card-body">
 
                                                     <h5 style="padding:10px 10px 10px 10px;margin-left:-9px"> {{ old('name',$ecoarea['name']) }} Credentials</h5>
@@ -181,6 +184,11 @@
 
 
                                                 </div>
+
+                                                @else
+                                        <p class="text-center text-bold"> No Record Found Please Contact Admin</p>
+
+                                    @endif
                                             </div>
                                         </div>
                                     </div>

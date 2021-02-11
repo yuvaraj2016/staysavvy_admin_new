@@ -708,8 +708,8 @@ margin-top: 0px !important;
 
                                     </div>
                                     <div class="col-sm-3 mt-2 ml-3 text-center">
-                                        <p class="" style="font-weight: bold!important;margin-left:44px"><b>TEWIN BERY FORM HOTEL</b></p><br>
-                                        <p class="" style="font-weight: bold!important;margin-left:44px;margin-top:-31px"><b>Stay Savvy Account</b></p>
+                                        <!-- <p class="" style="font-weight: bold!important;margin-left:44px"><b>TEWIN BERY FORM HOTEL</b></p><br>
+                                        <p class="" style="font-weight: bold!important;margin-left:44px;margin-top:-31px"><b>Stay Savvy Account</b></p> -->
 
 
                                     </div>
@@ -757,11 +757,12 @@ margin-top: 0px !important;
                     </div>
 
                     <div class="pcoded-inner-navbar" style="background:#1B476B;">
-                        <ul class="pcoded-item pcoded-left-item col-md-12 " style="margin-left: 16.666667% !important;">
-                            <li class="pcoded-hasmenu offset-2" style="margin-right: 90px!important;">
+                        <ul class="pcoded-item pcoded-left-item col-md-12 " style="margin-left: 2.666667% !important;">
+                            <li class="pcoded-hasmenu col-md-2" >
+                            <!-- style="margin-right: 90px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-user text-white" style="margin-left: -19px;"></i></span>
-                                    <span class="pcoded-mtext text-white"><b>Users</b></span>
+                                    <span class="pcoded-mtext text-white offset-4"><b>Users</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
@@ -836,10 +837,11 @@ margin-top: 0px !important;
                             </li>
 
 
-                            <li class="pcoded-hasmenu" style="margin-right: 80px!important;">
+                            <li class="pcoded-hasmenu col-md-2" >
+                            <!-- style="margin-right: 80px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-flag text-white"></i></span>
-                                    <span class="pcoded-mtext text-white"><b>Property</b></span>
+                                    <span class="pcoded-mtext text-white offset-4"><b>Property</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
@@ -864,28 +866,30 @@ margin-top: 0px !important;
                             </li>
 
 
-                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }}" style="margin-right: 80px!important;">
+                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }} col-md-2" >
+                            <!-- style="margin-right: 80px!important;" -->
 
                                 @if(collect(session('permissions'))->contains('List booking'))
-                                <a href="{{ route('adminbookings.index') }}"> <span class="pcoded-micon"><i class="fa fa-cubes text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white" data-i18n="nav.navigate.main"><b>Booking</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href="{{ route('adminbookings.index') }}"> <span class="pcoded-micon"><i class="fa fa-cubes text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white offset-4" data-i18n="nav.navigate.main"><b>Booking</b></span> <span class="pcoded-mcaret"></span> </a>
                                 @endif
 
                             </li>
 
-                            <li class="" style="margin-right: 80px!important;">
+                            <li class=" col-md-2" >
+                            <!-- style="margin-right: 80px!important;" -->
 
-
-                                <a href=""> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white" data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href=""> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white offset-4" data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
 
                             </li>
 
 
 
 
-                            <li class="pcoded-hasmenu" style="margin-right: 80px!important;">
+                            <li class="pcoded-hasmenu col-md-2" >
+                            <!-- style="margin-right: 80px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-heart text-white"></i></span>
-                                    <span class="pcoded-mtext text-white"><b>Eco</b></span>
+                                    <span class="pcoded-mtext text-white offset-4"><b>Eco</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <!-- <ul class="pcoded-submenu">
@@ -918,10 +922,10 @@ margin-top: 0px !important;
 
 
                             @if(collect(session('roles'))->contains('Administrator'))
-                            <li class="pcoded-hasmenu">
+                            <li class="pcoded-hasmenu col-md-1">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
-                                    <span class="pcoded-mtext text-white"><b>Config</b></span>
+                                    <span class="pcoded-mtext text-white offset-2"><b>Config</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
