@@ -757,12 +757,12 @@ margin-top: 0px !important;
                     </div>
 
                     <div class="pcoded-inner-navbar" style="background:#1B476B;">
-                        <ul class="pcoded-item pcoded-left-item col-md-12 " style="margin-left: 2.666667% !important;">
-                            <li class="pcoded-hasmenu col-md-2" >
+                        <ul class="pcoded-item pcoded-left-item col-md-12 " style="margin-left: 22.666667% !important;">
+                            <li class="pcoded-hasmenu col-md-1" >
                             <!-- style="margin-right: 90px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-user text-white" style="margin-left: -19px;"></i></span>
-                                    <span class="pcoded-mtext text-white offset-4"><b>Users</b></span>
+                                    <span class="pcoded-mtext text-white "><b>Users</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
@@ -837,11 +837,11 @@ margin-top: 0px !important;
                             </li>
 
 
-                            <li class="pcoded-hasmenu col-md-2" >
+                            <li class="pcoded-hasmenu col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-flag text-white"></i></span>
-                                    <span class="pcoded-mtext text-white offset-4"><b>Property</b></span>
+                                    <span class="pcoded-mtext text-white "><b>Property</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
@@ -866,30 +866,30 @@ margin-top: 0px !important;
                             </li>
 
 
-                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }} col-md-2" >
+                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }} col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
 
                                 @if(collect(session('permissions'))->contains('List booking'))
-                                <a href="{{ route('adminbookings.index') }}"> <span class="pcoded-micon"><i class="fa fa-cubes text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white offset-4" data-i18n="nav.navigate.main"><b>Booking</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href="{{ route('adminbookings.index') }}"> <span class="pcoded-micon"><i class="fa fa-cubes text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Booking</b></span> <span class="pcoded-mcaret"></span> </a>
                                 @endif
 
                             </li>
 
-                            <li class=" col-md-2" >
+                            <li class=" col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
 
-                                <a href=""> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white offset-4" data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href=""> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
 
                             </li>
 
 
 
 
-                            <li class="pcoded-hasmenu col-md-2" >
+                            <li class="pcoded-hasmenu col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-heart text-white"></i></span>
-                                    <span class="pcoded-mtext text-white offset-5"><b>Eco</b></span>
+                                    <span class="pcoded-mtext text-white offset-3"><b>Eco</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <!-- <ul class="pcoded-submenu">
