@@ -13,6 +13,11 @@
     <!-- Meta -->
     <style>
         /* start newmenu css written below on 03.02.2021 */
+/* user down arrow removed */
+.dropdown-toggle::after {
+
+    content: none!important;
+        }
 
         .pcoded .pcoded-navbar .pcoded-item .pcoded-hasmenu[subitem-icon="style1"] .pcoded-submenu li>a .pcoded-mtext::before {
             content: none !important;
@@ -645,12 +650,12 @@ margin-top: 0px !important;
 
                 <nav class="pcoded-navbar">
                     <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;background:white!important;">
-                        <div style="margin-left:10px!important; width:15%!important;float:left; margin-top:10px;">
+                        <div style="margin-left:10px!important; width:16%!important;float:left; margin-top:10px;">
                             <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" width="210px" height="auto" /></a>
                         </div>
 
                         <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
-                            <div class="mt-3 col-md-12" style="background-color:#1BF0B7; border-radius:20px; height:65%!important;font-weight:bold;width:1014px;">
+                            <div class="mt-3 col-md-12" style="background-color:#1BF0B7; border-radius:20px; height:75%!important;font-weight:bold;width:1014px;">
                                 @if(collect(session('roles'))->contains('Administrator'))
 
 
@@ -709,7 +714,7 @@ margin-top: 0px !important;
                                 @elseif(collect(session('roles'))->contains('Vendor'))
 
 
-                                <div class="row pb-2">
+                                <div class="row">
                                     <div class="col-sm-6"></div>
                                     <div class="col-sm-1 ">
                                         <!-- <a class="d-inline" href="#">
@@ -723,15 +728,15 @@ margin-top: 0px !important;
                                         </a> -->
 
                                     </div>
-                                    <div class="col-sm-3 mt-2 ml-3 text-center">
+                                    <div class="col-sm-3 mt-2 ml-2 text-center">
                                         <!-- <p class="" style="font-weight: bold!important;margin-left:44px"><b>TEWIN BERY FORM HOTEL</b></p><br>
                                         <p class="" style="font-weight: bold!important;margin-left:44px;margin-top:-31px"><b>Stay Savvy Account</b></p> -->
 
 
                                     </div>
-                                    <div class="col-sm-1 d-flex mt-2">
-                                        <a class="d-inline" href="#">
-                                            <i class="fa fa-question-circle" style="margin-left:5px!important;color:#1B476B!important;font-size:40px!important;"></i>
+                                    <div class="col-sm-1 d-flex mt-3">
+                                    <a class="d-inline" href="#">
+                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
 
                                         </a>
 
@@ -740,8 +745,8 @@ margin-top: 0px !important;
                                           
                                         </a> -->
                                         <li class="nav-item dropdown" style="list-style: none;">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1B476B!important;">
-                                                <i class="fa fa-user-circle-o" style="margin-left:2px!important;font-size:35px!important;margin-top:-7px!important; color:#1B476B!important;">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 15px;">
+                                                <i class="fa fa-user-circle-o" style="margin-left:-5px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
 
                                                 </i>
                                                 {{ ucfirst(session('username')) }}
