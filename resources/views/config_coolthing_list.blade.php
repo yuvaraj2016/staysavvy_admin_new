@@ -136,13 +136,14 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Name</th>
                                     <!-- <th>Percentage</th>
                                     <th>Amount</th> -->
                                     <th>Images</th>
                                     <th>Status Desc</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                      
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -155,17 +156,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $coolthings['name'] }}
-                                        </td>
-                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($coolthings['Assets']['data'][0]['links']) ? $coolthings['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
-
-                                        <td>
-                                            {{ $coolthings['status_desc'] }}
-                                        </td>
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$coolthings['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -200,6 +190,18 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $coolthings['name'] }}
+                                        </td>
+                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($coolthings['Assets']['data'][0]['links']) ? $coolthings['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
+
+                                        <td>
+                                            {{ $coolthings['status_desc'] }}
+                                        </td>
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$coolthings['created_at']) }}</td>
+                                 
                                     </tr>
 
 

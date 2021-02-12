@@ -136,11 +136,12 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Name</th>
                                     <th>Description</th>
                                     <th>Status Desc</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -153,20 +154,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $centralsystem['name'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $centralsystem['description'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $centralsystem['status_desc'] }}
-                                        </td>
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$centralsystem['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -201,6 +188,21 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $centralsystem['name'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $centralsystem['description'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $centralsystem['status_desc'] }}
+                                        </td>
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$centralsystem['created_at']) }}</td>
+                                     
                                     </tr>
 
 

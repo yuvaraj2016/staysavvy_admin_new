@@ -115,10 +115,11 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Eco Name</th>
                                     <th>Eco Image</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -131,14 +132,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $Highlights['name'] }}
-                                        </td>
-                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($Highlights['Assets']['data'][0]['links']) ? $Highlights['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
-                                     
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$Highlights['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <!-- <li class="list-group-item border1"> -->
@@ -173,6 +166,15 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $Highlights['name'] }}
+                                        </td>
+                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($Highlights['Assets']['data'][0]['links']) ? $Highlights['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
+                                     
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$Highlights['created_at']) }}</td>
+                                    
                                     </tr>
 
 

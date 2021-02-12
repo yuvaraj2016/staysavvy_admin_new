@@ -122,10 +122,10 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
-                                      
+                                    <th>Actions</th>
                                     <th>Name</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -138,14 +138,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $rewards['name'] }}
-                                        </td>
-
-                                   
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$rewards['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -180,6 +172,15 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $rewards['name'] }}
+                                        </td>
+
+                                   
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$rewards['created_at']) }}</td>
+                               
                                     </tr>
 
 

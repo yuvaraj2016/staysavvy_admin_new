@@ -136,11 +136,12 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Name</th>
                                     <th>Total Credits</th>
                                     <th>Status Desc</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                      
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -153,20 +154,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $configreviews['name'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $configreviews['total_credits'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $configreviews['status_desc'] }}
-                                        </td>
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$configreviews['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -201,6 +188,21 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $configreviews['name'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $configreviews['total_credits'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $configreviews['status_desc'] }}
+                                        </td>
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$configreviews['created_at']) }}</td>
+                                 
                                     </tr>
 
 

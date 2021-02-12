@@ -137,11 +137,12 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Policy Name</th>
                                  
                                     <th>Status</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -154,17 +155,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $configpoliciess['name'] }}
-                                        </td>
-
-                                     
-                                       
-                                        <td>
-                                            {{ $configpoliciess['status_desc'] }}
-                                        </td>
-
-                                        <td>{{ date("Y-m-d H:i:s",$configpoliciess['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -199,6 +189,18 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $configpoliciess['name'] }}
+                                        </td>
+
+                                     
+                                       
+                                        <td>
+                                            {{ $configpoliciess['status_desc'] }}
+                                        </td>
+
+                                        <td>{{ date("Y-m-d H:i:s",$configpoliciess['created_at']) }}</td>
+                                       
                                     </tr>
 
 

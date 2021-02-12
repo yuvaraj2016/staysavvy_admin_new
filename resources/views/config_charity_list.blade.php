@@ -136,11 +136,12 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Name</th>
                                     <!-- <th>Reference</th> -->
                                     <th>Eco Area Desc</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                     
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -153,18 +154,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $Charitys['name'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $Charitys['eco_area'] }}
-                                        </td>
-
-                                    
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$Charitys['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -199,6 +188,19 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $Charitys['name'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $Charitys['eco_area'] }}
+                                        </td>
+
+                                    
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$Charitys['created_at']) }}</td>
+                                     
                                     </tr>
 
 

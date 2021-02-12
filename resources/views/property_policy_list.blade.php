@@ -136,6 +136,7 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Property Name</th>
                                         {{-- <th>Address</th>  --}}
                                         <th>Area</th> 
@@ -143,7 +144,7 @@
                                          <th>Policy Status</th>
                                      
                                  
-                                        <th>Actions</th>
+                                     
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -155,6 +156,25 @@
                                     @endphp
 
                                     <tr>
+                                    <td>
+                                            <div class="d-flex">
+                                                <ul class="list-group list-inline ml-1">
+                                                    <li class="list-group-item border1">
+                                                    @if(collect(session('permissions'))->contains('List policy'))
+                                                    <a href="{{ url('policy_list/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="Edit Policies" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;Edit Policies</a>
+                                                @endif
+                                                </li>
+                                              
+                                           
+
+                                  
+</form></li>
+                                                    <!-- <li class="list-group-item border1 btn-delete"><a href="{{ url('status/'.$id) }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Audit"><i class="fa fa-calculator"></i></a></li> -->
+                                                </ul>
+
+
+                                            </div>
+                                        </td>
                                        <td>
                                             {{ $property['name'] }}
                                         </td>
@@ -177,25 +197,7 @@
 
 
                                         {{-- <td>{{ date("Y-m-d H:i:s",$property['created_at']) }}</td> --}}
-                                        <td>
-                                            <div class="d-flex">
-                                                <ul class="list-group list-inline ml-1">
-                                                    <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('List policy'))
-                                                    <a href="{{ url('policy_list/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="Edit Policies" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;Edit Policies</a>
-                                                @endif
-                                                </li>
-                                              
-                                           
-
-                                  
-</form></li>
-                                                    <!-- <li class="list-group-item border1 btn-delete"><a href="{{ url('status/'.$id) }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Audit"><i class="fa fa-calculator"></i></a></li> -->
-                                                </ul>
-
-
-                                            </div>
-                                        </td>
+                                       
                                     </tr>
 
 

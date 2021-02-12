@@ -137,13 +137,14 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Property Name</th>
                                     <th>From</th>
                                     <th>To</th>
                                     <th>Percentage</th>
                                     <th>Status</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -156,25 +157,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $configcommissions['property_name'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $configcommissions['from'] }}
-                                        </td>
-                                        <td>
-                                            {{ $configcommissions['to'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $configcommissions['percentage'] }}
-                                        </td>
-                                        <td>
-                                            {{ $configcommissions['status_desc'] }}
-                                        </td>
-
-                                        <td>{{ date("Y-m-d H:i:s",$configcommissions['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -209,6 +191,26 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $configcommissions['property_name'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $configcommissions['from'] }}
+                                        </td>
+                                        <td>
+                                            {{ $configcommissions['to'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $configcommissions['percentage'] }}
+                                        </td>
+                                        <td>
+                                            {{ $configcommissions['status_desc'] }}
+                                        </td>
+
+                                        <td>{{ date("Y-m-d H:i:s",$configcommissions['created_at']) }}</td>
+                                     
                                     </tr>
 
 

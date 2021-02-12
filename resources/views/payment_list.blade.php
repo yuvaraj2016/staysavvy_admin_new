@@ -136,10 +136,11 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Title</th>
                                     <th>Payment Status Desc</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                      
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -152,16 +153,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $payments['title'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $payments['payment_status_desc'] }}
-                                        </td>
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$payments['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -196,6 +187,17 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $payments['title'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $payments['payment_status_desc'] }}
+                                        </td>
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$payments['created_at']) }}</td>
+                                       
                                     </tr>
 
 

@@ -134,13 +134,14 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Name</th>
                                     <!-- <th>Percentage</th>
                                     <th>Amount</th> -->
                                     <th>Description</th>
                                     <th>Status Desc</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -153,19 +154,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $propmanags['name'] }}
-                                        </td>
-
-
-                                        <td>
-                                            {{ $propmanags['description'] }}
-                                        </td>
-                                        <td>
-                                            {{ $propmanags['status_desc'] }}
-                                        </td>
-
-                                        <td>{{ date("Y-m-d H:i:s",$propmanags['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -200,6 +188,20 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $propmanags['name'] }}
+                                        </td>
+
+
+                                        <td>
+                                            {{ $propmanags['description'] }}
+                                        </td>
+                                        <td>
+                                            {{ $propmanags['status_desc'] }}
+                                        </td>
+
+                                        <td>{{ date("Y-m-d H:i:s",$propmanags['created_at']) }}</td>
+                                        
                                     </tr>
 
 

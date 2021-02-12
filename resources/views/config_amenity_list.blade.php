@@ -136,12 +136,13 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                         <th>Name</th>
                                     <th>Location</th>
                                     <th>Images</th>
                                     <th>Status Desc</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -154,21 +155,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $amenitys['name'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $amenitys['location'] }}
-                                        </td>
-                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($amenitys['Assets']['data'][0]['links']) ? $amenitys['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
-
-                                        <td>
-                                            {{ $amenitys['status_desc'] }}
-                                        </td>
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$amenitys['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -203,6 +189,22 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $amenitys['name'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $amenitys['location'] }}
+                                        </td>
+                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($amenitys['Assets']['data'][0]['links']) ? $amenitys['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
+
+                                        <td>
+                                            {{ $amenitys['status_desc'] }}
+                                        </td>
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$amenitys['created_at']) }}</td>
+                                    
                                     </tr>
 
 

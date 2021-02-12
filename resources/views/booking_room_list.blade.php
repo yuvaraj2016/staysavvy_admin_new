@@ -136,6 +136,7 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
+                                    <th>Actions</th>
                                     <th>Room Type Name</th>
                                         <th>Room Type Code</th>
                                         
@@ -147,7 +148,7 @@
                                        
                                     <th>Status Desc</th>
                                         <th>Created At</th>
-                                        <th>Actions</th>
+                                      
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -160,25 +161,6 @@
 
                                     <tr>
                                     <td>
-                                            {{ $roomtypes['name'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $roomtypes['code'] }}
-                                        </td>
-                                        <td>
-                                            {{ $roomtypes['description'] }}
-                                        </td>
-
-                                        
-
-                                        <td>
-                                            {{ $roomtypes['status_desc'] }}
-                                        </td>
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$roomtypes['created_at']) }}</td>
-                                        <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
@@ -213,6 +195,26 @@
 
                                             </div>
                                         </td>
+                                    <td>
+                                            {{ $roomtypes['name'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $roomtypes['code'] }}
+                                        </td>
+                                        <td>
+                                            {{ $roomtypes['description'] }}
+                                        </td>
+
+                                        
+
+                                        <td>
+                                            {{ $roomtypes['status_desc'] }}
+                                        </td>
+
+
+                                        <td>{{ date("Y-m-d H:i:s",$roomtypes['created_at']) }}</td>
+                                    
                                     </tr>
 
 

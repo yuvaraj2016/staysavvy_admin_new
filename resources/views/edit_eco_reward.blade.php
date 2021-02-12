@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="height: 148px;">
 
 
 
@@ -86,7 +86,7 @@
 
                             <div class="form-group row ">
 
-
+                          
                                 <div class="col-sm-4 offset-4">
                                     <label class="col-form-label text-md-right"> Reward Name</label>
                                     <input name="property_id" type="hidden">

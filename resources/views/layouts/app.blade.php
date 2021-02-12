@@ -46,6 +46,12 @@
         }
 
 
+        .pcoded .pcoded-navbar .pcoded-item > li > a {
+    
+    line-height: 30px!important;
+
+}
+
         /* end newmenu css written below on 03.02.2021 */
 
 
@@ -888,7 +894,7 @@ margin-top: 0px !important;
                             <li class=" col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
 
-                                <a href=""> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href="#"> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
 
                             </li>
 
@@ -935,7 +941,7 @@ margin-top: 0px !important;
                             <li class="pcoded-hasmenu col-md-1">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
-                                    <span class="pcoded-mtext text-white offset-2"><b>Config</b></span>
+                                    <span class="pcoded-mtext text-white offset-1"><b>Config</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
@@ -1003,11 +1009,11 @@ margin-top: 0px !important;
                                                 @endif
                                             </li>
                                             <li class="">
-                                                @if(collect(session('permissions'))->contains('List policy'))
+                                                @if(collect(session('permissions'))->contains('List config policy'))
 
 
 
-                                                <a class="{{ (request()->is('property_policies_list')) ? 'active' : '' }}" href="{{ route('property_policies_list') }}" data-i18n="nav.maintenance.comming-soon">
+                                                <a class="{{ (request()->is('config_policies_list')) ? 'active' : '' }}" href="{{ route('config_policies.index') }}" data-i18n="nav.maintenance.comming-soon">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                     <span class="pcoded-mtext">Policy</span>
                                                     <span class="pcoded-mcaret"></span>
