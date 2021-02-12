@@ -216,9 +216,11 @@ class EcorewardController extends Controller
       );
 
       
-        if($response->status()===200){
+        if($response->status()===200 || $response->status()===201){
+            // return $response;
             return redirect()->route('user_reward')->with('success','Eco Area Updated Successfully!');
         }else{
+            // return $response;
             return redirect()->route('user_reward')->with('error',$response->json()['message']);
         }
 

@@ -18,6 +18,11 @@
             content: none !important;
         }
 
+
+        .pcoded[theme-layout="horizontal"] .pcoded-navbar li.pcoded-hasmenu[dropdown-icon="style1"] > a::after {
+    content: none!important;
+}
+
         .pcoded .pcoded-navbar[navbar-theme="themelight1"] .pcoded-item>li.pcoded-trigger>a {
             background: none !important;
             color: #666;

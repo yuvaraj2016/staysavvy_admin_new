@@ -84,12 +84,12 @@
                        
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Eco Area Desc</label>
-                                    <select class="js-example-basic-single col-sm-12" name="id" id="" placeholder="status" required class="form-control selectric" required>
+                                    <select class="js-example-basic-single col-sm-12" name="name" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
-                                        @foreach($user as $rewardss)
+                                        @foreach($user as $users)
                                        
-                                        <option value="{{ $rewardss['id'] }}"  {{ ($rewards['conf_reward_status_id'] == $rewardss['id']) ? "selected":(old("conf_reward_status_id") == $rewardss['id'] ? "selected":"") }}>{{ $rewardss['name'] }}</option>
-                                      
+                                        <option value="{{ $users['id'] }}"  {{ ($rewards['conf_reward_status_id'] == $users['id']) ? "selected":(old("conf_reward_status_id") == $users['id'] ? "selected":"") }}>{{ $users['name'] }}</option>
+    
                                         @endforeach
                                     </select>
                                 </div>
