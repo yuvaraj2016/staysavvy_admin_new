@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 
@@ -6,7 +5,7 @@
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
 <div class="page-wrapper">
 
-<div class="page-header m-t-50">
+    <div class="page-header m-t-50">
         <div class="row align-items-end">
             <div class="col-lg-8">
                 <div class="page-header-title">
@@ -20,14 +19,14 @@
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
-                           
-                                <p class="">Edit Eco Reward</p>
-                          
+
+                            <p class="">Edit Eco Reward</p>
+
                         </li>
-                      
+
                         <li class="breadcrumb-item"><a href="{{ route('ecoreward.index') }}">Reward</a>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -38,220 +37,222 @@
 
 
 
-<section class="section" >
-    
-    <div class="section-body">
+        <section class="section">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        
+            <div class="section-body">
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
 
 
-                        <form class="dropzone" action="{{route('ecoreward.update',['ecoreward'=>$reward['id']]) }}" method="post" id="editstatus"
-                            enctype="multipart/form-data">
-                            @method('PUT')
-                            @csrf
 
-                            @if(session('success') !== null)
-                            <div class="succWrap">
-                            {{ session('success') }}
-                            </div>
-                                <!-- <div class='alert alert-success'>
+
+                                <form class="dropzone" action="{{route('ecoreward.update',['ecoreward'=>$reward['id']]) }}" method="post" id="editstatus" enctype="multipart/form-data">
+                                    @method('PUT')
+                                    @csrf
+
+                                    @if(session('success') !== null)
+                                    <div class="succWrap">
+                                        {{ session('success') }}
+                                    </div>
+                                    <!-- <div class='alert alert-success'>
                                     {{ session('success') }}
                                 </div> -->
-                            @endif
+                                    @endif
 
-                       
-                            <!-- @if(session('success') !== null)
+
+                                    <!-- @if(session('success') !== null)
                                 <div class='alert alert-green'>
                                     {{ session('success') }}
                                 </div>
                             @endif -->
-                            @if(session('error') !== null)
+                                    @if(session('error') !== null)
 
-                            {{-- @foreach(session('error') as $v)
+                                    {{-- @foreach(session('error') as $v)
                                @foreach($v as $e)
                                <div class='alert alert-red'>
                                    {{ $e }}
-                                </div>
-                               @endforeach
+                            </div>
+                            @endforeach
 
                             @endforeach --}}
                             <div class='alert alert-red'>
                                 {{ session('error') }}
-                             </div>
-                        @endif
-    
-
-                                                    <div class="form-group row ">
-                                                
-
-                                                    <div class="col-sm-4 offset-2">
-                                                        <label class="col-form-label text-md-right"> Reward Name</label>
-<input  name="property_id" type="hidden">
-
-                                                        @if(count($reward['ActiveRewards']['data'])>0)
-                                                        <textarea name="reward_name" class="summernote-simple form-control" required>{{ old('reward_name',$reward['ActiveRewards']['data'][0]['reward_name']) }}</textarea>
-@else
-<textarea name="reward_name" class="summernote-simple form-control" required></textarea>
+                            </div>
+                            @endif
 
 
-                                        @endif
-                                                      
-                                                           
-                                                        </div>
-
-                                                        <div class="col-sm-4 offset-1">
-                                                        <label class="col-form-label text-md-right" style="margin-bottom: 51px;"> </label>
-
-<button type="submit" class="btn btn-blue">Save </button>
+                            <div class="form-group row ">
 
 
-</div>
-                                                    </div>
-                        
+                                <div class="col-sm-4 offset-4">
+                                    <label class="col-form-label text-md-right"> Reward Name</label>
+                                    <input name="property_id" type="hidden">
 
-                                               
+                                    @if(count($reward['ActiveRewards']['data'])>0)
+                                    <textarea name="reward_name" class="summernote-simple form-control" required>{{ old('reward_name',$reward['ActiveRewards']['data'][0]['reward_name']) }}</textarea>
+                                    @else
+                                    <textarea name="reward_name" class="summernote-simple form-control" required></textarea>
+
+
+                                    @endif
+
+
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label class="col-form-label text-md-right" style="margin-bottom: 51px;"> </label>
+
+                                    <button type="submit" class="btn btn-blue">Save </button>
+
+
+                                </div>
+                            </div>
 
 
 
-                                                                                                  
-                           
+
+
+
+
+
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
-                                   
+
                                     <!-- <a href="{{ url('eco_reward_list') }}"
                         class=" d-inline text-center btn btn-blue back" ><i
                             class="icofont icofont-arrow-left" ></i>Back&nbsp;&nbsp;</a> -->
                                 </div>
                             </div>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
-</section>
+    </section>
 
 
 
 
 
 
-<div class="row">
-     
-            <div class="col-sm-12">
-          
-                <div class="card">
+    <div class="row">
 
-                    <div class="card-header table-card-header">
-                        <div class="row">
-                            <div class="section-header-button col-md-4">
-                          
-                            </div>
-                            <div class="section-header-button col-md-5">
+        <div class="col-sm-12">
 
-                            </div>
-                            <div class="section-header-button col-md-3 ">
-                                <div class="col">
-                          
-                                 
+            <div class="card">
 
-                                </div>
+                <div class="card-header table-card-header">
+                    <div class="row">
+                        <div class="section-header-button col-md-4">
+
+                        </div>
+                        <div class="section-header-button col-md-5">
+
+                        </div>
+                        <div class="section-header-button col-md-3 ">
+                            <div class="col">
+
+
+
                             </div>
                         </div>
                     </div>
-                    <div class="card-block">
-                        <div class="dt-responsive table-responsive">
-                            <table id="basic-btn" class="table table-striped table-bordered nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
+                </div>
+                <div class="card-block">
+                    <div class="dt-responsive table-responsive">
+                        <table id="basic-btn" class="table table-striped table-bordered nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
                                     <th>Date</th>
                                     <th>Vendor Reward</th>
                                     <th>Status</th>
-                                        <th>Created At</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                               
+                                    <th>Created At</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
                                 @if(isset($reward['UserRewards']['data']))
-                          
-                                    @foreach($reward['UserRewards']['data'] as $userrewards )
-                                    @php
-                                    $id=$userrewards['id'];
-                                    @endphp
 
-                                    <tr>
+                                @foreach($reward['UserRewards']['data'] as $userrewards )
+                             
+                                @php
+                                $id=$userrewards['id'];
+                              $pid=$userrewards['property_id'];
+
+                                @endphp
+
+                                <tr>
                                     <td>
-                                            {{ $userrewards['user_name'] }}
-                                        </td>
+                                        {{ $userrewards['user_name'] }}
+                                    </td>
 
-                                        <td>
-                                            {{ $userrewards['check_in_date'] }}
-                                        </td>
-                                        <td>
-                                            {{ $userrewards['vendor_reward'] }}
-                                        </td>
-                                        <td>
-                                            {{ $userrewards['conf_reward_status_name'] }}
-                                        </td>
+                                    <td>
+                                        {{ $userrewards['check_in_date'] }}
+                                    </td>
+                                    <td>
+                                        {{ $userrewards['vendor_reward'] }}
+                                    </td>
+                                    <td>
+                                        {{ $userrewards['conf_reward_status_name'] }}
+                                    </td>
 
 
-                                        <td>{{ date("Y-m-d H:i:s",$userrewards['created_at']) }}</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <ul class="list-group list-inline ml-1">
-                                                    <!-- <li class="list-group-item border1">
+                                    <td>{{ date("Y-m-d H:i:s",$userrewards['created_at']) }}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <ul class="list-group list-inline ml-1">
+                                                <!-- <li class="list-group-item border1">
                                                     @if(collect(session('permissions'))->contains('List config payment status'))
                                                     <a href="{{ url('payment/'.$id) }}" class=" d-inline font1 view-confirmation" id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
                                                 @endif
                                                 </li> -->
-                                                    <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
-                                                    <li class="list-group-item border1">
-                                                  
-                                                    <a href="{{ url('user_reward/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                              
+                                                <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
+                                                <li class="list-group-item border1">
+
+                                                    <a href="{{ url('user_reward/'.$pid.'/'.$id.'/edit') }}" class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+
                                                 </li>
-                                             
-
-                                                   
-                                                    
-                                                </ul>
 
 
-                                            </div>
-                                        </td>
-                                    </tr>
 
 
-                                    @endforeach
-@endif
-                                </tbody>
+                                            </ul>
 
 
-                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
 
-                        </div>
 
+                                @endforeach
+                                @endif
+                            </tbody>
+
+
+                        </table>
 
                     </div>
+
+
                 </div>
-                <!-- HTML5 Export Buttons end -->
-
-
-
             </div>
+            <!-- HTML5 Export Buttons end -->
+
+
+
         </div>
-@endsection
-{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </div>
+    @endsection
+    {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function (e) {

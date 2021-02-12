@@ -49,7 +49,7 @@
 
 
                                
-                                <form class="dropzone" action="{{route('user_reward',['rewards'=>$rewards['id']]) }}" method="post" id="editstatus" enctype="multipart/form-data">
+                                <form class="dropzone" action="{{route('user_reward.update',['rewards'=>$rewards['id']]) }}" method="post" id="editstatus" enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf
 
@@ -84,13 +84,15 @@
                        
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Eco Area Desc</label>
-                                    <select class="js-example-basic-single col-sm-12" name="name" id="" placeholder="status" required class="form-control selectric" required>
+                                    <select class="js-example-basic-single col-sm-12" name="conf_reward_status_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
-                                        @foreach($user as $users)
+                                        @if(isset($rewards))
+                                        @foreach($crewards as $creward)
                                        
-                                        <option value="{{ $users['id'] }}"  {{ ($rewards['conf_reward_status_id'] == $users['id']) ? "selected":(old("conf_reward_status_id") == $users['id'] ? "selected":"") }}>{{ $users['name'] }}</option>
+                                        <option value="{{ $creward['id'] }}"  {{ ($rewards['conf_reward_status_id'] == $creward['id']) ? "selected":(old("conf_reward_status_id") == $creward['id'] ? "selected":"") }}>{{ $creward['name'] }}</option>
     
                                         @endforeach
+                                        @endif
                                     </select>
                                 </div>
                             </div>

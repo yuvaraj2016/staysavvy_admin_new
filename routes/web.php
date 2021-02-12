@@ -132,9 +132,9 @@ Route::post('store_policies','PoliciesController@policystore')->name('store_poli
 // Route::post('policies/create}','PropertiesController@createpolicies')->name('policies.create')->middleware('checktoken');
 
 // Route::post('prooms/create}','PropertiesController@createrooms')->name('prooms.create')->middleware('checktoken');
-Route::get('user_reward/{id}/edit','EcorewardController@userreward')->name('user_reward')->middleware('checktoken');
+Route::get('user_reward/{pid}/{id}/edit','EcorewardController@userreward')->name('user_reward')->middleware('checktoken');
 
-Route::put('user_reward/{rewards}','EcorewardController@newreward')->name('user_reward')->middleware('checktoken');
+Route::put('user_reward/{rewards}','EcorewardController@newreward')->name('user_reward.update')->middleware('checktoken');
 
 
 Route::resource('tax', 'TaxController')->except('index')->middleware('checktoken');

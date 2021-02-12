@@ -151,7 +151,7 @@ class EcorewardController extends Controller
 
             $reward =   $response->json()['data'];
 
-            // return $status;
+            //   return $reward;
 
             return view('edit_eco_reward', compact(
                'reward'
@@ -159,9 +159,9 @@ class EcorewardController extends Controller
         }
     }
 
-    public function userreward($id)
+    public function userreward($pid,$id)
     {
-      
+        // return $id;
         $session = session()->get('token');
 
         try{
@@ -175,20 +175,25 @@ class EcorewardController extends Controller
 
 
         }
-         $user = $response['data'];
+         $crewards = $response['data'];
 
              
-        $response1 = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations/' . $id.'?include=ActiveRewards,UserRewards');
+        $response1 = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations/' . $pid.'?include=ActiveRewards,UserRewards');
                 
 
         if($response1->ok()){
+            // return $response1;
 
             $rewards =   $response1->json()['data']['UserRewards']['data'][0];
+            // if(count($response1->json()['data']['UserRewards']['data'])>0) {
+               
+            // }else{
 
-            //  return $rewards;
+            // }
+            
 
             return view('user_reward', compact(
-               'rewards','user'
+               'rewards','crewards'
             ));
         }
     }
@@ -204,12 +209,12 @@ class EcorewardController extends Controller
     {
         $session = session()->get('token');
 
-       
+       //dd();
       
-        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->put(config('global.url').'/api/confRewardStatus/'.$id, 
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->patch(config('global.url').'/api/userReward/'.$id, 
         [
-            "_method"=> 'PUT',
-            "name"=>$request->name
+           
+            "conf_reward_status_id"=>$request->conf_reward_status_id
           
         ]
         
@@ -218,10 +223,10 @@ class EcorewardController extends Controller
       
         if($response->status()===200 || $response->status()===201){
             // return $response;
-            return redirect()->route('user_reward')->with('success','Eco Area Updated Successfully!');
+            return redirect()->back()->with('success','User Reward Updated Successfully!');
         }else{
             // return $response;
-            return redirect()->route('user_reward')->with('error',$response->json()['message']);
+            return redirect()->back()->with('error',$response->json()['message']);
         }
 
     }
