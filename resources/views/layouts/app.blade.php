@@ -23,6 +23,11 @@
     content: none!important;
 }
 
+.pcoded .pcoded-navbar .pcoded-item .pcoded-hasmenu .pcoded-submenu li > a::before {
+    content: none!important;
+
+}
+
         .pcoded .pcoded-navbar[navbar-theme="themelight1"] .pcoded-item>li.pcoded-trigger>a {
             background: none !important;
             color: #666;
