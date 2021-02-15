@@ -61,26 +61,27 @@
                     @if(collect(session('permissions'))->contains('Create property'))
 
                             {{-- {{ $prop_count['property_count'] }} --}}
-                              <!-- this code was hidden on 15.02.2021 -->
-                                {{-- @if(collect(session('roles'))->contains('Vendor'))  
+                         
+                            
+                                @if(collect(session('roles'))->contains('Vendor'))  
 
-                                @if($prop_count['property_count']==0)
+                                @if(count($booking)==0)
                                 <a href="{{ route('adminbookings.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
                     background-color: #6777ef;
                     border-color: #6777ef;border-radius:30px">Add New</a>
                                 @endif
 
-                                @else --}}
-                                  <!-- this code was hidden on 15.02.2021 -->
+                                @else 
+                                
                     
                                 <a href="{{ route('adminbookings.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
                                 background-color: #6777ef;
                                 border-color: #6777ef;border-radius:30px">Add New</a>
 
-                                <!-- @endif -->
-                                <!-- this code was hidden on 15.02.2021 -->
-                   {{--  @endif  --}}
-                     <!-- this code was hidden on 15.02.2021 -->
+                               @endif 
+                               
+                    @endif  
+                  
                             </div>
                             <div class="section-header-button col-md-5">
 

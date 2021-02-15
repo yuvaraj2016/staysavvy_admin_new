@@ -78,8 +78,10 @@
                             </div>
                             @endif
                             <div class="row">
+                            @if(count($property['ProEcoareas']['data'])>0)
                                 <div class="col-12">
                                     <div class="card">
+                                   
                                         <div class="card-body">
 
                                             <h5 style="padding:10px 10px 10px 10px;margin-left:-9px"> {{ old('name',$property['name']) }} Credentials</h5>
@@ -199,6 +201,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                @else
+                                        <p class="text-center text-bold offset-5"> No Record Found Please Contact Admin</p>
+
+                                    @endif
                             </div>
 
 
@@ -209,7 +215,12 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
+                                @if(count($property['ProEcoareas']['data'])>0)
                                     <button type="submit" class="btn btn-blue">Update </button>
+                                    @else
+                                    <button type="submit" disabled class="btn btn-blue">Update </button>
+                                    @endif
+
                                     <a href="{{ url('ecoarea_list') }}" class=" d-inline text-center btn btn-blue back"><i class="icofont icofont-arrow-left"></i>Back&nbsp;&nbsp;</a>
                                 </div>
                             </div>
