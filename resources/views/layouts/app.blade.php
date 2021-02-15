@@ -896,6 +896,15 @@ margin-top: 0px !important;
 
                             </li>
 
+                            <li class="{{ (request()->is('overallreview_list')) ? 'active' : '' }} col-md-1" >
+                            <!-- style="margin-right: 80px!important;" -->
+
+                               
+                                <a href="{{ route('overallreview.index') }}" style="background: none !important;"> <span class="pcoded-micon"><i class="fa fa-pencil-square-o text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Reviews</b></span> <span class="pcoded-mcaret"></span> </a>
+                             
+
+                            </li>
+
                             <li class=" col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
 

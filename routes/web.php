@@ -92,6 +92,12 @@ Route::get('reward_list/{page?}','RewardController@index')->name('reward.index')
 
 
 
+Route::resource('overallreview', 'OverallreviewController')->except('index')->middleware('checktoken');
+
+Route::get('overallreview_list/{page?}','OverallreviewController@index')->name('overallreview.index')->middleware('checktoken');
+
+
+
 Route::resource('highlight', 'HighlightController')->except('index')->middleware('checktoken');
 
 Route::get('highlight_list/{page?}','HighlightController@index')->name('highlight.index')->middleware('checktoken');
