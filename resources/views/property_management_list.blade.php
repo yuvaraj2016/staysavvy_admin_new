@@ -41,8 +41,13 @@
             <div class="col-lg-4">
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
-                        <li class="breadcrumb-item">
+                        <!-- <li class="breadcrumb-item">
                            <p>Property Mangement</p>
+                        </li> -->
+                        <li class="breadcrumb-item">
+                            <a href="#">
+                                <i class="icofont icofont-home"></i>
+                            </a>
                         </li>
 
                         <li class="breadcrumb-item"><a href="{{ route('property_management.index') }}">Property Mangement List</a>

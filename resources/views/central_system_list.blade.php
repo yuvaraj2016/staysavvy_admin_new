@@ -41,10 +41,15 @@
             <div class="col-lg-4">
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
-                        <li class="breadcrumb-item">
+                        <!-- <li class="breadcrumb-item">
                             
                                <p>Central System List</p>
                            
+                        </li> -->
+                        <li class="breadcrumb-item">
+                            <a href="#">
+                                <i class="icofont icofont-home"></i>
+                            </a>
                         </li>
 
                         <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central System List</a>

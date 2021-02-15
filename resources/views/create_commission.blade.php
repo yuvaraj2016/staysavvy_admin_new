@@ -164,7 +164,7 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
-                                    <button type="submit" id="submit" class="btn btn-primary">Create Commission</button>
+                                    <button type="submit" id="submit" class="btn btn-primary">Create Booking Commission</button>
                                 </div>
                             </div>
 
