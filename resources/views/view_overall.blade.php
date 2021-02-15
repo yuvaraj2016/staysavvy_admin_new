@@ -59,21 +59,30 @@
                                                         </div>
 
                                                         <div class="col-sm-2 offset-1 card">
-
+                                                        @if(isset($overall['OaReview']['data']['oass_location']))
 <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> {{ $overall['OaReview']['data']['oass_location'] }}</b>   <i class="fa fa-star"></i></p>
+@else
+                                     <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> 0</b>   <i class="fa fa-star"></i></p>
+@endif
             <p style="text-align: center;">Location</p>               
                             </div>
 
 
                             <div class="col-sm-2 offset-1 card">
-
+                            @if(isset($overall['OaReview']['data']['oass_staff']))
 <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> {{ $overall['OaReview']['data']['oass_staff'] }}</b>   <i class="fa fa-star"></i></p>
+@else
+                                     <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> 0</b>   <i class="fa fa-star"></i></p>
+@endif
             <p style="text-align: center;">Staff</p>               
                             </div>
 
                             <div class="col-sm-2 offset-1 card">
-
+                            @if(isset($overall['OaReview']['data']['oass_facilities']))
 <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> {{ $overall['OaReview']['data']['oass_facilities'] }}</b>   <i class="fa fa-star"></i></p>
+@else
+                                     <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> 0</b>   <i class="fa fa-star"></i></p>
+@endif
             <p style="text-align: center;">Facilities</p>               
                             </div>
                                                        
@@ -85,27 +94,39 @@
                                                     <div class="form-group row ">
 
 <div class="col-sm-2 card" style="margin-left: 50px;">
-
+@if(isset($overall['OaReview']['data']['oass_food']))
 <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> {{ $overall['OaReview']['data']['oass_food'] }}</b>   <i class="fa fa-star"></i></p>
+@else
+                                     <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> 0</b>   <i class="fa fa-star"></i></p>
+@endif
             <p style="text-align: center;">Food</p>               
                             </div>
 
                             <div class="col-sm-2 offset-1 card">
-
+                            @if(isset($overall['OaReview']['data']['oass_sustainability']))
 <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> {{ $overall['OaReview']['data']['oass_sustainability'] }}</b>   <i class="fa fa-star"></i></p>
+@else
+                                     <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> 0</b>   <i class="fa fa-star"></i></p>
+@endif
 <p style="text-align: center;">Sustainability</p>               
 </div>
 
 
 <div class="col-sm-2 offset-1 card">
-
+@if(isset($overall['OaReview']['data']['oass_value_for_money']))
 <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> {{ $overall['OaReview']['data']['oass_value_for_money'] }}</b>   <i class="fa fa-star"></i></p>
+@else
+                                     <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> 0</b>   <i class="fa fa-star"></i></p>
+@endif
 <p style="text-align: center;">Value For Money</p>               
 </div>
 
 <div class="col-sm-2 offset-1 card">
-
+@if(isset($overall['OaReview']['data']['oass_comfort']))
 <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> {{ $overall['OaReview']['data']['oass_comfort'] }}</b>   <i class="fa fa-star"></i></p>
+@else
+                                     <p style="text-align: center;padding: 17px 1px 10px 10px;"> <b> 0</b>   <i class="fa fa-star"></i></p>
+@endif
 <p style="text-align: center;">Comfort</p>               
 </div>
                            
