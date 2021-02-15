@@ -25,7 +25,7 @@
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Rooms</a>
+                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Room Type</a>
                         </li>
                        
                     </ul>

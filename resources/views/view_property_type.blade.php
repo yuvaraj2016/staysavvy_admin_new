@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>View Config Property</h4>
+                        <h4>View  Property Type</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">View Property</p>
+                                <p class="">View Property Type</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('property.index') }}">Property</a>
+                        <li class="breadcrumb-item"><a href="{{ route('property.index') }}">Property Type</a>
                         </li>
                        
                     </ul>

@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Create Rooms</h4>
+                        <h4>Create Room Type</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">Create Rooms</p>
+                                <p class="">Create Room Type</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Rooms</a>
+                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Room Type</a>
                         </li>
                        
                     </ul>
@@ -152,7 +152,7 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
-                                    <button type="submit" id="submit" class="btn btn-primary">Create Status</button>
+                                    <button type="submit" id="submit" class="btn btn-primary">Create Room Type</button>
                                 </div>
                             </div>
 

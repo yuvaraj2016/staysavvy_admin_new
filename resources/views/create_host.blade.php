@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Create Host</h4>
+                        <h4>Create Host Type</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">Create Host</p>
+                                <p class="">Create Host Type</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('host.index') }}">Host</a>
+                        <li class="breadcrumb-item"><a href="{{ route('host.index') }}">Host Type</a>
                         </li>
                        
                     </ul>
@@ -137,7 +137,7 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
-                                    <button type="submit" id="submit" class="btn btn-primary">Create Host</button>
+                                    <button type="submit" id="submit" class="btn btn-primary">Create Host Type</button>
                                 </div>
                             </div>
 

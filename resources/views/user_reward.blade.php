@@ -83,7 +83,7 @@
 
                        
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right ">Eco Area Desc</label>
+                                    <label class="col-form-label text-md-right ">User Reward Status</label>
                                     <select class="js-example-basic-single col-sm-12" name="conf_reward_status_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @if(isset($rewards))

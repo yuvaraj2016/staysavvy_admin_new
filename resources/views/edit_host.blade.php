@@ -11,7 +11,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Edit Host</h4>
+                        <h4>Edit Host Type</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -21,11 +21,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">Edit Host</p>
+                                <p class="">Edit Host Type</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('host.index') }}">Host</a>
+                        <li class="breadcrumb-item"><a href="{{ route('host.index') }}">Host Type</a>
                         </li>
                        
                     </ul>
@@ -125,7 +125,7 @@
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
                                     <button type="submit" class="btn btn-blue">Update </button>
-                                    <a href="{{ url('status_list') }}"
+                                    <a href="{{ url('host_list') }}"
                         class=" d-inline text-center btn btn-blue back" ><i
                             class="icofont icofont-arrow-left" ></i>Back&nbsp;&nbsp;</a>
                                 </div>

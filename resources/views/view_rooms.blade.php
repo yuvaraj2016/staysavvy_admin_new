@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>View Booking Rooms</h4>
+                        <h4>View  Room Type</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">View Rooms</p>
+                                <p class="">View Room Type</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Booking Rooms</a>
+                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Room Type</a>
                         </li>
                        
                     </ul>
