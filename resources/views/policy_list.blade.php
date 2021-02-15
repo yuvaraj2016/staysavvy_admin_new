@@ -47,7 +47,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('property_policies_list') }}">Property List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('property_policies_list') }}">Policy List</a>
                         </li>
 
                     </ul>
