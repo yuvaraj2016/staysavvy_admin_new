@@ -684,7 +684,7 @@ margin-top: 0px !important;
 
                                     </div>
                                     <div class="col-sm-1 d-flex mt-3">
-                                        <a class="d-inline" href="#">
+                                        <a class="d-inline" href="{{url('help')}}">
                                             <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
 
                                         </a>
@@ -738,7 +738,7 @@ margin-top: 0px !important;
 
                                     </div>
                                     <div class="col-sm-1 d-flex mt-3">
-                                    <a class="d-inline" href="#">
+                                    <a class="d-inline" href="{{url('help')}}">
                                             <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
 
                                         </a>
@@ -989,7 +989,7 @@ margin-top: 0px !important;
                                                 </a>
                                                 @endif
                                             </li>
-                                            <li class="">
+                                            <!-- <li class="">
                                                 @if(collect(session('permissions'))->contains('List room type'))
 
 
@@ -1000,7 +1000,7 @@ margin-top: 0px !important;
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                                 @endif
-                                            </li>
+                                            </li> -->
 
 
 
@@ -1021,6 +1021,18 @@ margin-top: 0px !important;
                                                 <a class="{{ (request()->is('property_list')) ? 'active' : '' }}" href="{{ route('property.index') }}" data-i18n="nav.maintenance.error">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                     <span class="pcoded-mtext">Property Type</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                @endif
+                                            </li>
+                                            <li class="">
+                                                @if(collect(session('permissions'))->contains('List room type'))
+
+
+
+                                                <a class="{{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}" data-i18n="nav.authentication.login-soc-h-f">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext">Room Type</span>
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                                 @endif
