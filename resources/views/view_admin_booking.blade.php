@@ -66,26 +66,56 @@
                             @endif
 
                             <div class="form-group row">
+                            <div class="col-sm-4 ">
+                                                        <label class="col-form-label text-md-right ">Booking Reference</label>
+                                                        <input type="text"  value="   {{ $bookingroom['booking_reference'] }}" class="form-control" readonly>
+                                                        </div>
+
+                
+                            <div class="col-sm-4 ">
+                                                        <label class="col-form-label text-md-right ">Guest Name</label>
+                                                        <input type="text"  value="   {{ $bookingroom['user_email'] }}" class="form-control" readonly>
+                                                        </div>
 
                             <div class="col-sm-4 ">
                                                         <label class="col-form-label text-md-right ">Property Name</label>
                                                         <input type="text"  value="   {{ $bookingroom['property_name'] }}" class="form-control" readonly>
                                                         </div>
-                                                        <div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">Check In Date</label>
-                            <input type="text"  value="   {{ $bookingroom['check_in_date'] }}" class="form-control" readonly>
-                            </div>
-                            <div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">Booking On</label>
-                            <input type="text"  value="   {{ $bookingroom['booked_on'] }}" class="form-control" readonly>
-                            </div>
+                                                      
+
+                        
                                                   
 
                                          
                                                     </div>
                                                     <div class="form-group row">
 
-<div class="col-sm-4 ">
+                                                    <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Check In Date</label>
+                            <input type="text"  value="   {{ $bookingroom['check_in_date'] }}" class="form-control" readonly>
+                            </div>
+
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Check Out Date</label>
+                            <input type="text"  value="   {{ $bookingroom['check_out_date'] }}" class="form-control" readonly>
+                            </div>
+
+
+
+                                                    <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Booking On</label>
+                            <input type="text"  value="   {{ $bookingroom['booked_on'] }}" class="form-control" readonly>
+                            </div>
+
+
+
+            
+
+             
+                        </div>
+                        <div class="form-group row">
+
+                        <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Booking Status Desc</label>
                             <input type="text"  value="   {{ $bookingroom['booking_status_desc'] }}" class="form-control" readonly>
                             </div>
@@ -94,16 +124,22 @@
 <input type="text"  value="   {{ $bookingroom['length_of_stay'] }}" class="form-control" readonly>
 </div>
 
-<div class="col-sm-4 ">
+                        <div class="col-sm-4 ">
 <label class="col-form-label text-md-right ">Tax</label>
 <input type="text"  value="   {{ $bookingroom['tax_name'] }}" class="form-control" readonly>
-</div>              
+</div>  
+
+
+
+
+                      
 
              
                         </div>
+
                         <div class="form-group row">
 
-<div class="col-sm-4 ">
+                        <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Tax Percentage</label>
                             <input type="text"  value="   {{ $bookingroom['tax_percentage'] }}" class="form-control" readonly>
                             </div>
@@ -113,7 +149,7 @@
 </div>
 
 
-<div class="col-sm-4 ">
+                        <div class="col-sm-4 ">
 <label class="col-form-label text-md-right ">Booking Amount </label>
 @foreach($bookingroom['BookingDetails']['data'] as $property)
                                         
@@ -153,13 +189,6 @@
                                    
 
 </div>
-                      
-
-             
-                        </div>
-
-                        <div class="form-group row">
-
 
                         <div class="col-sm-4 ">
 <label class="col-form-label text-md-right ">Commission Amount </label>
@@ -206,6 +235,13 @@
                                    
 
 </div>
+
+<div class="col-sm-4 ">
+<label class="col-form-label text-md-right ">Total Amount</label>
+<input type="text"  value="   {{ $bookingroom['total_amount'] }}" class="form-control" readonly>
+</div>
+
+
                             <div class="col-sm-4 ">
 <label class="col-form-label text-md-right ">Status</label>
 <input type="text"  value="   {{ $bookingroom['status_desc'] }}" class="form-control" readonly>

@@ -329,7 +329,7 @@
                         
                                                                         <div class="col-sm-12 text-center">
                                                                             
-                                                                            <label class="col-form-label text-md-right ">Photos</label>
+                                                                            <label class="col-form-label text-md-right ">General Photos</label>
                                                                             <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required>
                                                                             
                                                                         </div>
