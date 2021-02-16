@@ -393,6 +393,10 @@ class UserController extends Controller
             {
                 return redirect()->back()->with('error',$response['error']);
             }
+            else if(isset($response['message']))
+            {
+                return redirect()->back()->with('error',"Unable to send email. Please check your email id.");
+            }
         }
 
 
