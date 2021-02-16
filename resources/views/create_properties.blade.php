@@ -1,34 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-<style>
-.ss {
-  display: inline-block;
-  position: relative;
-}
-
-.let{
-    border: 2px solid #c9c9c9;
-  box-shadow: none;
-  /* font-family: "Roboto Regular", sans-serif; */
-  font-size:20px;
-  height: 42px;
-  padding-left: 20px;
-}
-
-.ss::before {
-  content: "£";
-  font-family: "Roboto Regular", sans-serif;
-  font-size: 1.5em;
-  position: absolute;
-  left: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-</style>
-
-
 <script type="text/javascript">
     jQuery(document).on("click", ".submit", function (e) {
   
@@ -292,7 +263,7 @@
                                                                 
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Room Start Price </label>
-                                                                    <span class="ss">    <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control let" required></span>
+                                                                    <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control" required>
                            
                                                                 </div>
         
@@ -346,19 +317,19 @@
                            
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">City/town </label>
+                                                                    <label class="col-form-label text-md-right ">Area </label>
                                                                     <input  name="area"  value="{{ old('area') }}" class="summernote-simple form-control" required>
                            
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">postcode </label>
+                                                                    <label class="col-form-label text-md-right ">Pincode </label>
                                                                     <input type="number" name="pincode" step="any" value="{{ old('pincode') }}" class="summernote-simple form-control" required>
                            
                                                                 </div>
                         
                                                                         <div class="col-sm-12 text-center">
                                                                             
-                                                                            <label class="col-form-label text-md-right ">General Photos</label>
+                                                                            <label class="col-form-label text-md-right ">Photos</label>
                                                                             <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required>
                                                                             
                                                                         </div>
