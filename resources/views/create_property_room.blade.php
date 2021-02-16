@@ -1,6 +1,31 @@
 @extends('layouts.app')
 @section('content')
+<style>
+.ss {
+  display: inline-block;
+  position: relative;
+}
 
+.let{
+    border: 2px solid #c9c9c9;
+  box-shadow: none;
+  /* font-family: "Roboto Regular", sans-serif; */
+  font-size:20px;
+  height: 42px;
+  padding-left: 20px;
+}
+
+.ss::before {
+  content: "£";
+  font-family: "Roboto Regular", sans-serif;
+  font-size: 1.5em;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+</style>
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
 <div class="page-wrapper">
 
@@ -184,7 +209,7 @@
                                                         </div>
                                                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Amount</label>
-                                                        <input type="number"  step="any" name="amount" value="{{ old('amount') }}" class="summernote-simple form-control" required>
+                                                       <span class="ss"> <input type="number"  step="any" name="amount" value="{{ old('amount') }}" class="summernote-simple form-control let" required></span>
                
                                                         </div>
 
