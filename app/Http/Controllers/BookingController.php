@@ -143,10 +143,11 @@ class BookingController extends Controller
         }
         // return $response;
 
-        if($response->status()===201){
+        if($response->status()===200 || $response->status()===201){
             // return redirect()->route('product_categories.create')->with('success','Product Category Created Successfully!');
             return redirect()->back()->with('success','Product Category Created Successfully!');
         }else{
+            // return $response;
             $request->flash();
             return redirect()->route('product_categories.create')->with('error',$response['errors']);
         }
