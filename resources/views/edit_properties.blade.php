@@ -274,7 +274,7 @@ $amenid[] = $amenityid['id'];
 
                                 </div>
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right " >Area</label>
+                                    <label class="col-form-label text-md-right " >City/town</label>
                                     <input name="area" value="{{ old('area',$properties['area']) }}" class="summernote-simple form-control" required>
 
                                 </div>
@@ -284,7 +284,7 @@ $amenid[] = $amenityid['id'];
                             <div class="form-group row ">
                       
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right " > Pincode</label>
+                                    <label class="col-form-label text-md-right " > postcode</label>
                                     <input type="number" name="pincode" value="{{ old('pincode',$properties['pincode']) }}"  class="summernote-simple form-control" required>
 
                                 </div>

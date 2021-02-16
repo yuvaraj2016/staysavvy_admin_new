@@ -346,12 +346,12 @@
                            
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Area </label>
+                                                                    <label class="col-form-label text-md-right ">City/town </label>
                                                                     <input  name="area"  value="{{ old('area') }}" class="summernote-simple form-control" required>
                            
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Pincode </label>
+                                                                    <label class="col-form-label text-md-right ">postcode </label>
                                                                     <input type="number" name="pincode" step="any" value="{{ old('pincode') }}" class="summernote-simple form-control" required>
                            
                                                                 </div>
