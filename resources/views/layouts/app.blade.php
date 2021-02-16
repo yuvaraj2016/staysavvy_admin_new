@@ -1,3 +1,6 @@
+<?php
+     use Illuminate\Support\Collection;
+?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -779,6 +782,7 @@ margin-top: 0px !important;
 
                     <div class="pcoded-inner-navbar" style="background:#1B476B;">
                         <ul class="pcoded-item pcoded-left-item col-md-12 " style="margin-left: 22.666667% !important;">
+                        @if(collect(session('roles'))->contains('Administrator'))
                             <li class="pcoded-hasmenu col-md-1" >
                             <!-- style="margin-right: 90px!important;" -->
                                 <a href="javascript:void(0)">
@@ -790,7 +794,6 @@ margin-top: 0px !important;
 
                                     <?php
 
-                                    use Illuminate\Support\Collection;
 
                                     /**
                                      * List values from collection. Unlike $collection->lists('key'), this function allows using multiple keys.
@@ -831,7 +834,7 @@ margin-top: 0px !important;
 
 
                                     ?>
-                                    @if(collect(session('roles'))->contains('Administrator'))
+                                 
                                     @if(checkpermissionexist(['List users','List roles','List permissions']) > 0)
 
 
@@ -852,11 +855,11 @@ margin-top: 0px !important;
                                         @endif
                                     </li>
                                     @endif
-                                    @endif
+                                  
 
                                 </ul>
                             </li>
-
+                            @endif
 
                             <li class="pcoded-hasmenu col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
