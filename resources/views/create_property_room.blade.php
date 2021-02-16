@@ -208,7 +208,7 @@
                
                                                         </div>
                                                         <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right ">Amount</label>
+                                                        <label class="col-form-label text-md-right ">Price Of Room Per Night</label>
                                                        <span class="ss"> <input type="number"  step="any" name="amount" value="{{ old('amount') }}" class="summernote-simple form-control let" required></span>
                
                                                         </div>
