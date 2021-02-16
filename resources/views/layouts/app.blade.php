@@ -738,7 +738,7 @@ margin-top: 0px !important;
 
                                     </div>
                                     <div class="col-sm-1 d-flex mt-3">
-                                    <a class="d-inline" href="#">
+                                    <a class="d-inline" href="{{url('help')}}">
                                             <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
 
                                         </a>
