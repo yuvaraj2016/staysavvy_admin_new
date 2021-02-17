@@ -121,25 +121,25 @@
                                         </div> -->
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check In Date </label>
-                                            <input type="date" name="check_in_date" value="{{ old('starts_at') }}" class="summernote-simple form-control" required>
+                                            <input type="date" name="check_in_date" value="{{ old('check_in_date') }}" class="summernote-simple form-control" required>
 
                                         </div>
 
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check In Time </label>
-                                            <input type="time" step="2" name="check_in_date_time" class="summernote-simple form-control" require>
+                                            <input type="time" step="1" name="check_in_date_time" value="{{ old('check_in_date_time') }}" class="summernote-simple form-control" required>
                                             <!-- <input type="time" id="myTime" step="2"> -->
 
                                         </div>
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check Out Date </label>
-                                            <input type="date" name="check_out_date" value="{{ old('starts_at') }}" class="summernote-simple form-control" required>
+                                            <input type="date" name="check_out_date" value="{{ old('check_out_date') }}" class="summernote-simple form-control" required>
 
                                         </div>
 
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check Out Time </label>
-                                            <input type="time" step="2" name="check_out_date_time" class="summernote-simple form-control" require>
+                                            <input type="time" step="1" name="check_out_date_time" value="{{ old('check_out_date_time') }}" class="summernote-simple form-control" required>
                                             <!-- <input type="time" id="myTime" step="2"> -->
 
                                         </div>
@@ -169,7 +169,7 @@
 
                                 
 
-
+{{-- 
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Book On Date </label>
                                             <input type="date" name="booked_on" value="{{ old('starts_at') }}" class="summernote-simple form-control" required>
@@ -181,9 +181,9 @@
                                             <input type="time" step="2" name="booked_on_time" class="summernote-simple form-control" require>
                                             <!-- <input type="time" id="myTime" step="2"> -->
 
-                                        </div>
+                                        </div> --}}
 
-
+                                        
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Length Of Stay</label>
                                             <input id="lens" type="number" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
@@ -298,9 +298,103 @@
         </section>
 
         <script>
+             $( window ).on( "load", function() {
+                if($('#property').val()!="")
+                {
+                    var prope_id = $('#property').val();
+                    // $("#property").destroy
+                    // $('#room').show();
+                    // var prope_id = e.target.value;
+                    $('#room').empty('');
+
+                    //  alert(vendor_id);
+
+                    //              $.ajaxSetup({
+                    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    //     'Content-Type':'application/json',
+                    //     'Accept' : 'application/vnd.api.v1+json'
+                    // });
+                    if (prope_id) {
+                        $.ajax({
+
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/vnd.api.v1+json'
+                            },
+                            url: "{{ url('getprodroom')}}" + "/" + prope_id,
+
+                            type: "GET",
+
+                            // data: {
+                            //   id : cat_id
+                            // },
+
+                            crossDomain: true,
+                            beforeSend: function() {
+                                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+                            },
+
+                            success: function(responsedata) {
+                                $('#response').html('');
+
+                                // var data = JSON.parse(responsedata);
+                                //  console.log(responsedata);
+
+                                var rooms = responsedata;
+
+                                //   console.log(rooms);
+
+                                //  $('#rooms').empty();
+                                //  $('#rooms').append('');
+                                var aaaa = "";
+                                $.each(rooms, function(index, room) {
+                                    //   alert(index);
+                                 
+
+                                   
+                                  
+                                    aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" class="summernote-simple form-control norms" ></div>' 
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" class="summernote-simple form-control sub1" required ></div>' +
+
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" class="summernote-simple form-control sub2" required></div>' +
+
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" name="total_guests[]" class="summernote-simple form-control" ></div>' +
+
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input id="amt" name="amount[]" class="summernote-simple form-control amt" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
+
+                                    $(function() {
+                                        $("#sub1, #sub2").on("keydown keyup", diff);
+
+                                        function diff() {
+                                            //alert('test');
+                                            $("#diff").val(parseFloat(Number((Number($("#sub1").val()) + Number($("#sub2").val())))));
+                                            //            $("#yrdiff").val(Number($("#plan1").val()) + Number($("#plan2").val()) + Number($("#plan3").val()) + Number($("#plan4").val()) + Number($("#plan5").val()));
+                                        }
+
+                                    });
+
+
+                                })
+                                $('#room').html(aaaa);
+                            }
+                        })
+
+
+                    }
+
+                    // $("#property").val($('#property').val()).ch;
+                }
+            });
+            
             $(document).ready(function() {
 
-
+               
 
                 $('#property').on('change', function(e) {
 
@@ -352,12 +446,12 @@
                                     //  alert(room.id);
 
                                     aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" class="summernote-simple form-control norms" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]"  class="summernote-simple form-control norms" ></div>' +
 
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" class="summernote-simple form-control sub1" required ></div>' +
 
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" class="summernote-simple form-control sub2" required></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]"  class="summernote-simple form-control sub2" required></div>' +
 
 
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" name="total_guests[]" class="summernote-simple form-control" ></div>' +
