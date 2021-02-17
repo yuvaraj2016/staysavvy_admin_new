@@ -345,7 +345,7 @@
                                 $.each(rooms, function(index, room) {
                                     //  alert(room.id);
 
-                                 var nor = 
+                                
               
                                    aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" value="{{ old("no_of_rooms[]") }}" min="0" class="summernote-simple form-control norms" ></div>' +
