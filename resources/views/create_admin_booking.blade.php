@@ -58,38 +58,32 @@
                                 </div> -->
                                     @endif
 
-                                    @if(session('error') !== null)
+                                    @if(session('errors') !== null)
 
-                                    @foreach(session('error') as $v)
-                                    @foreach($v as $e)
+                                    @foreach(session('errors') as $v)
+                                      @foreach($v as $e)
 
                                     <div class="errorWrap"><strong>ERROR</strong>: {{ $e }} </div>
 
-                                    <!-- <div class='alert alert-danger'>
-                                       {{ $e }}
-                                    </div> -->
-                                    @endforeach
+                                   
+                                     @endforeach
 
                                     @endforeach
                                     @endif
 
-                                    <!-- @if(session('success') !== null)
-                                <div class='alert alert-success'>
-                                    {{ session('success') }}
-                                </div>
-                            @endif
+                             
                             @if(session('error') !== null)
+                            @foreach(session('error') as $v)
+                                @foreach($v as $e)
 
-                                @foreach(session('error') as $v)
-                                   @foreach($v as $e)
-                                   <div class='alert alert-danger'>
-                                       {{ $e }}
-                                    </div>
-                                   @endforeach
+                                <div class="errorWrap"><strong>ERROR</strong>: {{ $e }} </div>
 
+                            
                                 @endforeach
-                            @endif -->
-                                    <!-- <div class="form-group row">
+                            @endforeach
+                            @endif
+                            <!--
+                             <div class="form-group row">
                                                         <div class="col-sm-4 offset-5">
                                                         <label class="col-form-label text-md-right ">Status Desc</label>
                                                         <textarea name="status_desc" class="summernote-simple form-control" required>{{ old('status_desc') }}</textarea>
@@ -186,7 +180,7 @@
                                         
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Length Of Stay</label>
-                                            <input id="lens" type="number" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
+                                            <input id="lens" type="number" min="0" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
 
                                         </div>
                                         <div class="col-sm-4">
@@ -224,20 +218,20 @@
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Tax Percentage</label>
-                                            <input type="number" step="any" name="tax_percentage" value="{{ old('tax_percentage') }}" class="summernote-simple form-control" required>
+                                            <input type="number" min="0"step="any" name="tax_percentage" value="{{ old('tax_percentage') }}" class="summernote-simple form-control" required>
                                         </div>
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Adults</label>
-                                            <input id="toats" name="total_adults" value="{{ old('total_adults') }}" class="summernote-simple form-control toats" readonly>
+                                            <input id="toats" min="0" name="total_adults" value="{{ old('total_adults') }}" class="summernote-simple form-control toats" readonly>
                                         </div>
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Childrents</label>
-                                            <input id="tocds" name="total_childs" value="{{ old('total_childs') }}" class="summernote-simple form-control tocds" readonly>
+                                            <input id="tocds" min="0" name="total_childs" value="{{ old('total_childs') }}" class="summernote-simple form-control tocds" readonly>
                                         </div>
 
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Gust</label>
-                                            <input id="togst" name="total_guests" value="{{ old('total_guests') }}" class="summernote-simple form-control togst" readonly>
+                                            <input id="togst" min="0" name="total_guests" value="{{ old('total_guests') }}" class="summernote-simple form-control togst" readonly>
                                         </div>
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Amount</label>
@@ -349,21 +343,20 @@
                                 //  $('#rooms').append('');
                                 var aaaa = "";
                                 $.each(rooms, function(index, room) {
-                                    //   alert(index);
-                                 
+                                    //  alert(room.id);
 
-                                   
-                                  
-                                    aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" class="summernote-simple form-control norms" ></div>' 
+                                 var nor = 
+              
+                                   aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" value="{{ old("no_of_rooms.' + index + '") }}" min="0" class="summernote-simple form-control norms" ></div>' +
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" class="summernote-simple form-control sub1" required ></div>' +
-
-
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" class="summernote-simple form-control sub2" required></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" value="{{ old("no_of_adults[]") }}" min="0" class="summernote-simple form-control sub1" required ></div>' +
 
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" name="total_guests[]" class="summernote-simple form-control" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" value="{{ old("no_of_childs[]") }}" min="0" class="summernote-simple form-control sub2" required></div>' +
+
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" value="{{ old("total_guests[]") }}" name="total_guests[]" min="0" class="summernote-simple form-control" ></div>' +
 
 
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input id="amt" name="amount[]" class="summernote-simple form-control amt" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
@@ -387,6 +380,7 @@
 
 
                     }
+
 
                     // $("#property").val($('#property').val()).ch;
                 }
@@ -446,15 +440,15 @@
                                     //  alert(room.id);
 
                                     aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" value="{{ old("no_of_rooms.'+index'") }}" class="summernote-simple form-control norms" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" min="0" class="summernote-simple form-control norms" ></div>' +
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" value="{{ old("no_of_adults[]") }}" class="summernote-simple form-control sub1" required ></div>' +
-
-
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" value="{{ old("no_of_childs[]") }}" class="summernote-simple form-control sub2" required></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Adults(Max Adult: ' + room.max_adults + ')</label><input id="sub1" max="' + room.max_adults + '" type="number" name="no_of_adults[]" min="0" value="{{ old("no_of_adults[]") }}" class="summernote-simple form-control sub1" required ></div>' +
 
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" value="{{ old("total_guests[]") }}" name="total_guests[]" class="summernote-simple form-control" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" min="0" name="no_of_childs[]" value="{{ old("no_of_childs[]") }}" class="summernote-simple form-control sub2" required></div>' +
+
+
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" value="{{ old("total_guests[]") }}" min="0" name="total_guests[]" class="summernote-simple form-control" ></div>' +
 
 
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input id="amt" name="amount[]" class="summernote-simple form-control amt" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';

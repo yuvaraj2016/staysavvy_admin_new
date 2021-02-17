@@ -274,7 +274,7 @@ class AdminbookingController extends Controller
             "check_in_date"=>$checkin,
 
             "check_out_date"=>$checkout,
-         "booked_on"=>$booked_on,
+        //  "booked_on"=>$booked_on,
 
 
         //  "booking_status_id"=>$request->booking_status_id,
@@ -316,15 +316,30 @@ class AdminbookingController extends Controller
 
     //   return $request->amount;
 
+       
 
-        if($response->status()===201){
+
+        if($response->status()===200 || $response->status()===201){
 
             return redirect()->route('adminbookings.create')->with('success','Booking Created Successfully!');
         }else{
-
             $request->flash();
 
-            return redirect()->route('adminbookings.create')->with('error',$response['errors']);
+            if(isset($response['errors']))
+            {
+                return redirect()->route('adminbookings.create')->with('error',$response['errors']);
+            }
+            else if(isset($response['error']))
+            {
+                return redirect()->route('adminbookings.create')->with('error',$response['error']);
+            }
+            else if(isset($response['message']))
+            {
+                return redirect()->route('adminbookings.create')->with('error',$response['message']);
+            }
+           
+
+            
         }
     }
 
