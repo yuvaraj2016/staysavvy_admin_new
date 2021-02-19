@@ -29,6 +29,11 @@
     /* float:right; */
 }
 
+.dataTables_info
+{
+    display: none!important;
+
+}
  </style>
 
 <div class="page-wrapper">
@@ -226,6 +231,29 @@
 
                                                         
                                                     </div>
+                                                    {{-- @dd($pagination) --}}
+                                                    @php
+                                                        
+                                                    $first =(($pagination['current_page']-1) * $pagination['per_page']) + 1;
+
+                                                    if($pagination['current_page']==$pagination['total_pages'])
+                                                    {
+
+                                                        $last = ((($pagination['current_page']-1) * $pagination['per_page']) + $pagination['count']);     
+                                                    }
+                                                    else 
+                                                    {
+                                                        $last = ($pagination['current_page'] * $pagination['per_page']);
+
+                                                    }
+                                                  
+
+                                                    $total = $pagination['total'];
+
+                                                    @endphp
+
+
+                                                    <p style="font-size:15px; margin-top:-17px;" class="ml-4">Showing {{ $first }} to {{ $last }} of {{ $total }}</p>
                                                 </div>
                                                 <!-- HTML5 Export Buttons end -->
                      
