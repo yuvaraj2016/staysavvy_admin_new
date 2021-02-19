@@ -253,7 +253,7 @@
                                                     @endphp
 
 
-                                                    <p style="font-size:15px; margin-top:-17px;" class="ml-4">Showing {{ $first }} to {{ $last }} of {{ $total }}</p>
+                                                    <p style="font-size:15px;margin-top:-17px;" class="ml-4">Showing {{ $first }} to {{ $last }} of {{ $total }}</p>
                                                 </div>
                                                 <!-- HTML5 Export Buttons end -->
                      
