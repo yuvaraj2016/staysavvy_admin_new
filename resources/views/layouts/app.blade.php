@@ -908,6 +908,56 @@ margin-top: 0px !important;
 
                             </li>
 
+                          
+                            <li class="pcoded-hasmenu col-md-1">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
+                                    <span class="pcoded-mtext text-white offset-1"><b>Finance</b></span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                @if(collect(session('roles'))->contains('Administrator'))
+                                <ul class="pcoded-submenu">
+                                    <li class="pcoded-hasmenu ">
+                                        <a class=" {{ (request()->is('admin_invoice_list')) ? 'active' : '' }}" href="{{ route('admin.invoice') }}" data-i18n="nav.authentication.main">
+                                            <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
+                                            <span class="pcoded-mtext">Invoice</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                      
+                                        <a class=" {{ (request()->is('charity_invoice_list')) ? 'active' : '' }}" href="{{ route('charity.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Charity Invoice</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                              
+                                    </li>
+                                            
+
+
+                                    </ul>
+                                    @endif
+
+                                    @if(collect(session('roles'))->contains('Vendor'))
+                                    <ul class="pcoded-submenu">
+                                        <li class="pcoded-hasmenu ">
+                                            <a class=" {{ (request()->is('vendor_invoice_list')) ? 'active' : '' }}" href="{{ route('vendor.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
+                                                <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
+                                                <span class="pcoded-mtext">Invoice</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                         
+    
+                                        </ul>
+                                        @endif
+
+
+                                </li>
+
+                               
+
                             <li class=" col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
 
@@ -916,7 +966,7 @@ margin-top: 0px !important;
                             </li>
 
 
-
+                         
 
                             <li class="pcoded-hasmenu col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->

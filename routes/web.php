@@ -256,6 +256,14 @@ Route::resource('review', 'ReviewController')->except('index')->middleware('chec
 
 Route::get('review_list/{page?}','ReviewController@index')->name('review.index')->middleware('checktoken');
 
+
+Route::get('admin_invoice_list/{page?}','InvoiceController@getAdminInvoice')->name('admin.invoice')->middleware('checktoken');
+
+Route::get('vendor_invoice_list/{page?}','InvoiceController@getVendorInvoice')->name('vendor.invoice')->middleware('checktoken');
+
+Route::get('charity_invoice_list/{page?}','InvoiceController@getCharityInvoice')->name('charity.invoice')->middleware('checktoken');
+
+
 Route::get('getuser', function () {
     return 1;
 });
