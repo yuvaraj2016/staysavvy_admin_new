@@ -179,18 +179,45 @@
                                                                 </div>
         
                                                                 <div class="col-sm-4">
-                                                                <label class="col-form-label text-md-right ">Properties Address ( Min Character:5 )</label>
-                                                                <input name="address" value="{{ old('address') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
-                       
+                                                                    <label class="col-form-label text-md-right ">Latitude </label>
+                                                                    <input type="number" name="latitude" step="any" value="{{ old('latitude') }}" class="summernote-simple form-control" required>
+                           
                                                                 </div>
+                        
                                   
         
                                                             
         
                                   
                                     </div>
-        
+                                    <div class="form-group row">
+                                       
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Longitude </label>
+                                            <input type="number" name="longitude" step="any" value="{{ old('longitude') }}" class="summernote-simple form-control" required>
+   
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">City/Town </label>
+                                            <input  name="area"  value="{{ old('city') }}" class="summernote-simple form-control" required>
+   
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Postal Code </label>
+                                            <input type="text" name="postalcode" value="{{ old('postalcode') }}" class="summernote-simple form-control" required>
+   
+                                        </div>
+
+                                    
+                                    </div>
+
                                     <div class="form-group row ">
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Properties Address ( Min Character:5 )</label>
+                                            <input name="address" value="{{ old('address') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
+   
+                                        </div>
+                  
                                     <!-- <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Properties Location ( Min Character:5 )</label>
                                                                 <input name="location" id="address" value="{{ old('location') }}"  minlength="5" maxlength="500" class="summernote-simple form-control" required>
@@ -219,16 +246,7 @@
                                                                 </select>
                                                                 </div>
                                   
-                                                                <div class="col-sm-4">
-                                                                <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please put 'None' in the above boxes if none are used">Central Reservation System</label>
-                                                                <select  class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric" required>
-                                                                    <option value="" selected disabled>Select</option>
-                                                                    @foreach($crs as $scrs)
-                                                                        <option value="{{ $scrs['id'] }}" {{ (old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option>
-                                                                    @endforeach
-                                                                </select>
-                       
-                                                                </div>
+                                                            
                                                      
                                   
                                     </div>
@@ -238,6 +256,17 @@
         
         
                                     <div class="form-group row ">
+
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please put 'None' in the above boxes if none are used">Central Reservation System</label>
+                                            <select  class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric" required>
+                                                <option value="" selected disabled>Select</option>
+                                                @foreach($crs as $scrs)
+                                                    <option value="{{ $scrs['id'] }}" {{ (old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option>
+                                                @endforeach
+                                            </select>
+   
+                                            </div>
                                 
                                     <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please state which best describes your property">Property Type</label>
@@ -255,11 +284,11 @@
                        
                                                                 </div>
 
-                                                                <div class="col-sm-4">
+                                                                {{-- <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property's offer"> What We Offer ( Min Character:5 )</label>
                                                                     <textarea name="what_we_offer" value="{{ old('what_we_offer') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
                            
-                                                                </div>
+                                                                </div> --}}
                                                                 
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right ">Room Start Price </label>
@@ -267,7 +296,7 @@
                            
                                                                 </div>
         
-                                                                <div class="col-sm-4">
+                                                                {{-- <div class="col-sm-4">
                                                                 <label class="col-form-label text-md-right ">Status</label>
                                                                 <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
                                                 <option value="" selected disabled>Select</option>
@@ -275,7 +304,7 @@
                                                     <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
                                                 @endforeach
                                             </select>
-                                                                </div>
+                                                                </div> --}}
         
                                                                 <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please state details of any taxes or charges that are included in your room rate">Taxes</label>
@@ -305,31 +334,10 @@
                                                     @endforeach
                                                 </select>
                                                                     </div>
-                                                                    <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Latitude </label>
-                                                                    <input type="number" name="latitude" step="any" value="{{ old('latitude') }}" class="summernote-simple form-control" required>
-                           
-                                                                </div>
-
-                                                                <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Longitude </label>
-                                                                    <input type="number" name="longitude" step="any" value="{{ old('longitude') }}" class="summernote-simple form-control" required>
-                           
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Area </label>
-                                                                    <input  name="area"  value="{{ old('area') }}" class="summernote-simple form-control" required>
-                           
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Pincode </label>
-                                                                    <input type="number" name="pincode" step="any" value="{{ old('pincode') }}" class="summernote-simple form-control" required>
-                           
-                                                                </div>
-                        
+                                                                
                                                                         <div class="col-sm-12 text-center">
                                                                             
-                                                                            <label class="col-form-label text-md-right ">Photos</label>
+                                                                            <label class="col-form-label text-md-right ">General Photos</label>
                                                                             <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required>
                                                                             
                                                                         </div>
