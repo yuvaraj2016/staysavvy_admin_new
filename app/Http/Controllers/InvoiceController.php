@@ -119,19 +119,30 @@ class InvoiceController extends Controller
        
     if($response->status()===201 || $response->status()===200 ){
    
-        return redirect('admin_monthly_invoice_list/1/'.$property_id."/".$year)->with('success', 'ok');
+        return redirect('admin_monthly_invoice_list/1/'.$property_id."/".$year)->with('success', 'Monthly Vendor Invoice Is Created Successfully');
 
     }
 
     else
     {
 
-        return "Some Error Occured";
+        if(isset($response['errors']))
+        {
+            return redirect()->back()->with('error',$response['errors']);
+        }
+        else if(isset($response['error']))
+        {
+            return redirect()->back()->with('error',$response['error']);
+        }
+        else if(isset($response['message']))
+        {
+            return redirect()->back()->with('error',$response['message']);
+        }
     }
    
-           
+        
 
-        return view('admin_monthly_invoice_list', compact('veninvoices', 'pagination','lastpage'));
+       
 
 
     }

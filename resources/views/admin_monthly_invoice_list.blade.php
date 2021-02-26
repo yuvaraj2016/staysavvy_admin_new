@@ -63,12 +63,42 @@
     </div>
     <div class="page-body">
         <div class="row">
-            <!-- @if(session('success') !== null)
-            <div class='alert alert-success'>
+          
+            @if(session('success') !== null)
+            <div class="succWrap">
                 {{ session('success') }}
             </div>
+            <!-- <div class='alert alert-success'>
+            {{ session('success') }}
+        </div> -->
             @endif
-        -->
+
+            @if(session('errors') !== null)
+
+            @foreach(session('errors') as $v)
+              @foreach($v as $e)
+
+            <div class="errorWrap"><strong>ERROR</strong>: {{ $e }} </div>
+
+           
+             @endforeach
+
+            @endforeach
+            @endif
+
+     
+            @if(session('error') !== null)
+            @foreach(session('error') as $v)
+                @foreach($v as $e)
+
+                <div class="errorWrap"><strong>ERROR</strong>: {{ $e }} </div>
+
+            
+                @endforeach
+            @endforeach
+            @endif
+
+            
             <div class="col-sm-12">
                 <!-- HTML5 Export Buttons table start -->
                 <div class="card">
