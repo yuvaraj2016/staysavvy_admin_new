@@ -39,7 +39,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Admin Invoice List</h4>
+                        <h4>Admin Monthly Invoice List</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -76,13 +76,26 @@
                     <div class="card-header table-card-header">
                         <div class="row">
                             <div class="section-header-button col-md-4">
-                      
+                                <div class="form-group">
+                                    <form action="{{ route('admin.monthlyinvoice.create') }}" class="swa-confirm"  method="post" id="addstatus">                      
+                                        @csrf
+                                       <input type="hidden" name="property_id" value="{{ Request::segment(3) }}"/>
+                                      
+                                    <div class="row">
+                                         <div class="col-md-7"><input type="month" class="form-control" id="invmonth" name="invmonth" value="{{ date('Y') }}-{{ date('m') }}"></div>
+                                         <div class="col-md-5"><input type="submit" class="btn btn-primary form-control mt-1" id="invgen" name="invgen" value="Generate"></div>
+                                         
+                                      
+                                     </div>
+                                    </form> 
+                                 </div>
                             </div>
                             <div class="section-header-button col-md-5">
 
                             </div>
                             <div class="section-header-button col-md-3 ">
                                 <div class="col">
+                               
                                 <ul id="pagination" class="float-right m-0 p-0">
                                         <li><a href="{{ route('admin.invoice',$page=1) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
                                         @php
@@ -139,19 +152,30 @@
                                 <thead>
                                     <tr>
                                        <th>Actions</th>
-                                        <th>Property Name</th>
-                                        <th>City/Town</th> 
-                                        <th>Postalcode</th> 
-                                      
+                                    
+                                       <th>Invoice No</th>
+
+                                       <th>Month</th>
+                                       <th>Year</th>
+                                        
+                                       <th>Property Name</th> 
+
+                                       <th>Due By</th> 
+                                        
+                                       <th>Commission Amount</th> 
+
+                                       <th>Total Amount</th> 
+
+                                       <th>Payment Status</th> 
                                      
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                 {{-- @dd($prodcategories) --}}
-                                    @foreach($properties as $property )
+                                    @foreach($veninvoices as $veninvoice )
                                     @php
-                                    $id=$property['id'];
+                                    $id=$veninvoice['id'];
                                     @endphp
 
                                     <tr>
@@ -160,31 +184,52 @@
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
                                                     {{-- @if(collect(session('permissions'))->contains('List invoices')) --}}
-                                                    <a href="{{ route('admin.monthlyinvoice',[$page=1,$property_id=$property['id'],$year=date('Y')]) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View Invoices</a>
+                                                    <a href="#" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View User Invoices</a>
                                                 {{-- @endif --}}
                                                 </li>
                                               
                                            
 
                                   
-</form></li>
-                                                    <!-- <li class="list-group-item border1 btn-delete"><a href="{{ url('status/'.$id) }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Audit"><i class="fa fa-calculator"></i></a></li> -->
+                                                </form></li>
+                                                  
                                                 </ul>
 
 
                                             </div>
                                         </td>
                                        <td>
-                                            {{ $property['name'] }}
+                                            {{ $veninvoice['invoice_no'] }}
                                         </td>
-                                        {{-- <td>
-                                            {{ $property['address'] }}
-                                        </td> --}}
+
                                         <td>
-                                            {{ $property['city'] }}
+                                            {{ $veninvoice['month_name'] }}
+                                        </td>
+                                     
+                                        <td>
+                                            {{ $veninvoice['year'] }}
+                                        </td>
+                                     
+                                        <td>
+                                            {{ $veninvoice['property_name'] }}
+                                        </td>
+                                     
+                                     
+                                        <td>
+                                            {{ $veninvoice['due_by'] }}
                                         </td>
                                         <td>
-                                            {{ $property['postalcode'] }}
+                                            {{ $veninvoice['commission_amount'] }}
+                                        </td>
+
+                                        <td>
+                                            {{ $veninvoice['total_amount'] }}
+                                        </td>
+
+                                     
+
+                                        <td>
+                                            {{ $veninvoice['payment_status'] }}
                                         </td>
                                      
                                     </tr>
@@ -225,7 +270,7 @@
 
                                                     <p style="font-size:15px;margin-top:-17px;" class="ml-4">Showing {{ $first }} to {{ $last }} of {{ $total }}</p>
                 </div>
-                <!-- HTML5 Export Buttons end -->
+                
 
 
 
@@ -252,30 +297,140 @@
 
     </div>
 </div>
-{{-- <script>
-    $(function () {
-        $('.job-delete').click(function (event) {
-            var token = $("meta[name='csrf-token']").attr("content");
-            event.preventDefault();
-            event.stopPropagation();
+ <script>
+    $(document).ready(function() {
+
+               
+
+// $('#invgen').on('click', function(e) {
+
+//     var invrange = $('#invmonth').val().split("-");
+    
+//     var invmonth = invrange[1];
+
+//     var invyear = invrange[0];
+
+//     var property_id =  {{ Request::segment(3) }};
+
+    
+   
+//     if (invmonth && invyear) {
+//         $.ajax({
+
+//             headers: {
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/vnd.api.v1+json'
+//             },
+//             url: "{{ url('admin_monthly_invoice_create')}}" + "/" + property_id + "/" + invmonth +  "/" + invyear,
+
+//             type: "GET",
+
+//             // data: {
+//             //   id : cat_id
+//             // },
+
+//             crossDomain: true,
+//             beforeSend: function() {
+//                 $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+//             },
+
+//             success: function(responsedata) {
+
+//                 alert(responsedata);
+
+//                 $('#response').html('');
+
+//                 // var data = JSON.parse(responsedata);
+//                 //  console.log(responsedata);
+
+//                 var rooms = responsedata;
+
+//                 //   console.log(rooms);
+
+//                 //  $('#rooms').empty();
+//                 //  $('#rooms').append('');
+//                 var aaaa = "";
+              
+               
+//             }
+//         })
 
 
-            $.ajax({
-                type: 'DELETE',
-                url: $(this).attr('href'),
-                data: {
-                    "_token": token
-                },
-                success: function (response) {
-                    alert('Deleted');
-                    location.reload();
-                }
+//     }
 
-            });
-        });
-    });
 
-</script> --}}
+
+
+
+
+// });
+
+
+//     $('#rooms').on('change',function(e) {
+
+//      var room_id = e.target.value;
+
+
+//  if (room_id) {
+//               $.ajax({
+
+//                  headers: {  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+//      'Content-Type':'application/json',
+//      'Accept' : 'application/vnd.api.v1+json' },
+//      url:"{{ url('getrooms')}}" + "/" + room_id,
+
+//                     type:"GET",
+
+
+
+//                     crossDomain:true,
+//                     beforeSend: function() {
+//                          $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+//                      },
+
+//                     success:function (responsedata) {
+//                      $('#response').html('');
+
+
+//                    console.log(responsedata);
+
+//                       var room = responsedata;
+
+//                       console.log(room);
+
+
+
+//                     }
+//                 })
+
+
+//  }
+
+
+
+
+
+
+//              });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
 <script>
 // $(document).ready(function(){
 //     $('.sa-remove').click(function () {

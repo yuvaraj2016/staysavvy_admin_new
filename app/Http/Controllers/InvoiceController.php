@@ -36,7 +36,7 @@ class InvoiceController extends Controller
             $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?page='.$page);
 
             $response = json_decode($call->getBody()->getContents(), true);
-        //  return $response;
+         
         }catch (\Exception $e){
             //buy a beer
 
@@ -47,11 +47,95 @@ class InvoiceController extends Controller
 
         $lastpage = $pagination['total_pages'];
 
-        
            
 
-          return view('admin_invoice_list', compact('properties', 'pagination','lastpage'));
+        return view('admin_invoice_list', compact('properties', 'pagination','lastpage'));
+
+
     }
+
+    public function getAdminMonthlyInvoice(Request $request,$page = 1)
+    {
+        $token = session()->get('token');
+
+        $property_id = $request->property_id;
+        
+        $year = $request->year;
+
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendorInvoice?page='.$page.'&property_id='.$property_id.'&year='.$year);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+         
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+        $veninvoices = $response['data'];
+
+        // return $veninvoices;
+        
+        $pagination = $response['meta']['pagination'];
+
+        $lastpage = $pagination['total_pages'];
+
+           
+
+        return view('admin_monthly_invoice_list', compact('veninvoices', 'pagination','lastpage'));
+
+
+    }
+
+
+    public function createAdminMonthlyInvoice(Request $request)
+    {
+       
+        $token = session()->get('token');
+
+        $range = explode("-",$request->invmonth);
+
+        $property_id = $request->property_id;
+
+        $month =  ltrim($range[1], '0');
+
+        
+        
+        $year = $range[0];
+
+       
+
+        $response = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/vendorInvoice',
+
+        [
+            "property_id"=>$property_id,
+            "month"=>$month,
+            "year"=>$year,
+                
+
+        ]);
+        
+       
+    if($response->status()===201 || $response->status()===200 ){
+   
+        return redirect('admin_monthly_invoice_list/1/'.$property_id."/".$year)->with('success', 'ok');
+
+    }
+
+    else
+    {
+
+        return "Some Error Occured";
+    }
+   
+           
+
+        return view('admin_monthly_invoice_list', compact('veninvoices', 'pagination','lastpage'));
+
+
+    }
+
 
 
 
