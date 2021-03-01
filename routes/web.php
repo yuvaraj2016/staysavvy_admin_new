@@ -267,6 +267,9 @@ Route::get('admin_monthly_invoice_list/{page?}/{property_id}/{year}','InvoiceCon
 
 Route::post('admin_monthly_invoice_create','InvoiceController@createAdminMonthlyInvoice')->name('admin.monthlyinvoice.create')->middleware('checktoken');
 
+Route::get('admin_individual_invoice_list/{page?}/{vendor_invoice_id}','InvoiceController@getAdminIndividualInvoice')->name('admin.individualinvoice')->middleware('checktoken');
+
+Route::get('user_payment_list/{page?}','UserPaymentController@index')->name('userpayment.index')->middleware('checktoken');
 
 Route::get('getuser', function () {
     return 1;
