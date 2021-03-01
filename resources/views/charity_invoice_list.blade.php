@@ -53,7 +53,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('admin.invoice') }}">Admin Invoice List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('charity.invoice') }}">Charity Invoice List</a>
                         </li>
 
                     </ul>
