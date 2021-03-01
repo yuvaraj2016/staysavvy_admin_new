@@ -909,7 +909,7 @@ margin-top: 0px !important;
                             </li>
 
 
-                            @if(collect(session('roles'))->contains('Administrator'))
+                            {{-- @if(collect(session('roles'))->contains('Administrator')) --}}
                             <li class="pcoded-hasmenu col-md-1">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-gbp text-white"></i></span>
@@ -926,39 +926,39 @@ margin-top: 0px !important;
                                         </a>
                                         <ul class="pcoded-submenu">
                                             <li class="">
-                                                @if(collect(session('permissions'))->contains('List config booking status'))
+                                                {{-- @if(collect(session('permissions'))->contains('List config booking status')) --}}
 
                                                 <a class="{{ (request()->is('booking_status_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-bg-image">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                     <span class="pcoded-mtext">User Payments</span>
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
-                                                @endif
+                                                {{-- @endif --}}
                                             </li>
                                             <li class="">
-                                                @if(collect(session('permissions'))->contains('List config commission'))
+                                                {{-- @if(collect(session('permissions'))->contains('List config commission')) --}}
 
                                                 <a class=" {{ (request()->is('commission_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-soc-icon">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                     <span class="pcoded-mtext">Vendor Payments</span>
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
-                                                @endif
+                                                {{-- @endif --}}
                                             </li>
                                        
                                             <li class="">
-                                                @if(collect(session('permissions'))->contains('List config commission'))
+                                                {{-- @if(collect(session('permissions'))->contains('List config commission')) --}}
 
                                                 <a class=" {{ (request()->is('commission_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-soc-icon">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                     <span class="pcoded-mtext">Charity Payments</span>
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
-                                                @endif
+                                                {{-- @endif --}}
                                             </li>
                                         </ul>
                                     </li>
-                                    @endif
+                                    {{-- @endif --}}
 
                                     <li class="pcoded-hasmenu ">
                                         <a href="javascript:void(0)" data-i18n="nav.authentication.main">
