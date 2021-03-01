@@ -649,6 +649,7 @@ margin-top: 0px !important;
             <div class="pcoded-main-container" style="margin-top:0px !important;padding-top:0px!important;">
 
 
+
                 {{-- Below Menu Code Reference -- https://bootsnipp.com/snippets/nNX3a --}}
 
                 <nav class="pcoded-navbar">
@@ -958,7 +959,7 @@ margin-top: 0px !important;
                                             </li>
                                         </ul>
                                     </li>
-                                    {{-- @endif --}}
+                                    @endif
 
                                     <li class="pcoded-hasmenu ">
                                         <a href="javascript:void(0)" data-i18n="nav.authentication.main">
@@ -1013,7 +1014,7 @@ margin-top: 0px !important;
                             </li>
                   
 
-                         @endif
+                         {{-- @endif --}}
 
 
 
