@@ -87,6 +87,39 @@ class InvoiceController extends Controller
 
 
     }
+
+    public function getAdminMonthlyInvoiceDetails(Request $request,$page = 1)
+    {
+        $token = session()->get('token');
+
+        $property_id = $request->vendor_invoice_id;
+        
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendorInvoiceDetail?page='.$page.'&vendor_invoice_id='.$property_id);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+         
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+        $invoices = $response['data'];
+
+        // return $veninvoices;
+        
+        $pagination = $response['meta']['pagination'];
+
+        $lastpage = $pagination['total_pages'];
+
+           
+
+        return view('admin_monthly_invoice_details', compact('invoices', 'pagination','lastpage'));
+
+
+    }
+
     public function getAdminCharityInvoice(Request $request,$page = 1)
     {
         $token = session()->get('token');

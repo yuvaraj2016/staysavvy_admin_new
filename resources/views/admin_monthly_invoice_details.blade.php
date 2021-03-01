@@ -39,7 +39,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Admin Monthly Invoice List</h4>
+                        <h4>Admin Monthly Invoice Details</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -52,8 +52,8 @@
                                 <i class="icofont icofont-home"></i>
                             </a>
                         </li>
-
-                        <li class="breadcrumb-item"><a href="{{ route('admin.invoice') }}">Admin Invoice List</a>
+                        {{-- @dd(Request::segment(3)) --}}
+                        <li class="breadcrumb-item"><a href="{{  url()->previous()  }}">Admin Monthly Invoice</a>
                         </li>
 
                     </ul>
@@ -106,7 +106,7 @@
                     <div class="card-header table-card-header">
                         <div class="row">
                             <div class="section-header-button col-md-4">
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <form action="{{ route('admin.monthlyinvoice.create') }}" class="swa-confirm"  method="post" id="addstatus">                      
                                         @csrf
                                        <input type="hidden" name="property_id" value="{{ Request::segment(3) }}"/>
@@ -118,7 +118,7 @@
                                       
                                      </div>
                                     </form> 
-                                 </div>
+                                 </div> --}}
                             </div>
                             <div class="section-header-button col-md-5">
 
@@ -126,8 +126,8 @@
                             <div class="section-header-button col-md-3 ">
                                 <div class="col">
                                
-                                <ul id="pagination" class="float-right m-0 p-0">
-                                        <li><a href="{{ route('admin.invoice',$page=1) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
+                                {{-- <ul id="pagination" class="float-right m-0 p-0">
+                                        <li><a href="{{ route('admin.monthlyinvoicedetail',$page=1,$vendor_invoice_id=Request::segment(3)) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
                                         @php
                                         if(isset($pagination['links']['previous']))
                                         {
@@ -136,7 +136,7 @@
                                         $page = $endurl[1];
 
                                         @endphp
-                                        <li><a href="{{ route('admin.invoice',$page) }}" class="btn btn-primary">Previous</a></li>
+                                        <li><a href="{{ route('admin.monthlyinvoicedetail',$page,$vendor_invoice_id=Request::segment(3)) }}" class="btn btn-primary">Previous</a></li>
                                         @php
                                         }
                                         @endphp
@@ -151,7 +151,7 @@
                                         $page = $endurl[1];
                                         // echo
                                         @endphp
-                                        <li> <a href="{{ route('admin.invoice',$page) }}" class="btn btn-primary">Next</a></li>
+                                        <li> <a href="{{ route('admin.monthlyinvoicedetail',$page,$vendor_invoice_id=Request::segment(3)) }}" class="btn btn-primary">Next</a></li>
                                         @php
                                         }
 
@@ -161,14 +161,14 @@
                                         if($pagination['total_pages']>1)
                                         {
                                         @endphp
-                                        <li> <a href="{{ route('admin.invoice',$pagination['total_pages']) }}" class="btn btn-primary float-right">Last</a> </li>
+                                        <li> <a href="{{ route('admin.monthlyinvoicedetail',$pagination['total_pages'],$vendor_invoice_id=Request::segment(3)) }}" class="btn btn-primary float-right">Last</a> </li>
 
                                         @php
                                         }
 
                                         @endphp
 
-                                    </ul>
+                                    </ul> --}}
 
                                  
 
@@ -181,41 +181,36 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
-                                       <th>Actions</th>
+                                       {{-- <th>Actions</th> --}}
                                     
-                                       <th>Invoice No</th>
+                                       <th>Vendor Invoice Id</th>
 
-                                       <th>Month</th>
-                                       <th>Year</th>
+                                       <th>Property Name</th>
+
+                                       <th>User Invoice Id</th>
                                         
-                                       <th>Property Name</th> 
+                                       <th>Booking Ref</th> 
 
-                                       <th>Due By</th> 
-                                        
-                                       <th>Commission Amount</th> 
-
-                                       <th>Total Amount</th> 
-
-                                       <th>Payment Status</th> 
+                                 
                                      
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                 {{-- @dd($prodcategories) --}}
-                                    @foreach($veninvoices as $veninvoice )
+                                    @foreach($invoices as $invoice )
                                     @php
-                                    $id=$veninvoice['id'];
+                                    $id=$invoice['id'];
                                     @endphp
 
                                     <tr>
-                                    <td>
+                                    {{-- <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
                                                     {{-- @if(collect(session('permissions'))->contains('List invoices')) --}}
-                                                    <a href="#" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View User Invoices</a>
-                                                {{-- @endif --}}
+                                                    {{-- <a href="{{ route('admin.monthlyinvoice',[$page=1,$property_id=$property['id'],$year=date('Y')]) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View User Invoices</a> --}}
+                                                {{-- @endif 
                                                 </li>
                                               
                                            
@@ -227,41 +222,25 @@
 
 
                                             </div>
-                                        </td>
+                                        </td> --}}
                                        <td>
-                                            {{ $veninvoice['invoice_no'] }}
+                                            {{ $invoice['vendor_invoice_id'] }}
                                         </td>
 
                                         <td>
-                                            {{ $veninvoice['month_name'] }}
+                                            {{ $invoice['property_name'] }}
                                         </td>
                                      
                                         <td>
-                                            {{ $veninvoice['year'] }}
+                                            {{ $invoice['user_invoice_id'] }}
                                         </td>
                                      
                                         <td>
-                                            {{ $veninvoice['property_name'] }}
+                                            <a href="{{ url('adminbookings/'.$invoice['booking_id'].'/edit') }}" style="color:blue;font-weight:bold; text-decoration:underline;"> {{ $invoice['booking_ref'] }}</a>
                                         </td>
                                      
                                      
-                                        <td>
-                                            {{ $veninvoice['due_by'] }}
-                                        </td>
-                                        <td>
-                                            {{ $veninvoice['commission_amount'] }}
-                                        </td>
-
-                                        <td>
-                                            {{ $veninvoice['total_amount'] }}
-                                        </td>
-
-                                     
-
-                                        <td>
-                                            {{ $veninvoice['payment_status'] }}
-                                        </td>
-                                     
+                                      
                                     </tr>
 
 
