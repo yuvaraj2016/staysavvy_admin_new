@@ -267,6 +267,10 @@ Route::get('admin_monthly_invoice_list/{page?}/{property_id}/{year}','InvoiceCon
 
 Route::post('admin_monthly_invoice_create','InvoiceController@createAdminMonthlyInvoice')->name('admin.monthlyinvoice.create')->middleware('checktoken');
 
+Route::get('charity_monthly_invoice_list/{page?}/{property_id}/{year}','InvoiceController@getAdminCharityInvoice')->name('charity.monthlyinvoice')->middleware('checktoken');
+
+Route::post('charity_monthly_invoice_create','InvoiceController@createCharityMonthlyInvoice')->name('charity.monthlyinvoice.create')->middleware('checktoken');
+
 
 Route::get('getuser', function () {
     return 1;

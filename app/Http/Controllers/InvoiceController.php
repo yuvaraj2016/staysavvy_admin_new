@@ -87,8 +87,98 @@ class InvoiceController extends Controller
 
 
     }
+    public function getAdminCharityInvoice(Request $request,$page = 1)
+    {
+        $token = session()->get('token');
+
+        $property_id = $request->property_id;
+        
+        $year = $request->year;
+
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendorCharityInvoice?page='.$page.'&property_id='.$property_id.'&year='.$year);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+         
+        }catch (\Exception $e){
+            //buy a beer
 
 
+        }
+        $veninvoices = $response['data'];
+
+        // return $veninvoices;
+        
+        $pagination = $response['meta']['pagination'];
+
+        $lastpage = $pagination['total_pages'];
+
+           
+
+        return view('charity_monthly_invoice_list', compact('veninvoices', 'pagination','lastpage'));
+
+
+    }
+
+
+    public function createCharityMonthlyInvoice(Request $request)
+    {
+       
+        $token = session()->get('token');
+
+        $range = explode("-",$request->invmonth);
+
+        $property_id = $request->property_id;
+
+        $month =  ltrim($range[1], '0');
+
+        
+        
+        $year = $range[0];
+
+       
+
+        $response = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/vendorCharityInvoice',
+
+        [
+            "property_id"=>$property_id,
+            "month"=>$month,
+            "year"=>$year,
+                
+
+        ]);
+        
+       
+    if($response->status()===201 || $response->status()===200 ){
+   
+        return redirect('charity_monthly_invoice_list/1/'.$property_id."/".$year)->with('success', 'Monthly Vendor Charity Invoice Is Created Successfully');
+
+    }
+
+    else
+    {
+
+        if(isset($response['errors']))
+        {
+            return redirect()->back()->with('error',$response['errors']);
+        }
+        else if(isset($response['error']))
+        {
+            return redirect()->back()->with('error',$response['error']);
+        }
+        else if(isset($response['message']))
+        {
+            return redirect()->back()->with('error',$response['message']);
+        }
+    }
+   
+        
+
+       
+
+
+    }
     public function createAdminMonthlyInvoice(Request $request)
     {
        
