@@ -266,7 +266,7 @@ class PropertiesController extends Controller
         $coolthings = rtrim($coolthings,",");
 
         // return $amenities;
-
+return $request->all();
         if ($request->file('file') !== null) {
 
             $files =$request->file('file');
@@ -356,12 +356,12 @@ class PropertiesController extends Controller
                 'contents' => $request->longitude
             ],
             [
-                'name' => 'area',
-                'contents' => $request->area
+                'name' => 'city',
+                'contents' => $request->city
             ],
             [
-                'name' => 'pincode',
-                'contents' => $request->pincode
+                'name' => 'postalcode',
+                'contents' => $request->postalcode
             ],
             ]);
 
@@ -390,8 +390,8 @@ class PropertiesController extends Controller
             "vendor_id"=>$request->vendor_id,
             "latitude"=>$request->latitude,
             "longitude"=>$request->longitude,
-            "area"=>$request->area,
-            "pincode"=>$request->pincode,
+            "city"=>$request->city,
+            "postalcode"=>$request->postalcode,
             "taxes[]"=>$taxes,
             "amenities[]"=>$amenities,
             "coolthings[]"=>$coolthings
@@ -669,6 +669,7 @@ class PropertiesController extends Controller
         $amenities = rtrim($amenities,",");
         //  return  $amenities;
         $coolthings = rtrim($coolthings,",");
+      
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/property/'.$id, 
         
         [
@@ -687,8 +688,8 @@ class PropertiesController extends Controller
             "status_id"=>$request->status_id,
 
 
-            "area"=>$request->area,
-            "pincode"=>$request->pincode,
+            "city"=>$request->city,
+            "postalcode"=>$request->postalcode,
 
             "latitude"=>$str_arr,
             "longitude"=>$str_arr1,
@@ -702,7 +703,7 @@ class PropertiesController extends Controller
         
       );
     //   return $response;
-        // return $response;
+        
         if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
             return redirect()->route('home');
         }

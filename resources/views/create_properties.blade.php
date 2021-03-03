@@ -1,34 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-<style>
-.ss {
-  display: inline-block;
-  position: relative;
-}
-
-.let{
-    border: 2px solid #c9c9c9;
-  box-shadow: none;
-  /* font-family: "Roboto Regular", sans-serif; */
-  font-size:20px;
-  height: 42px;
-  padding-left: 20px;
-}
-
-.ss::before {
-  content: "£";
-  font-family: "Roboto Regular", sans-serif;
-  font-size: 1.5em;
-  position: absolute;
-  left: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-</style>
-
-
 <script type="text/javascript">
     jQuery(document).on("click", ".submit", function (e) {
   
@@ -212,33 +183,6 @@
                                                                     <input type="number" name="latitude" step="any" value="{{ old('latitude') }}" class="summernote-simple form-control" required>
                            
                                                                 </div>
-                                </div>
-                                <div class="form-group row ">
-                                                                <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Latitude </label>
-                                                                    <input type="number" name="latitude" step="any" value="{{ old('latitude') }}" class="summernote-simple form-control" required>
-                           
-                                                                </div>
-
-                                                                <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Longitude </label>
-                                                                    <input type="number" name="longitude" step="any" value="{{ old('longitude') }}" class="summernote-simple form-control" required>
-                           
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">City/town </label>
-                                                                    <input  name="area"  value="{{ old('area') }}" class="summernote-simple form-control" required>
-                           
-                                                                </div>
-                                </div>
-                                <div class="form-group row ">
-                                                                <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">postcode </label>
-                                                                    <input type="number" name="pincode" step="any" value="{{ old('pincode') }}" class="summernote-simple form-control" required>
-                           
-                                                                </div>
-                                                            
-               <!-- <div class="col-sm-4">
                         
                                   
         
@@ -302,36 +246,6 @@
                                                                 </select>
                                                                 </div>
                                   
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-                                    <div class="form-group row ">
-                             
-                                  
-                                                                <div class="col-sm-4">
-                                                                <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please put 'None' in the above boxes if none are used">Central Reservation System</label>
-                                                                <select  class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric" required>
-                                                                    <option value="" selected disabled>Select</option>
-                                                                    @foreach($crs as $scrs)
-                                                                        <option value="{{ $scrs['id'] }}" {{ (old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option>
-                                                                    @endforeach
-                                                                </select>
-                       
-                                                                </div>
-                                                     
-                                                                <div class="col-sm-4">
                                                             
                                                      
                                   
@@ -369,27 +283,16 @@
                                                                 <textarea name="general_description" value="{{ old('general_description') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
                        
                                                                 </div>
-                                    </div>
-        
-        
-        
-        
-        
-                                    <div class="form-group row ">
-                                
-                               
 
                                                                 {{-- <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property's offer"> What We Offer ( Min Character:5 )</label>
                                                                     <textarea name="what_we_offer" value="{{ old('what_we_offer') }}"  minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
                            
-                           
-                                                                </div>
                                                                 </div> --}}
                                                                 
                                                                 <div class="col-sm-4">
-                                                                    <label class="col-form-label text-md-right ">Room Start Price </label><span class="ss"> </span>
-                                                                       <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control let" required>
+                                                                    <label class="col-form-label text-md-right ">Room Start Price </label>
+                                                                    <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control" required>
                            
                                                                 </div>
         
@@ -431,8 +334,6 @@
                                                     @endforeach
                                                 </select>
                                                                     </div>
-                                         
-                        
                                                                 
                                                                         <div class="col-sm-12 text-center">
                                                                             
