@@ -266,7 +266,7 @@ class PropertiesController extends Controller
         $coolthings = rtrim($coolthings,",");
 
         // return $amenities;
-return $request->all();
+// return $request->all();
         if ($request->file('file') !== null) {
 
             $files =$request->file('file');
