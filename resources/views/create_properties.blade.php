@@ -199,7 +199,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">City/Town </label>
-                                            <input  name="area"  value="{{ old('city') }}" class="summernote-simple form-control" required>
+                                            <input  name="city"  value="{{ old('city') }}" class="summernote-simple form-control" required>
    
                                         </div>
                                         <div class="col-sm-4">
