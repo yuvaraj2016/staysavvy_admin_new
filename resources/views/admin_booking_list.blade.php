@@ -63,8 +63,8 @@
                     <div class="card-header table-card-header">
                         <div class="row">
                             <div class="section-header-button col-md-4">
-                    @if(collect(session('permissions'))->contains('Create property'))
-
+                    {{-- @if(collect(session('permissions'))->contains('Create property')) --}}
+                    @if(collect(session('permissions'))->contains('Create booking'))
                             {{-- {{ $prop_count['property_count'] }} --}}
                          
                             
