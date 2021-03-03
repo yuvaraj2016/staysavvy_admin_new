@@ -25,6 +25,12 @@
         margin-left: 10px;
         /* float:right; */
     }
+    .dataTables_info
+{
+    display: none!important;
+
+}
+
 </style>
 <div class="page-wrapper">
 
@@ -134,8 +140,8 @@
                                     <tr>
                                        <th>Actions</th>
                                         <th>Property Name</th>
-                                        <th>Area</th> 
-                                        <th>Pincode</th> 
+                                        <th>City/Town</th> 
+                                        <th>Postalcode</th> 
                                       
                                      
                                     </tr>
@@ -154,7 +160,7 @@
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
                                                     {{-- @if(collect(session('permissions'))->contains('List invoices')) --}}
-                                                    <a href="#" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View Invoices</a>
+                                                    <a href="{{ route('admin.monthlyinvoice',[$page=1,$property_id=$property['id'],$year=date('Y')]) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View Invoices</a>
                                                 {{-- @endif --}}
                                                 </li>
                                               
@@ -175,10 +181,10 @@
                                             {{ $property['address'] }}
                                         </td> --}}
                                         <td>
-                                            {{ $property['area'] }}
+                                            {{ $property['city'] }}
                                         </td>
                                         <td>
-                                            {{ $property['pincode'] }}
+                                            {{ $property['postalcode'] }}
                                         </td>
                                      
                                     </tr>
@@ -195,6 +201,29 @@
 
 
                     </div>
+
+                    @php
+                                                        
+                                                    $first =(($pagination['current_page']-1) * $pagination['per_page']) + 1;
+
+                                                    if($pagination['current_page']==$pagination['total_pages'])
+                                                    {
+
+                                                        $last = ((($pagination['current_page']-1) * $pagination['per_page']) + $pagination['count']);     
+                                                    }
+                                                    else 
+                                                    {
+                                                        $last = ($pagination['current_page'] * $pagination['per_page']);
+
+                                                    }
+                                                  
+
+                                                    $total = $pagination['total'];
+
+                                                 @endphp
+
+
+                                                    <p style="font-size:15px;margin-top:-17px;" class="ml-4">Showing {{ $first }} to {{ $last }} of {{ $total }}</p>
                 </div>
                 <!-- HTML5 Export Buttons end -->
 

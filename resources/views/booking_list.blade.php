@@ -13,6 +13,11 @@
         margin-left: 10px;
         /* float:right; */
     }
+    .dataTables_info
+{
+    display: none!important;
+
+}
 </style>
 
 <div class="page-wrapper" style="margin-top:80px!important;">

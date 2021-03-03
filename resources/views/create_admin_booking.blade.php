@@ -119,24 +119,29 @@
 
                                         </div>
 
-                                        <div class="col-sm-2">
+                                        {{-- <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check In Time </label>
                                             <input type="time" step="1" name="check_in_date_time" value="{{ old('check_in_date_time') }}" class="summernote-simple form-control" required>
                                             <!-- <input type="time" id="myTime" step="2"> -->
 
-                                        </div>
+                                        </div> --}}
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check Out Date </label>
                                             <input type="date" name="check_out_date" value="{{ old('check_out_date') }}" class="summernote-simple form-control" required>
 
                                         </div>
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Length Of Stay</label>
+                                            <input id="lens" type="number" min="0" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
 
-                                        <div class="col-sm-2">
+                                        </div>
+
+                                        {{-- <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check Out Time </label>
                                             <input type="time" step="1" name="check_out_date_time" value="{{ old('check_out_date_time') }}" class="summernote-simple form-control" required>
                                             <!-- <input type="time" id="myTime" step="2"> -->
 
-                                        </div>
+                                        </div> --}}
 
 
                                     </div>
@@ -178,20 +183,8 @@
                                         </div> --}}
 
                                         
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label text-md-right ">Length Of Stay</label>
-                                            <input id="lens" type="number" min="0" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
-
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label text-md-right ">Taxes</label>
-                                            <select class="js-example-basic-single col-sm-12" name="tax_id" id="" required class="form-control selectric">
-                                                <option value="">Select</option>
-                                                @foreach($tax as $taxs)
-                                                <option value="{{ $taxs['id'] }}" {{ (old("tax_id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                      
+                                        
 
                                     </div>
 
@@ -215,7 +208,16 @@
                                         </div> -->
 
                                   
-
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Taxes</label>
+                                            <select class="js-example-basic-single col-sm-12" name="tax_id" id="" required class="form-control selectric">
+                                                <option value="">Select</option>
+                                                @foreach($tax as $taxs)
+                                                <option value="{{ $taxs['id'] }}" {{ (old("tax_id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Tax Percentage</label>
                                             <input type="number" min="0"step="any" name="tax_percentage" value="{{ old('tax_percentage') }}" class="summernote-simple form-control" required>
@@ -229,34 +231,36 @@
                                             <input id="tocds" min="0" name="total_childs" value="{{ old('total_childs') }}" class="summernote-simple form-control tocds" readonly>
                                         </div>
 
-                                        <div class="col-sm-2">
+                                    </div>
+                                        <div class="form-group row ">
+                                        <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Total Gust</label>
                                             <input id="togst" min="0" name="total_guests" value="{{ old('total_guests') }}" class="summernote-simple form-control togst" readonly>
                                         </div>
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Total Amount</label>
                                             <input id="toamt" name="total_amount" value="{{ old('total_amount') }}" class="summernote-simple form-control toamt" readonly>
                                         </div>
-                                    </div>
+                                   
 
-
-
-
-
-
-
-                                    <div class="form-group row ">
-
-                                      
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label text-md-right ">Status</label>
-                                            <select class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
+                                     <div class="col-sm-4">
+                                            <label class="col-form-label ">Status</label>
+                                            <select class="js-example-basic-single" name="status_id" id="" placeholder="status" required class="form-control selectric" required>
                                                 <option value="" disabled>Select</option>
                                                 @foreach($statuses as $status)
                                                 <option value="{{ $status['id'] }}" {{ (old("status_id") == $status['id'] ? "selected":"") }}>{{ $status['status_desc'] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
+
+
+
+                                    </div>
+
+                                    {{-- <div class="form-group row ">
+
+                                      
+                                       
 
 
                                         <!-- <div class="col-sm-4">
@@ -270,7 +274,7 @@
                                         </div> -->
 
 
-                                    </div>
+                                    </div> --}}
 
 
 

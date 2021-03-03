@@ -649,6 +649,7 @@ margin-top: 0px !important;
             <div class="pcoded-main-container" style="margin-top:0px !important;padding-top:0px!important;">
 
 
+
                 {{-- Below Menu Code Reference -- https://bootsnipp.com/snippets/nNX3a --}}
 
                 <nav class="pcoded-navbar">
@@ -698,7 +699,7 @@ margin-top: 0px !important;
                                                 <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
 
                                                 </i>
-                                                {{ ucfirst(session('username')) }}
+                                                       {{ ucfirst(session('username')) }}
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
@@ -908,54 +909,118 @@ margin-top: 0px !important;
 
                             </li>
 
-                          
+
+                            {{-- @if(collect(session('roles'))->contains('Administrator')) --}}
                             <li class="pcoded-hasmenu col-md-1">
                                 <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
+                                    <span class="pcoded-micon"><i class="fa fa-gbp text-white"></i></span>
                                     <span class="pcoded-mtext text-white offset-1"><b>Finance</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
-                                @if(collect(session('roles'))->contains('Administrator'))
                                 <ul class="pcoded-submenu">
+                                @if(collect(session('roles'))->contains('Vendor'))
                                     <li class="pcoded-hasmenu ">
-                                        <a class=" {{ (request()->is('admin_invoice_list')) ? 'active' : '' }}" href="{{ route('admin.invoice') }}" data-i18n="nav.authentication.main">
+                                        <a href="javascript:void(0)" data-i18n="nav.authentication.main">
+                                            <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
+                                            <span class="pcoded-mtext">Payments</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                {{-- @if(collect(session('permissions'))->contains('List config booking status')) --}}
+
+                                                <a class="{{ (request()->is('booking_status_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-bg-image">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext">User Payments</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                {{-- @endif --}}
+                                            </li>
+                                            <li class="">
+                                                {{-- @if(collect(session('permissions'))->contains('List config commission')) --}}
+
+                                                <a class=" {{ (request()->is('commission_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-soc-icon">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext">Vendor Payments</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                {{-- @endif --}}
+                                            </li>
+                                       
+                                            <li class="">
+                                                {{-- @if(collect(session('permissions'))->contains('List config commission')) --}}
+
+                                                <a class=" {{ (request()->is('commission_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-soc-icon">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext">Charity Payments</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                {{-- @endif --}}
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    @endif
+
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" data-i18n="nav.authentication.main">
                                             <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
                                             <span class="pcoded-mtext">Invoice</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                    </li>
-                                    <li class="">
-                                      
-                                        <a class=" {{ (request()->is('charity_invoice_list')) ? 'active' : '' }}" href="{{ route('charity.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext">Charity Invoice</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                              
-                                    </li>
-                                            
+                                        @if(collect(session('roles'))->contains('Administrator'))
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                @if(collect(session('permissions'))->contains('List config booking status'))
 
+                                                <a class=" {{ (request()->is('admin_invoice_list')) ? 'active' : '' }}" href="{{ route('admin.invoice') }}" data-i18n="nav.authentication.main">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext">Vendor Invoice</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                @endif
+                                            </li>
+                                            <li class="">
+                                                @if(collect(session('permissions'))->contains('List config commission'))
 
-                                    </ul>
-                                    @endif
-
-                                    @if(collect(session('roles'))->contains('Vendor'))
-                                    <ul class="pcoded-submenu">
-                                        <li class="pcoded-hasmenu ">
-                                            <a class=" {{ (request()->is('vendor_invoice_list')) ? 'active' : '' }}" href="{{ route('vendor.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
-                                                <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
-                                                <span class="pcoded-mtext">Invoice</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                         
-    
+                                                <a class=" {{ (request()->is('charity_invoice_list')) ? 'active' : '' }}" href="{{ route('charity.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext">Charity Invoice</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                @endif
+                                            </li>
+                                       
                                         </ul>
                                         @endif
 
+                                        @if(collect(session('roles'))->contains('Vendor'))
+                                        <ul class="pcoded-submenu">
+                                            <li class="pcoded-hasmenu ">
+                                                <a class=" {{ (request()->is('vendor_invoice_list')) ? 'active' : '' }}" href="{{ route('vendor.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
+                                                    <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
+                                                    <span class="pcoded-mtext">Invoice</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                             
+        
+                                            </ul>
+                                            @endif
 
-                                </li>
+                                    </li>
 
+
+                                </ul>
+                            </li>
+                  
+
+                         {{-- @endif --}}
+
+
+
+
+                          
+                            
                                
 
                             <li class=" col-md-1" >

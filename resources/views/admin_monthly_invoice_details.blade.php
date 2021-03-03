@@ -30,6 +30,7 @@
     display: none!important;
 
 }
+
 </style>
 <div class="page-wrapper">
 
@@ -38,7 +39,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Room Type List</h4>
+                        <h4>Admin Monthly Invoice Details</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -51,8 +52,8 @@
                                 <i class="icofont icofont-home"></i>
                             </a>
                         </li>
-
-                        <li class="breadcrumb-item"><a href="{{ route('roomtype.index') }}">Room Type List</a>
+                        {{-- @dd(Request::segment(3)) --}}
+                        <li class="breadcrumb-item"><a href="{{  url()->previous()  }}">Admin Monthly Invoice</a>
                         </li>
 
                     </ul>
@@ -62,12 +63,42 @@
     </div>
     <div class="page-body">
         <div class="row">
-            <!-- @if(session('success') !== null)
-            <div class='alert alert-success'>
+          
+            @if(session('success') !== null)
+            <div class="succWrap">
                 {{ session('success') }}
             </div>
+            <!-- <div class='alert alert-success'>
+            {{ session('success') }}
+        </div> -->
             @endif
-        -->
+
+            @if(session('errors') !== null)
+
+            @foreach(session('errors') as $v)
+              @foreach($v as $e)
+
+            <div class="errorWrap"><strong>ERROR</strong>: {{ $e }} </div>
+
+           
+             @endforeach
+
+            @endforeach
+            @endif
+
+     
+            @if(session('error') !== null)
+            @foreach(session('error') as $v)
+                @foreach($v as $e)
+
+                <div class="errorWrap"><strong>ERROR</strong>: {{ $e }} </div>
+
+            
+                @endforeach
+            @endforeach
+            @endif
+
+            
             <div class="col-sm-12">
                 <!-- HTML5 Export Buttons table start -->
                 <div class="card">
@@ -75,19 +106,28 @@
                     <div class="card-header table-card-header">
                         <div class="row">
                             <div class="section-header-button col-md-4">
-                            @if(collect(session('permissions'))->contains('Create room type'))
-                                <a href="{{ route('roomtype.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
-                    background-color: #6777ef;
-                    border-color: #6777ef;border-radius:30px">Add New</a>
-                    @endif
+                                {{-- <div class="form-group">
+                                    <form action="{{ route('admin.monthlyinvoice.create') }}" class="swa-confirm"  method="post" id="addstatus">                      
+                                        @csrf
+                                       <input type="hidden" name="property_id" value="{{ Request::segment(3) }}"/>
+                                      
+                                    <div class="row">
+                                         <div class="col-md-7"><input type="month" class="form-control" id="invmonth" name="invmonth" value="{{ date('Y') }}-{{ date('m') }}"></div>
+                                         <div class="col-md-5"><input type="submit" class="btn btn-primary form-control mt-1" id="invgen" name="invgen" value="Generate"></div>
+                                         
+                                      
+                                     </div>
+                                    </form> 
+                                 </div> --}}
                             </div>
                             <div class="section-header-button col-md-5">
 
                             </div>
                             <div class="section-header-button col-md-3 ">
                                 <div class="col">
-                                <ul id="pagination" class="float-right m-0 p-0">
-                                        <li><a href="{{ route('roomtype.index',$page=1) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
+                               
+                                {{-- <ul id="pagination" class="float-right m-0 p-0">
+                                        <li><a href="{{ route('admin.monthlyinvoicedetail',$page=1,$vendor_invoice_id=Request::segment(3)) }}" class="btn btn-primary @if($pagination['current_page']==1) {{ "disabled" }} @endif">First</a></li>
                                         @php
                                         if(isset($pagination['links']['previous']))
                                         {
@@ -96,7 +136,7 @@
                                         $page = $endurl[1];
 
                                         @endphp
-                                        <li><a href="{{ route('roomtype.index',$page) }}" class="btn btn-primary">Previous</a></li>
+                                        <li><a href="{{ route('admin.monthlyinvoicedetail',$page,$vendor_invoice_id=Request::segment(3)) }}" class="btn btn-primary">Previous</a></li>
                                         @php
                                         }
                                         @endphp
@@ -111,7 +151,7 @@
                                         $page = $endurl[1];
                                         // echo
                                         @endphp
-                                        <li> <a href="{{ route('roomtype.index',$page) }}" class="btn btn-primary">Next</a></li>
+                                        <li> <a href="{{ route('admin.monthlyinvoicedetail',$page,$vendor_invoice_id=Request::segment(3)) }}" class="btn btn-primary">Next</a></li>
                                         @php
                                         }
 
@@ -121,14 +161,14 @@
                                         if($pagination['total_pages']>1)
                                         {
                                         @endphp
-                                        <li> <a href="{{ route('roomtype.index',$pagination['total_pages']) }}" class="btn btn-primary float-right">Last</a> </li>
+                                        <li> <a href="{{ route('admin.monthlyinvoicedetail',$pagination['total_pages'],$vendor_invoice_id=Request::segment(3)) }}" class="btn btn-primary float-right">Last</a> </li>
 
                                         @php
                                         }
 
                                         @endphp
 
-                                    </ul>
+                                    </ul> --}}
 
                                  
 
@@ -141,85 +181,66 @@
                             <table id="basic-btn" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
-                                    <th>Actions</th>
-                                    <th>Room Type Name</th>
-                                        <th>Room Type Code</th>
+                                       {{-- <th>Actions</th> --}}
+                                    
+                                       <th>Vendor Invoice Id</th>
+
+                                       <th>Property Name</th>
+
+                                       <th>User Invoice Id</th>
                                         
-                                        <th>Room Type Desc</th>
-                                        <!-- <th>Room Location</th>
-                                        <th>Max Adult</th>
-                                        <th>Max Children</th>
-                                        <th>Max Occupancy</th> -->
-                                       
-                                    <th>Status Desc</th>
-                                        <th>Created At</th>
-                                      
+                                       <th>Booking Ref</th> 
+
+                                 
+                                     
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                 {{-- @dd($prodcategories) --}}
-                                    @foreach($roomtype as $roomtypes )
+                                    @foreach($invoices as $invoice )
                                     @php
-                                    $id=$roomtypes['id'];
+                                    $id=$invoice['id'];
                                     @endphp
 
                                     <tr>
-                                    <td>
+                                    {{-- <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('List room type'))
-                                                    <a href="{{ url('roomtype/'.$id) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
-                                                @endif
-                                                </li>
-                                                    <!-- <li class="list-group-item border1"><a href="{{ url('status/'.$id.'/edit') }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></li> -->
-                                                    <li class="list-group-item border1">
-                                                    @if(collect(session('permissions'))->contains('Update room type'))
-                                                    <a href="{{ url('roomtype/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                                @endif
+                                                    {{-- @if(collect(session('permissions'))->contains('List invoices')) --}}
+                                                    {{-- <a href="{{ route('admin.monthlyinvoice',[$page=1,$property_id=$property['id'],$year=date('Y')]) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View User Invoices</a> --}}
+                                                {{-- @endif 
                                                 </li>
                                               
+                                           
 
-                                                    <li class="list-group-item border1">
-                                                    <form id="delete_from_{{$roomtypes['id']}}" method="POST" action="{{route('roomtype.destroy', $roomtypes['id']) }}">
-                    {{ csrf_field() }}
-    {{ method_field('DELETE') }}
-
-    <div class="form-group">
-    @if(collect(session('permissions'))->contains('Delete room type'))
-        <a href="javascript:void(0);" data-id="{{$roomtypes['id']}}" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">
-        <i class="fa fa-trash" style="position: relative;top:-5;color:#01a9ac"></i>
-        </a>     
-        @endif               
-    </div>
-</form></li>
-                                                    <!-- <li class="list-group-item border1 btn-delete"><a href="{{ url('status/'.$id) }}" class=" d-inline font1" data-toggle="tooltip" data-placement="top" title="Audit"><i class="fa fa-calculator"></i></a></li> -->
+                                  
+                                                </form></li>
+                                                  
                                                 </ul>
 
 
                                             </div>
-                                        </td>
-                                    <td>
-                                            {{ $roomtypes['name'] }}
+                                        </td> --}}
+                                       <td>
+                                            {{ $invoice['vendor_invoice_id'] }}
                                         </td>
 
                                         <td>
-                                            {{ $roomtypes['code'] }}
+                                            {{ $invoice['property_name'] }}
                                         </td>
+                                     
                                         <td>
-                                            {{ $roomtypes['description'] }}
+                                            {{ $invoice['user_invoice_id'] }}
                                         </td>
-
-                                        
-
+                                     
                                         <td>
-                                            {{ $roomtypes['status_desc'] }}
+                                            <a href="{{ url('adminbookings/'.$invoice['booking_id'].'/edit') }}" style="color:blue;font-weight:bold; text-decoration:underline;"> {{ $invoice['booking_ref'] }}</a>
                                         </td>
-
-
-                                        <td>{{ date("Y-m-d H:i:s",$roomtypes['created_at']) }}</td>
-                                    
+                                     
+                                     
+                                      
                                     </tr>
 
 
@@ -258,7 +279,7 @@
 
                                                     <p style="font-size:15px;margin-top:-17px;" class="ml-4">Showing {{ $first }} to {{ $last }} of {{ $total }}</p>
                 </div>
-                <!-- HTML5 Export Buttons end -->
+                
 
 
 
@@ -285,30 +306,140 @@
 
     </div>
 </div>
-{{-- <script>
-    $(function () {
-        $('.job-delete').click(function (event) {
-            var token = $("meta[name='csrf-token']").attr("content");
-            event.preventDefault();
-            event.stopPropagation();
+ <script>
+    $(document).ready(function() {
+
+               
+
+// $('#invgen').on('click', function(e) {
+
+//     var invrange = $('#invmonth').val().split("-");
+    
+//     var invmonth = invrange[1];
+
+//     var invyear = invrange[0];
+
+//     var property_id =  {{ Request::segment(3) }};
+
+    
+   
+//     if (invmonth && invyear) {
+//         $.ajax({
+
+//             headers: {
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/vnd.api.v1+json'
+//             },
+//             url: "{{ url('admin_monthly_invoice_create')}}" + "/" + property_id + "/" + invmonth +  "/" + invyear,
+
+//             type: "GET",
+
+//             // data: {
+//             //   id : cat_id
+//             // },
+
+//             crossDomain: true,
+//             beforeSend: function() {
+//                 $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+//             },
+
+//             success: function(responsedata) {
+
+//                 alert(responsedata);
+
+//                 $('#response').html('');
+
+//                 // var data = JSON.parse(responsedata);
+//                 //  console.log(responsedata);
+
+//                 var rooms = responsedata;
+
+//                 //   console.log(rooms);
+
+//                 //  $('#rooms').empty();
+//                 //  $('#rooms').append('');
+//                 var aaaa = "";
+              
+               
+//             }
+//         })
 
 
-            $.ajax({
-                type: 'DELETE',
-                url: $(this).attr('href'),
-                data: {
-                    "_token": token
-                },
-                success: function (response) {
-                    alert('Deleted');
-                    location.reload();
-                }
+//     }
 
-            });
-        });
-    });
 
-</script> --}}
+
+
+
+
+// });
+
+
+//     $('#rooms').on('change',function(e) {
+
+//      var room_id = e.target.value;
+
+
+//  if (room_id) {
+//               $.ajax({
+
+//                  headers: {  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+//      'Content-Type':'application/json',
+//      'Accept' : 'application/vnd.api.v1+json' },
+//      url:"{{ url('getrooms')}}" + "/" + room_id,
+
+//                     type:"GET",
+
+
+
+//                     crossDomain:true,
+//                     beforeSend: function() {
+//                          $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+//                      },
+
+//                     success:function (responsedata) {
+//                      $('#response').html('');
+
+
+//                    console.log(responsedata);
+
+//                       var room = responsedata;
+
+//                       console.log(room);
+
+
+
+//                     }
+//                 })
+
+
+//  }
+
+
+
+
+
+
+//              });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
 <script>
 // $(document).ready(function(){
 //     $('.sa-remove').click(function () {
