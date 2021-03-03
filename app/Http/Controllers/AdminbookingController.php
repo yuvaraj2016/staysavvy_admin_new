@@ -374,6 +374,115 @@ class AdminbookingController extends Controller
         );
     }
 
+
+
+
+// user  payment edit given below
+
+
+
+public function userpym($upid)
+{
+    $session = session()->get('token');
+    try{
+
+        $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/users');
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //  return $response;
+    }catch (\Exception $e){
+        //buy a beer
+
+
+    }
+     $users = $response['data'];
+
+     try{
+
+        $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPaymentType');
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //  return $response;
+    }catch (\Exception $e){
+        //buy a beer
+
+
+    }
+     $paymenttype = $response['data'];
+
+     try{
+
+        $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPaymentStatus');
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //  return $response;
+    }catch (\Exception $e){
+        //buy a beer
+
+
+    }
+     $paymentstatus = $response['data'];
+
+   
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/userPayment/' . $upid);
+
+   
+ 
+    
+
+    if($response->ok()){
+
+        $userpym =   $response->json()['data'];
+
+        //  return $userpym;
+
+        return view('edit_user_payment', compact(
+           'users','paymenttype','paymentstatus','userpym'
+        ));
+    }
+}
+//Ended user  payment edit 
+
+
+
+// update user payment given below
+
+
+public function update_user_pym(Request $request, $id)
+{
+    $session = session()->get('token');
+    
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/userPayment/'.$id, 
+    [
+        "_method"=> 'PATCH',
+        "total_amount"=>$request->total_amount,
+        "pay_type_id"=>$request->pay_type_id,
+        "pay_date"=>$request->pay_date,
+        "payment_status_id"=>$request->payment_status_id,
+        "comments"=>$request->comments
+       
+    ]
+    
+  );
+
+    //  return $request->all();
+ 
+    if($response->status()===200 || $response->status()===201 ){
+        return redirect()->back()->with('success','User Payment Updated Successfully!');
+    }else{
+         return $response;
+        return redirect()->back()->with('error',$response->json()['message']);
+    }
+
+}
+
+
+
+
+
+
+//End update user payment 
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -57,6 +57,8 @@ Route::get('booking_list/{page?}','BookingController@index')->name('booking.inde
 Route::resource('adminbookings', 'AdminbookingController')->except('index')->middleware('checktoken');
 
 Route::get('adminbooking_list/{page?}','AdminbookingController@index')->name('adminbookings.index')->middleware('checktoken');
+Route::get('user_payment/{upid}/edit','AdminbookingController@userpym')->name('user_payment.edit')->middleware('checktoken');
+Route::put('user_payment/{userpym}','AdminbookingController@update_user_pym')->name('user_payment.update')->middleware('checktoken');
 
 
 

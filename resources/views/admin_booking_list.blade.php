@@ -172,6 +172,7 @@
                                   
                                     @php
                                     $id=$bookings['id'];
+                                    $upid=$bookings['UserInvoice']['data']['uPayment']['data']['id'];
                                     @endphp
 
                                     <tr>
@@ -188,6 +189,12 @@
                                                     @if(collect(session('permissions'))->contains('Update booking'))
                                                     <a href="{{ url('adminbookings/'.$id.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                                 @endif
+                                                </li>
+
+                                                <li class="list-group-item border1">
+                                                    <!-- @if(collect(session('permissions'))->contains('Update booking')) -->
+                                                    <a href="{{ url('user_payment/'.$upid.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit Payment"><i class="fa fa-edit"></i></a>
+                                                <!-- @endif -->
                                                 </li>
                                            
 
