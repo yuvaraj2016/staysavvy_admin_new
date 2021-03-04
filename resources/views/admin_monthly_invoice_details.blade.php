@@ -234,10 +234,12 @@
                                         <td>
                                             {{ $invoice['user_invoice_id'] }}
                                         </td>
-                                     
                                         <td>
-                                            <a href="{{ url('adminbookings/'.$invoice['booking_id'].'/edit') }}" style="color:blue;font-weight:bold; text-decoration:underline;"> {{ $invoice['booking_ref'] }}</a>
+                                            {{ $invoice['booking_ref'] }}
                                         </td>
+                                        <!-- <td>
+                                            <a href="{{ url('adminbookings/'.$invoice['booking_id'].'/edit') }}" style="color:blue;font-weight:bold; text-decoration:underline;"> {{ $invoice['booking_ref'] }}</a>
+                                        </td> -->
                                      
                                      
                                       
