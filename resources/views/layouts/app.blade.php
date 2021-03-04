@@ -1008,7 +1008,14 @@ margin-top: 0px !important;
                                             @endif
 
                                     </li>
+                                    <li class="{{ (request()->is('admin_settlement_list')) ? 'active' : '' }} col-md-1" >
+                            <!-- style="margin-right: 80px!important;" -->
 
+                                <!-- @if(collect(session('permissions'))->contains('List booking')) -->
+                                <a href="{{ route('admin.settlement') }}"> <span class="pcoded-micon"><i class="fa fa-cubes "></i><b>N</b></span> <span class="pcoded-mtext  " data-i18n="nav.navigate.main"><b> Settlement</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <!-- @endif -->
+
+                            </li>
 
                                 </ul>
                             </li>

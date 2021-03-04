@@ -54,6 +54,34 @@ class InvoiceController extends Controller
 
     }
 
+// newly added column on 04.03.2021
+    public function getAdminsettlement(Request $request,$page = 1)
+    {
+        $token = session()->get('token');
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCharity?page='.$page);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+         
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+        $configcharity = $response['data'];
+        $pagination = $response['meta']['pagination'];
+
+        $lastpage = $pagination['total_pages'];
+
+           
+
+        return view('admin_settlement_list', compact('configcharity', 'pagination','lastpage'));
+
+
+    }
+// end of newly added column
+
     public function getAdminMonthlyInvoice(Request $request,$page = 1)
     {
         $token = session()->get('token');
@@ -87,6 +115,58 @@ class InvoiceController extends Controller
 
 
     }
+
+
+
+// newly added column on 04.03.2021
+
+
+public function getsettlement(Request $request,$page = 1)
+{
+    $token = session()->get('token');
+
+    $conf_charity_id = $request->conf_charity_id;
+    
+    $year = $request->year;
+
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/charitySettlement?page='.$page.'&conf_charity_id='.$conf_charity_id.'&year='.$year);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+     
+    }catch (\Exception $e){
+        //buy a beer
+
+
+    }
+    $charitysettlement = $response['data'];
+
+    // return $veninvoices;
+    
+    $pagination = $response['meta']['pagination'];
+
+    $lastpage = $pagination['total_pages'];
+
+       
+
+    return view('admin_monthly_settlement_list', compact('charitysettlement', 'pagination','lastpage'));
+
+
+}
+
+
+
+// ended newly added column
+
+
+
+
+
+
+
+
+
 
     public function getAdminMonthlyInvoiceDetails(Request $request,$page = 1)
     {
@@ -269,6 +349,70 @@ class InvoiceController extends Controller
 
 
     }
+
+
+
+
+
+
+    public function createcharitysettelement(Request $request)
+    {
+       
+        $token = session()->get('token');
+
+        $range = explode("-",$request->invmonth);
+
+        $conf_charity_id = $request->conf_charity_id;
+
+        $month =  ltrim($range[1], '0');
+
+        
+        
+        $year = $range[0];
+
+       
+
+        $response = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/charitySettlement',
+
+        [
+            "conf_charity_id"=>$conf_charity_id,
+            "month"=>$month,
+            "year"=>$year,
+                
+
+        ]);
+        
+       
+    if($response->status()===201 || $response->status()===200 ){
+   
+        return redirect('charity_settlement_list/1/'.$conf_charity_id."/".$year)->with('success', 'Charity Settlement Is Created Successfully');
+
+    }
+
+    else
+    {
+
+        if(isset($response['errors']))
+        {
+            return redirect()->back()->with('error',$response['errors']);
+        }
+        else if(isset($response['error']))
+        {
+            return redirect()->back()->with('error',$response['error']);
+        }
+        else if(isset($response['message']))
+        {
+            return redirect()->back()->with('error',$response['message']);
+        }
+    }
+   
+        
+
+       
+
+
+    }
+
 
 
 
