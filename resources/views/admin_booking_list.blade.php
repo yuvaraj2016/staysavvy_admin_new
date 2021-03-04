@@ -152,7 +152,7 @@
                                        <th>Property Name</th>
                                        <th>Booking Ref</th>
                                        <th>Booking Status</th>
-                                       <!-- <th>Card Type</th> -->
+                                       <th>Payment Status</th>
                                        <th>Tax Name</th>
                                        <th>Tax Percentage</th>
                                        <th>Tax Amount</th>
@@ -191,11 +191,11 @@
                                                 @endif
                                                 </li>
 
-                                                <li class="list-group-item border1">
-                                                    <!-- @if(collect(session('permissions'))->contains('Update booking')) -->
+                                                <!-- <li class="list-group-item border1">
+                                                    @if(collect(session('permissions'))->contains('Update booking'))
                                                     <a href="{{ url('user_payment/'.$upid.'/edit') }}"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit Payment"><i class="fa fa-edit"></i></a>
-                                                <!-- @endif -->
-                                                </li>
+                                                @endif
+                                                </li> -->
                                            
 
                                                     <li class="list-group-item border1">
@@ -227,7 +227,11 @@
                                         <td>
                                             {{ $bookings['booking_status_desc'] }}
                                         </td>
-                                   
+                                        <td>
+
+                                        <a href="{{ url('user_payment/'.$upid.'/edit') }}"  class=" d-inline edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit Payment" style="color: blue;">    {{ $bookings['UserInvoice']['data']['uPayment']['data']['payment_status'] }}  </a>
+                                          
+                                        </td>
                                       
                                         <td>
                                             {{ $bookings['tax_name'] }}
