@@ -193,9 +193,9 @@
 
                                        <th>Due By</th> 
                                         
-                                       <th>Commission Amount</th> 
+                                       <th>Charity Amount</th> 
 
-                                       <th>Total Amount</th> 
+                                       <!-- <th>Total Amount</th>  -->
 
                                        <th>Payment Status</th> 
                                      
@@ -253,9 +253,9 @@
                                             {{ $veninvoice['commission_amount'] }}
                                         </td>
 
-                                        <td>
+                                        <!-- <td>
                                             {{ $veninvoice['total_amount'] }}
-                                        </td>
+                                        </td> -->
 
                                      
 
