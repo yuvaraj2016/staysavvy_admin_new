@@ -142,7 +142,7 @@ public function getsettlement(Request $request,$page = 1)
     }
     $charitysettlement = $response['data'];
 
-    // return $veninvoices;
+    //  return $charitysettlement;
     
     $pagination = $response['meta']['pagination'];
 
@@ -150,7 +150,7 @@ public function getsettlement(Request $request,$page = 1)
 
        
 
-    return view('admin_monthly_settlement_list', compact('charitysettlement', 'pagination','lastpage'));
+    return view('charity_settlement_list', compact('charitysettlement', 'pagination','lastpage'));
 
 
 }

@@ -53,7 +53,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="#">Chartiy Settlement List</a>
+                        <li class="breadcrumb-item"><a href="{{route('admin.settlement')}}">Chartiy Settlement List</a>
                         </li>
 
                     </ul>
@@ -189,7 +189,7 @@
                                        <th>Month</th>
                                        <th>Year</th>
                                         
-                                       <th>Property Name</th> 
+                                       <th>Charity Name</th> 
 
                                        <th>Due By</th> 
                                         
@@ -204,7 +204,7 @@
                                 <tbody>
 
                                 {{-- @dd($prodcategories) --}}
-                                    @foreach($veninvoices as $veninvoice )
+                                    @foreach($charitysettlement as $veninvoice )
                                     @php
                                     $id=$veninvoice['id'];
                                     @endphp
@@ -242,7 +242,7 @@
                                         </td>
                                      
                                         <td>
-                                            {{ $veninvoice['property_name'] }}
+                                            {{ $veninvoice['charity_name'] }}
                                         </td>
                                      
                                      

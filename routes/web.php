@@ -274,7 +274,7 @@ Route::post('admin_monthly_invoice_create','InvoiceController@createAdminMonthly
 // newly added column on 04.03.2021
 Route::post('admin_charity_settlement_create','InvoiceController@createcharitysettelement')->name('admin.charitysettlement.create')->middleware('checktoken');
 
-Route::get('admin_charity_settlement_list/{page?}/{conf_charity_id}/{year}','InvoiceController@getsettlement')->name('admin.monthlysettlement')->middleware('checktoken');
+Route::get('charity_settlement_list/{page?}/{conf_charity_id}/{year}','InvoiceController@getsettlement')->name('admin.monthlysettlement')->middleware('checktoken');
 // end of newly added column
 
 Route::get('charity_monthly_invoice_list/{page?}/{property_id}/{year}','InvoiceController@getAdminCharityInvoice')->name('charity.monthlyinvoice')->middleware('checktoken');

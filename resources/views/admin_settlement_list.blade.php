@@ -160,7 +160,7 @@
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
                                                     {{-- @if(collect(session('permissions'))->contains('List invoices')) --}}
-                                                    <a href="{{ route('admin.monthlysettlement',[$page=1,$conf_charity_id=$configcharitys['id'],$year=date('Y')]) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View Settlement</a>
+                                                    <a href="{{ route('admin.monthlysettlement',[$page=1,$conf_charity_id=$configcharitys['id'],$year=date('Y')]) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Charity Settlement" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View Settlement</a>
                                                 {{-- @endif --}}
                                                 </li>
                                               
