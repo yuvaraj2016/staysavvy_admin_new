@@ -172,11 +172,11 @@ public function getsettlement(Request $request,$page = 1)
     {
         $token = session()->get('token');
 
-        $property_id = $request->vendor_invoice_id;
+        $vendor_invoice_id = $request->vendor_invoice_id;
         
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendorInvoiceDetail?page='.$page.'&vendor_invoice_id='.$property_id);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendorInvoiceDetail?page='.$page.'&vendor_invoice_id='.$vendor_invoice_id);
 
             $response = json_decode($call->getBody()->getContents(), true);
          

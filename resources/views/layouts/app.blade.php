@@ -920,12 +920,12 @@ margin-top: 0px !important;
                                 <ul class="pcoded-submenu">
                                 @if(collect(session('roles'))->contains('Vendor'))
                                     <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" data-i18n="nav.authentication.main">
+                                        <!-- <a href="javascript:void(0)" data-i18n="nav.authentication.main">
                                             <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
                                             <span class="pcoded-mtext">Payments</span>
                                             <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        <ul class="pcoded-submenu">
+                                        </a> -->
+                                        <!-- <ul class="pcoded-submenu">
                                             <li class="">
                                                 {{-- @if(collect(session('permissions'))->contains('List config booking status')) --}}
 
@@ -957,7 +957,7 @@ margin-top: 0px !important;
                                                 </a>
                                                 {{-- @endif --}}
                                             </li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
                                     @endif
 
