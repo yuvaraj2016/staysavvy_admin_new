@@ -242,16 +242,16 @@
                                             {{ $invoice['booking_ref'] }}
                                         </td>
                                         <td>
-                                        {{$invoices[0]['UserInvoice']['data']['commission_percentage']}}
+                                        {{$invoice['UserInvoice']['data']['commission_percentage']}}
                                         </td>
                                         <td>
-                                        {{$invoices[0]['UserInvoice']['data']['commission_amount']}}
+                                        {{$invoice['UserInvoice']['data']['commission_amount']}}
                                         </td>
                                         <td>
-                                        {{$invoices[0]['UserInvoice']['data']['total_amount']}}
+                                        {{$invoice['UserInvoice']['data']['total_amount']}}
                                         </td>
                                         <td>
-                                        {{$invoices[0]['UserInvoice']['data']['user_name']}}
+                                        {{$invoice['UserInvoice']['data']['user_name']}}
                                         </td>
                                         <!-- <td>
                                             <a href="{{ url('adminbookings/'.$invoice['booking_id'].'/edit') }}" style="color:blue;font-weight:bold; text-decoration:underline;"> {{ $invoice['booking_ref'] }}</a>

@@ -187,7 +187,7 @@ public function getsettlement(Request $request,$page = 1)
         }
         $invoices = $response['data'];
 
-        // return $veninvoices;
+        //  return $invoices;
         
         $pagination = $response['meta']['pagination'];
 
@@ -331,14 +331,17 @@ public function getsettlement(Request $request,$page = 1)
 
         if(isset($response['errors']))
         {
+            // return $response['errors'];
             return redirect()->back()->with('error',$response['errors']);
         }
         else if(isset($response['error']))
         {
+            // return $response['error'];
             return redirect()->back()->with('error',$response['error']);
         }
         else if(isset($response['message']))
         {
+            // return $response['message'];
             return redirect()->back()->with('error',$response['message']);
         }
     }
