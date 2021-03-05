@@ -39,7 +39,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Admin Settlement List</h4>
+                        <h4>Charity Settlement List</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('admin.settlement') }}">Admin Settlement List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.settlement') }}">Charity Settlement List</a>
                         </li>
 
                     </ul>

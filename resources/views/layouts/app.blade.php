@@ -996,7 +996,7 @@ margin-top: 0px !important;
                                         @if(collect(session('roles'))->contains('Vendor'))
                                         <ul class="pcoded-submenu">
                                             <li class="pcoded-hasmenu ">
-                                                <a class=" {{ (request()->is('vendor_invoice_list')) ? 'active' : '' }}" href="{{ route('vendor.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
+                                                <a class=" {{ (request()->is('admin_invoice_list')) ? 'active' : '' }}" href="{{ route('admin.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
                                                     <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
                                                     <span class="pcoded-mtext">Invoice</span>
                                                     <span class="pcoded-mcaret"></span>
