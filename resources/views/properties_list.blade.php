@@ -85,6 +85,7 @@
             </div>
             @endif
         -->
+     
             <div class="col-sm-12">
                 <!-- HTML5 Export Buttons table start -->
                 <div class="card">
@@ -96,8 +97,9 @@
 
                             {{-- {{ $prop_count['property_count'] }} --}}
                                 @if(collect(session('roles'))->contains('Vendor'))  
-
-                                @if($prop_count['property_count']==0)
+<!-- below code is old count checked code -->
+                                {{-- @if($prop_count['property_count']==0) --}}
+                                @if(count($property)==0)
                                 <a href="{{ route('properties.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
                     background-color: #6777ef;
                     border-color: #6777ef;border-radius:30px">Add New</a>
