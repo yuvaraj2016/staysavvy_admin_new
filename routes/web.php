@@ -62,6 +62,19 @@ Route::put('user_payment/{userpym}','AdminbookingController@update_user_pym')->n
 
 
 
+
+
+
+Route::get('vendor_payment/{id}/edit','InvoiceController@vendorpay')->name('vendor_payment.edit')->middleware('checktoken');
+Route::put('vendor_payment/{venpay}','InvoiceController@update_vendor_pym')->name('vendor_payment.update')->middleware('checktoken');
+
+
+
+Route::get('charityset_payment/{id}/edit','InvoiceController@settlementpay')->name('charityset_payment.edit')->middleware('checktoken');
+Route::put('charityset_payment/{charitypay}','InvoiceController@update_charityset_pym')->name('charityset_payment.update')->middleware('checktoken');
+
+
+
 Route::get('getprodroom/{id}','AdminbookingController@getprodrooms')->name('getprodrooms')->middleware('checktoken');
 
 Route::get('getrooms/{id}','AdminbookingController@getrooms')->name('getrooms')->middleware('checktoken');

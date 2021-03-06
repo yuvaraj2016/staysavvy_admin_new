@@ -472,6 +472,184 @@ public function getsettlement(Request $request,$page = 1)
           return view('vendor_invoice_list', compact('properties', 'pagination','lastpage'));
     }
 
+
+
+
+// edit payment
+
+public function vendorpay($id)
+{
+    $session = session()->get('token');
+ 
+
+   
+
+     try{
+
+        $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPaymentStatus');
+
+        $response = json_decode($call->getBody()->getContents(), true);
+          //return $response;
+    }catch (\Exception $e){
+        //buy a beer
+
+
+    }
+     $paymentstatus = $response['data'];
+
+   
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendorInvoice/' . $id);
+
+   
+ 
+    
+
+    if($response->ok()){
+
+        $venpay =   $response->json()['data'];
+
+          //return $venpay;
+
+        return view('edit_vendor_payment', compact(
+        'venpay','paymentstatus'
+        ));
+    }
+}
+
+// end of edit payment
+
+// update vendor payment given below
+
+
+public function update_vendor_pym(Request $request, $id)
+{
+    $session = session()->get('token');
+    
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/vendorInvoice/'.$id, 
+    [
+        "_method"=> 'PATCH',
+     
+        "payment_status_id"=>$request->payment_status_id
+       
+       
+    ]
+    
+  );
+
+    //  return $request->all();
+ 
+    if($response->status()===200 || $response->status()===201 ){
+        return redirect()->back()->with('success','Vendor Payment Updated Successfully!');
+    }else{
+         return $response;
+        return redirect()->back()->with('error',$response->json()['message']);
+    }
+
+}
+
+
+
+
+
+
+//End update vendor payment 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// edit settlement payment
+
+public function settlementpay($id)
+{
+    $session = session()->get('token');
+ 
+
+   
+
+     try{
+
+        $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPaymentStatus');
+
+        $response = json_decode($call->getBody()->getContents(), true);
+          //return $response;
+    }catch (\Exception $e){
+        //buy a beer
+
+
+    }
+     $paymentstatus = $response['data'];
+
+   
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/charitySettlement/' . $id);
+
+   
+ 
+    
+
+    if($response->ok()){
+
+        $charitypay =   $response->json()['data'];
+
+        //   return $charitypay;
+
+        return view('edit_charityset_payment', compact(
+        'charitypay','paymentstatus'
+        ));
+    }
+}
+
+// end of edit payment
+
+// update settlement payment given below
+
+
+public function update_charityset_pym(Request $request, $id)
+{
+    $session = session()->get('token');
+    
+    $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/charitySettlement/'.$id, 
+    [
+        "_method"=> 'PATCH',
+     
+        "payment_status_id"=>$request->payment_status_id
+       
+       
+    ]
+    
+  );
+
+    //  return $request->all();
+ 
+    if($response->status()===200 || $response->status()===201 ){
+        return redirect()->back()->with('success','Charity Settlement Payment Updated Successfully!');
+    }else{
+         return $response;
+        return redirect()->back()->with('error',$response->json()['message']);
+    }
+
+}
+
+
+
+
+
+
+//End update vendor payment 
+
+
     /**
      * Show the form for creating a new resource.
      *

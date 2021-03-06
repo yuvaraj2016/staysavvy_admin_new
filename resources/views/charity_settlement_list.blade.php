@@ -260,7 +260,8 @@
                                      
 
                                         <td>
-                                            {{ $veninvoice['payment_status'] }}
+                                        <a href="{{ url('charityset_payment/'.$id.'/edit') }}"  class=" d-inline edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit Payment" style="color: blue;">     {{ $veninvoice['payment_status'] }}  </a>
+                                      
                                         </td>
                                      
                                     </tr>
