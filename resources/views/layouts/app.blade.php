@@ -783,6 +783,17 @@ margin-top: 0px !important;
 
                     <div class="pcoded-inner-navbar" style="background:#1B476B;">
                         <ul class="pcoded-item pcoded-left-item col-md-12 " style="margin-left: 22.666667% !important;">
+                        <li class=" col-md-1" >
+                            <!-- style="margin-right: 80px!important;" -->
+
+                                <!-- @if(collect(session('permissions'))->contains('List booking')) -->
+                                <a href="{{ url('dashboard') }}"> <span class="pcoded-micon"><i class="fa fa-dashboard text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Dashboard</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <!-- @endif -->
+
+                            </li>
+                       
+                       
+                       
                         @if(collect(session('roles'))->contains('Administrator'))
                             <li class="pcoded-hasmenu col-md-1" >
                             <!-- style="margin-right: 90px!important;" -->
@@ -1609,9 +1620,16 @@ margin-top: 0px !important;
     <script src="{{ asset('dist/jquery.fileuploader.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('dist/fileuploader.js')}}" type="text/javascript"></script> --}}
     {{-- <script src="./js/custom.js" type="text/javascript"></script> --}}
+    
+
+    <script src="{{asset('files\assets\pages\chart\echarts\js\echarts-all.js')}}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{asset('files\assets\pages\chart\echarts\echart-custom.js')}}"></script>
 
 
 
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script> -->
+    <!-- Chartisan -->
+    <!-- <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script> -->
 
     <script type="text/javascript" src="{{asset('files/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
@@ -1672,6 +1690,31 @@ margin-top: 0px !important;
 
         // });
     </script>
+
+
+<!-- <script>
+      const chart = new Chartisan({
+        el: '#chart',
+
+        headers: {
+                              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/vnd.api.v1+json',
+                                 'Access-Control-Allow-Origin': 'http://api.getstaysavvy',
+                               ' Access-Control-Allow-Origin':'*'
+
+                            },
+                            url: "http://api.getstaysavvy.co.uk/api/sampleChart1" ,
+                            dataType: 'json',
+                            type: "GET",
+
+
+crossDomain: false,
+
+ 
+      })
+    </script> -->
 
     <script>
         $(document).ready(function() {
