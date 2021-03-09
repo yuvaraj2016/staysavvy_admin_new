@@ -98,6 +98,13 @@ Route::get('analytics_list/{page?}','AnalyticsController@index')->name('analytic
 
 
 
+Route::resource('charity_group', 'CharitygroupController')->except('index')->middleware('checktoken');
+
+Route::get('charity_group_list/{page?}','CharitygroupController@index')->name('charity_group.index')->middleware('checktoken');
+
+
+
+
 
 Route::resource('host', 'HosttypeController')->except('index')->middleware('checktoken');
 

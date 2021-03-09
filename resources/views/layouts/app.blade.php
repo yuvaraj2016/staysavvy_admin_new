@@ -1326,7 +1326,15 @@ margin-top: 0px !important;
                                                 </a>
                                                 @endif
                                             </li>
-
+                                            <li class="">
+                                                @if(collect(session('permissions'))->contains('List conf charity group'))
+                                                <a class="{{ (request()->is('charity_group_list')) ? 'active' : '' }}" href="{{ route('charity_group.index') }}" data-i18n="nav.e-commerce.product">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext"> Charity Group</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                @endif
+                                            </li>
 
                                         </ul>
                                     </li>
