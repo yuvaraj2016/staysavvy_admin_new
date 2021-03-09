@@ -88,10 +88,10 @@
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Eco Area Desc</label>
-                                    <select class="js-example-basic-single col-sm-12" name="conf_eco_area_id" id="" placeholder="status" required class="form-control selectric" required>
+                                    <select class="js-example-basic-single col-sm-12" name="conf_charity_group_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($highlight as $highlights)
-                                        <option value="{{ $highlights['id'] }}" {{ ($charity['conf_eco_area_id'] == $highlights['id']) ? "selected":(old("conf_eco_area_id") == $highlights['id'] ? "selected":"") }}>{{ $highlights['name'] }}</option>
+                                        <option value="{{ $highlights['id'] }}" {{ ($charity['conf_charity_group_id'] == $highlights['id']) ? "selected":(old("conf_charity_group_id") == $highlights['id'] ? "selected":"") }}>{{ $highlights['name'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>

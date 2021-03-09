@@ -139,7 +139,7 @@
                                     <th>Actions</th>
                                         <th>Name</th>
                                     <!-- <th>Reference</th> -->
-                                    <th>Eco Area Desc</th>
+                                    <th>Charity Group</th>
                                         <th>Created At</th>
                                      
                                     </tr>
@@ -193,7 +193,7 @@
                                         </td>
 
                                         <td>
-                                            {{ $Charitys['eco_area'] }}
+                                            {{ $Charitys['charity_group_name'] }}
                                         </td>
 
                                     

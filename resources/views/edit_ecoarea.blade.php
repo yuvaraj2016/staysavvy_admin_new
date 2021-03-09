@@ -90,15 +90,34 @@
 
 
 
+                                            @php
+
+$confecoarr = [];
+
+foreach($property['ProEcoareas']['data'] as $prop)
+{
+
+    $confecoarr[] = $prop['id'];
+}
+@endphp
+
+
+
+
+
+
+
+
+
+
                                                 <div class="col-sm-4">
                                                     <label class="col-form-label text-md-right ">Update Ecoarea</label>
                                                     <select class="js-example-basic-single col-sm-12 form-control selectric" name="ecoareas[]" multiple placeholder="status" required>
                                                         <option value="" disabled>Select</option>
                                                         @foreach($confecoarea as $confecoareas)
-                                                        @foreach($property['ProEcoareas']['data'] as $prop)
-                                                        <option value="{{ $confecoareas['id'] }}" {{ ($prop['id'] == $confecoareas['id']) ? "selected":(old("id") == $confecoareas['id'] ? "selected":"") }}>{{ $confecoareas['name'] }}</option>
-                                                        @endforeach
-                                                        @endforeach
+                                                        <option value="{{ $confecoareas['id'] }}" {{ (collect($confecoarr)->contains($confecoareas['id'])) ? 'selected':((collect(old('ecoareas'))->contains($confecoareas['id'])) ? 'selected':'') }}>{{ $confecoareas['name'] }}</option>
+                                                        <!-- <option value="{{ $confecoareas['id'] }}" {{ ($prop['id'] == $confecoareas['id']) ? "selected":(old("id") == $confecoareas['id'] ? "selected":"") }}>{{ $confecoareas['name'] }}</option> -->
+                                                     @endforeach
                                                     </select>
                                                 </div>
 
@@ -180,15 +199,38 @@
                                             <h5 style="padding:10px 10px 10px 10px;margin-left:-9px">Eco-Impact</h5>
                                             <div class="form-group row">
 
+                                            @php
+
+$charityarr = [];
+
+foreach($property['Impacts']['data'] as $prop)
+{
+
+    $charityarr[] = $prop['id'];
+}
+@endphp
+
+
+
+
+
+
+
+
+
+
 
                                                 <div class="col-sm-4">
                                                     <label class="col-form-label text-md-right ">Edit Charity</label>
                                                     <select class="js-example-basic-single col-sm-12 form-control selectric" name="charities[]" multiple placeholder="status" required>
                                                         <option value="" disabled>Select</option>
                                                         @foreach($charity as $charitys)
-                                                        @foreach($property['Impacts']['data'] as $prop)
-                                                        <option value="{{ $charitys['id'] }}" {{ ($prop['id'] == $charitys['id']) ? "selected":(old("id") == $charitys['id'] ? "selected":"") }}>{{ $charitys['name'] }}</option>
-                                                        @endforeach
+                                                      
+                                                       
+                                                        <option value="{{ $charitys['id'] }}" {{ (collect($charityarr)->contains($charitys['id'])) ? 'selected':((collect(old('charities'))->contains($charitys['id'])) ? 'selected':'') }}>{{ $charitys['name'] }}</option>
+                                                       
+                                                        <!-- <option value="{{ $charitys['id'] }}" {{ ($prop['id'] == $charitys['id']) ? "selected":(old("id") == $charitys['id'] ? "selected":"") }}>{{ $charitys['name'] }}</option> -->
+                                                       
                                                         @endforeach
                                                     </select>
                                                 </div>

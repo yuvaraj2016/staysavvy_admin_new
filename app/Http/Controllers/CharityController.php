@@ -55,7 +55,7 @@ class CharityController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confEcoArea');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCharityGroup');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -96,7 +96,7 @@ class CharityController extends Controller
             // "ref"=>$request->ref,
            
             // "impact_area"=>$request->impact_area,
-            "conf_eco_area_id"=>$request->conf_eco_area_id
+            "conf_charity_group_id"=>$request->conf_charity_group_id
         ]);
 
 
@@ -154,7 +154,7 @@ class CharityController extends Controller
 
         try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confEcoArea');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCharityGroup');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -201,7 +201,7 @@ class CharityController extends Controller
         [
             "_method"=> 'PUT',
             "name"=>$request->name,
-            "conf_eco_area_id"=>$request->conf_eco_area_id
+            "conf_charity_group_id"=>$request->conf_charity_group_id
             // "con_eco_hig_id"=>$request->con_eco_hig_id
           
         ]
