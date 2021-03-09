@@ -1042,10 +1042,10 @@ margin-top: 0px !important;
                             
                                
 
-                            <li class=" col-md-1" >
+                            <li class="{{ (request()->is('analytics_list')) ? 'active' : '' }} col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
 
-                                <a href="#"> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href="{{ route('analytics.index') }}" style="background:none!important;"> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
 
                             </li>
 

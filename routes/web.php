@@ -89,6 +89,16 @@ Route::get('property_list/{page?}','PropertyController@index')->name('property.i
 
 
 
+
+
+Route::resource('analytics', 'AnalyticsController')->except('index')->middleware('checktoken');
+
+Route::get('analytics_list/{page?}','AnalyticsController@index')->name('analytics.index')->middleware('checktoken');
+
+
+
+
+
 Route::resource('host', 'HosttypeController')->except('index')->middleware('checktoken');
 
 Route::get('host_list/{page?}','HosttypeController@index')->name('host.index')->middleware('checktoken');
