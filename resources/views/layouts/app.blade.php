@@ -783,15 +783,18 @@ margin-top: 0px !important;
 
                     <div class="pcoded-inner-navbar" style="background:#1B476B;">
                         <ul class="pcoded-item pcoded-left-item col-md-12 " style="margin-left: 22.666667% !important;">
+                      
+                        @if(collect(session('roles'))->contains('Vendor'))
+                      
                         <li class=" col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
 
                                 <!-- @if(collect(session('permissions'))->contains('List booking')) -->
-                                <a href="{{ url('dashboard') }}"> <span class="pcoded-micon"><i class="fa fa-dashboard text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Dashboard</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href="{{ url('dashboard') }}"> <span class="pcoded-micon"><i class="icofont icofont-home text-white" style="margin-left: -27px;"></i></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Home</b></span> <span class="pcoded-mcaret"></span> </a>
                                 <!-- @endif -->
 
                             </li>
-                       
+                       @endif
                        
                        
                         @if(collect(session('roles'))->contains('Administrator'))
