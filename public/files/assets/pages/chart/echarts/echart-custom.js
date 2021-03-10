@@ -19,12 +19,12 @@ var myChart = echarts.init(document.getElementById('main'));
     },
 
     legend: {
-        data:['abc','def','pqr']
+        data:['abc']
     },
     toolbox: {
         show : false,
         feature : {
-            mark : {show: true},
+            // mark : {show: true},
             dataView : {show: true, readOnly: false},
             magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
             restore : {show: true},
@@ -42,7 +42,7 @@ var myChart = echarts.init(document.getElementById('main'));
             data : ['Monday','Tuesday','Wednesday','Thrusday','Friday','Saturday','Sunday']
         }
     ],
-    color:  ["rgba(70, 128, 255, 0.95)" ,"rgba(70, 128, 255, 0.39)","rgba(70, 128, 255, 0.54)"],
+    // color:  ["rgba(70, 128, 255, 0.95)" ,"rgba(70, 128, 255, 0.39)","rgba(70, 128, 255, 0.54)"],
     yAxis : [
         {
             type : 'value',
@@ -56,23 +56,24 @@ var myChart = echarts.init(document.getElementById('main'));
             name:'abc',
             type:'line',
             smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
-            data:[10, 12, 21, 54, 260, 830, 710]
-        },
-        {
-            name:'def',
-            type:'line',
-            smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
-            data:[30, 182, 434, 791, 390, 30, 10]
-        },
-        {
-            name:'pqr',
-            type:'line',
-            smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
-            data:[1320, 1132, 601, 234, 120, 90, 20]
+            // itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
+            data:[10, 72, 170, 214, 360, 430, 510]
         }
+        // ,
+        // {
+        //     name:'def',
+        //     type:'line',
+        //     smooth:true,
+        //     itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
+        //     data:[30, 182, 434, 791, 390, 30, 10]
+        // },
+        // {
+        //     name:'pqr',
+        //     type:'line',
+        //     smooth:true,
+        //     itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
+        //     data:[1320, 1132, 601, 234, 120, 90, 20]
+        // }
     ]
 };
 

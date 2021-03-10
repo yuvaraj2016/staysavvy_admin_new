@@ -69,12 +69,12 @@
 
                           <div class="col-sm-3 ">
                                                                 <h6 style="margin-top: 11px;">From</h6>
-                                                                <input type="date" name="" class="form-control" value="" style="width: 148px;">
+                                                                <input type="date" name="startdate" class="form-control" value="" style="width: 148px;">
                                                             </div>
 
                                                             <div class="col-sm-3 ">
                                                                 <h6 style="margin-top: 11px;">To</h6>
-                                                                <input type="date" name="" class="form-control" value="" style="width: 148px;">
+                                                                <input type="date" name="enddate" class="form-control" value="" style="width: 148px;">
                                                                
                                                             </div>
 
