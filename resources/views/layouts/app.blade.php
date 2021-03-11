@@ -790,7 +790,7 @@ margin-top: 0px !important;
                             <!-- style="margin-right: 80px!important;" -->
 
                                 <!-- @if(collect(session('permissions'))->contains('List booking')) -->
-                                <a href="{{ url('dashboard') }}"> <span class="pcoded-micon"><i class="icofont icofont-home text-white" style="margin-left: -27px;"></i></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Home</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href="{{ route('dashboard.index') }}"> <span class="pcoded-micon"><i class="icofont icofont-home text-white" style="margin-left: -27px;"></i></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Home</b></span> <span class="pcoded-mcaret"></span> </a>
                                 <!-- @endif -->
 
                             </li>
@@ -1634,7 +1634,7 @@ margin-top: 0px !important;
     
 
     <script src="{{asset('files\assets\pages\chart\echarts\js\echarts-all.js')}}" type="text/javascript"></script>
-    <script type="text/javascript" src="{{asset('files\assets\pages\chart\echarts\echart-custom.js')}}"></script>
+    <!-- <script type="text/javascript" src="{{asset('files\assets\pages\chart\echarts\echart-custom.js')}}"></script> -->
 
 
 
@@ -1858,6 +1858,8 @@ crossDomain: false,
             $(this).hide();
         });
     </script>
+
+<!-- @dd(session('property_id')); -->
 </body>
 
 </html>

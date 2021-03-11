@@ -21,9 +21,9 @@ Route::get('/', function () {
     return view('welcome');
    
 })->name('home');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
 Route::get('/help', function () {
     return view('help');
@@ -60,9 +60,13 @@ Route::get('adminbooking_list/{page?}','AdminbookingController@index')->name('ad
 Route::get('user_payment/{upid}/edit','AdminbookingController@userpym')->name('user_payment.edit')->middleware('checktoken');
 Route::put('user_payment/{userpym}','AdminbookingController@update_user_pym')->name('user_payment.update')->middleware('checktoken');
 
+// dashboard performance route given below
+Route::get('performance/{id}/{sdate}/{edate}','DashboardController@index')->name('performance.show')->middleware('checktoken');
+Route::get('dashboard','DashboardController@index')->name('dashboard.index')->middleware('checktoken');
+Route::get('performanceajax/{id}/{sdate}/{edate}','DashboardController@performance')->name('performance.ajax')->middleware('checktoken');
 
 
-
+// end of code
 
 
 Route::get('vendor_payment/{id}/edit','InvoiceController@vendorpay')->name('vendor_payment.edit')->middleware('checktoken');

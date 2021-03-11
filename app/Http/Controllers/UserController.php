@@ -115,6 +115,27 @@ class UserController extends Controller
                 $request->session()->put('permissions',$permissions);
 
                 $request->session()->put('roles',$roles);
+                if(collect(session('roles'))->contains('Vendor')){
+                    try{
+
+                        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+            
+                        $response = json_decode($call->getBody()->getContents(), true);
+                        //  return $response;
+                    }catch (\Exception $e){
+                        //buy a beer
+            
+            
+                    }
+                     $property = $response['data'];
+                  if(isset($property[0]['id']))
+                  {
+                    $request->session()->put('property_id',$property[0]['id']);
+
+                  }
+
+                }
+
         
                 $request->session()->save();
 

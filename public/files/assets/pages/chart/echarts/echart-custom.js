@@ -10,7 +10,7 @@ $(document).ready(function() {
 
  function dashboardEcharts() {
     /*line chart*/
-var myChart = echarts.init(document.getElementById('main'));
+var myChart = echarts.init(document.getElementById('main2'));
 
     var option = {
 
@@ -40,6 +40,8 @@ var myChart = echarts.init(document.getElementById('main'));
                     },
             boundaryGap : false,
             data : ['Monday','Tuesday','Wednesday','Thrusday','Friday','Saturday','Sunday']
+
+            // data : [<?php echo date("D");?>']
         }
     ],
     // color:  ["rgba(70, 128, 255, 0.95)" ,"rgba(70, 128, 255, 0.39)","rgba(70, 128, 255, 0.54)"],
