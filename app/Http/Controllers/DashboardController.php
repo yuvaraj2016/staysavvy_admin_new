@@ -180,6 +180,61 @@ class DashboardController extends Controller
     
     }
 
+
+
+
+    public function bochart(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/newBookingChart/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //   return $response;
+    }catch (\Exception $e){
+   
+    }
+    $chart = $response['new_booking_chart'];
+    return $chart;
+    
+          
+    }
+
+
+    public function bookingoverview(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/bookingOverview/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //   return $response;
+    }catch (\Exception $e){
+   
+    }
+    $overview = $response['booking_overviews'];
+    return $overview;
+    
+          
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *
