@@ -371,29 +371,34 @@
                                                     </div> -->
                                 <div class="card-block">
                                     <div id="pie-chart" style="height:300px">
-                                  @php  if($review <= 0){@endphp
-                                        <div class="form-group row ">
 
-<div class="col-sm-4 ">
+       
+                              @foreach($review as  $rev)
+                                       
+                              <div  id="revcontant">
+
+
+
+</div> 
+           
+<div class="form-group row" >
+<div class="col-sm-4">
    
-    <p  id="ue" style="margin-top: 11px;">{{$review['user_email']}}</p>
+   <p  id="ue" style="margin-top: 11px;">{{$rev['user_email']}}</p>
   
 </div>
 <div class="col-sm-4 ">
 
-    <p id="rw" style="margin-top: 11px;">{{$review['review']}}</p>
+    <p id="rw" style="margin-top: 11px;">{{$rev['review']}}</p>
 
 </div>
 <div class="col-sm-4 ">
 
-    <p id="rat" style="margin-top: 11px;">{{$review['rating']}}  <i class="fa fa-star"></i></p>
+    <p id="rat" style="margin-top: 11px;">{{$rev['rating']}}<i class="fa fa-star"></i></p>
    
 </div>
-
-</div>  
-@php } else{@endphp
-                                        <p>No Reviews Availble </p>
-                                  @php  }@endphp
+</div>
+@endforeach
                                    
 
 
@@ -512,10 +517,40 @@
             success: function(responsedata) {
             //   alert(responsedata);
 
-                $('#ue').html(responsedata.user_email);
-                $('#rw').html(responsedata.review);
-                $('#rat').html(responsedata.rating);
+          var reviewhtml='';
+    $.each(responsedata, function (key, val) {
+        // alert(val.user_email);
 
+
+        reviewhtml =reviewhtml + ' <div class="form-group row"> <div class="col-sm-4">'+
+   
+   '<p  id="ue" style="margin-top: 11px;">'+val.user_email+'</p>'+
+  
+'</div>'+
+'<div class="col-sm-4 ">'+
+
+    '<p id="rw" style="margin-top: 11px;">'+val.review+'</p>'+
+
+'</div>'+
+'<div class="col-sm-4 ">'+
+
+    '<p id="rat" style="margin-top: 11px;">'+val.rating+'<i class="fa fa-star"></i></p>'+
+   
+'</div></div>';
+        // $('#ue').html(responsedata.user_email);
+        //         $('#rw').html(responsedata.review);
+        //         $('#rat').html(responsedata.rating);
+    });
+    // alert(reviewhtml.replace("NaN",""));
+    var revhtml= reviewhtml.replace("NaN","");
+    $('#revcontant').html(revhtml);
+
+// $.each(responsedata as rdata){
+//     alert(rdata.user_email);
+//                 $('#ue').html(responsedata.user_email);
+//                 $('#rw').html(responsedata.review);
+//                 $('#rat').html(responsedata.rating);
+// }
 
             }
 
@@ -573,7 +608,7 @@
                 },
 
                 legend: {
-                    data: ['abc']
+                    data: ['Booking Overview']
                 },
                 toolbox: {
                     show: false,
