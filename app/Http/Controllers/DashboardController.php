@@ -67,6 +67,21 @@ class DashboardController extends Controller
 
         }
         $chart = $cresponse['new_booking_chart'];
+
+
+
+        try{
+
+            $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/reviewOverview/'.$id.'/'.$sdate.'/'.$edate);
+
+            $revresponse = json_decode($revcall->getBody()->getContents(), true);
+                //  return $revresponse;
+        }catch (\Exception $e){
+       
+
+
+        }
+        $review = $revresponse['data'];
 // return  $chart ;
 
         // $pagination = $response['meta']['pagination'];
@@ -75,7 +90,7 @@ class DashboardController extends Controller
         
         // return "asd";
 
-          return view('dashboard', compact('performance','bookingobverview','chart'));
+          return view('dashboard', compact('performance','bookingobverview','chart','review'));
 
         // return view('dashboard');
 

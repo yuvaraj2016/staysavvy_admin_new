@@ -69,19 +69,19 @@
 
                           <div class="col-sm-3 ">
                                                                 <h6 style="margin-top: 11px;">From</h6>
-                                                                <input type="date" id="sdate" name="sdate" class="form-control" value="<?php echo date("Y-m-d");?>" style="width: 148px;">
+                                                                <input type="date" id="sdate1" name="sdate" class="form-control" value="<?php echo date("Y-m-d");?>" style="width: 148px;">
                                                             </div>
 
                                                             <div class="col-sm-3 ">
                                                                 <h6 style="margin-top: 11px;">To</h6>
-                                                                <input type="date" id="edate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day"));?>" style="width: 148px;">
+                                                                <input type="date" id="edate1" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day"));?>" style="width: 148px;">
                                                                
                                                             </div>
 
                                                             <div class="form-group  ">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-2 col-md-7 ">
-                                    <button type="button" id="booksubmit" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
+                                    <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
                                 </div>
                             </div>
 
@@ -186,19 +186,19 @@
 
                           <div class="col-sm-3 ">
                                                                 <h6 style="margin-top: 11px;">From</h6>
-                                                                <input type="date" name="" class="form-control" value="<?php echo date("Y-m-d");?>" style="width: 148px;">
+                                                                <input type="date" id="sdate" name="sdate" class="form-control" value="<?php echo date("Y-m-d");?>" style="width: 148px;">
                                                             </div>
 
                                                             <div class="col-sm-3 ">
                                                                 <h6 style="margin-top: 11px;">To</h6>
-                                                                <input type="date" name="" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day"));?>" style="width: 148px;">
+                                                                <input type="date" id="edate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day"));?>" style="width: 148px;">
                                                                
                                                             </div>
 
                                                             <div class="form-group  ">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-2 col-md-7 ">
-                                    <button type="submit" id="submit" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
+                                    <button type="button" id="booksubmit" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
                                 </div>
                             </div>
 
@@ -219,7 +219,7 @@
                           <div class="col-sm-4 ">
                           <label class="col-form-label text-md-right c">Average Daily Rate</label>
                                 
-                                <p name="name" >£ {{$performance['daily_rate']}}</p>
+                                <p  id="dr" >£ {{$performance['daily_rate']}}</p>
 
 
                           </div>
@@ -227,7 +227,7 @@
                           <div class="col-sm-4 ">
                           <label class="col-form-label text-md-right c">Cancellation Rate</label>
                                 
-                                <p name="name" >{{$performance['cancel_rate']}} %</p>
+                                <p id="cr" >{{$performance['cancel_rate']}} %</p>
 
 
                           </div>
@@ -236,14 +236,14 @@
                           <div class="col-sm-2 ">
                           <label class="col-form-label text-md-right c">Revenue</label>
                                 
-                                <p name="name" >£ {{$performance['revenue']}}</p>
+                                <p id="rev" >£ {{$performance['revenue']}}</p>
 
 
                           </div>
                           <div class="col-sm-2 ">
                           <label class="col-form-label text-md-right c">Stayed</label>
                                 
-                                <p name="name" >0</p>
+                                <p id="stay" >0</p>
 
 
                           </div>
@@ -379,10 +379,11 @@
                                                         <div id="pie-chart" style="height:300px">
                                                         
                              <div class="form-group row ">
-                                                       
+                                                      
                              <div class="col-sm-4 ">
-                                                                <h6 style="margin-top: 11px;">Dave Thomas</h6>
-                                                               
+                             @if(isset($review['user_email']))
+                                                                <h6 style="margin-top: 11px;">{{$review['user_email']}}</h6>
+                                                               @endif
                                                             </div>
                                                             <div class="col-sm-4 ">
                                                                 <h6 style="margin-top: 11px;">A beautiful hotel - staff were fantastic. I
@@ -488,20 +489,21 @@ var propid=<?php echo session()->get('property_id');?>
                             },
 
                             success: function(responsedata) {
-                                // $('#response').html('');
-
-                                var data = JSON.parse(responsedata);
-                                  console.log(data);
-
-                                var rooms = responsedata;
-
-                                //   console.log(rooms);
-
-                                //  $('#rooms').empty();
-                                //  $('#rooms').append('');
+                                // alert(responsedata.cancel_rate);
+                               
+                                $('#dr').html(responsedata.daily_rate);
+                                $('#cr').html(responsedata.cancel_rate);
+                                $('#rev').html(responsedata.revenue);
+                               
+                        // if (data.status === 'ok') {
+                        //      alert(data);
+                        //          $('#dr').append('');
+                        //          $('#cr').append('');
+                        //          $('#rev').append('');
                                 
-                                
+                        // }
                             }
+                            
                         })
 
 
