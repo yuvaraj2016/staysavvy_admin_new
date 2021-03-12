@@ -510,7 +510,7 @@
             },
 
             success: function(responsedata) {
-                 console.log(responsedata);
+            //   alert(responsedata);
 
                 $('#ue').html(responsedata.user_email);
                 $('#rw').html(responsedata.review);
