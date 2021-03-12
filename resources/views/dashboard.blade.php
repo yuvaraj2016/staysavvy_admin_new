@@ -343,19 +343,19 @@
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;">From</h6>
-                                            <input type="date" name="" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                                            <input type="date" id="sdate2" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;">To</h6>
-                                            <input type="date" name="" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;">
+                                            <input type="date" id="edate2" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;">
 
                                         </div>
 
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="submit" id="submit" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
+                                                <button type="button"  id="booksubmit2" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
                                             </div>
                                         </div>
 
@@ -371,47 +371,34 @@
                                                     </div> -->
                                 <div class="card-block">
                                     <div id="pie-chart" style="height:300px">
-
+                                  @php  if($review <= 0){@endphp
                                         <div class="form-group row ">
 
-                                            <div class="col-sm-4 ">
-                                                @if(isset($review['user_email']))
-                                                <h6 style="margin-top: 11px;">{{$review['user_email']}}</h6>
-                                                @endif
-                                            </div>
-                                            <div class="col-sm-4 ">
-                                                <h6 style="margin-top: 11px;">A beautiful hotel - staff were fantastic. I
-                                                    would definitely stay again and recommend
-                                                    to friends...</h6>
+<div class="col-sm-4 ">
+   
+    <p  id="ue" style="margin-top: 11px;">{{$review['user_email']}}</p>
+  
+</div>
+<div class="col-sm-4 ">
 
-                                            </div>
-                                            <div class="col-sm-4 ">
-                                                <h6 style="margin-top: 11px;"><i class="fa fa-star"></i></h6>
+    <p id="rw" style="margin-top: 11px;">{{$review['review']}}</p>
 
-                                            </div>
+</div>
+<div class="col-sm-4 ">
 
-                                        </div>
+    <p id="rat" style="margin-top: 11px;">{{$review['rating']}}  <i class="fa fa-star"></i></p>
+   
+</div>
+
+</div>  
+@php } else{@endphp
+                                        <p>No Reviews Availble </p>
+                                  @php  }@endphp
+                                   
 
 
 
-                                        <div class="form-group row ">
-
-                                            <div class="col-sm-4 ">
-                                                <h6 style="margin-top: 11px;">Linda Davies</h6>
-
-                                            </div>
-                                            <div class="col-sm-4 ">
-                                                <h6 style="margin-top: 11px;">Came for a wedding and WOW - love this
-                                                    place. The location and the staff are all great
-                                                    - we will be back</h6>
-
-                                            </div>
-                                            <div class="col-sm-4 ">
-                                                <h6 style="margin-top: 11px;"><i class="fa fa-star"></i></h6>
-
-                                            </div>
-
-                                        </div>
+                                     
 
 
                                     </div>
@@ -494,6 +481,50 @@
     });
 
 
+
+
+
+
+
+
+    $('#booksubmit2').on("click", function() {
+        var sdate = $("#sdate2").val();
+        var edate = $("#edate2").val();
+        var propid = <?php echo session()->get('property_id'); ?>
+
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('reviewajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+
+            type: "GET",
+
+
+            crossDomain: true,
+            beforeSend: function() {
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+
+            success: function(responsedata) {
+                 console.log(responsedata);
+
+                $('#ue').html(responsedata.user_email);
+                $('#rw').html(responsedata.review);
+                $('#rat').html(responsedata.rating);
+
+
+            }
+
+        })
+
+
+
+
+    });
 
 
 

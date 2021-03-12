@@ -68,6 +68,7 @@ Route::get('performanceajax/{id}/{sdate}/{edate}','DashboardController@performan
 
 Route::get('bochartajax/{id}/{sdate}/{edate}','DashboardController@bochart')->name('bochart.ajax')->middleware('checktoken');
 Route::get('bookingoverviewajax/{id}/{sdate}/{edate}','DashboardController@bookingoverview')->name('bookingoverview.ajax')->middleware('checktoken');
+Route::get('reviewajax/{id}/{sdate}/{edate}','DashboardController@review')->name('review.ajax')->middleware('checktoken');
 
 
 // end of code
