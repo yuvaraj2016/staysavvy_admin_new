@@ -748,7 +748,7 @@
                 },
 
                 legend: {
-                    data: ['abc']
+                    data: ['Booking Overview']
                 },
                 toolbox: {
                     show: false,
@@ -789,7 +789,7 @@
                     }
                 }],
                 series: [{
-                        name: 'abc',
+                        name: 'Booking Overview',
                         type: 'line',
                         smooth: true,
                         // itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
