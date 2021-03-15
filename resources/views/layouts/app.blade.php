@@ -1577,7 +1577,9 @@ margin-top: 0px !important;
 
 
 
+    
 
+    {{-- <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script> --}}
 
     <script type="text/javascript" src="{{ asset('files/bower_components/jquery/js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('files/bower_components/jquery-ui/js/jquery-ui.min.js') }}"></script>
@@ -1633,13 +1635,13 @@ margin-top: 0px !important;
     {{-- <script src="./js/custom.js" type="text/javascript"></script> --}}
     
 
-    <script src="{{asset('files\assets\pages\chart\echarts\js\echarts-all.js')}}" type="text/javascript"></script>
+    {{-- <script src="{{asset('files\assets\pages\chart\echarts\js\echarts-all.js')}}" type="text/javascript"></script> --}}
     <!-- <script type="text/javascript" src="{{asset('files\assets\pages\chart\echarts\echart-custom.js')}}"></script> -->
 
 
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script> -->
-    <!-- Chartisan -->
+   
+        <!-- Chartisan -->
     <!-- <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script> -->
 
     <script type="text/javascript" src="{{asset('files/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
