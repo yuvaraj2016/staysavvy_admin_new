@@ -628,6 +628,14 @@
             axisY: {
                 onlyInteger: true,
             },
+
+            plugins: [
+                Chartist.plugins.tooltip({
+      currency: 'New Bookings ',
+      class: 'class1 class2',
+      appendToBody: true
+    })],
+        })
             
             });
 
