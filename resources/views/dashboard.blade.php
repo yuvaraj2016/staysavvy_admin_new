@@ -94,7 +94,8 @@
 
                                                     </div> -->
                                 <div class="card-block">
-                                <p id="cdempty" style="display: none;">No data found for chart</p>
+                                {{ count($chart['labels'])}}
+                                <!-- <p id="cdempty" style="display: none;">No data found for chart</p> -->
                                     <!-- @if(count($chart['labels']) <= 0 && count($chart['datasets']) <=0) <p id="cdempty">No data found for chart</p> -->
                                         <!-- @else -->
                                         <div id="main" style="height:300px"></div>
@@ -111,7 +112,7 @@
 
                                                     </div> -->
                                 <div class="card-block">
-                                    <div id="main" style="height:100px">
+                                    <div id="" style="height:100px">
 
 
                                         <div class="form-group row ">
@@ -732,12 +733,26 @@
 
     function dashboardEcharts() {
         /*line chart*/
-        var ldata = <?php echo count($chart['labels']); ?>;
-        var dsdata = <?php echo count($chart['datasets']); ?>;
+       
+        var ldata = Number(?php echo count($chart['labels']); ?>);
+        var dsdata = Number(<?php echo count($chart['datasets']); ?>;
 
-        if (ldata != 0 && dsdata != 0) {
-            $("#main").css("display","block");
-            $("#cdempty").css('display','none');
+    
+
+        if(ldata > 0 && dsdata > 0) {
+            
+              var chartdatalabels = <?php echo json_encode($chart['labels']); ?>
+              var chartdatads =  <?php echo json_encode($chart['datasets']); ?>
+
+        }
+         else
+        {
+            alert("dasf");
+            chartdatalabels = ["1","2"];
+            chartdatads = ["2021-03-10","2021-03-13"];
+        }
+
+        // alert("safd");
             var myChart = echarts.init(document.getElementById('main'));
 
             var option = {
@@ -777,9 +792,10 @@
                         show: false
                     },
                     boundaryGap: false,
-                    data: <?php echo json_encode($chart['labels']); ?>
+                    
+                    data: chartdatalabels
 
-
+                    
                 }],
                 // color:  ["rgba(70, 128, 255, 0.95)" ,"rgba(70, 128, 255, 0.39)","rgba(70, 128, 255, 0.54)"],
                 yAxis: [{
@@ -793,7 +809,7 @@
                         type: 'line',
                         smooth: true,
                         // itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
-                        data: <?php echo json_encode($chart['datasets']); ?>
+                        data: chartdatads
                     }
                     // ,
                     // {
@@ -816,13 +832,7 @@
             // Load data into the ECharts instance
             myChart.setOption(option);
 
-        }
-        else
-        {
-
-            $("#cdempty").css("display","block");
-            $("#main").css("display","none");
-        }
+        
         /*circle chart*/
         var myChart = echarts.init(document.getElementById('pie-chart'));
 
