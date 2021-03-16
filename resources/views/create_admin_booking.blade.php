@@ -73,14 +73,13 @@
 
                              
                             @if(session('error') !== null)
-                            @foreach(session('error') as $v)
-                                @foreach($v as $e)
+                                                        <div class="errorWrap"><strong>ERROR</strong>: {{session('error') }} </div>
+                                                 
+                            @endif
 
-                                <div class="errorWrap"><strong>ERROR</strong>: {{ $e }} </div>
-
-                            
-                                @endforeach
-                            @endforeach
+                            @if(session('message') !== null)
+                                                        <div class="errorWrap"><strong>ERROR</strong>: {{session('message') }} </div>
+                                                 
                             @endif
                             <!--
                              <div class="form-group row">
