@@ -144,8 +144,8 @@
                                     <tr>
                                     <th>Actions</th>
                                         <th>Property Name</th>
-                                    <th>From</th>
-                                    <th>To</th>
+                                    <!-- <th>From</th>
+                                    <th>To</th> -->
                                     <th>Percentage</th>
                                     <th>Status</th>
                                         <th>Created At</th>
@@ -200,12 +200,7 @@
                                             {{ $configcommissions['property_name'] }}
                                         </td>
 
-                                        <td>
-                                            {{ $configcommissions['from'] }}
-                                        </td>
-                                        <td>
-                                            {{ $configcommissions['to'] }}
-                                        </td>
+                                     
 
                                         <td>
                                             {{ $configcommissions['percentage'] }}
