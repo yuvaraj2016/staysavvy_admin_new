@@ -58,7 +58,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <h5 style="font-size: 12px;"> <i class="fa fa-newspaper-o"></i> Booking Overview</h5>
+                                                <h5 style="font-size: 12px;width:222px;margin-top:18px""> <i class="fa fa-newspaper-o"></i> Booking Overview</h5>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -67,20 +67,20 @@
 
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;">From</h6>
-                                            <input type="date" id="sdate1" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                                            <h6 style="margin-top: 11px;margin-left:11px">From</h6>
+                                            <input type="date" id="sdate1" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;margin-left:11px">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;">To</h6>
-                                            <input type="date" id="edate1" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;">
+                                            <h6 style="margin-top: 11px;margin-left:17px">Until</h6>
+                                            <input type="date" id="edate1" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:17px">
 
                                         </div>
 
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 16px;">Submit</button>
+                                                <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 16px;margin-left:23px">Submit</button>
                                             </div>
                                         </div>
 
@@ -175,7 +175,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <h5> <i class="fa fa-line-chart"></i> Performance</h5>
+                                                <h5 style="width: 130px;margin-top:18px"> <i class="fa fa-line-chart"></i> Performance</h5>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -189,15 +189,15 @@
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;">To</h6>
-                                            <input type="date" id="edate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;">
+                                            <h6 style="margin-top: 11px;margin-left:12px">Until</h6>
+                                            <input type="date" id="edate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:12px">
 
                                         </div>
 
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="button" id="booksubmit" class="btn btn-primary" style="margin-top: 16px;">Submit</button>
+                                                <button type="button" id="booksubmit" class="btn btn-primary" style="margin-top: 16px;margin-left:22px">Submit</button>
                                             </div>
                                         </div>
 
