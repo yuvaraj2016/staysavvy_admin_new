@@ -80,7 +80,7 @@
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
+                                                <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 16px;">Submit</button>
                                             </div>
                                         </div>
 
@@ -197,7 +197,7 @@
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="button" id="booksubmit" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
+                                                <button type="button" id="booksubmit" class="btn btn-primary" style="margin-top: 16px;">Submit</button>
                                             </div>
                                         </div>
 
@@ -292,7 +292,7 @@
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="submit" id="submit" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
+                                                <button type="submit" id="submit" class="btn btn-primary" style="margin-top: 16px;">Submit</button>
                                             </div>
                                         </div>
 
@@ -358,7 +358,7 @@
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="button"  id="booksubmit2" class="btn btn-primary" style="margin-top: 11px;">Submit</button>
+                                                <button type="button"  id="booksubmit2" class="btn btn-primary" style="margin-top: 16px;">Submit</button>
                                             </div>
                                         </div>
 
@@ -376,13 +376,13 @@
                                     <div id="pie-chart" style="height:300px">
 
        
-                              @foreach($review as  $rev)
+                            
                                        
                               <div  id="revcontant">
 
 
 
-</div> 
+                              @foreach($review as  $rev)
            
 <div class="form-group row" >
 <div class="col-sm-4">
@@ -402,6 +402,8 @@
 </div>
 </div>
 @endforeach
+</div> 
+
                                    
 
 
@@ -556,6 +558,7 @@
     });
     // alert(reviewhtml.replace("NaN",""));
     var revhtml= reviewhtml.replace("NaN","");
+    $('#revcontant').html('');
     $('#revcontant').html(revhtml);
 
 // $.each(responsedata as rdata){
