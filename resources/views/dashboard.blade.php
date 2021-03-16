@@ -427,9 +427,9 @@
     $(function () {
 
         new Chartist.Line('#chart', {
-          labels: <?php echo json_encode($chart['labels']);?>,
+          labels: @php echo json_encode($chart['labels']);@endphp,
           series: [
-            <?php echo json_encode($chart['datasets']);?>
+            @php echo json_encode($chart['datasets']);@endphp
           ]
         }, {
           low: 0,
@@ -442,9 +442,9 @@
 
             plugins: [
                 Chartist.plugins.tooltip({
-      currency: 'New Bookings ',
-      class: 'class1 class2',
-      appendToBody: true
+                currency: 'New Bookings ',
+                class: 'class1 class2',
+                appendToBody: true
     })],
         })
 
@@ -457,6 +457,8 @@
  <script type="text/javascript" src="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.js"></script>
  <script type="text/javascript" src="https://rawgit.com/Globegitter/chartist-plugin-tooltip/master/dist/chartist-plugin-tooltip.min.js"></script>
  <script>
+
+
     $('#booksubmit').on("click", function() {
         var sdate = $("#sdate").val();
         var edate = $("#edate").val();
@@ -583,7 +585,7 @@
         var edate = $("#edate1").val();
         // alert(sdate);
         var propid = <?php echo session()->get('property_id'); ?>
-
+        // alert();
       
         $.ajax({
 
@@ -622,15 +624,15 @@
 
             plugins: [
                 Chartist.plugins.tooltip({
-      currency: 'New Bookings ',
-      class: 'class1 class2',
-      appendToBody: true
-    })],
+                currency: 'New Bookings ',
+                class: 'class1 class2',
+                appendToBody: true
+                })],
         })
             
-            });
+            
+     }
 
-  }
         
 
     })
@@ -657,7 +659,7 @@
             },
 
             success: function(responsedata) {
-                // alert(responsedata.cancel_rate);
+                // alert(responsedata.departures_count);
 
                 $('#ac').html(responsedata.arrivals_count);
                 $('#dc').html(responsedata.departures_count);
@@ -670,10 +672,14 @@
 
 
 
-
+   
 
 
     });
+
+
+
+
 </script>
 
 
