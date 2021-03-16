@@ -311,7 +311,8 @@
                                                                     <select  class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric" required>
                                                     <option value="" disabled>Select</option>
                                                     @foreach($tax as $taxs)
-                                                        <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option>
+                                                    <option value="{{ $taxs['id'] }}" {{ (( $taxs['name'] === 'Gst') ? "selected" : "")}}>{{ $taxs['name'] }}</option>
+                                                    <!-- <option value="{{ $taxs['id'] }}" {{ (old("id") == $taxs['id'] ? "selected":"") }}>{{ $taxs['name'] }}</option> -->
                                                     @endforeach
                                                 </select>
                                                                     </div>
