@@ -58,7 +58,7 @@ class BookingroomController extends Controller
             $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
 
             $response = json_decode($call->getBody()->getContents(), true);
-            //  return $response;
+        //  return $response;
         }catch (\Exception $e){
             //buy a beer
 
@@ -66,9 +66,23 @@ class BookingroomController extends Controller
         }
          $statuses = $response['data'];
 
+
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+
+            $prpresponse = json_decode($call->getBody()->getContents(), true);
+        //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $property = $prpresponse['data'];
+
          return view(
             'create_room', compact(
-                'statuses'
+                'statuses','property'
             )
             );
 
@@ -94,7 +108,7 @@ class BookingroomController extends Controller
             "code"=>$request->code,
 
             "description"=>$request->description,
-         
+         "property_id"=>$request->property_id,
 
             "status_id"=>$request->status_id,
            
@@ -103,7 +117,7 @@ class BookingroomController extends Controller
 
         if($response->status()===201){
 
-            return redirect()->route('roomtype.create')->with('success','Booking Rooms Created Successfully!');
+            return redirect()->route('roomtype.create')->with('success','Booking Room Type Created Successfully!');
         }else{
 
             $request->flash();
@@ -165,6 +179,19 @@ class BookingroomController extends Controller
 
         }
          $statuses = $response['data'];
+
+         try{
+
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+
+            $prpresponse = json_decode($call->getBody()->getContents(), true);
+        //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $property = $prpresponse['data'];
        
         $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType/' . $id);
 
@@ -179,7 +206,7 @@ class BookingroomController extends Controller
             // return $status;
 
             return view('edit_rooms', compact(
-               'rooms','statuses'
+               'rooms','statuses','property'
             ));
         }
     }
@@ -200,6 +227,7 @@ class BookingroomController extends Controller
             "_method"=> 'PUT',
             "name"=>$request->name,
             "code"=>$request->code,
+            "property_id"=>$request->property_id,
 
             "description"=>$request->description,
     
@@ -214,7 +242,7 @@ class BookingroomController extends Controller
             return redirect()->route('home');
         }
         if($response->status()===200){
-            return redirect()->back()->with('success','Booking Rooms Updated Successfully!');
+            return redirect()->back()->with('success','Booking Room Type Updated Successfully!');
         }else{
             return redirect()->back()->with('error',$response->json()['message']);
         }

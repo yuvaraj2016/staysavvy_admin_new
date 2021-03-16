@@ -270,7 +270,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <h5> <i class="fa fa-heart text-green"></i> Eco Summary</h5>
+                                                <h5 style="width: 260px;margin-top:15px"> <i class="fa fa-heart text-green"></i> Eco Summary</h5>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -292,7 +292,7 @@
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="submit" id="submit" class="btn btn-primary" style="margin-top: 16px;">Submit</button>
+                                                <button type="submit" id="submit" class="btn btn-primary" style="margin-top: 16px;margin-left:20px">Submit</button>
                                             </div>
                                         </div>
 

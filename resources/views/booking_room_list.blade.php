@@ -142,6 +142,7 @@
                                 <thead>
                                     <tr>
                                     <th>Actions</th>
+                                    <th>Property Name</th>
                                     <th>Room Type Name</th>
                                         <th>Room Type Code</th>
                                         
@@ -199,8 +200,13 @@
 
 
                                             </div>
+                                        
                                         </td>
-                                    <td>
+                                        <td>
+                                            {{ $roomtypes['property_name'] }}
+                                        </td>
+                                    
+                                        <td>
                                             {{ $roomtypes['name'] }}
                                         </td>
 

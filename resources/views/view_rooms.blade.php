@@ -96,7 +96,11 @@
 
 
                         <div class="form-group row">
-
+                        <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Propery Name </label>
+                            <input type="text"  value="    {{ $rooms['property_name'] }}" class="form-control" readonly>
+              
+                            </div>
 
                             <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Status </label>

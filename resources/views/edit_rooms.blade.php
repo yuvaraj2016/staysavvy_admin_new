@@ -114,6 +114,21 @@
                                                     <div class="form-group row ">
                                               
 
+                                                    <div class="col-sm-4">
+<label class="col-form-label text-md-right ">Propery</label>
+<select  class="js-example-basic-single col-sm-12" name="property_id" id="" placeholder="Status" required class="form-control selectric" required>
+<option value="">Select</option>
+@foreach($property as $propertys)
+<option value="{{ $propertys['id'] }}" {{ ($rooms['property_id'] == $propertys['id']) ? "selected":(old("property_id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}</option>
+@endforeach
+
+</select>
+
+</div>
+
+
+
+
                                                         <div class="col-sm-4">
 <label class="col-form-label text-md-right ">Status</label>
 <select  class="js-example-basic-single col-sm-12" name="status_id" id="" placeholder="Status" required class="form-control selectric" required>
