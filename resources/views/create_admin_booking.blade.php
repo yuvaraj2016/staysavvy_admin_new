@@ -221,7 +221,7 @@
                                         
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Tax Percentage</label>
-                                            <input type="number" min="0"step="any" name="tax_percentage" value="{{ old('tax_percentage') }}" class="summernote-simple form-control" required>
+                                            <input id="tp" type="number" min="0"step="any" name="tax_percentage" value="{{ $tax[0]['percentage']}}" class="summernote-simple form-control" required>
                                         </div>
                                         <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Total Adults</label>
@@ -234,10 +234,24 @@
 
                                     </div>
                                         <div class="form-group row ">
+
+                                        <div class="col-sm-4" id="eco">
+                                        <label class="col-form-label text-md-right " >Eco Causes</label>
+                                                                    <select  class="js-example-basic-single col-sm-12" name="ecocauses[]" id="ecocauses" multiple required class="form-control selectric" required>
+                                                   
+                                                </select>
+                                        </div>
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Total Gust</label>
                                             <input id="togst" min="0" name="total_guests" value="{{ old('total_guests') }}" class="summernote-simple form-control togst" readonly>
                                         </div>
+
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Tax Amount </label>
+                                            <input id="taxamt" min="0" name="tax_amount" value="{{ old('tax_amount') }}" class="summernote-simple form-control togst" readonly>
+                                        </div>
+
+
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Total Amount</label>
                                             <input id="toamt" name="total_amount" value="{{ old('total_amount') }}" class="summernote-simple form-control toamt" readonly>
@@ -361,17 +375,27 @@
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" name="no_of_childs[]" value="{{ old("no_of_childs[]") }}" min="0" class="summernote-simple form-control sub2" required></div>' +
 
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" value="{{ old("total_guests[]") }}" name="total_guests[]" min="0" class="summernote-simple form-control" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" value="{{ old("total_guests[]") }}" name="total_guests[]" min="0" class="summernote-simple form-control diff" ></div>' +
 
 
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input id="amt" name="amount[]" class="summernote-simple form-control amt" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
 
-                                    $(function() {
-                                        $("#sub1, #sub2").on("keydown keyup", diff);
+                                        $(function() {
+                                        $(".sub1, .sub2").on("keydown keyup", diff);
 
                                         function diff() {
                                             //alert('test');
-                                            $("#diff").val(parseFloat(Number((Number($("#sub1").val()) + Number($("#sub2").val())))));
+                                            var sub1names = document.getElementsByName('no_of_adults[]');
+                                            var sub2names = document.getElementsByName('no_of_childs[]');
+                                            var diffnames = document.getElementsByName('total_guests[]');
+                                            for (var i = 0, iLen = sub1names.length; i < iLen; i++) {
+
+                                                var total = Number(sub1names[i].value) + Number(sub2names[i].value);
+
+                                                diffnames[i].value= total;
+                                                // alert(total);
+                                            }
+                                            // $("#diff").val(parseFloat(Number((Number($("#sub1").val()) + Number($("#sub2").val())))));
                                             //            $("#yrdiff").val(Number($("#plan1").val()) + Number($("#plan2").val()) + Number($("#plan3").val()) + Number($("#plan4").val()) + Number($("#plan5").val()));
                                         }
 
@@ -379,6 +403,12 @@
 
 
                                 })
+
+                                $.each(ecocauses, function (index, el) {
+        // alert(el);
+        $("#ecocauses").append("<option>" + el.name + "</option>");
+    });
+
                                 $('#room').html(aaaa);
                             }
                         })
@@ -432,17 +462,21 @@
                                 $('#response').html('');
 
                                 // var data = JSON.parse(responsedata);
-                                //  console.log(responsedata);
+                                //  alert(responsedata.rooms);
 
-                                var rooms = responsedata;
+                                // var rdata = responsedata.split("*");
 
-                                //   console.log(rooms);
+                                var rooms = responsedata.rooms;
+
+                                var ecocauses = responsedata.EcoCauses;
+
+                            //    alert(rooms);
 
                                 //  $('#rooms').empty();
                                 //  $('#rooms').append('');
                                 var aaaa = "";
                                 $.each(rooms, function(index, room) {
-                                    //  alert(room.id);
+                                    //  alert(room);
 
                                     aaaa = aaaa + '<div class="row"><div class="col-sm-4">  <label class="col-form-label text-md-right ">Room Name</label><input name="room_type[]" class="summernote-simple form-control" style="background-color:#D3D3D3!important" value="' + room.room_type_name + '" readonly> <input type="hidden" name="room_id[]"  value="' + room.id + '" class="summernote-simple form-control"></div>' +
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Room (Available Rooms: ' + room.available_rooms + ')</label><input id="norms" max="' + room.available_rooms + '" name="no_of_rooms[]" min="0" class="summernote-simple form-control norms" ></div>' +
@@ -453,17 +487,40 @@
                                         '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Childrens (Max Children: ' + room.max_children + ')</label><input id="sub2" max="' + room.max_children + '" type="number" min="0" name="no_of_childs[]" value="{{ old("no_of_childs[]") }}" class="summernote-simple form-control sub2" required></div>' +
 
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" value="{{ old("total_guests[]") }}" min="0" name="total_guests[]" class="summernote-simple form-control" ></div>' +
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Number Of Occupancy (Max Occupancy: ' + room.max_occupancy + ')</label><input id="diff" type="number" value="{{ old("total_guests[]") }}" min="0" name="total_guests[]" class="summernote-simple form-control diff" ></div>' +
 
 
-                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input id="amt" name="amount[]" class="summernote-simple form-control amt" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div></div>';
+                                        '<div class="col-sm-4"><label class="col-form-label text-md-right ">Amount</label><input id="amt" name="amount[]" class="summernote-simple form-control amt" style="background-color:#D3D3D3!important" value="' + room.amount + '" readonly></div>' +
+                                                                          
+                          ' </div>';
 
-                                    $(function() {
-                                        $("#sub1, #sub2").on("keydown keyup", diff);
+                                                
+                        //   var combo = $("<select class=\"js-example-basic-single col-sm-12  form-control selectric\" id=\"ecocauses[]\" name=\"ecocauses\"   / >");
+                        //   combo.append("<option>" + "select" + "</option>");
+
+
+
+    // return combo;
+    // OR
+    // $("#ecocauses").append(combo);
+
+
+                                        $(function() {
+                                        $(".sub1, .sub2").on("keydown keyup", diff);
 
                                         function diff() {
                                             //alert('test');
-                                            $("#diff").val(parseFloat(Number((Number($("#sub1").val()) + Number($("#sub2").val())))));
+                                            var sub1names = document.getElementsByName('no_of_adults[]');
+                                            var sub2names = document.getElementsByName('no_of_childs[]');
+                                            var diffnames = document.getElementsByName('total_guests[]');
+                                            for (var i = 0, iLen = sub1names.length; i < iLen; i++) {
+
+                                                var total = Number(sub1names[i].value) + Number(sub2names[i].value);
+
+                                                diffnames[i].value= total;
+                                                // alert(total);
+                                            }
+                                            // $("#diff").val(parseFloat(Number((Number($("#sub1").val()) + Number($("#sub2").val())))));
                                             //            $("#yrdiff").val(Number($("#plan1").val()) + Number($("#plan2").val()) + Number($("#plan3").val()) + Number($("#plan4").val()) + Number($("#plan5").val()));
                                         }
 
@@ -471,6 +528,12 @@
 
 
                                 })
+                                $.each(ecocauses, function (index, el) {
+        // alert(el);
+        $("#ecocauses").append("<option>" + el.name + "</option>");
+    });
+
+
                                 $('#room').html(aaaa);
                             }
                         })
@@ -574,25 +637,8 @@
                         var totaladults = $("#toats").val() !== '' ? parseInt($("#toats").val()) : 0;
                         var totalchild = $("#tocds").val() !== '' ? parseInt($("#tocds").val()) : 0;
                         // alert(totalchild+totaladults);
+                        var taxpercentage = $("#tp").val() !== '' ? parseInt($("#tp").val()) : 0;
                         var tar = totaladults + totalchild;
-
-
-
-
-                        // var noofrooms = parseInt($(".norms").val());
-                        // // $(".norms").each(function(){
-                        // //     $(this).val();
-                        // // })
-
-                        // var amt = parseInt($(".amt").val());
-                        // //  $(".norms").each(function(){
-                        // //     $(this).val();
-                        // // }) 
-                        // var lens = parseInt($(".lens").val());
-                        // var amount = ((noofrooms * (amt)) * (lens)).toFixed(2);
-                        // // alert(amount);                 
-                        // $('.toamt').val(amount);
-
 
                         const noOfRoomsData = $('#addstatus').find('input[name= "no_of_rooms[]"]').map(function() {
                             return $(this).val();
@@ -601,20 +647,32 @@
                             return $(this).val();
                         }).get();
                         const lengthOfStayValue = $(".lens").val() !== '' ? $(".lens").val() : 0;
+
+
                         var totalAmt = 0;
                         noOfRoomsData.forEach((item, idx) => {
+                            // alert (idx);
                             let roomValue = item !== '' ? item : 0;
                             let roomAmt = roomAmtData[idx] !== '' ? roomAmtData[idx] : 0;
                             totalAmt += parseInt(roomValue) * parseFloat(roomAmt) * parseInt(lengthOfStayValue);
                         });
+                        taxperc = (taxpercentage / 100) *totalAmt;
+                        alert (taxperc);
                         let alertMsg = '';
+
+                        // $('#tp').val(taxperc);
                         if (parseFloat(tar) > 0)
                             $('#togst').val(tar);
                         else
                             alertMsg = 'Total Adults, Total Children';
 
+                            if (parseFloat(taxperc) > 0)
+                            $('#taxamt').val(taxperc);
+                        else
+                            alertMsg = 'Total percent, Total amount';
+
                         if (parseFloat(totalAmt) > 0)
-                            $('.toamt').val(totalAmt);
+                            $('.toamt').val(totalAmt + taxperc);
                         else
                             alertMsg += ' & No of Rooms';
 

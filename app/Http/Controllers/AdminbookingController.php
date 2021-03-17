@@ -85,6 +85,7 @@ class AdminbookingController extends Controller
 
             $response = json_decode($call->getBody()->getContents(), true);
            
+            // return $response;
         }catch (\Exception $e){
             
 
@@ -150,11 +151,15 @@ class AdminbookingController extends Controller
 
         $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url').'api/property/'.$prope_id.'?include=Rooms');
 
-        
+        // return $response;
+
+        $room =[];
 
         if($response->ok()){
 
-            $room= $response->json()['data']['Rooms']['data'];
+            $room['rooms'] = $response->json()['data']['Rooms']['data'];
+
+            $room['EcoCauses'] = $response->json()['data']['EcoCauses']['data'];
 
             return $room;
         }
@@ -200,6 +205,16 @@ class AdminbookingController extends Controller
         {
 
             $room_id[] = $room;
+
+        }
+
+
+
+        $ecocauses = [];
+        foreach($request->ecocauses as $ecocaus)
+        {
+
+            $ecocauses[] = $ecocaus;
 
         }
 // return  $room_id;
@@ -293,6 +308,8 @@ class AdminbookingController extends Controller
          "total_childs"=>$request->total_childs,
          "total_guests"=>$request->total_guests,
          "total_amount"=>$request->total_amount,
+         "tax_amount"=>$request->tax_amount,
+"ecocauses"=>$ecocauses,
 
         //  "no_of_adults"=>$no_of_adults,
         //  "no_of_childs"=>$no_of_childs,
@@ -316,8 +333,8 @@ class AdminbookingController extends Controller
 
     //   return $request->amount;
 
-       
-
+    //    
+// return $response;
 
         if($response->status()===200 || $response->status()===201){
 
@@ -327,7 +344,7 @@ class AdminbookingController extends Controller
 
             if(isset($response['errors']))
             {
-                return redirect()->route('adminbookings.create')->with('error',$response['errors']);
+                return redirect()->route('adminbookings.create')->with('errors',$response['errors']);
             }
             else if(isset($response['error']))
             {
@@ -335,7 +352,7 @@ class AdminbookingController extends Controller
             }
             else if(isset($response['message']))
             {
-                return redirect()->route('adminbookings.create')->with('error',$response['message']);
+                return redirect()->route('adminbookings.create')->with('message',$response['message']);
             }
            
 
