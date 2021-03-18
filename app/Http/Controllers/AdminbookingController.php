@@ -217,7 +217,7 @@ class AdminbookingController extends Controller
             $ecocauses[] = $ecocaus;
 
         }
-// return  $room_id;
+//  return  $ecocauses;
         $no_of_rooms = [];
         foreach($request->no_of_rooms as $no_room)
         {

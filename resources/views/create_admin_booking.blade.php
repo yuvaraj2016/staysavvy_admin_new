@@ -406,7 +406,7 @@
 
                                 $.each(ecocauses, function (index, el) {
         // alert(el);
-        $("#ecocauses").append("<option>" + el.name + "</option>");
+        $("#ecocauses").append("<option value="+el.id +" >" + el.name + "</option>");
     });
 
                                 $('#room').html(aaaa);
@@ -530,7 +530,7 @@
                                 })
                                 $.each(ecocauses, function (index, el) {
         // alert(el);
-        $("#ecocauses").append("<option>" + el.name + "</option>");
+        $("#ecocauses").append("<option value="+el.id +" >" + el.name + "</option>");
     });
 
 
