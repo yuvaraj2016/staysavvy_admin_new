@@ -794,7 +794,7 @@ $('#stayor').on("click", function() {
             },
 
             success: function(responsedata) {
-              alert(responsedata);
+            //   alert(responsedata);
             var stayover='';
             $.each(responsedata, function (key, val) {
 
