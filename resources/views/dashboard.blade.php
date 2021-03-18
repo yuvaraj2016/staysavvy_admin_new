@@ -12,6 +12,13 @@
         margin-left: 10px;
         /* float:right; */
     }
+
+    tbody {
+    height: 100px;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
 </style>
 <div class="pcoded-content">
     <div class="pcoded-inner-content">
@@ -108,25 +115,22 @@
 
 
                             <div class="card" style="margin-top: -16px;">
-                                <!-- <div class="card-header">
-                                                        <h5>Line chart</h5>
-                                                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-
-                                                    </div> -->
+             
                                 <div class="card-block">
                                     <div id="" style="height:100px">
 
 
                                         <div class="form-group row ">
-                                            <div class="col-sm-2 ">
-                                                <label class="col-form-label text-md-right c">Arrivals</label>
+                                        
+                                            <div class="col-sm-3 " id="arai">
+                                                <label class="col-form-label text-md-right c" style="margin-left: 44px;">Arrivals</label>
 
-                                                <p id="ac" style="text-align: center;">{{$bookingobverview['arrivals_count']}}</p>
+                                                <p id="ac" style="text-align: center;margin-left: 29px;">{{$bookingobverview['arrivals_count']}}</p>
 
 
                                             </div>
 
-                                            <div class="col-sm-2 ">
+                                            <div class="col-sm-3 " id="dep">
                                                 <label class="col-form-label text-md-right c">Departures</label>
 
                                                 <p id="dc" style="text-align: center;">{{$bookingobverview['departures_count']}} </p>
@@ -135,25 +139,25 @@
                                             </div>
 
 
-                                            <div class="col-sm-3 ">
+                                            <div class="col-sm-3 " id="newbook">
                                                 <label class="col-form-label text-md-right c">New Bookings</label>
 
                                                 <p id="nbc" style="text-align: center;"> {{$bookingobverview['new_booking_count']}}</p>
 
 
                                             </div>
-                                            <div class="col-sm-3 ">
+                                            <div class="col-sm-3 " id="stayor">
                                                 <label class="col-form-label text-md-right c">Stay-Overs</label>
 
-                                                <p name="name" style="text-align: center;">0</p>
+                                                <p name="name" id="stover" style="text-align: center;">{{$bookingobverview['stay_over']}}</p>
 
                                             </div>
-                                            <div class="col-sm-2 ">
+                                            <!-- <div class="col-sm-2 ">
                                                 <label class="col-form-label text-md-right c">Enquries</label>
 
                                                 <p name="name" style="text-align: center;">0</p>
 
-                                            </div>
+                                            </div> -->
                                         </div>
 
 
@@ -162,6 +166,38 @@
 
                                     </div>
                                 </div>
+                            </div>
+
+
+                            <div class="card" style="margin-top: -16px;">
+             
+             <div class="card-block">
+                 <div id="" style="height:100px; display: inline-block;
+    width: 100%;
+    overflow: auto;">
+
+                 <div class="dt-responsive table-responsive">
+                            <table  id="arr">
+              
+                     <tbody>
+                    @foreach($available  as $avail)
+                    <tr>
+                    <td class="col-md-2" id="un">{{ $avail['user_name'] }}</td>
+
+                    <td class="col-md-2" id="pn">{{ $avail['property_name'] }}</td>
+
+                    <td class="col-md-2" id="br">{{ $avail['booking_reference'] }}</td>
+
+                    <td class="col-md-2" id="ta">{{ $avail['total_amount'] }}</td>
+                                     
+                                     </tr>
+                    @endforeach
+                    </tbody>
+                     </table>
+                 </div>
+                   
+                 </div>
+             </div>
                             </div>
                         </div>
 
@@ -211,7 +247,7 @@
 
                                                     </div> -->
                                 <div class="card-block">
-                                    <div id="main" style="height:296px">
+                                    <div id="main" style="height:106px">
 
 
                                         <div class="form-group row ">
@@ -228,31 +264,57 @@
 
                                                 <p id="cr">{{$performance['cancel_rate']}} %</p>
 
-
                                             </div>
-
 
                                             <div class="col-sm-2 ">
                                                 <label class="col-form-label text-md-right c">Revenue</label>
 
                                                 <p id="rev">£ {{$performance['revenue']}}</p>
-
-
                                             </div>
                                             <div class="col-sm-2 ">
                                                 <label class="col-form-label text-md-right c">Stayed</label>
 
-                                                <p id="stay">0</p>
-
+                                                <p id="stay">{{$performance['nights_stayed']}}</p>
 
                                             </div>
 
                                         </div>
 
+                                       <!-- <div id="chart" style="height: 300px;"></div>             -->
 
-                                        <!-- <div id="chart" style="height: 300px;"></div>             -->
+                                    </div>
+                                </div>
+                            </div>
 
 
+                            <div class="card" style="margin-top: -16px;">
+                                <!-- <div class="card-header">
+                                                        <h5>Line chart</h5>
+                                                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+
+                                                    </div> -->
+                                <div class="card-block">
+                                    <div id="main" style="height:106px">
+
+
+                                        <div class="form-group row ">
+                                            <div class="col-sm-4 ">
+                                                <label class="col-form-label text-md-right c">Eco-Score</label>
+
+                                                <p id="ssc"> {{$performance['ss_score']}}</p>
+
+
+                                            </div>
+
+
+                                            <div class="col-sm-4 ">
+                                                <label class="col-form-label text-md-right c">Bookings Made</label>
+
+                                                <p id="bm">{{$performance['booking_made']}}</p>
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -376,7 +438,9 @@
                                     <div id="pie-chart" style="height:300px">
 
        
-                            
+                         @php   if($review  > 0){@endphp
+
+                         
                                        
                               <div  id="revcontant">
 
@@ -403,6 +467,10 @@
 </div>
 @endforeach
 </div> 
+@php  } else @endphp
+                            @php  {@endphp
+<h5>No data Available</h5>
+                           @php  }@endphp
 
                                    
 
@@ -489,6 +557,9 @@
                 $('#dr').html(responsedata.daily_rate);
                 $('#cr').html(responsedata.cancel_rate);
                 $('#rev').html(responsedata.revenue);
+                $('#ssc').html(responsedata.ss_score);
+                $('#bm').html(responsedata.booking_made);
+                $('#stay').html(responsedata.nights_stayed);
 
 
             }
@@ -499,6 +570,257 @@
 
 
     });
+
+
+
+
+
+// arrival onclick fuction given below on 18.03.2021
+
+    $('#arai').on("click", function() {
+        //  alert("hiiiii")
+                
+        var sdate = $("#sdate1").val();
+        // alert(sdate1);
+        var edate = $("#edate1").val();
+        // alert(edate1);
+        var propid = <?php echo session()->get('property_id'); ?>
+
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('availableajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+
+            type: "GET",
+
+
+            crossDomain: true,
+            beforeSend: function() {
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+
+            success: function(responsedata) {
+            //  alert(responsedata);
+            var arrival='';
+            $.each(responsedata, function (key, val) {
+
+
+                arrival =arrival +  '<tr style="margin-padding:0px">'+
+                   ' <td class="col-md-2" id="un">'+val.user_name+'</td>'+
+
+                    '<td class="col-md-2" id="pn">'+val.property_name+'</td>'+
+
+                    '<td class="col-md-2" id="br">'+val.booking_reference+'</td>'+
+
+                    '<td class="col-md-2" id="ta">'+val.total_amount+'</td>'+
+                                     
+                                    ' </tr> ';
+                                           
+
+            })
+            $('#arr').html('');
+            $('#arr').html(arrival);
+            }
+
+        })
+  
+    });
+
+// end of arrival onclick fuction given below on 18.03.2021
+
+
+
+
+
+
+
+// new Booking onclick fuction given below on 18.03.2021
+
+$('#newbook').on("click", function() {
+        //  alert("hiiiii")
+                
+        var sdate = $("#sdate1").val();
+        // alert(sdate1);
+        var edate = $("#edate1").val();
+        // alert(edate1);
+        var propid = <?php echo session()->get('property_id'); ?>
+
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('newbookingajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+
+            type: "GET",
+
+
+            crossDomain: true,
+            beforeSend: function() {
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+
+            success: function(responsedata) {
+        //    alert(responsedata);
+            var bookingnew='';
+            $.each(responsedata, function (key, val) {
+
+
+                bookingnew =bookingnew +  '<tr style="margin-padding:0px;">'+
+                   ' <td class="col-md-2" id="un">'+val.user_name+'</td>'+
+
+                    '<td class="col-md-2" id="pn">'+val.property_name+'</td>'+
+
+                    '<td class="col-md-2" id="br">'+val.booking_reference+'</td>'+
+
+                    '<td class="col-md-2" id="ta">'+val.total_amount+'</td>'+
+                                     
+                                    ' </tr> ';
+                                           
+
+            })
+            $('#arr').html('');
+            $('#arr').html(bookingnew);
+            }
+
+        })
+  
+    });
+
+// end of New booking onclick fuction given below on 18.03.2021
+
+
+
+
+
+
+
+
+
+
+
+
+// depature onclick fuction given below on 18.03.2021
+
+$('#dep').on("click", function() {
+        //  alert("hiiiii")
+                
+        var sdate = $("#sdate1").val();
+        // alert(sdate1);
+        var edate = $("#edate1").val();
+        // alert(edate1);
+        var propid = <?php echo session()->get('property_id'); ?>
+
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('depatureajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+
+            type: "GET",
+
+
+            crossDomain: true,
+            beforeSend: function() {
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+
+            success: function(responsedata) {
+            //  alert(responsedata);
+            var depature='';
+            $.each(responsedata, function (key, val) {
+
+
+                depature =depature +  '<tr style="margin-padding:0px">'+
+                   ' <td class="col-md-2" id="un">'+val.user_name+'</td>'+
+
+                    '<td class="col-md-2" id="pn">'+val.property_name+'</td>'+
+
+                    '<td class="col-md-2" id="br">'+val.booking_reference+'</td>'+
+
+                    '<td class="col-md-2" id="ta">'+val.total_amount+'</td>'+
+                                     
+                                    ' </tr> ';
+                                           
+
+            })
+            $('#arr').html('');
+            $('#arr').html(depature);
+            }
+
+        })
+  
+    });
+
+// end of depature onclick fuction given below on 18.03.2021
+
+
+
+// stay over onclick fuction given below on 18.03.2021
+
+$('#stayor').on("click", function() {
+        //  alert("hiiiii")
+                
+        var sdate = $("#sdate1").val();
+        // alert(sdate1);
+        var edate = $("#edate1").val();
+        // alert(edate1);
+        var propid = <?php echo session()->get('property_id'); ?>
+
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('stayoverajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+
+            type: "GET",
+
+
+            crossDomain: true,
+            beforeSend: function() {
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+
+            success: function(responsedata) {
+              alert(responsedata);
+            var stayover='';
+            $.each(responsedata, function (key, val) {
+
+
+                stayover =stayover +  '<tr style="margin-padding:0px">'+
+                   ' <td class="col-md-2" id="un">'+val.user_name+'</td>'+
+
+                    '<td class="col-md-2" id="pn">'+val.property_name+'</td>'+
+
+                    '<td class="col-md-2" id="br">'+val.booking_reference+'</td>'+
+
+                    '<td class="col-md-2" id="ta">'+val.total_amount+'</td>'+
+                                     
+                                    ' </tr> ';
+                                           
+
+            })
+            $('#arr').html('');
+            $('#arr').html(stayover);
+            }
+
+        })
+  
+    });
+
+// end of depature onclick fuction given below on 18.03.2021
 
 
 
@@ -667,6 +989,8 @@
                 $('#ac').html(responsedata.arrivals_count);
                 $('#dc').html(responsedata.departures_count);
                 $('#nbc').html(responsedata.new_booking_count);
+
+                $('#stover').html(responsedata.stay_over);
 
 
             }

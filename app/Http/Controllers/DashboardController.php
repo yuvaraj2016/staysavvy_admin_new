@@ -55,6 +55,38 @@ class DashboardController extends Controller
         }
         $bookingobverview = $boresponse['booking_overviews'];
 
+
+
+        try{
+
+            $bocall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getCheckInDetails/'.$id.'/'.$sdate.'/'.$edate);
+
+            $avresponse = json_decode($bocall->getBody()->getContents(), true);
+                //    return $avresponse;
+
+        }catch (\Exception $e){
+       
+
+
+        }
+        $available = $avresponse['data'];
+
+
+        try{
+
+            $bocall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getCheckOutDetails/'.$id.'/'.$sdate.'/'.$edate);
+
+            $depresponse = json_decode($bocall->getBody()->getContents(), true);
+                //    return $avresponse;
+
+        }catch (\Exception $e){
+       
+
+
+        }
+        $depature = $depresponse['data'];
+
+
         try{
 
             $chcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/newBookingChart/'.$id.'/'.$sdate.'/'.$edate);
@@ -90,7 +122,7 @@ class DashboardController extends Controller
         
         // return "asd";
 
-          return view('dashboard', compact('performance','bookingobverview','chart','review'));
+          return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature'));
 
         // return view('dashboard');
 
@@ -233,6 +265,120 @@ class DashboardController extends Controller
     
           
     }
+
+
+
+
+
+    public function available(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getCheckInDetails/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //    return $response;
+    }catch (\Exception $e){
+   
+    }
+    $available = $response['data'];
+    return $available;
+    
+          
+    }
+
+
+
+
+    public function depature(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getCheckOutDetails/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //    return $response;
+    }catch (\Exception $e){
+   
+    }
+    $depature = $response['data'];
+    return $depature;
+    
+          
+    }
+
+
+
+
+    public function newbooking(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getNewBookingDetails/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //    return $response;
+    }catch (\Exception $e){
+   
+    }
+    $newbooking = $response['data'];
+    return $newbooking;
+    
+          
+    }
+
+
+
+
+    public function stayover(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getStayOverDetails/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //    return $response;
+    }catch (\Exception $e){
+   
+    }
+    $stayover = $response['data'];
+    return $stayover;
+    
+          
+    }
+
 
 
 

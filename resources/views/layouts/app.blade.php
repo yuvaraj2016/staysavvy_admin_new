@@ -1043,7 +1043,7 @@ margin-top: 0px !important;
 
                           
                             
-                               
+                         @if(collect(session('roles'))->contains('Administrator'))
 
                             <li class="{{ (request()->is('analytics_list')) ? 'active' : '' }} col-md-1" >
                             <!-- style="margin-right: 80px!important;" -->
@@ -1052,7 +1052,7 @@ margin-top: 0px !important;
 
                             </li>
 
-
+@endif
                          
 
                             <li class="pcoded-hasmenu col-md-1" >
