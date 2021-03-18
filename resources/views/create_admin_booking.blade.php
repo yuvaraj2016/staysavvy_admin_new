@@ -657,7 +657,7 @@
                             totalAmt += parseInt(roomValue) * parseFloat(roomAmt) * parseInt(lengthOfStayValue);
                         });
                         taxperc = (taxpercentage / 100) *totalAmt;
-                        alert (taxperc);
+                        // alert (taxperc);
                         let alertMsg = '';
 
                         // $('#tp').val(taxperc);
