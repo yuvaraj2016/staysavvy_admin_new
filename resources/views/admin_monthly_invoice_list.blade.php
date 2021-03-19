@@ -73,6 +73,8 @@
         </div> -->
             @endif
 
+            
+
             @if(session('errors') !== null)
 
             @foreach(session('errors') as $v)
@@ -105,7 +107,9 @@
 
                     <div class="card-header table-card-header">
                         <div class="row">
+                       
                             <div class="section-header-button col-md-4">
+                            @if(collect(session('roles'))->contains('Administrator'))
                                 <div class="form-group">
                                     <form action="{{ route('admin.monthlyinvoice.create') }}" class="swa-confirm"  method="post" id="addstatus">                      
                                         @csrf
@@ -119,7 +123,9 @@
                                      </div>
                                     </form> 
                                  </div>
+                                 @endif
                             </div>
+                         
                             <div class="section-header-button col-md-5">
 
                             </div>
@@ -258,12 +264,21 @@
                                         </td>
 
                                      
-
+                                        @if(collect(session('roles'))->contains('Administrator'))
                                         <td>
                                         <a href="{{ url('vendor_payment/'.$id.'/edit') }}"  class=" d-inline edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit Payment" style="color: blue;">     {{ $veninvoice['payment_status'] }}  </a>
                                           
                                         </td>
-                                     
+                                     @endif
+                                     @if(collect(session('roles'))->contains('Vendor'))
+
+                                     <td>
+                                         {{ $veninvoice['payment_status'] }} 
+                                          
+                                        </td>
+
+                                     @endif
+
                                     </tr>
 
 

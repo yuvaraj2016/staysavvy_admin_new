@@ -481,7 +481,7 @@
                                         </div>
                                         @php } else @endphp
                                         @php {@endphp
-                                        <h5 style="text-align: center;">No data Available</h5>
+                                        <h5 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h5>
                                         @php }@endphp
 
 
@@ -622,7 +622,7 @@
 
                         var x = 1;
                         if (responsedata.length == 0) {
-                            arrival = '<p style="text-align:center">No Data Found In Arrival</p>';
+                            arrival = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Arrival</p>';
                     } else {
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
@@ -700,7 +700,7 @@
                     var x = 1;
 
                     if (responsedata.length == 0) {
-                        bookingnew = '<p style="text-align:center">No Data Found In New Booking</p>';
+                        bookingnew = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In New Booking</p>';
                     } else {
                     $.each(responsedata, function(key, val) {
                         if (x == 1) {
@@ -783,7 +783,7 @@
                     var depature = '';
                     var x = 1;
                     if (responsedata.length == 0) {
-                        depature = '<p style="text-align:center">No Data Found In Depature</p>';
+                        depature = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Depature</p>';
                     } else {
 
 
@@ -855,7 +855,7 @@
                     var stayover = '';
                     var x = 1;
                     if (responsedata.length == 0) {
-                        stayover = '<h6 style="text-align:center">No Data Found In Stay-overs</h6>';
+                        stayover = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Stay-overs</h6>';
                     } else {
                     $.each(responsedata, function(key, val) {
                         if (x == 1) {
