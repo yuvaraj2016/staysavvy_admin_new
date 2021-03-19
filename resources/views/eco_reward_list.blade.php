@@ -165,7 +165,7 @@
                                         </td>
 @else
 <td class="">
-No Reward Configurate
+No Reward Configured
                                         </td>
 
 

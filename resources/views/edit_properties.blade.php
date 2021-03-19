@@ -128,7 +128,7 @@
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " > Postal code</label>
-                                    <input type="number" name="postalcode" value="{{ old('postalcode',$properties['postalcode']) }}"  class="summernote-simple form-control" required>
+                                    <input type="text" name="postalcode" value="{{ old('postalcode',$properties['postalcode']) }}"  class="summernote-simple form-control" required>
 
                                 </div>
 
