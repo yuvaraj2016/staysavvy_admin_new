@@ -190,7 +190,7 @@
 <div class="form-group row mt-4">
 @foreach($confpolicies as $confpoliciess)
 <div class="col-sm-4 offset-1">
-      <label class="col-form-label float-right ">{{ ucfirst($confpoliciess['name'])}} (Min Charecters 5 )</label>
+      <label class="col-form-label float-right ">{{ ucwords(str_replace("_"," ",$confpoliciess['name']))}} (Min Charecters 5 )</label>
       <input type="hidden"  name="policies[]" value="{{ $confpoliciess['id']}}" />
                       
     

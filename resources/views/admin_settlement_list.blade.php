@@ -148,7 +148,7 @@
                                 </thead>
                                 <tbody>
 
-                                {{-- @dd($prodcategories) --}}
+                               {{-- @dd($configcharity)  --}}
                                     @foreach($configcharity as $configcharitys )
                                     @php
                                     $id=$configcharitys['id'];
@@ -177,15 +177,11 @@
                                        <td>
                                             {{ $configcharitys['name'] }}
                                         </td>
-                                        {{-- <td>
-                                            {{ $property['address'] }}
-                                        </td> --}}
+                                 
                                         <td>
-                                            {{ $configcharitys['eco_area'] }}
+                                            {{ $configcharitys['charity_group_name'] }}
                                         </td>
-                                        {{-- <td>
-                                            {{ $configcharitys['postalcode'] }}
-                                        </td> --}}
+                                       
                                      
                                     </tr>
 
