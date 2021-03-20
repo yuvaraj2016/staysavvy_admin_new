@@ -39,7 +39,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Admin Monthly Invoice Details</h4>
+                        <h4> Monthly Invoice Details</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         {{-- @dd(Request::segment(3)) --}}
-                        <li class="breadcrumb-item"><a href="{{  url()->previous()  }}">Admin Monthly Invoice</a>
+                        <li class="breadcrumb-item"><a href="{{  url()->previous()  }}"> Monthly Invoice</a>
                         </li>
 
                     </ul>

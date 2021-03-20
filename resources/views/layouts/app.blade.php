@@ -659,7 +659,8 @@ margin-top: 0px !important;
                         </div>
 
                         <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
-                            <div class="mt-3 col-md-12" style="background-color:#1BF0B7; border-radius:20px; height:75%!important;font-weight:bold;width:1014px;">
+                            <div class="mt-3 col-md-12" style="background-color:#1BF0B7; border-radius:20px; height:75%!important;font-weight:bold;">
+                            <!-- width:1014px; -->
                                 @if(collect(session('roles'))->contains('Administrator'))
 
 
@@ -993,7 +994,7 @@ margin-top: 0px !important;
                                                 </a>
                                                 @endif
                                             </li>
-                                            <li class="">
+                                            <!-- <li class="">
                                                 @if(collect(session('permissions'))->contains('List config commission'))
 
                                                 <a class=" {{ (request()->is('charity_invoice_list')) ? 'active' : '' }}" href="{{ route('charity.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
@@ -1002,7 +1003,7 @@ margin-top: 0px !important;
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                                 @endif
-                                            </li>
+                                            </li> -->
                                        
                                         </ul>
                                         @endif

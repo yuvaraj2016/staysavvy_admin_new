@@ -39,7 +39,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Admin Monthly Invoice List</h4>
+                        <h4>Monthly Invoice List</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('admin.invoice') }}">Admin Invoice List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.invoice') }}"> Invoice List</a>
                         </li>
 
                     </ul>
