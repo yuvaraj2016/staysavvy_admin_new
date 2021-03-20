@@ -78,25 +78,26 @@
 
                                                     <h5 style="padding:10px 10px 10px 10px;margin-left:-9px"> {{ old('name',$ecoarea['name']) }} Credentials</h5>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row" style="margin-right: 86px;">
 
-                                                        <div class="col">
+                                                        
 
 
                                                             @foreach($ecoarea['ProEcoareas']['data'] as $prop)
                                                             @foreach($prop['Assets']['data'] as $props)
                                                             <!-- <label class="col-form-label text-md-right ">Property Image</label> -->
+                                                            <div class="col-sm-2 offset-1 card">
                                                             <figure class="figure">
-                                                                <img style="padding: 30px;border:1px solid #1B476B" src="{{ isset($props['links']['full']) ? $props['links']['full'].'?width=100&height=100' : asset('img/no-image.gif')  }}" />
+                                                                <img style="padding: 20px;border:1px solid #1B476B" src="{{ isset($props['links']['full']) ? $props['links']['full'].'?width=100&height=100' : asset('img/no-image.gif')  }}" />
 
                                                                 <figcaption class="mb-12 " style="text-align: center;"><b>{{$prop['name']}}</b></figcaption>
                                                             </figure>
 
-
+                                                            </div>
 
                                                             @endforeach
                                                             @endforeach
-                                                        </div>
+                                                        
 
 
                                                     </div>
