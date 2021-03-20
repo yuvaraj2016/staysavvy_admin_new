@@ -786,11 +786,11 @@ margin-top: 0px !important;
                       
                         @if(collect(session('roles'))->contains('Vendor'))
                       
-                        <li class=" col-md-1" >
+                        <li class=" col-md-1" style="text-align: center;" >
                             <!-- style="margin-right: 80px!important;" -->
 
                                 <!-- @if(collect(session('permissions'))->contains('List booking')) -->
-                                <a href="{{ route('dashboard.index') }}"> <span class="pcoded-micon"><i class="icofont icofont-home text-white" style="margin-left: -27px;"></i></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Home</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href="{{ route('dashboard.index') }}"> <span class="pcoded-micon"><i class="icofont icofont-home text-white" ></i></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Home</b></span> <span class="pcoded-mcaret"></span> </a>
                                 <!-- @endif -->
 
                             </li>
@@ -798,10 +798,10 @@ margin-top: 0px !important;
                        
                        
                         @if(collect(session('roles'))->contains('Administrator'))
-                            <li class="pcoded-hasmenu col-md-1" >
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;" >
                             <!-- style="margin-right: 90px!important;" -->
                                 <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-user text-white" style="margin-left: -19px;"></i></span>
+                                    <span class="pcoded-micon"><i class="fa fa-user text-white" ></i></span>
                                     <span class="pcoded-mtext text-white "><b>Users</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
@@ -876,7 +876,7 @@ margin-top: 0px !important;
                             </li>
                             @endif
 
-                            <li class="pcoded-hasmenu col-md-1" >
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
                             <!-- style="margin-right: 80px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-flag text-white"></i></span>
@@ -905,7 +905,7 @@ margin-top: 0px !important;
                             </li>
 
 
-                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }} col-md-1" >
+                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
                             <!-- style="margin-right: 80px!important;" -->
 
                                 @if(collect(session('permissions'))->contains('List booking'))
@@ -914,7 +914,7 @@ margin-top: 0px !important;
 
                             </li>
 
-                            <li class="{{ (request()->is('overallreview_list')) ? 'active' : '' }} col-md-1" >
+                            <li class="{{ (request()->is('overallreview_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
                             <!-- style="margin-right: 80px!important;" -->
 
                                
@@ -925,7 +925,7 @@ margin-top: 0px !important;
 
 
                             {{-- @if(collect(session('roles'))->contains('Administrator')) --}}
-                            <li class="pcoded-hasmenu col-md-1">
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-gbp text-white"></i></span>
                                     <span class="pcoded-mtext text-white offset-1"><b>Finance</b></span>
@@ -1023,7 +1023,7 @@ margin-top: 0px !important;
 
                                     </li>
                                     @if(collect(session('roles'))->contains('Administrator'))
-                                    <li class="{{ (request()->is('admin_settlement_list')) ? 'active' : '' }} col-md-1" >
+                                    <li class="{{ (request()->is('admin_settlement_list')) ? 'active' : '' }} col-md-1"style="text-align: center;" >
                             <!-- style="margin-right: 80px!important;" -->
 
                                 <!-- @if(collect(session('permissions'))->contains('List booking')) -->
@@ -1045,7 +1045,7 @@ margin-top: 0px !important;
                             
                          @if(collect(session('roles'))->contains('Administrator'))
 
-                            <li class="{{ (request()->is('analytics_list')) ? 'active' : '' }} col-md-1" >
+                            <li class="{{ (request()->is('analytics_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
                             <!-- style="margin-right: 80px!important;" -->
 
                                 <a href="{{ route('analytics.index') }}" style="background:none!important;"> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
@@ -1055,11 +1055,11 @@ margin-top: 0px !important;
 @endif
                          
 
-                            <li class="pcoded-hasmenu col-md-1" >
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;" >
                             <!-- style="margin-right: 80px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-heart text-white"></i></span>
-                                    <span class="pcoded-mtext text-white offset-3"><b>Eco</b></span>
+                                    <span class="pcoded-mtext text-white "><b>Eco</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <!-- <ul class="pcoded-submenu">
@@ -1092,10 +1092,10 @@ margin-top: 0px !important;
 
 
                             @if(collect(session('roles'))->contains('Administrator'))
-                            <li class="pcoded-hasmenu col-md-1">
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
-                                    <span class="pcoded-mtext text-white offset-1"><b>Config</b></span>
+                                    <span class="pcoded-mtext text-white "><b>Config</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
