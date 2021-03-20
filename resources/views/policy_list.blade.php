@@ -144,7 +144,7 @@
                         <div class="form-group row mt-4">
                             @foreach($confpolicies as $confpoliciess)
                             <div class="col-sm-4">
-                                  <label class="col-form-label" ><span style="margin-left:100px;">{{ ucfirst($confpoliciess['name'])}} : </span></label>
+                                  <label class="col-form-label" ><span style="margin-left:100px;">{{ ucwords(str_replace("_"," ",$confpoliciess['name']))}} : </span></label>
                                   <input type="hidden"  name="policies[]" value="{{ $confpoliciess['id']}}" />
                                                   
                                 

@@ -179,7 +179,7 @@
                                         <div class="dt-responsive table-responsive">
                                             <table id="arr">
                                                 <thead>
-                                                    <tr>
+                                                    <tr style="float: right;">
                                                         <th class="col-md-2">User Name</th>
                                                         <th class="col-md-2">Property Name</th>
 
