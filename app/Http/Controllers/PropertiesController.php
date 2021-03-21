@@ -216,7 +216,9 @@ class PropertiesController extends Controller
         }
          $vendors = $response['data'];
 
-
+          if (session()->has('success')) {
+            session()->forget('success');
+         }   
          return view(
             'create_properties', compact(
                 'tax','amenity','statuses','host','property_type','pms','crs','confRoomType','amenity','Coolthing','vendors'
