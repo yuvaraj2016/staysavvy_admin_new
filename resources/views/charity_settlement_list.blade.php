@@ -215,7 +215,8 @@
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
                                                     {{-- @if(collect(session('permissions'))->contains('List invoices')) --}}
-                                                    <a href="{{ route('admin.monthlyinvoicedetail',['page'=>1,'vendor_invoice_id'=>$id]) }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View User Invoices</a>
+                                              {{---      {{ route('admin.monthlyinvoicedetail',['page'=>1,'vendor_invoice_id'=>$id]) }}---}}
+                                                    <a href="#" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View Invoices" style="font-size:14px!important;"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;View User Invoices</a>
                                                 {{-- @endif --}}
                                                 </li>
                                               

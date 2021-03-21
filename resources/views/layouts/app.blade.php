@@ -659,7 +659,8 @@ margin-top: 0px !important;
                         </div>
 
                         <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
-                            <div class="mt-3 col-md-12" style="background-color:#1BF0B7; border-radius:20px; height:75%!important;font-weight:bold;width:1014px;">
+                            <div class="mt-3 col-md-12" style="background-color:#1BF0B7; border-radius:20px; height:75%!important;font-weight:bold;">
+                            <!-- width:1014px; -->
                                 @if(collect(session('roles'))->contains('Administrator'))
 
 
@@ -786,11 +787,11 @@ margin-top: 0px !important;
                       
                         @if(collect(session('roles'))->contains('Vendor'))
                       
-                        <li class=" col-md-1" >
+                        <li class=" col-md-1" style="text-align: center;" >
                             <!-- style="margin-right: 80px!important;" -->
 
                                 <!-- @if(collect(session('permissions'))->contains('List booking')) -->
-                                <a href="{{ route('dashboard.index') }}"> <span class="pcoded-micon"><i class="icofont icofont-home text-white" style="margin-left: -27px;"></i></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Home</b></span> <span class="pcoded-mcaret"></span> </a>
+                                <a href="{{ route('dashboard.index') }}"> <span class="pcoded-micon"><i class="icofont icofont-home text-white" ></i></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Home</b></span> <span class="pcoded-mcaret"></span> </a>
                                 <!-- @endif -->
 
                             </li>
@@ -798,10 +799,10 @@ margin-top: 0px !important;
                        
                        
                         @if(collect(session('roles'))->contains('Administrator'))
-                            <li class="pcoded-hasmenu col-md-1" >
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;" >
                             <!-- style="margin-right: 90px!important;" -->
                                 <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-user text-white" style="margin-left: -19px;"></i></span>
+                                    <span class="pcoded-micon"><i class="fa fa-user text-white" ></i></span>
                                     <span class="pcoded-mtext text-white "><b>Users</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
@@ -876,7 +877,7 @@ margin-top: 0px !important;
                             </li>
                             @endif
 
-                            <li class="pcoded-hasmenu col-md-1" >
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
                             <!-- style="margin-right: 80px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-flag text-white"></i></span>
@@ -905,7 +906,7 @@ margin-top: 0px !important;
                             </li>
 
 
-                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }} col-md-1" >
+                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
                             <!-- style="margin-right: 80px!important;" -->
 
                                 @if(collect(session('permissions'))->contains('List booking'))
@@ -914,7 +915,7 @@ margin-top: 0px !important;
 
                             </li>
 
-                            <li class="{{ (request()->is('overallreview_list')) ? 'active' : '' }} col-md-1" >
+                            <li class="{{ (request()->is('overallreview_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
                             <!-- style="margin-right: 80px!important;" -->
 
                                
@@ -925,7 +926,7 @@ margin-top: 0px !important;
 
 
                             {{-- @if(collect(session('roles'))->contains('Administrator')) --}}
-                            <li class="pcoded-hasmenu col-md-1">
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-gbp text-white"></i></span>
                                     <span class="pcoded-mtext text-white offset-1"><b>Finance</b></span>
@@ -993,7 +994,7 @@ margin-top: 0px !important;
                                                 </a>
                                                 @endif
                                             </li>
-                                            <li class="">
+                                            <!-- <li class="">
                                                 @if(collect(session('permissions'))->contains('List config commission'))
 
                                                 <a class=" {{ (request()->is('charity_invoice_list')) ? 'active' : '' }}" href="{{ route('charity.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
@@ -1002,7 +1003,7 @@ margin-top: 0px !important;
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                                 @endif
-                                            </li>
+                                            </li> -->
                                        
                                         </ul>
                                         @endif
@@ -1023,7 +1024,7 @@ margin-top: 0px !important;
 
                                     </li>
                                     @if(collect(session('roles'))->contains('Administrator'))
-                                    <li class="{{ (request()->is('admin_settlement_list')) ? 'active' : '' }} col-md-1" >
+                                    <li class="{{ (request()->is('admin_settlement_list')) ? 'active' : '' }} col-md-1"style="text-align: center;" >
                             <!-- style="margin-right: 80px!important;" -->
 
                                 <!-- @if(collect(session('permissions'))->contains('List booking')) -->
@@ -1045,7 +1046,7 @@ margin-top: 0px !important;
                             
                          @if(collect(session('roles'))->contains('Administrator'))
 
-                            <li class="{{ (request()->is('analytics_list')) ? 'active' : '' }} col-md-1" >
+                            <li class="{{ (request()->is('analytics_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
                             <!-- style="margin-right: 80px!important;" -->
 
                                 <a href="{{ route('analytics.index') }}" style="background:none!important;"> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
@@ -1055,11 +1056,11 @@ margin-top: 0px !important;
 @endif
                          
 
-                            <li class="pcoded-hasmenu col-md-1" >
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;" >
                             <!-- style="margin-right: 80px!important;" -->
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-heart text-white"></i></span>
-                                    <span class="pcoded-mtext text-white offset-3"><b>Eco</b></span>
+                                    <span class="pcoded-mtext text-white "><b>Eco</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <!-- <ul class="pcoded-submenu">
@@ -1092,10 +1093,10 @@ margin-top: 0px !important;
 
 
                             @if(collect(session('roles'))->contains('Administrator'))
-                            <li class="pcoded-hasmenu col-md-1">
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
-                                    <span class="pcoded-mtext text-white offset-1"><b>Config</b></span>
+                                    <span class="pcoded-mtext text-white "><b>Config</b></span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">

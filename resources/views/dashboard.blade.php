@@ -114,7 +114,7 @@
                             </div>
 
 
-                            <div class="card" style="margin-top: -16px;border:5px solid lightgray">
+                            <div class="card" style="margin-top: -16px">
 
                                 <div class="card-block">
                                     <div id="" style="height:100px">
@@ -122,16 +122,16 @@
 
                                         <div class="form-group row ">
 
-                                            <div class="col-sm-3 " id="arai">
-                                                <label class="col-form-label text-md-right c" style="margin-left: 44px;  cursor: pointer; ">Arrivals</label>
+                                            <div class="col-sm-3 card" id="arai" style="text-align: center;">
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important ">Arrivals</label>
 
-                                                <p id="ac" style="text-align: center;margin-left: 29px;">{{$bookingobverview['arrivals_count']}}</p>
+                                                <p id="ac" style="text-align: center;">{{$bookingobverview['arrivals_count']}}</p>
 
 
                                             </div>
 
-                                            <div class="col-sm-3 " id="dep">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;">Departures</label>
+                                            <div class="col-sm-3 card" id="dep">
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important">Departures</label>
 
                                                 <p id="dc" style="text-align: center;margin-right:25px;">{{$bookingobverview['departures_count']}} </p>
 
@@ -139,15 +139,15 @@
                                             </div>
 
 
-                                            <div class="col-sm-3 " id="newbook">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;">New Bookings</label>
+                                            <div class="col-sm-3 card" id="newbook">
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important">New Bookings</label>
 
                                                 <p id="nbc" style="text-align: center;"> {{$bookingobverview['new_booking_count']}}</p>
 
 
                                             </div>
-                                            <div class="col-sm-3 " id="stayor">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;">Stay-Overs</label>
+                                            <div class="col-sm-3 card" id="stayor">
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important">Stay-Overs</label>
 
                                                 <p name="name" id="stover" style="text-align: center;margin-right:25px;">{{$bookingobverview['stay_over']}}</p>
 
@@ -179,12 +179,12 @@
                                         <div class="dt-responsive table-responsive">
                                             <table id="arr">
                                                 <thead>
-                                                    <tr>
+                                                    <tr style="float: right;">
                                                         <th class="col-md-2">User Name</th>
                                                         <th class="col-md-2">Property Name</th>
 
-                                                        <th>Booking Reference</th>
-                                                        <th>Total Amount</th>
+                                                        <th class="col-md-2">Booking Reference</th>
+                                                        <th class="">Total Amount</th>
 
 
 
@@ -263,30 +263,30 @@
 
 
                                         <div class="form-group row ">
-                                            <div class="col-sm-4 ">
+                                            <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Average Daily Rate</label>
 
-                                                <p id="dr">£ {{$performance['daily_rate']}}</p>
+                                                <p id="dr" style="text-align: center;">£ {{$performance['daily_rate']}}</p>
 
 
                                             </div>
 
-                                            <div class="col-sm-4 ">
+                                            <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Cancellation Rate</label>
 
-                                                <p id="cr">{{$performance['cancel_rate']}} %</p>
+                                                <p id="cr" style="text-align: center;">{{$performance['cancel_rate']}} </p>
 
                                             </div>
 
-                                            <div class="col-sm-2 ">
+                                            <div class="col-sm-2 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Revenue</label>
 
-                                                <p id="rev">£ {{$performance['revenue']}}</p>
+                                                <p id="rev" style="text-align: center;">£ {{$performance['revenue']}}</p>
                                             </div>
-                                            <div class="col-sm-2 ">
+                                            <div class="col-sm-2 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Stayed</label>
 
-                                                <p id="stay">{{$performance['nights_stayed']}}</p>
+                                                <p id="stay" style="text-align: center;">{{$performance['nights_stayed']}}</p>
 
                                             </div>
 
@@ -310,19 +310,19 @@
 
 
                                         <div class="form-group row ">
-                                            <div class="col-sm-4 ">
+                                            <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Eco-Score</label>
 
-                                                <p id="ssc"> {{$performance['ss_score']}}</p>
+                                                <p id="ssc" style="text-align: center;"> {{$performance['ss_score']}}</p>
 
 
                                             </div>
 
 
-                                            <div class="col-sm-4 ">
+                                            <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Bookings Made</label>
 
-                                                <p id="bm">{{$performance['booking_made']}}</p>
+                                                <p id="bm" style="text-align: center;">{{$performance['booking_made']}}</p>
 
 
                                             </div>
@@ -481,7 +481,7 @@
                                         </div>
                                         @php } else @endphp
                                         @php {@endphp
-                                        <h5 style="text-align: center;">No data Available</h5>
+                                        <h5 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h5>
                                         @php }@endphp
 
 
@@ -622,12 +622,12 @@
 
                         var x = 1;
                         if (responsedata.length == 0) {
-                            arrival = '<p style="text-align:center">No Data Found In Arrival</p>';
+                            arrival = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Arrival</p>';
                     } else {
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 arrival = arrival + '  <thead>' +
-                                    ' <tr style="float: right;">  <th>User Name</th>  <th>Property Name</th> <th>Booking Reference</th>  <th>Total Amount</th> ' +
+                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Booking Reference</th>  <th >Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
@@ -700,7 +700,7 @@
                     var x = 1;
 
                     if (responsedata.length == 0) {
-                        bookingnew = '<p style="text-align:center">No Data Found In New Booking</p>';
+                        bookingnew = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In New Booking</p>';
                     } else {
                     $.each(responsedata, function(key, val) {
                         if (x == 1) {
@@ -783,7 +783,7 @@
                     var depature = '';
                     var x = 1;
                     if (responsedata.length == 0) {
-                        depature = '<p style="text-align:center">No Data Found In Depature</p>';
+                        depature = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Depature</p>';
                     } else {
 
 
@@ -855,7 +855,7 @@
                     var stayover = '';
                     var x = 1;
                     if (responsedata.length == 0) {
-                        stayover = '<h6 style="text-align:center">No Data Found In Stay-overs</h6>';
+                        stayover = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Stay-overs</h6>';
                     } else {
                     $.each(responsedata, function(key, val) {
                         if (x == 1) {
