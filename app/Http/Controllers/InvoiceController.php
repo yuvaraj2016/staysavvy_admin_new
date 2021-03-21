@@ -42,6 +42,7 @@ class InvoiceController extends Controller
 
 
         }
+        
         $properties = $response['data'];
         $pagination = $response['meta']['pagination'];
 
@@ -86,6 +87,8 @@ class InvoiceController extends Controller
     {
         $token = session()->get('token');
 
+     
+
         $property_id = $request->property_id;
         
         $year = $request->year;
@@ -108,10 +111,12 @@ class InvoiceController extends Controller
         $pagination = $response['meta']['pagination'];
 
         $lastpage = $pagination['total_pages'];
+        
+        $pagetype = "GetMonthlyInvoice";
 
            
 
-        return view('admin_monthly_invoice_list', compact('veninvoices', 'pagination','lastpage'));
+        return view('admin_monthly_invoice_list', compact('veninvoices', 'pagination','lastpage','pagetype'));
 
 
     }
@@ -318,11 +323,11 @@ public function getsettlement(Request $request,$page = 1)
                 
 
         ]);
-        
+       
        
     if($response->status()===201 || $response->status()===200 ){
    
-        return redirect('admin_monthly_invoice_list/1/'.$property_id."/".$year)->with('success', 'Monthly Vendor Invoice Is Created Successfully');
+        return redirect('admin_monthly_invoice_list/1/'.$property_id."/".$year)->with('success', 'Monthly Vendor Invoice Is Created Successfully')->with('pagetype', 'createmoninv');
 
     }
 

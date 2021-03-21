@@ -3,6 +3,7 @@
 
 
 
+
     <!-- @if(session('success') !== null)
         <div class='alert alert-success'>
             {{ session('success') }}
@@ -32,6 +33,8 @@
 }
 
 </style>
+<script>
+</script>
 <div class="page-wrapper">
 
     <div class="page-header m-t-50">
@@ -63,18 +66,13 @@
     </div>
     <div class="page-body">
         <div class="row">
-          
-            @if(session('success') !== null)
-            <div class="succWrap">
-                {{ session('success') }}
-            </div>
-            <!-- <div class='alert alert-success'>
+        
+           
+           {{-- @if(session('success') !== null)
+            <div class="succWrap" style="display: none;">
             {{ session('success') }}
-        </div> -->
-            @endif
-
-            
-
+            </div>
+           @endif --}}
             @if(session('errors') !== null)
 
             @foreach(session('errors') as $v)
@@ -535,8 +533,52 @@
 //             });
 //     });
 // });
-</script>
 
+
+</script>
+<script type="text/javascript">
+    // console.log(performance.navigation.type);
+    if (performance.navigation.type == performance.navigation.TYPE_BACK_FORWARD) {
+        
+       
+    }
+
+
+     if (performance.navigation.type == performance.navigation.TYPE_RELOAD
+        || performance.navigation.type == performance.navigation.TYPE_BACK_FORWARD) 
+      {
+
+      }
+    else {
+
+
+    @php if(session('success') !== null){
+
+    @endphp    
+
+            // var firstTime = localStorage.getItem("first_time");
+            // if(!firstTime) {
+            //     // first time loaded!
+            //     localStorage.setItem("first_time","1");
+            // }
+            // else{
+
+            var newNode = document.createElement('div');
+            newNode.className = 'succWrap';
+            newNode.innerHTML = "Monthly Vendor Invoice Is Created Successfully";
+            document.body.appendChild(newNode);
+
+            
+                
+            // }
+    
+
+    @php        
+        }
+        
+    @endphp
+    }
+</script>
 
 </section>
 @endsection

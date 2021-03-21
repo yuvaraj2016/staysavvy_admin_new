@@ -64,14 +64,14 @@
     <div class="page-body">
         <div class="row">
           
-            @if(session('success') !== null)
+            {{-- @if(session('success') !== null)
             <div class="succWrap">
                 {{ session('success') }}
             </div>
             <!-- <div class='alert alert-success'>
             {{ session('success') }}
         </div> -->
-            @endif
+            @endif --}}
 
             @if(session('errors') !== null)
 
