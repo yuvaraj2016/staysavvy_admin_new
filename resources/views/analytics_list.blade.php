@@ -109,44 +109,44 @@
                     <div class="card-body">
                     <div class="form-group row">
                          
-                    <div class="col-sm-2 offset-1">
+                    <div class="col-sm-2 offset-1" style="text-align: center;">
                                     <label class="col-form-label text-md-right c">Average Daily Rate</label>
 
-                                    <p id="dr">£140.97</p>
+                                    <p id="dr">{{$performance['daily_rate']}}</p>
 
 
                                 </div>
 
 
-                                <div class="col-sm-2">
+                                <div class="col-sm-2" style="text-align: center;">
                                     <label class="col-form-label text-md-right c">Cancellation Rate</label>
 
-                                    <p id="cr">10%</p>
+                                    <p id="cr">{{$performance['cancel_rate']}}</p>
 
 
                                 </div>
 
-                                <div class="col-sm-2">
+                                <div class="col-sm-2" style="text-align: center;">
                                     <label class="col-form-label text-md-right c">Revenue</label>
 
-                                    <p id="rev">£10,900</p>
+                                    <p id="rev">£ {{$performance['revenue']}}</p>
 
 
                                 </div>
 
 
-                                <div class="col-sm-2">
+                                <div class="col-sm-2" style="text-align: center;">
                                     <label class="col-form-label text-md-right c">Nights Stayed</label>
 
-                                    <p id="stay">10</p>
+                                    <p id="stay">{{$performance['nights_stayed']}}</p>
 
 
                                 </div>
 
-                                <div class="col-sm-2">
+                                <div class="col-sm-2" style="text-align: center;">
                                     <label class="col-form-label text-md-right c">Bookings Made</label>
 
-                                    <p id="bm">71</p>
+                                    <p id="bm">{{$performance['booking_made']}}</p>
 
 
                                 </div>

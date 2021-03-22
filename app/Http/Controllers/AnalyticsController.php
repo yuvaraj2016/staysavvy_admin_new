@@ -22,8 +22,24 @@ class AnalyticsController extends Controller
     public function index(Request $request,$page = 1)
     {
         //
+        $sdate= date("Y-m-d");
+        $edate= date("Y-m-d", strtotime("+1 day"));
 
         $token = session()->get('token');
+
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/performanceOverviewAll/'.$sdate.'/'.$edate);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //    return $response;
+        }catch (\Exception $e){
+       
+
+
+        }
+        $performance = $response['performance_overviews'];
+
         try{
 
             $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?page='.$page);
@@ -41,7 +57,7 @@ class AnalyticsController extends Controller
         $lastpage = $pagination['total_pages'];
         
 
-          return view('analytics_list', compact('property', 'pagination','lastpage'));
+          return view('analytics_list', compact('property', 'pagination','lastpage','performance'));
     }
 
     /**
