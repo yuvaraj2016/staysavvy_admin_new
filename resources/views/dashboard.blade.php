@@ -14,7 +14,7 @@
     }
 
     tbody {
-        height: 100px;
+        /* height: 100px; */
         display: inline-block;
         width: 100%;
         overflow: auto;
@@ -114,7 +114,7 @@
                             </div>
 
 
-                            <div class="card" style="margin-top: -16px">
+                            <div class="card" >
 
                                 <div class="card-block">
                                     <div id="" style="height:100px">
@@ -122,7 +122,7 @@
 
                                         <div class="form-group row ">
 
-                                            <div class="col-sm-3 card" id="arai" style="text-align: center;">
+                                            <div class="col-sm-2 card" id="arai" style="text-align: center;">
                                                 <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important ">Arrivals</label>
 
                                                 <p id="ac" style="text-align: center;">{{$bookingobverview['arrivals_count']}}</p>
@@ -130,26 +130,26 @@
 
                                             </div>
 
-                                            <div class="col-sm-3 card" id="dep">
+                                            <div class="col-sm-3 offset-1 card" id="dep">
                                                 <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important">Departures</label>
 
-                                                <p id="dc" style="text-align: center;margin-right:25px;">{{$bookingobverview['departures_count']}} </p>
+                                                <p id="dc" style="text-align: center;">{{$bookingobverview['departures_count']}} </p>
 
 
                                             </div>
 
 
-                                            <div class="col-sm-3 card" id="newbook">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important">New Bookings</label>
+                                            <div class="col-sm-2 offset-1 card" id="newbook">
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;">New Bookings</label>
 
                                                 <p id="nbc" style="text-align: center;"> {{$bookingobverview['new_booking_count']}}</p>
 
 
                                             </div>
-                                            <div class="col-sm-3 card" id="stayor">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important">Stay-Overs</label>
+                                            <div class="col-sm-2 offset-1 card" id="stayor">
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;">Stay Overs</label>
 
-                                                <p name="name" id="stover" style="text-align: center;margin-right:25px;">{{$bookingobverview['stay_over']}}</p>
+                                                <p name="name" id="stover" style="text-align: center;">{{$bookingobverview['stay_over']}}</p>
 
                                             </div>
                                             <!-- <div class="col-sm-2 ">
@@ -630,7 +630,7 @@
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 arrival = arrival + '  <thead>' +
-                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Total Guests</th>  <th >Total Amount</th> ' +
+                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th >Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
@@ -639,7 +639,7 @@
                             arrival = arrival + '<tr style="margin-padding:10px">' +
                                 ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.property_name + '</td>' +
+                                '<td class="col-md-2" id="pn">' + val.check_in_date +' ' +'_'+' ' +val.check_out_date + '</td>' +
 
                                 '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
@@ -708,7 +708,7 @@
                     $.each(responsedata, function(key, val) {
                         if (x == 1) {
                             bookingnew = bookingnew + '  <thead>' +
-                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
+                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                 ' </tr>  </thead>';
                         }
                         x++;
@@ -716,7 +716,7 @@
                         bookingnew = bookingnew + '<tr style="margin-padding:0px;">' +
                             ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                            '<td class="col-md-2" id="pn">' + val.property_name + '</td>' +
+                            '<td class="col-md-2" id="pn">' + val.check_in_date +' ' +'_'+' ' +val.check_out_date  + '</td>' +
 
                             '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
@@ -793,7 +793,7 @@
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 depature = depature + '  <thead>' +
-                                    ' <tr  style="float: right;" >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
+                                    ' <tr  style="float: right;" >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
@@ -801,7 +801,7 @@
                             depature = depature + '<tr style="margin-padding:0px">' +
                                 ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.property_name + '</td>' +
+                                '<td class="col-md-2" id="pn">' + val.check_in_date +' ' +'_'+' ' +val.check_out_date  + '</td>' +
 
                                 '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
@@ -863,7 +863,7 @@
                     $.each(responsedata, function(key, val) {
                         if (x == 1) {
                             stayover = stayover + '  <thead>' +
-                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
+                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                 ' </tr>  </thead>';
                         }
                         x++;
@@ -871,7 +871,7 @@
                         stayover = stayover + '<tr style="margin-padding:0px">' +
                             ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                            '<td class="col-md-2" id="pn">' + val.property_name + '</td>' +
+                            '<td class="col-md-2" id="pn">' + val.check_in_date +' ' +'_'+' ' +val.check_out_date + '</td>' +
 
                             '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
