@@ -1862,7 +1862,7 @@ crossDomain: false,
         });
     </script>
 
-<!-- @dd(session('property_id')); -->
+
 </body>
 
 </html>
