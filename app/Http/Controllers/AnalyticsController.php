@@ -77,6 +77,42 @@ class AnalyticsController extends Controller
         //    return view('create_tax');
     }
 
+
+
+
+    public function anapreform(Request $request)
+    {
+        // dd($request);
+// return $request->id;
+    $id=$request->id;
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/performanceOverview/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        // dd($response);
+    //    return $response;
+    }catch (\Exception $e){
+   
+
+
+    }
+    $anapreform = $response['performance_overviews'];
+
+
+    return $anapreform;
+    
+      
+
+    
+    }
+
     /**
      * Store a newly created resource in storage.
      *

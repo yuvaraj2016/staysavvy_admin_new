@@ -65,7 +65,7 @@ Route::get('performance/{id}/{sdate}/{edate}','DashboardController@index')->name
 Route::get('dashboard','DashboardController@index')->name('dashboard.index')->middleware('checktoken');
 Route::get('performanceajax/{id}/{sdate}/{edate}','DashboardController@performance')->name('performance.ajax')->middleware('checktoken');
 
-
+Route::get('anapreformajax/{id}/{sdate}/{edate}','AnalyticsController@anapreform')->name('anapreform.ajax')->middleware('checktoken');
 
 Route::get('availableajax/{id}/{sdate}/{edate}','DashboardController@available')->name('available.ajax')->middleware('checktoken');
 Route::get('depatureajax/{id}/{sdate}/{edate}','DashboardController@depature')->name('depature.ajax')->middleware('checktoken');

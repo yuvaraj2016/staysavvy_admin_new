@@ -66,7 +66,7 @@
                          
                                     <div class="col-sm-4 offset-1">
                                                         <label class="col-form-label text-md-right ">Property</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="property_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                        <select id="prop" class="js-example-basic-single col-sm-12" name="property_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($property as $propertys)
                                             <option value="{{ $propertys['id'] }}" {{ (old("property_id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}</option>
@@ -74,13 +74,13 @@
                                     </select>
                                                         </div>
 
-                                                        <div class="col-sm-1">
+                                                        <!-- <div class="col-sm-1">
                                                         <button type="submit" id="submit" class="btn btn-primary btn-lg" style="margin-top: 28px;">Submit</button>
                                                         </div>
 
                                                         <div class="col-sm-3">
                                                         <button type="submit" id="submit" class="btn btn-primary btn-lg" style="margin-top: 28px;">AllPropertys</button>
-                                                        </div>
+                                                        </div> -->
                              
                         </div>
 
@@ -88,18 +88,18 @@
                         <div class="form-group row">
                          
                         <div class="col-sm-3 offset-1">
-                                                                <h6 style="margin-top: 11px;">From</h6>
-                                                                <input type="date" name="" class="form-control" value="" style="width: 148px;">
-                                                            </div>
+                                <h6 style="margin-top: 11px;">From</h6>
+                                <input type="date" id="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                            </div>
 
-                                                            <div class="col-sm-2 " style="margin-left: -111px;">
-                                                                <h6 style="margin-top: 11px;">To</h6>
-                                                                <input type="date" name="" class="form-control" value="" style="width: 148px;">
-                                                               
-                                                            </div>
+                            <div class="col-sm-2 " style="margin-left: -111px;">
+                                <h6 style="margin-top: 11px;">Until</h6>
+                                <input type="date" id="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;">
+
+                            </div>
 
                                              <div class="col-sm-2">
-                                             <button type="submit" id="submit" class="btn btn-primary btn-lg" style="margin-top: 28px;">Submit</button>
+                                             <button type="button" id="performance" class="btn btn-primary btn-lg" style="margin-top: 28px;">Submit</button>
                                              </div>
                   
              </div>
@@ -109,39 +109,47 @@
                     <div class="card-body">
                     <div class="form-group row">
                          
-                    <div class="col-sm-3 offset-1">
-                          <label class="col-form-label text-md-right c">Average Daily Rate</label>
-                                
-                                <p name="name" >£140.97</p>
+                    <div class="col-sm-2 offset-1">
+                                    <label class="col-form-label text-md-right c">Average Daily Rate</label>
+
+                                    <p id="dr">£140.97</p>
 
 
-                          </div>
+                                </div>
 
 
-                          <div class="col-sm-3">
-                          <label class="col-form-label text-md-right c">Cancellation Rate</label>
-                                
-                                <p name="name" >10%</p>
+                                <div class="col-sm-2">
+                                    <label class="col-form-label text-md-right c">Cancellation Rate</label>
+
+                                    <p id="cr">10%</p>
 
 
-                          </div>
+                                </div>
 
-                          <div class="col-sm-2">
-                          <label class="col-form-label text-md-right c">Revenue</label>
-                                
-                                <p name="name" >£10,900</p>
+                                <div class="col-sm-2">
+                                    <label class="col-form-label text-md-right c">Revenue</label>
 
-
-                          </div>
+                                    <p id="rev">£10,900</p>
 
 
-                          <div class="col-sm-2">
-                          <label class="col-form-label text-md-right c">Nights Stayed</label>
-                                
-                                <p name="name" >10</p>
+                                </div>
 
 
-                          </div>
+                                <div class="col-sm-2">
+                                    <label class="col-form-label text-md-right c">Nights Stayed</label>
+
+                                    <p id="stay">10</p>
+
+
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <label class="col-form-label text-md-right c">Bookings Made</label>
+
+                                    <p id="bm">71</p>
+
+
+                                </div>
                          
                          
                          </div>
@@ -152,7 +160,7 @@
 
 
 
-                    <div class="card">
+                    <!-- <div class="card">
                     <div class="card-body">
                     <div class="form-group row">
                          
@@ -192,7 +200,7 @@
                          </div>
                     </div>
 
-                    </div>
+                    </div> -->
                 </form>
                 </div>
                 <!-- HTML5 Export Buttons end -->
@@ -222,6 +230,46 @@
 
     </div>
 </div>
+
+
+
+<script>
+    $('#performance').on("click", function() {
+        // console.log('Btn Ppppressedssss')
+        var sdate = $("#sdate").val();
+        // alert(sdate);
+        var edate = $("#edate").val();
+        // alert(edate);
+        var propid = $("#prop").val();
+        // alert(propid)
+
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('anapreformajax')}}"+"/"+propid+"/"+sdate +"/"+edate,
+            type: "GET",
+            crossDomain: true,
+            beforeSend: function() {
+                // console.log('Aaaajax sss')
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+            success: function(responsedata) {
+                console.log(responsedata);
+                console.log(responsedata);
+                $('#dr').html(responsedata.daily_rate);
+                $('#cr').html(responsedata.cancel_rate);
+                $('#rev').html(responsedata.revenue);
+                $('#ssc').html(responsedata.ss_score);
+                $('#bm').html(responsedata.booking_made);
+                $('#stay').html(responsedata.nights_stayed);
+            }
+        })
+    });
+</script>
 {{-- <script>
     $(function () {
         $('.job-delete').click(function (event) {
