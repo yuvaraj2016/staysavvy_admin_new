@@ -68,11 +68,11 @@
         <div class="row">
         
            
-           {{-- @if(session('success') !== null)
-            <div class="succWrap" style="display: none;">
+           @if(session('success') !== null)
+            <div class="succWrap">
             {{ session('success') }}
             </div>
-           @endif --}}
+           @endif
             @if(session('errors') !== null)
 
             @foreach(session('errors') as $v)
@@ -536,7 +536,7 @@
 
 
 </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     // console.log(performance.navigation.type);
     if (performance.navigation.type == performance.navigation.TYPE_BACK_FORWARD) {
         
@@ -578,7 +578,7 @@
         
     @endphp
     }
-</script>
+</script> --}}
 
 </section>
 @endsection
