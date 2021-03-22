@@ -135,6 +135,11 @@ class UserController extends Controller
                   }
 
                 }
+                else if(collect(session('roles'))->contains('Member')){
+
+                    return redirect()->back()->with('error','Member User Is Not Allowed To Login');
+
+                }
 
         
                 $request->session()->save();
