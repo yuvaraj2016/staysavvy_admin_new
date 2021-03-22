@@ -183,7 +183,7 @@
                                                         <th class="col-md-2">User Name</th>
                                                         <th class="col-md-2">Property Name</th>
 
-                                                        <th class="col-md-2">Booking Reference</th>
+                                                        <th class="col-md-2">Total Guests</th>
                                                         <th class="">Total Amount</th>
 
 
@@ -198,7 +198,7 @@
 
                                                         <td class="col-md-2" id="pn">{{ $avail['property_name'] }}</td>
 
-                                                        <td class="col-md-2" id="br">{{ $avail['booking_reference'] }}</td>
+                                                        <td class="col-md-2" id="br">{{ $avail['total_guests'] }}</td>
 
                                                         <td class="col-md-2" id="ta">{{ $avail['total_amount'] }}</td>
 
@@ -630,7 +630,7 @@
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 arrival = arrival + '  <thead>' +
-                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Booking Reference</th>  <th >Total Amount</th> ' +
+                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Total Guests</th>  <th >Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
@@ -641,7 +641,7 @@
 
                                 '<td class="col-md-2" id="pn">' + val.property_name + '</td>' +
 
-                                '<td class="col-md-2" id="br">' + val.booking_reference + '</td>' +
+                                '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
                                 '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
 
@@ -708,7 +708,7 @@
                     $.each(responsedata, function(key, val) {
                         if (x == 1) {
                             bookingnew = bookingnew + '  <thead>' +
-                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Booking Reference</th>  <th>Total Amount</th> ' +
+                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                 ' </tr>  </thead>';
                         }
                         x++;
@@ -718,7 +718,7 @@
 
                             '<td class="col-md-2" id="pn">' + val.property_name + '</td>' +
 
-                            '<td class="col-md-2" id="br">' + val.booking_reference + '</td>' +
+                            '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
                             '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
 
@@ -793,7 +793,7 @@
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 depature = depature + '  <thead>' +
-                                    ' <tr  style="float: right;" >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Booking Reference</th>  <th>Total Amount</th> ' +
+                                    ' <tr  style="float: right;" >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
@@ -803,7 +803,7 @@
 
                                 '<td class="col-md-2" id="pn">' + val.property_name + '</td>' +
 
-                                '<td class="col-md-2" id="br">' + val.booking_reference + '</td>' +
+                                '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
                                 '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
 
@@ -863,7 +863,7 @@
                     $.each(responsedata, function(key, val) {
                         if (x == 1) {
                             stayover = stayover + '  <thead>' +
-                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Booking Reference</th>  <th>Total Amount</th> ' +
+                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Property Name</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                 ' </tr>  </thead>';
                         }
                         x++;
@@ -873,7 +873,7 @@
 
                             '<td class="col-md-2" id="pn">' + val.property_name + '</td>' +
 
-                            '<td class="col-md-2" id="br">' + val.booking_reference + '</td>' +
+                            '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
                             '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
 
