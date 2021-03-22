@@ -181,7 +181,7 @@
                                                 <thead>
                                                     <tr style="float: right;">
                                                         <th class="col-md-2">User Name</th>
-                                                        <th class="col-md-2">Property Name</th>
+                                                        <th class="col-md-2">Date Range</th>
 
                                                         <th class="col-md-2">Total Guests</th>
                                                         <th class="">Total Amount</th>
@@ -196,7 +196,7 @@
                                                     <tr>
                                                         <td class="col-md-2" id="un">{{ $avail['user_name'] }}</td>
 
-                                                        <td class="col-md-2" id="pn">{{ $avail['property_name'] }}</td>
+                                                        <td class="col-md-2" id="pn">{{ $avail['date_range_human'] }}</td>
 
                                                         <td class="col-md-2" id="br">{{ $avail['total_guests'] }}</td>
 
@@ -639,7 +639,7 @@
                             arrival = arrival + '<tr style="margin-padding:10px">' +
                                 ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.check_in_date +' ' +'_'+' ' +val.check_out_date + '</td>' +
+                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
 
                                 '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
@@ -716,7 +716,7 @@
                         bookingnew = bookingnew + '<tr style="margin-padding:0px;">' +
                             ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                            '<td class="col-md-2" id="pn">' + val.check_in_date +' ' +'_'+' ' +val.check_out_date  + '</td>' +
+                            '<td class="col-md-2" id="pn">' + val.date_range_human  + '</td>' +
 
                             '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
@@ -801,7 +801,7 @@
                             depature = depature + '<tr style="margin-padding:0px">' +
                                 ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.check_in_date +' ' +'_'+' ' +val.check_out_date  + '</td>' +
+                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
 
                                 '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
@@ -871,7 +871,7 @@
                         stayover = stayover + '<tr style="margin-padding:0px">' +
                             ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                            '<td class="col-md-2" id="pn">' + val.check_in_date +' ' +'_'+' ' +val.check_out_date + '</td>' +
+                            '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
 
                             '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
