@@ -95,6 +95,32 @@ class AnalyticsController extends Controller
 
 
 
+    public function allproperty(Request $request)
+    {
+    // return $request->sdate;
+    // $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/performanceOverviewAll/'.$sdate.'/'.$edate);
+
+        $allpresponse = json_decode($call->getBody()->getContents(), true);
+        //   return $allpresponse;
+    }catch (\Exception $e){
+   
+    }
+    $allproperty = $allpresponse['performance_overviews'];
+    return $allproperty;
+    
+          
+    }
+
+
 
     public function anapreform(Request $request)
     {

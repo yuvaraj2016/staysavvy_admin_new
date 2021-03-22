@@ -101,6 +101,10 @@
                                              <div class="col-sm-2">
                                              <button type="button" id="performance" class="btn btn-primary btn-lg" style="margin-top: 28px;">Submit</button>
                                              </div>
+
+                                             <div class="col-sm-2" style="margin-left: -77px;">
+                                                        <button type="button" id="allproperty" class="btn btn-primary btn-lg" style="margin-top: 28px;">All Properties</button>
+                                                        </div>
                   
              </div>
             
@@ -258,8 +262,47 @@
                 $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
             },
             success: function(responsedata) {
-                console.log(responsedata);
-                console.log(responsedata);
+                //  console.log(responsedata);
+                // console.log(responsedata);
+                $('#dr').html(responsedata.daily_rate);
+                $('#cr').html(responsedata.cancel_rate);
+                $('#rev').html(responsedata.revenue);
+                $('#ssc').html(responsedata.ss_score);
+                $('#bm').html(responsedata.booking_made);
+                $('#stay').html(responsedata.nights_stayed);
+            }
+        })
+    });
+</script>
+
+
+<script>
+    $('#allproperty').on("click", function() {
+        // console.log('Btn Ppppressedssss')
+        var sdate = $("#sdate").val();
+        // alert(sdate);
+        var edate = $("#edate").val();
+        // alert(edate);
+        // var propid = $("#prop").val();
+        // alert(propid)
+
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('allpropertyajax')}}"+"/"+sdate +"/"+edate,
+            type: "GET",
+            crossDomain: true,
+            beforeSend: function() {
+                // console.log('Aaaajax sss')
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+            success: function(responsedata) {
+                //  console.log(responsedata);
+                // console.log(responsedata);
                 $('#dr').html(responsedata.daily_rate);
                 $('#cr').html(responsedata.cancel_rate);
                 $('#rev').html(responsedata.revenue);
