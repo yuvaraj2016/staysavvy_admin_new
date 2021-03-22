@@ -447,16 +447,18 @@
 
                                                     </div> -->
                                 <div class="card-block">
-                                    <div id="pie-chart" style="height:300px">
+                                    <div id="pie-chart" style="height:300px;display: inline-block;
+    width: 100%;
+    overflow: auto;">
 
 
-                                        @php if($review > 0){@endphp
+                                      
 
 
 
                                         <div id="revcontant">
 
-
+                                        @php if(count($review) > 0){@endphp
 
                                             @foreach($review as $rev)
 
@@ -478,12 +480,13 @@
                                                 </div>
                                             </div>
                                             @endforeach
-                                        </div>
-                                        @php } else @endphp
+                                            @php } else @endphp
                                         @php {@endphp
                                         <h5 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h5>
                                         @php }@endphp
 
+                                        </div>
+                                      
 
 
 
@@ -922,6 +925,12 @@
                     //   alert(responsedata);
 
                     var reviewhtml = '';
+
+                    var x = 1;
+                    if (responsedata.length == 0) {
+                        reviewhtml = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Reviews</h6>';
+                    } else {
+
                     $.each(responsedata, function(key, val) {
                         // alert(val.user_email);
 
@@ -945,6 +954,7 @@
                         //         $('#rw').html(responsedata.review);
                         //         $('#rat').html(responsedata.rating);
                     });
+                }
                     // alert(reviewhtml.replace("NaN",""));
                     var revhtml = reviewhtml.replace("NaN", "");
                     $('#revcontant').html('');
