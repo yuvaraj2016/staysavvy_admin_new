@@ -380,7 +380,7 @@
                                                         <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
 
                                                     </div> -->
-                                <div class="card-block">
+                                <div class="card-block" style="display: none;">
                                     <div id="pie-chart" style="height:300px"></div>
                                 </div>
                             </div>
