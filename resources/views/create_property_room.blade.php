@@ -137,7 +137,7 @@
                             <div class="form-group row ">
                             <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Property</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="property_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                        <select id="prop" class="js-example-basic-single col-sm-12 form-control selectric" name="property_id"  placeholder="status" required  >
                                         <option value="" disabled>Select</option>
                                         @foreach($property as $propertys)
                                             <option value="{{ $propertys['id'] }}" {{ (old("property_id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}</option>
@@ -145,13 +145,13 @@
                                     </select>
                                                         </div>
 
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-4" id="roomtype" style="display: none;">
                                                         <label class="col-form-label text-md-right ">Room Type</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="room_type_id" id="" placeholder="status" required class="form-control selectric" required>
+                                                        <select id="room" class="js-example-basic-single col-sm-12" name="room_type_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="" disabled>Select</option>
-                                        @foreach($confRoomType as $confRoomTypes)
+                                        <!-- @foreach($confRoomType as $confRoomTypes)
                                             <option value="{{ $confRoomTypes['id'] }}" {{ (old("room_type_id") == $confRoomTypes['id'] ? "selected":"") }}>{{ $confRoomTypes['name'] }}</option>
-                                        @endforeach
+                                        @endforeach -->
                                     </select>
                                                         </div>
                           
@@ -273,6 +273,134 @@
             </div>
         </div>
     </div>
+
+
+<script>
+
+$(document).ready(function() {
+
+    var prope_id = $('#prop').val();
+   
+
+   if (prope_id) {
+       $.ajax({
+
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+               'Content-Type': 'application/json',
+               'Accept': 'application/vnd.api.v1+json'
+           },
+           url: "{{ url('proproomtype')}}" + "/" + prope_id,
+
+           type: "GET",
+
+           crossDomain: true,
+           beforeSend: function() {
+               $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+           },
+
+           success: function(responsedata) {
+               // $('#response').html('');
+       
+               // var rooms = responsedata.rooms;
+
+                var roomtypes = responsedata;
+                if(responsedata == ''){
+                    swal("<h5>There Is No Room Type For This Property Please Create</h5>");
+                    $("#roomtype").css('display','none');
+                   
+                    return;
+                }
+
+              console.log(responsedata);
+
+      
+       
+               $.each(roomtypes, function (index, el) {
+// alert(el);
+$("#room").append("<option value="+el.id +" >" + el.name + "</option>");
+});
+
+$("#roomtype").css('display','block');
+               // $('#room').html(aaaa);
+           }
+       })
+
+
+   }
+   
+   
+
+
+
+
+
+
+$('#prop').on('change', function(e) {
+    // var prop = $("#Prop").val();
+    var prope_id = e.target.value;
+   
+
+    if (prope_id) {
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('proproomtype')}}" + "/" + prope_id,
+
+            type: "GET",
+
+            crossDomain: true,
+            beforeSend: function() {
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+
+            success: function(responsedata) {
+                // $('#response').html('');
+                $("#room").empty();
+                // var rooms = responsedata.rooms;
+
+                 var roomtypes = responsedata;
+                 if(responsedata == ''){
+                     swal("<h5>There Is No Room Type For This Property Please Create</h5>");
+                     $("#roomtype").css('display','none');
+                     return;
+                 }
+
+               console.log(responsedata);
+
+       
+        
+                $.each(roomtypes, function (index, el) {
+// alert(el);
+$("#room").append("<option value="+el.id +" >" + el.name + "</option>");
+});
+
+$("#roomtype").css('display','block');
+                // $('#room').html(aaaa);
+            }
+        })
+
+
+    }
+
+});
+
+
+
+
+});
+
+
+
+
+</script>
+
+
+    
  
 </section>
     </div>

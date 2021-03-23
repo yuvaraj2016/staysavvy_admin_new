@@ -115,6 +115,28 @@ class RoomController extends Controller
         //    return view('create_room');
     }
 
+
+    public function proproomtype($prope_id)
+    {
+
+        $token = session()->get('token');
+      
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property/'.$prope_id);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //   return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $proptype = $response['data']['ConfRoomTypes']['data'];
+         return $proptype;
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
