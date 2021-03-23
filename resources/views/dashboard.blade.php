@@ -354,19 +354,19 @@
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;">From</h6>
-                                            <input type="date" name="" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                                            <input type="date" id="sdate2" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;margin-left:12px">Until</h6>
-                                            <input type="date" name="" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:12px">
+                                            <input type="date" id="edate2" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:12px">
 
                                         </div>
 
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-7 ">
-                                                <button type="submit" id="submit" class="btn btn-primary" style="margin-top: 16px;margin-left:20px">Submit</button>
+                                                <button type="button" id="reward" class="btn btn-primary" style="margin-top: 16px;margin-left:20px">Submit</button>
                                             </div>
                                         </div>
 
@@ -382,6 +382,51 @@
                                                     </div> -->
                                 <div class="card-block">
                                     <div id="pie-chart" style="height:300px"></div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="card" >
+
+                                <div class="card-block">
+                                <div id="" style="height:100px; display: inline-block;
+    width: 100%;
+    overflow: auto;">
+<h6>Eco Reward</h6>
+                                        <div class="dt-responsive table-responsive">
+                                            <table id="vrew">
+                                                <thead style="float: left;width:100%">
+                                                    <tr >
+                                                        <th class="col-md-3" style="max-width:28%!important">User Name</th>
+                                                        <th class="col-md-3" style="max-width:28%!important">Date Range</th>
+
+                                                        <th class="col-md-3" style="max-width:28%!important">Booking Ref</th>
+                                                        <th class="col-md-3" style="max-width:28%!important">Status</th>
+
+
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($reward as $avail)
+                                                    <tr>
+                                                        <td class="col-md-3" id="vun">{{ $avail['user_name'] }}</td>
+
+                                                        <td class="col-md-3"  id="vdr">{{ $avail['date_range_human'] }}</td>
+
+                                                        <td class="col-md-3" id="vbr">{{ $avail['booking_reference'] }}</td>
+
+                                                        <td class="col-md-3" id="vs">{{ $avail['conf_reward_status_name'] }}</td>
+
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -441,11 +486,7 @@
                             </div>
 
                             <div class="card" style="margin-top: -16px;">
-                                <!-- <div class="card-header">
-                                                        <h5>Pie chart</h5>
-                                                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-
-                                                    </div> -->
+             
                                 <div class="card-block">
                                     <div id="pie-chart" style="height:300px;display: inline-block;
     width: 100%;
@@ -747,6 +788,97 @@
 
 
 
+        // reward onclick fuction given below on 18.03.2021
+
+        $('#reward').on("click", function() {
+            //  alert("hiiiii")
+
+            var sdate = $("#sdate2").val();
+            // alert(sdate1);
+            var edate = $("#edate2").val();
+            // alert(edate1);
+            var propid = <?php echo session()->get('property_id'); ?>
+
+            $.ajax({
+
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.api.v1+json'
+                },
+                url: "{{ url('vrewardajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+
+                type: "GET",
+
+
+                crossDomain: true,
+                beforeSend: function() {
+                    $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+                },
+
+                success: function(responsedata) {
+                    // console.log(responsedata);
+                    // alert(responsedata.length);
+                    // if(responsedata >0){
+
+                    // }else{
+
+                    // }
+                    var reward = '';
+                    var x = 1;
+                    if (responsedata.length == 0) {
+                        reward = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Reward</p>';
+                    } else {
+
+
+                        $.each(responsedata, function(key, val) {
+                            if (x == 1) {
+                                reward = reward + '  <thead>' +
+                                    ' <tr  style="float: right;margin-right:16px" >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Booking Ref</th>  <th  class="col-md-2">Status</th> ' +
+                                    ' </tr>  </thead>';
+                            }
+                            x++;
+
+                            reward = reward + '<tr style="margin-padding:0px">' +
+                                ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
+
+                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
+
+                                '<td class="col-md-2" id="br">' + val.booking_reference + '</td>' +
+
+                                '<td class="col-md-2" id="ta">' + val.conf_reward_status_name + '</td>' +
+
+                                ' </tr> ';
+
+
+                        })
+                    }
+                    $('#vrew').html('');
+                    $('#vrew').html(reward);
+
+                }
+
+            })
+
+        });
+
+        // end of Reward onclick fuction given below on 18.03.2021
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // depature onclick fuction given below on 18.03.2021
 
@@ -777,6 +909,7 @@
                 },
 
                 success: function(responsedata) {
+                    console.log(responsedata);
                     // alert(responsedata.length);
                     // if(responsedata >0){
 
@@ -854,6 +987,7 @@
                 },
 
                 success: function(responsedata) {
+                    console.log(responsedata);
                     //   alert(responsedata);
                     var stayover = '';
                     var x = 1;

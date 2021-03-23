@@ -114,6 +114,20 @@ class DashboardController extends Controller
 
         }
         $review = $revresponse['data'];
+
+
+        try{
+
+            $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/vendorEcoReward/'.$id.'/'.$sdate.'/'.$edate);
+
+            $venrevresponse = json_decode($revcall->getBody()->getContents(), true);
+                //  return $venrevresponse;
+        }catch (\Exception $e){
+       
+
+
+        }
+        $reward = $venrevresponse['data'];
 // return  $chart ;
 
         // $pagination = $response['meta']['pagination'];
@@ -122,7 +136,7 @@ class DashboardController extends Controller
         
         // return "asd";
 
-          return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature'));
+          return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature','reward'));
 
         // return view('dashboard');
 
@@ -403,6 +417,34 @@ class DashboardController extends Controller
     }
     $review = $response['data'];
     return $review;
+    
+          
+    }
+
+
+
+
+    public function vreward(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/vendorEcoReward/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //   return $response;
+    }catch (\Exception $e){
+   
+    }
+    $vreward = $response['data'];
+    return $vreward;
     
           
     }

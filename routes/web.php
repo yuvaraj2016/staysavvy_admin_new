@@ -79,6 +79,8 @@ Route::get('newbookingajax/{id}/{sdate}/{edate}','DashboardController@newbooking
 Route::get('stayoverajax/{id}/{sdate}/{edate}','DashboardController@stayover')->name('stayover.ajax')->middleware('checktoken');
 
 
+Route::get('vrewardajax/{id}/{sdate}/{edate}','DashboardController@vreward')->name('vreward.ajax')->middleware('checktoken');
+
 Route::get('bochartajax/{id}/{sdate}/{edate}','DashboardController@bochart')->name('bochart.ajax')->middleware('checktoken');
 Route::get('bookingoverviewajax/{id}/{sdate}/{edate}','DashboardController@bookingoverview')->name('bookingoverview.ajax')->middleware('checktoken');
 Route::get('reviewajax/{id}/{sdate}/{edate}','DashboardController@review')->name('review.ajax')->middleware('checktoken');
