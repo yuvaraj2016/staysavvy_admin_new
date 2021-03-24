@@ -640,13 +640,7 @@
             labels: @php echo json_encode($piechart['labels']);@endphp,
             datasets: [{
                 data: @php echo json_encode($piechart['datasets']);@endphp,
-                backgroundColor: [
-                    "#FF6384",
-                    "#63FF84",
-                    "#84FF63",
-                    "#8463FF",
-                    "#6384FF"
-                ]
+        
             }]
         };
 
@@ -949,26 +943,7 @@ beforeSend: function() {
 success: function(responsedata) {
     //  alert(responsedata.labels);
 
-    var oilData = {
-    labels: [
-        "Saudi Arabia",
-        "Russia",
-        "Iraq",
-        "United Arab Emirates",
-        "Canada"
-    ],
-    datasets: [
-        {
-            data: [133.3, 86.2, 52.2, 51.2, 50.2],
-            backgroundColor: [
-                "#FF6384",
-                "#63FF84",
-                "#84FF63",
-                "#8463FF",
-                "#6384FF"
-            ]
-        }]
-};
+ 
 
 
 
