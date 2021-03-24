@@ -86,6 +86,7 @@ Route::get('bochartajax/{id}/{sdate}/{edate}','DashboardController@bochart')->na
 
 Route::get('rewardchartajax/{id}/{sdate}/{edate}','DashboardController@rewardchart')->name('rewardchart.ajax')->middleware('checktoken');
 
+Route::get('piedchartajax/{id}/{sdate}/{edate}','DashboardController@piedchart')->name('piedchart.ajax')->middleware('checktoken');
 
 
 

@@ -114,7 +114,7 @@
                             </div>
 
 
-                            <div class="card" >
+                            <div class="card">
 
                                 <div class="card-block">
                                     <div id="" style="height:100px">
@@ -380,25 +380,36 @@
                                                         <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
 
                                                     </div> -->
-                                <div class="card-block" >
+                                <div class="card-block">
                                     <!-- <div id="pie-chart" style="height:300px"></div> -->
-                                    <div class="ct-chart" id="chart1"></div>
+                                    <div class="ct-chart " id="chart1"></div>
+
                                 </div>
+
+                            </div>
+
+                            <div class="card" style="margin-top: -16px;">
+
+
+                                <div class="card-block">
+                                    <canvas id="oilChart" width="400" height="200"></canvas>
+                                </div>
+
                             </div>
 
 
 
-                            <div class="card" >
+                            <div class="card">
 
                                 <div class="card-block">
-                                <div id="" style="height:100px; display: inline-block;
+                                    <div id="" style="height:100px; display: inline-block;
     width: 100%;
     overflow: auto;">
-<h6>Eco Reward</h6>
+                                        <h6>Eco Reward</h6>
                                         <div class="dt-responsive table-responsive">
                                             <table id="vrew">
                                                 <thead style="float: left;width:100%">
-                                                    <tr >
+                                                    <tr>
                                                         <th class="col-md-3" style="max-width:28%!important">User Name</th>
                                                         <th class="col-md-3" style="max-width:28%!important">Date Range</th>
 
@@ -415,7 +426,7 @@
                                                     <tr>
                                                         <td class="col-md-3" id="vun">{{ $avail['user_name'] }}</td>
 
-                                                        <td class="col-md-3"  id="vdr">{{ $avail['date_range_human'] }}</td>
+                                                        <td class="col-md-3" id="vdr">{{ $avail['date_range_human'] }}</td>
 
                                                         <td class="col-md-3" id="vbr">{{ $avail['booking_reference'] }}</td>
 
@@ -487,20 +498,20 @@
                             </div>
 
                             <div class="card" style="margin-top: -16px;">
-             
+
                                 <div class="card-block">
                                     <div id="pie-chart" style="height:300px;display: inline-block;
     width: 100%;
     overflow: auto;">
 
 
-                                      
+
 
 
 
                                         <div id="revcontant">
 
-                                        @php if(count($review) > 0){@endphp
+                                            @php if(count($review) > 0){@endphp
 
                                             @foreach($review as $rev)
 
@@ -523,12 +534,12 @@
                                             </div>
                                             @endforeach
                                             @php } else @endphp
-                                        @php {@endphp
-                                        <h5 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h5>
-                                        @php }@endphp
+                                            @php {@endphp
+                                            <h5 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h5>
+                                            @php }@endphp
 
                                         </div>
-                                      
+
 
 
 
@@ -550,6 +561,8 @@
 
         </div>
     </div>
+
+
     <script>
         $(function() {
 
@@ -582,37 +595,66 @@
 
         $(function() {
 
-new Chartist.Line('#chart1', {
-    labels: @php echo json_encode($vendorline['labels']);@endphp,
-    series: [
-        @php echo json_encode($vendorline['datasets']);@endphp
-    ]
-}, {
-    low: 0,
-    showArea: true,
+            new Chartist.Line('#chart1', {
+                labels: @php echo json_encode($vendorline['labels']);@endphp,
+                series: [
+                    @php echo json_encode($vendorline['datasets']);@endphp
+                ]
+            }, {
+                low: 0,
+                showArea: true,
 
-    axisY: {
-        onlyInteger: true,
-        metaIsHTML: true,
-    },
+                axisY: {
+                    onlyInteger: true,
+                    metaIsHTML: true,
+                },
 
-    plugins: [
-        Chartist.plugins.tooltip({
-            currency: 'Eco Impact ',
-            class: 'class1 class2',
-            appendToBody: true
-        })
-    ],
-})
+                plugins: [
+                    Chartist.plugins.tooltip({
+                        currency: 'Eco Impact ',
+                        class: 'class1 class2',
+                        appendToBody: true
+                    })
+                ],
+            })
 
-});
-
+        });
     </script>
     <link rel="stylesheet" type="text/css" href="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.min.css" />
     <link rel="stylesheet" type="text/css" href="https://rawgit.com/Globegitter/chartist-plugin-tooltip/master/dist/chartist-plugin-tooltip.css" />
 
     <script type="text/javascript" src="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.js"></script>
     <script type="text/javascript" src="https://rawgit.com/Globegitter/chartist-plugin-tooltip/master/dist/chartist-plugin-tooltip.min.js"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+    <script src="./script.js"></script>
+
+
+    <script>
+        var oilCanvas = document.getElementById("oilChart");
+
+        Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 18;
+
+        var oilData = {
+            labels: @php echo json_encode($piechart['labels']);@endphp,
+            datasets: [{
+                data: @php echo json_encode($piechart['datasets']);@endphp,
+                backgroundColor: [
+                    "#FF6384",
+                    "#63FF84",
+                    "#84FF63",
+                    "#8463FF",
+                    "#6384FF"
+                ]
+            }]
+        };
+
+        var pieChart = new Chart(oilCanvas, {
+            type: 'pie',
+            data: oilData
+        });
+    </script>
     <script>
         $('#booksubmit').on("click", function() {
             var sdate = $("#sdate").val();
@@ -689,15 +731,15 @@ new Chartist.Line('#chart1', {
                 },
 
                 success: function(responsedata) {
-                  
 
 
 
-                        var arrival = '';
 
-                        var x = 1;
-                        if (responsedata.length == 0) {
-                            arrival = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Arrival</p>';
+                    var arrival = '';
+
+                    var x = 1;
+                    if (responsedata.length == 0) {
+                        arrival = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Arrival</p>';
                     } else {
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
@@ -722,10 +764,10 @@ new Chartist.Line('#chart1', {
 
                         })
                     }
-                        $('#arr').html('');
-                        $('#arr').html(arrival);
-                        // alert("hii")
-                   
+                    $('#arr').html('');
+                    $('#arr').html(arrival);
+                    // alert("hii")
+
                 }
 
             })
@@ -777,28 +819,28 @@ new Chartist.Line('#chart1', {
                     if (responsedata.length == 0) {
                         bookingnew = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In New Booking</p>';
                     } else {
-                    $.each(responsedata, function(key, val) {
-                        if (x == 1) {
-                            bookingnew = bookingnew + '  <thead>' +
-                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
-                                ' </tr>  </thead>';
-                        }
-                        x++;
+                        $.each(responsedata, function(key, val) {
+                            if (x == 1) {
+                                bookingnew = bookingnew + '  <thead>' +
+                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
+                                    ' </tr>  </thead>';
+                            }
+                            x++;
 
-                        bookingnew = bookingnew + '<tr style="margin-padding:0px;">' +
-                            ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
+                            bookingnew = bookingnew + '<tr style="margin-padding:0px;">' +
+                                ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                            '<td class="col-md-2" id="pn">' + val.date_range_human  + '</td>' +
+                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
 
-                            '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
+                                '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
-                            '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
 
-                            ' </tr> ';
+                                ' </tr> ';
 
 
-                    })
-                }
+                        })
+                    }
                     $('#arr').html('');
                     $('#arr').html(bookingnew);
                 }
@@ -834,12 +876,67 @@ new Chartist.Line('#chart1', {
 
             $.ajax({
 
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.api.v1+json'
+                },
+                url: "{{ url('rewardchartajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+
+                type: "GET",
+
+
+                crossDomain: true,
+                beforeSend: function() {
+                    $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+                },
+
+                success: function(responsedata) {
+                    //  alert(responsedata.labels);
+
+
+
+                    new Chartist.Line('#chart1', {
+                        labels: responsedata.labels,
+                        series: [
+                            responsedata.datasets
+                        ]
+                    }, {
+                        low: 0,
+
+                        showArea: true,
+                        axisY: {
+                            onlyInteger: true,
+                        },
+
+                        plugins: [
+                            Chartist.plugins.tooltip({
+                                currency: 'Eco Impact ',
+                                class: 'class1 class2',
+                                appendToBody: true
+                            })
+                        ],
+                    })
+
+
+                }
+
+
+
+            })
+
+
+
+
+
+            $.ajax({
+
 headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     'Content-Type': 'application/json',
     'Accept': 'application/vnd.api.v1+json'
 },
-url: "{{ url('rewardchartajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+url: "{{ url('piedchartajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
 
 type: "GET",
 
@@ -852,29 +949,48 @@ beforeSend: function() {
 success: function(responsedata) {
     //  alert(responsedata.labels);
 
+    var oilData = {
+    labels: [
+        "Saudi Arabia",
+        "Russia",
+        "Iraq",
+        "United Arab Emirates",
+        "Canada"
+    ],
+    datasets: [
+        {
+            data: [133.3, 86.2, 52.2, 51.2, 50.2],
+            backgroundColor: [
+                "#FF6384",
+                "#63FF84",
+                "#84FF63",
+                "#8463FF",
+                "#6384FF"
+            ]
+        }]
+};
 
 
-    new Chartist.Line('#chart1', {
-        labels: responsedata.labels,
-        series: [
-            responsedata.datasets
-        ]
-    }, {
-        low: 0,
 
-        showArea: true,
-        axisY: {
-            onlyInteger: true,
-        },
 
-        plugins: [
-            Chartist.plugins.tooltip({
-                currency: 'Eco Impact ',
-                class: 'class1 class2',
-                appendToBody: true
-            })
-        ],
-    })
+
+     var oilCanvas = document.getElementById("oilChart");
+
+// Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var oilData = {
+            labels:responsedata.labels,
+            datasets: [{
+                data:  responsedata.datasets,
+           
+            }]
+        };
+
+var pieChart = new Chart(oilCanvas, {
+  type: 'pie',
+  data: oilData
+});
 
 
 }
@@ -882,10 +998,6 @@ success: function(responsedata) {
 
 
 })
-
-
-
-
 
 
 
@@ -1005,7 +1117,7 @@ success: function(responsedata) {
 
                 success: function(responsedata) {
                     console.log(responsedata);
-                
+
                     var depature = '';
                     var x = 1;
                     if (responsedata.length == 0) {
@@ -1084,28 +1196,28 @@ success: function(responsedata) {
                     if (responsedata.length == 0) {
                         stayover = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Stay-overs</h6>';
                     } else {
-                    $.each(responsedata, function(key, val) {
-                        if (x == 1) {
-                            stayover = stayover + '  <thead>' +
-                                ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
-                                ' </tr>  </thead>';
-                        }
-                        x++;
+                        $.each(responsedata, function(key, val) {
+                            if (x == 1) {
+                                stayover = stayover + '  <thead>' +
+                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
+                                    ' </tr>  </thead>';
+                            }
+                            x++;
 
-                        stayover = stayover + '<tr style="margin-padding:0px">' +
-                            ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
+                            stayover = stayover + '<tr style="margin-padding:0px">' +
+                                ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
 
-                            '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
 
-                            '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
+                                '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
 
-                            '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
 
-                            ' </tr> ';
+                                ' </tr> ';
 
 
-                    })
-                }
+                        })
+                    }
                     $('#arr').html('');
                     $('#arr').html(stayover);
                 }
@@ -1155,30 +1267,30 @@ success: function(responsedata) {
                         reviewhtml = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Reviews</h6>';
                     } else {
 
-                    $.each(responsedata, function(key, val) {
-                        // alert(val.user_email);
+                        $.each(responsedata, function(key, val) {
+                            // alert(val.user_email);
 
 
-                        reviewhtml = reviewhtml + ' <div class="form-group row"> <div class="col-sm-4">' +
+                            reviewhtml = reviewhtml + ' <div class="form-group row"> <div class="col-sm-4">' +
 
-                            '<p  id="ue" style="margin-top: 11px;">' + val.user_email + '</p>' +
+                                '<p  id="ue" style="margin-top: 11px;">' + val.user_email + '</p>' +
 
-                            '</div>' +
-                            '<div class="col-sm-4 ">' +
+                                '</div>' +
+                                '<div class="col-sm-4 ">' +
 
-                            '<p id="rw" style="margin-top: 11px;">' + val.review + '</p>' +
+                                '<p id="rw" style="margin-top: 11px;">' + val.review + '</p>' +
 
-                            '</div>' +
-                            '<div class="col-sm-4 ">' +
+                                '</div>' +
+                                '<div class="col-sm-4 ">' +
 
-                            '<p id="rat" style="margin-top: 11px;">' + val.rating + '<i class="fa fa-star"></i></p>' +
+                                '<p id="rat" style="margin-top: 11px;">' + val.rating + '<i class="fa fa-star"></i></p>' +
 
-                            '</div></div>';
-                        // $('#ue').html(responsedata.user_email);
-                        //         $('#rw').html(responsedata.review);
-                        //         $('#rat').html(responsedata.rating);
-                    });
-                }
+                                '</div></div>';
+                            // $('#ue').html(responsedata.user_email);
+                            //         $('#rw').html(responsedata.review);
+                            //         $('#rat').html(responsedata.rating);
+                        });
+                    }
                     // alert(reviewhtml.replace("NaN",""));
                     var revhtml = reviewhtml.replace("NaN", "");
                     $('#revcontant').html('');

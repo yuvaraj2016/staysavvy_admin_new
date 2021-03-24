@@ -142,6 +142,22 @@ class DashboardController extends Controller
 
         }
         $vendorline = $venlinresponse['ecoimpact_chart'];
+
+
+
+
+        try{
+
+            $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/ecoCauesesChart/'.$id.'/'.$sdate.'/'.$edate);
+
+            $pieresponse = json_decode($revcall->getBody()->getContents(), true);
+                //  return $venrevresponse;
+        }catch (\Exception $e){
+       
+
+
+        }
+        $piechart = $pieresponse['ecocauses_chart'];
 // return  $chart ;
 
         // $pagination = $response['meta']['pagination'];
@@ -150,7 +166,7 @@ class DashboardController extends Controller
         
         // return "asd";
 
-          return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature','reward','vendorline'));
+          return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature','reward','vendorline','piechart'));
 
         // return view('dashboard');
 
@@ -293,6 +309,33 @@ class DashboardController extends Controller
     }
     $rewardchart = $response['ecoimpact_chart'];
     return $rewardchart;
+    
+          
+    }
+
+
+
+    public function piedchart(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/ecoCauesesChart/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //   return $response;
+    }catch (\Exception $e){
+   
+    }
+    $piechart = $response['ecocauses_chart'];
+    return $piechart;
     
           
     }
