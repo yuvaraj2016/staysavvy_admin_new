@@ -128,6 +128,20 @@ class DashboardController extends Controller
 
         }
         $reward = $venrevresponse['data'];
+
+
+        try{
+
+            $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/ecoImpactChart/'.$id.'/'.$sdate.'/'.$edate);
+
+            $venlinresponse = json_decode($revcall->getBody()->getContents(), true);
+                //  return $venrevresponse;
+        }catch (\Exception $e){
+       
+
+
+        }
+        $vendorline = $venlinresponse['ecoimpact_chart'];
 // return  $chart ;
 
         // $pagination = $response['meta']['pagination'];
@@ -136,7 +150,7 @@ class DashboardController extends Controller
         
         // return "asd";
 
-          return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature','reward'));
+          return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature','reward','vendorline'));
 
         // return view('dashboard');
 
@@ -250,6 +264,35 @@ class DashboardController extends Controller
     }
     $chart = $response['new_booking_chart'];
     return $chart;
+    
+          
+    }
+
+
+
+
+
+    public function rewardchart(Request $request)
+    {
+    // return $request->sdate;
+    $id=session()->get('property_id');
+ 
+    $sdate=$request->sdate;
+ 
+    $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/ecoImpactChart/'.$id.'/'.$sdate.'/'.$edate);
+
+        $response = json_decode($call->getBody()->getContents(), true);
+        //   return $response;
+    }catch (\Exception $e){
+   
+    }
+    $rewardchart = $response['ecoimpact_chart'];
+    return $rewardchart;
     
           
     }

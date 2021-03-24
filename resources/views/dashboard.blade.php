@@ -380,8 +380,9 @@
                                                         <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
 
                                                     </div> -->
-                                <div class="card-block" style="display: none;">
-                                    <div id="pie-chart" style="height:300px"></div>
+                                <div class="card-block" >
+                                    <!-- <div id="pie-chart" style="height:300px"></div> -->
+                                    <div class="ct-chart" id="chart1"></div>
                                 </div>
                             </div>
 
@@ -576,6 +577,36 @@
             })
 
         });
+
+
+
+        $(function() {
+
+new Chartist.Line('#chart1', {
+    labels: @php echo json_encode($vendorline['labels']);@endphp,
+    series: [
+        @php echo json_encode($vendorline['datasets']);@endphp
+    ]
+}, {
+    low: 0,
+    showArea: true,
+
+    axisY: {
+        onlyInteger: true,
+        metaIsHTML: true,
+    },
+
+    plugins: [
+        Chartist.plugins.tooltip({
+            currency: 'Eco Impact ',
+            class: 'class1 class2',
+            appendToBody: true
+        })
+    ],
+})
+
+});
+
     </script>
     <link rel="stylesheet" type="text/css" href="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.min.css" />
     <link rel="stylesheet" type="text/css" href="https://rawgit.com/Globegitter/chartist-plugin-tooltip/master/dist/chartist-plugin-tooltip.css" />
@@ -799,6 +830,70 @@
             // alert(edate1);
             var propid = <?php echo session()->get('property_id'); ?>
 
+
+
+            $.ajax({
+
+headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    'Content-Type': 'application/json',
+    'Accept': 'application/vnd.api.v1+json'
+},
+url: "{{ url('rewardchartajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+
+type: "GET",
+
+
+crossDomain: true,
+beforeSend: function() {
+    $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+},
+
+success: function(responsedata) {
+    //  alert(responsedata.labels);
+
+
+
+    new Chartist.Line('#chart1', {
+        labels: responsedata.labels,
+        series: [
+            responsedata.datasets
+        ]
+    }, {
+        low: 0,
+
+        showArea: true,
+        axisY: {
+            onlyInteger: true,
+        },
+
+        plugins: [
+            Chartist.plugins.tooltip({
+                currency: 'Eco Impact ',
+                class: 'class1 class2',
+                appendToBody: true
+            })
+        ],
+    })
+
+
+}
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
             $.ajax({
 
                 headers: {
@@ -910,12 +1005,7 @@
 
                 success: function(responsedata) {
                     console.log(responsedata);
-                    // alert(responsedata.length);
-                    // if(responsedata >0){
-
-                    // }else{
-
-                    // }
+                
                     var depature = '';
                     var x = 1;
                     if (responsedata.length == 0) {
