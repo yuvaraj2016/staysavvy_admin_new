@@ -114,7 +114,7 @@
                             </div>
 
 
-                            <div class="card">
+                            <div class="card" style="padding: 0px 10px 0px 10px;">
 
                                 <div class="card-block">
                                     <div id="" style="height:100px">
@@ -123,33 +123,33 @@
                                         <div class="form-group row ">
 
                                             <div class="col-sm-2 card" id="arai" style="text-align: center;">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important ">Arrivals</label>
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px ">Arrivals</label>
 
-                                                <p id="ac" style="text-align: center;">{{$bookingobverview['arrivals_count']}}</p>
+                                                <p id="ac" style="text-align: center;"><b style="font-size:17px">{{$bookingobverview['arrivals_count']}}</b></p>
 
 
                                             </div>
 
                                             <div class="col-sm-3 offset-1 card" id="dep">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important">Departures</label>
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px">Departures</label>
 
-                                                <p id="dc" style="text-align: center;">{{$bookingobverview['departures_count']}} </p>
+                                                <p id="dc" style="text-align: center;"><b style="font-size:17px">{{$bookingobverview['departures_count']}}</b> </p>
 
 
                                             </div>
 
 
                                             <div class="col-sm-2 offset-1 card" id="newbook">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;">New Bookings</label>
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">New Bookings</label>
 
-                                                <p id="nbc" style="text-align: center;"> {{$bookingobverview['new_booking_count']}}</p>
+                                                <p id="nbc" style="text-align: center;"><b style="font-size:17px"> {{$bookingobverview['new_booking_count']}}</b></p>
 
 
                                             </div>
                                             <div class="col-sm-2 offset-1 card" id="stayor">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;">Stay Overs</label>
+                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">Stay Overs</label>
 
-                                                <p name="name" id="stover" style="text-align: center;">{{$bookingobverview['stay_over']}}</p>
+                                                <p name="name" id="stover" style="text-align: center;"><b style="font-size:17px">{{$bookingobverview['stay_over']}}</b></p>
 
                                             </div>
                                             <!-- <div class="col-sm-2 ">
@@ -266,7 +266,7 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Average Daily Rate</label>
 
-                                                <p id="dr" style="text-align: center;">£ {{$performance['daily_rate']}}</p>
+                                                <p id="dr" style="text-align: center;" ><b style="font-size: 17px;">£ {{$performance['daily_rate']}}</b></p>
 
 
                                             </div>
@@ -274,19 +274,19 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Cancellation Rate</label>
 
-                                                <p id="cr" style="text-align: center;">{{$performance['cancel_rate']}} </p>
+                                                <p id="cr" style="text-align: center;" ><b style="font-size: 17px;">{{$performance['cancel_rate']}}</b> </p>
 
                                             </div>
 
                                             <div class="col-sm-2 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Revenue</label>
 
-                                                <p id="rev" style="text-align: center;">£ {{$performance['revenue']}}</p>
+                                                <p id="rev" style="text-align: center; width:80px" ><b style="font-size: 17px;">£ {{$performance['revenue']}}</b></p>
                                             </div>
                                             <div class="col-sm-2 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Stayed</label>
 
-                                                <p id="stay" style="text-align: center;">{{$performance['nights_stayed']}}</p>
+                                                <p id="stay" style="text-align: center;" ><b style="font-size: 17px;">{{$performance['nights_stayed']}}</b></p>
 
                                             </div>
 
@@ -313,7 +313,7 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Eco-Score</label>
 
-                                                <p id="ssc" style="text-align: center;"> {{$performance['ss_score']}}</p>
+                                                <p id="ssc" style="text-align: center;"><b style="font-size: 17px;"> {{$performance['ss_score']}}</b></p>
 
 
                                             </div>
@@ -322,7 +322,7 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Bookings Made</label>
 
-                                                <p id="bm" style="text-align: center;">{{$performance['booking_made']}}</p>
+                                                <p id="bm" style="text-align: center;"><b style="font-size: 17px;">{{$performance['booking_made']}}</b></p>
 
 
                                             </div>

@@ -654,7 +654,7 @@ margin-top: 0px !important;
 
                 <nav class="pcoded-navbar">
                     <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;background:white!important;">
-                        <div style="margin-left:10px!important; width:16%!important;float:left; margin-top:10px;">
+                        <div style="margin-left:30px!important; width:16%!important;float:left; margin-top:10px;">
                             <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" width="210px" height="auto" /></a>
                         </div>
 
