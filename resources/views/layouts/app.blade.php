@@ -1092,6 +1092,56 @@ margin-top: 0px !important;
                             </li>
 
 
+
+                            @if(collect(session('roles'))->contains('Vendor'))
+                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
+                                    <span class="pcoded-mtext text-white "><b>Config</b></span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" data-i18n="nav.authentication.main">
+                                            <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
+                                            <span class="pcoded-mtext">Property</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                        <li class="">
+                                                @if(collect(session('permissions'))->contains('List room type'))
+
+
+
+                                                <a class="{{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}" data-i18n="nav.authentication.login-soc-h-f">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext">Room Type</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                                @endif
+                                            </li>
+                                     
+                                 
+
+
+                                        </ul>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                   
+                            @endif
+
+
+
+
+
+
+
+
+
+
+
                             @if(collect(session('roles'))->contains('Administrator'))
                             <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
                                 <a href="javascript:void(0)">

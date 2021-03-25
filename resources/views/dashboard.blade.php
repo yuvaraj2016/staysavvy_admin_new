@@ -65,7 +65,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <h5 style="font-size: 12px;width:222px;margin-top:18px""> <i class=" fa fa-newspaper-o"></i> Booking Overview</h5>
+                                                <h5 style="width:222px;margin-top:18px;margin-left:-9px;"> <i class=" fa fa-newspaper-o"></i> Booking Overview</h5>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -74,13 +74,13 @@
 
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:11px">From</h6>
-                                            <input type="date" id="sdate1" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;margin-left:11px">
+                                            <h6 style="margin-top: 11px;margin-left:16px">From</h6>
+                                            <input type="date" id="sdate1" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;margin-left:16px">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:17px">Until</h6>
-                                            <input type="date" id="edate1" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:17px">
+                                            <h6 style="margin-top: 11px;margin-left:19px">Until</h6>
+                                            <input type="date" id="edate1" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:19px">
 
                                         </div>
 
@@ -1375,11 +1375,11 @@ var pieChart = new Chart(oilCanvas, {
                 success: function(responsedata) {
                     // alert(responsedata.departures_count);
 
-                    $('#ac').html(responsedata.arrivals_count);
-                    $('#dc').html(responsedata.departures_count);
-                    $('#nbc').html(responsedata.new_booking_count);
+                    $('#ac').html("<b style='font-size:17px'>"+responsedata.arrivals_count+"</b>");
+                    $('#dc').html("<b style='font-size:17px'>"+responsedata.departures_count+"</b>");
+                    $('#nbc').html("<b style='font-size:17px'>"+responsedata.new_booking_count+"</b>");
 
-                    $('#stover').html(responsedata.stay_over);
+                    $('#stover').html("<b style='font-size:17px'>"+responsedata.stay_over+"</b>");
 
 
                 }
