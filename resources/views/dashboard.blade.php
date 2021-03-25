@@ -194,13 +194,13 @@
                                                 <tbody>
                                                     @foreach($available as $avail)
                                                     <tr>
-                                                        <td class="col-md-2" id="un">{{ $avail['user_name'] }}</td>
+                                                        <td class="" style="text-align:center;width:25%" id="un">{{ $avail['user_name'] }}</td>
 
-                                                        <td class="col-md-2" id="pn">{{ $avail['date_range_human'] }}</td>
+                                                        <td class="" style="text-align:center;width:25%" id="pn">{{ $avail['date_range_human'] }}</td>
 
-                                                        <td class="col-md-2" id="br">{{ $avail['total_guests'] }}</td>
+                                                        <td class="" style="text-align:center;width:25%" id="br">{{ $avail['total_guests'] }}</td>
 
-                                                        <td class="col-md-2" id="ta">{{ $avail['total_amount'] }}</td>
+                                                        <td class="" style="text-align:center;width:25%" id="ta">{{ $avail['total_amount'] }}</td>
 
                                                     </tr>
                                                     @endforeach
@@ -745,13 +745,13 @@
 
 
                             arrival = arrival + '<tr style="margin-padding:10px">' +
-                                ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
+                                ' <td class="" style="text-align:center;width:25%" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="text-align:center;width:25%" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
+                                '<td class="" style="text-align:center;width:25%" id="br">' + val.total_guests + '</td>' +
 
-                                '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="" style="text-align:center;width:25%" id="ta">' + val.total_amount + '</td>' +
 
                                 ' </tr> ';
 
@@ -822,13 +822,13 @@
                             x++;
 
                             bookingnew = bookingnew + '<tr style="margin-padding:0px;">' +
-                                ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
+                                ' <td class="" style="width: 25%;text-align:center" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="br">' + val.total_guests + '</td>' +
 
-                                '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="ta">' + val.total_amount + '</td>' +
 
                                 ' </tr> ';
 
@@ -1022,13 +1022,13 @@ var pieChart = new Chart(oilCanvas, {
                             x++;
 
                             reward = reward + '<tr style="margin-padding:0px">' +
-                                ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
+                                ' <td class="" style="width: 25%;text-align:center" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="col-md-2" id="br">' + val.booking_reference + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="br">' + val.booking_reference + '</td>' +
 
-                                '<td class="col-md-2" id="ta">' + val.conf_reward_status_name + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="ta">' + val.conf_reward_status_name + '</td>' +
 
                                 ' </tr> ';
 
@@ -1109,13 +1109,13 @@ var pieChart = new Chart(oilCanvas, {
                             x++;
 
                             depature = depature + '<tr style="margin-padding:0px">' +
-                                ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
+                                ' <td class="" style="width: 25%;text-align:center" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="br">' + val.total_guests + '</td>' +
 
-                                '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="ta">' + val.total_amount + '</td>' +
 
                                 ' </tr> ';
 
@@ -1180,13 +1180,13 @@ var pieChart = new Chart(oilCanvas, {
                             x++;
 
                             stayover = stayover + '<tr style="margin-padding:0px">' +
-                                ' <td class="col-md-2" id="un">' + val.user_name + '</td>' +
+                                ' <td class="" style="width: 25%;text-align:center" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="col-md-2" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="col-md-2" id="br">' + val.total_guests + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="br">' + val.total_guests + '</td>' +
 
-                                '<td class="col-md-2" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="" style="width: 25%;text-align:center" id="ta">' + val.total_amount + '</td>' +
 
                                 ' </tr> ';
 
