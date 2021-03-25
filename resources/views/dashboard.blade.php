@@ -266,7 +266,7 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Average Daily Rate</label>
 
-                                                <p id="dr" style="text-align: center;" ><b style="font-size: 17px;">£ {{$performance['daily_rate']}}</b></p>
+                                                <p id="dr" style="text-align: center;"><b style="font-size: 17px;">£ {{$performance['daily_rate']}}</b></p>
 
 
                                             </div>
@@ -274,19 +274,19 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Cancellation Rate</label>
 
-                                                <p id="cr" style="text-align: center;" ><b style="font-size: 17px;">{{$performance['cancel_rate']}}</b> </p>
+                                                <p id="cr" style="text-align: center;"><b style="font-size: 17px;">{{$performance['cancel_rate']}}</b> </p>
 
                                             </div>
 
                                             <div class="col-sm-2 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Revenue</label>
 
-                                                <p id="rev" style="text-align: center; width:80px" ><b style="font-size: 17px;">£ {{$performance['revenue']}}</b></p>
+                                                <p id="rev" style="text-align: center; width:80px"><b style="font-size: 17px;">£ {{$performance['revenue']}}</b></p>
                                             </div>
                                             <div class="col-sm-2 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Stayed</label>
 
-                                                <p id="stay" style="text-align: center;" ><b style="font-size: 17px;">{{$performance['nights_stayed']}}</b></p>
+                                                <p id="stay" style="text-align: center;"><b style="font-size: 17px;">{{$performance['nights_stayed']}}</b></p>
 
                                             </div>
 
@@ -392,8 +392,17 @@
 
 
                                 <div class="card-block">
+                                    <h5 id="ecs" style="display: none;text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
                                     <canvas id="oilChart" width="400" height="200"></canvas>
+
                                 </div>
+
 
                             </div>
 
@@ -636,18 +645,34 @@
         Chart.defaults.global.defaultFontFamily = "Lato";
         Chart.defaults.global.defaultFontSize = 18;
 
-        var oilData = {
-            labels: @php echo json_encode($piechart['labels']);@endphp,
-            datasets: [{
-                data: @php echo json_encode($piechart['datasets']);@endphp,
-        
-            }]
-        };
+        var lab = @php echo json_encode($piechart['labels']);
+        @endphp;
 
-        var pieChart = new Chart(oilCanvas, {
-            type: 'pie',
-            data: oilData
-        });
+        var ds = @php echo json_encode($piechart['datasets']);
+        @endphp;
+
+        if (lab == '' && ds == '') {
+            // alert("hii");
+            $('#ecs').css('display', 'block');
+
+        } else {
+            $('#ecs').css('display', 'none');
+            var oilData = {
+                labels: @php echo json_encode($piechart['labels']);@endphp,
+                datasets: [{
+                    data: @php echo json_encode($piechart['datasets']);@endphp,
+
+
+
+
+                }]
+            };
+
+            var pieChart = new Chart(oilCanvas, {
+                type: 'pie',
+                data: oilData
+            });
+        }
     </script>
     <script>
         $('#booksubmit').on("click", function() {
@@ -925,54 +950,61 @@
 
             $.ajax({
 
-headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    'Content-Type': 'application/json',
-    'Accept': 'application/vnd.api.v1+json'
-},
-url: "{{ url('piedchartajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.api.v1+json'
+                },
+                url: "{{ url('piedchartajax')}}" + "/" + propid + "/" + sdate + "/" + edate,
 
-type: "GET",
-
-
-crossDomain: true,
-beforeSend: function() {
-    $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
-},
-
-success: function(responsedata) {
-    //  alert(responsedata.labels);
-
- 
+                type: "GET",
 
 
+                crossDomain: true,
+                beforeSend: function() {
+                    $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+                },
+
+                success: function(responsedata) {
+                    //  alert(responsedata.labels);
 
 
+                    var lab = responsedata.labels;
 
-     var oilCanvas = document.getElementById("oilChart");
+                    var ds = responsedata.datasets;
 
-// Chart.defaults.global.defaultFontFamily = "Lato";
-Chart.defaults.global.defaultFontSize = 18;
+                    if (lab == '' && ds == '') {
+                        // alert("hii");
+                        $('#ecs').css('display', 'block');
+                        $('#oilChart').css('display', 'none');
 
-var oilData = {
-            labels:responsedata.labels,
-            datasets: [{
-                data:  responsedata.datasets,
-           
-            }]
-        };
+                    } else {
+                        $('#ecs').css('display', 'none');
+                        $('#oilChart').css('display', 'block');
+                        var oilCanvas = document.getElementById("oilChart");
 
-var pieChart = new Chart(oilCanvas, {
-  type: 'pie',
-  data: oilData
-});
+                        // Chart.defaults.global.defaultFontFamily = "Lato";
+                        Chart.defaults.global.defaultFontSize = 18;
+
+                        var oilData = {
+                            labels: responsedata.labels,
+                            datasets: [{
+                                data: responsedata.datasets,
+
+                            }]
+                        };
+
+                        var pieChart = new Chart(oilCanvas, {
+                            type: 'pie',
+                            data: oilData
+                        });
 
 
-}
+                    }
 
+                }
 
-
-})
+            })
 
 
 
@@ -1375,11 +1407,11 @@ var pieChart = new Chart(oilCanvas, {
                 success: function(responsedata) {
                     // alert(responsedata.departures_count);
 
-                    $('#ac').html("<b style='font-size:17px'>"+responsedata.arrivals_count+"</b>");
-                    $('#dc').html("<b style='font-size:17px'>"+responsedata.departures_count+"</b>");
-                    $('#nbc').html("<b style='font-size:17px'>"+responsedata.new_booking_count+"</b>");
+                    $('#ac').html("<b style='font-size:17px'>" + responsedata.arrivals_count + "</b>");
+                    $('#dc').html("<b style='font-size:17px'>" + responsedata.departures_count + "</b>");
+                    $('#nbc').html("<b style='font-size:17px'>" + responsedata.new_booking_count + "</b>");
 
-                    $('#stover').html("<b style='font-size:17px'>"+responsedata.stay_over+"</b>");
+                    $('#stover').html("<b style='font-size:17px'>" + responsedata.stay_over + "</b>");
 
 
                 }
