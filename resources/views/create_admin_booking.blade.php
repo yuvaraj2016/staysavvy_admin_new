@@ -136,7 +136,7 @@
                                  
                                     <div class="col-sm-4">
                                         <label class="col-form-label text-md-right ">Length Of Stay</label>
-                                        <input id="lens" type="number" min="0" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required>
+                                        <input id="lens" type="number" min="0" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required readonly>
 
                                     </div>
 
@@ -469,7 +469,7 @@
 
                         // var data = JSON.parse(responsedata);
                         //  alert(responsedata.rooms);
-                        alert(responsedata);
+                        // alert(responsedata);
                         // var rdata = responsedata.split("*");
 
                         var rooms = responsedata.rooms;
