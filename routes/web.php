@@ -107,7 +107,7 @@ Route::put('charityset_payment/{charitypay}','InvoiceController@update_charityse
 
 
 
-Route::get('getprodroom/{id}','AdminbookingController@getprodrooms')->name('getprodrooms')->middleware('checktoken');
+Route::get('getprodroom/{prope_id}/{sdate}/{edate}','AdminbookingController@getprodrooms')->name('getprodrooms')->middleware('checktoken');
 
 Route::get('getrooms/{id}','AdminbookingController@getrooms')->name('getrooms')->middleware('checktoken');
 

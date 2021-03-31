@@ -143,13 +143,13 @@ class AdminbookingController extends Controller
 
 
 
-    public function getprodrooms($prope_id)
+    public function getprodrooms($prope_id,$sdate,$edate)
     {
     //    return $prope_id;
         $session = session()->get('token');
 
 
-        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url').'api/property/'.$prope_id.'?include=Rooms');
+        $response=Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url').'api/property/'.$prope_id.'?include=Rooms&sdate='.$sdate.'&edate='.$edate.'');
 
         // return $response;
 
