@@ -111,6 +111,11 @@
                                 background-color: #6777ef;
                                 border-color: #6777ef;border-radius:30px">Add New</a>
 
+                                 
+<a href="{{ route('properties.create') }}" id="alert" class="btn btn-primary" style="box-shadow: 0 2px 6px #acb5f6;
+                                background-color: #6777ef;
+                                border-color: #6777ef;border-radius:30px">Gust Line Property</a>
+
                                 @endif
                     @endif
                             </div>
