@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class PropertiesController extends Controller
+class SoappropertiesController extends Controller
 {
     /**
      * Display a listing of the resource.

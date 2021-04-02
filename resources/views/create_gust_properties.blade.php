@@ -58,7 +58,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Create Property</h4>
+                        <h4>Create Gust Property</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -68,11 +68,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">Create Property</p>
+                                <p class="">Create Gust Property</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('properties.index') }}">Properties</a>
+                        <li class="breadcrumb-item"><a href="{{ route('properties.index') }}">Gust Properties</a>
                         </li>
                        
                     </ul>
@@ -180,7 +180,7 @@
                         </ul> -->
                     
                             <div class="tab-pane fade @if(session('success') !== null) @elseif(session('psuccess') !== null) @elseif(session('rsuccess') !== null) @else show active @endif" id="general-info">
-                                <form action="{{ route('properties.store') }}" class="swa-confirm"  method="post" id="addstatus"
+                                <form action="{{ route('gustproperty.store') }}" class="swa-confirm"  method="post" id="addstatus"
                                 enctype="multipart/form-data">
                                 @csrf
                                 

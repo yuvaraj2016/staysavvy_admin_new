@@ -49,9 +49,20 @@ Route::post('/reset_password_sec', 'UserController@ResetPasswordSec')->name('res
 // Route::resource('albums.photo', 'PhotoController');
 // Route::resource('testimonials', 'TestimonialsController');
 
+Route::resource('gustproperty', 'SoappropertiesController')->except('index')->middleware('checktoken');
+
+Route::get('gustproperty_list/{page?}','SoappropertiesController@index')->name('gustproperty.index')->middleware('checktoken');
+
+
+
+
+
+
+
 Route::resource('bookings', 'BookingController')->except('index')->middleware('checktoken');
 
 Route::get('booking_list/{page?}','BookingController@index')->name('booking.index')->middleware('checktoken');
+
 
 
 Route::resource('adminbookings', 'AdminbookingController')->except('index')->middleware('checktoken');
