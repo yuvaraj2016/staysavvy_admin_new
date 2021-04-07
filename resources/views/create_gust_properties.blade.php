@@ -362,6 +362,30 @@
 
                             </div>
 
+
+                            <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right ">Primary Language</label>
+                                            <input name="primary_lang_id" value="en" class="summernote-simple form-control" required>
+
+                                        </div>
+
+
+
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right "> Summery</label>
+                                            <input name="summary_only" value="False" class="summernote-simple form-control" required>
+
+                                        </div>
+
+
+
+                                        <div class="col-sm-4">
+                                            <label class="col-form-label text-md-right "> Currency</label>
+                                            <input name="requested_currency" value="USD" class="summernote-simple form-control" required>
+
+                                        </div>
+
+
                             <div class="col-sm-12 col-md-7 offset-5">
                                 <button type="submit" id="submit" class="btn btn-primary btn-lg submit">Create Gust Property</button>
                             </div>
