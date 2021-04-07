@@ -55,7 +55,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Create Gust Property</h4>
+                        <h4>Create Guest Property</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -65,11 +65,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
 
-                            <p class="">Create Gust Property</p>
+                            <p class="">Create Guest Property</p>
 
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('properties.index') }}">Gust Properties</a>
+                        <li class="breadcrumb-item"><a href="{{ route('properties.index') }}">Guest Properties</a>
                         </li>
 
                     </ul>
@@ -387,7 +387,7 @@
 
 
                             <div class="col-sm-12 col-md-7 offset-5">
-                                <button type="submit" id="submit" class="btn btn-primary btn-lg submit">Create Gust Property</button>
+                                <button type="submit" id="submit" class="btn btn-primary btn-lg submit">Create Guest Property</button>
                             </div>
 
                             </form>
