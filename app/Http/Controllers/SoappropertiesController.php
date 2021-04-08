@@ -490,9 +490,9 @@ $address = $AddressLine."," .$StreetNmbr.",".$CountryName.",".$city.",".$postalc
                 [
         
                     "property_id"=>$property_id,
-                    "name"=>$roomItem['BedTypeCode'],
+                    "name"=>$roomDescription,
                     "code"=>$roomItem['RoomTypeCode'],
-                    "description"=>$roomDescription,
+                    "description"=>$roomItem['RoomViewCode'],
                     "status_id"=>1
 
 
