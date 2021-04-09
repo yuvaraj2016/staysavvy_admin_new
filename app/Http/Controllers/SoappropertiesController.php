@@ -487,10 +487,6 @@ class SoappropertiesController extends Controller
                 // }
 
 
-
-
-
-
                 $roomtyperesponse = Http::withToken($session)->withHeaders(
                     ['Accept' => 'application/vnd.api.v1+json']
                 )->post(
@@ -516,7 +512,7 @@ class SoappropertiesController extends Controller
 
                         "property_id" => $property_id,
                         "room_type_id" => $id,
-                        "no_of_rooms" => $roomItem['NumberOfUnits'], //ingka pass pannanum numer of
+                        "no_of_rooms" => $roomItem['NumberOfUnits'],
                         "available_rooms" => $roomItem['NumberOfUnits'],
                         "max_adults" => $roomItem['Occupancy'][0]['MaxOccupancy'],
                         "max_occupancy" => $roomItem['Occupancy'][0]['MaxOccupancy'],
@@ -530,46 +526,7 @@ class SoappropertiesController extends Controller
                     ]
                 );
             }
-
-
-
-
-            //  try {
-
-            //     $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/property/' . $property_id);
-
-            //     $response = json_decode($call->getBody()->getContents(), true);
-            //     //  return $response;
-            // } catch (\Exception $e) {
-            //     //buy a beer
-
-
-            // }
-            // $roomtypeData = $response['data']['ConfRoomTypes']['data'];
-            // foreach($roomtypeData as $roomTypeItem){
-            // //    dd($roomTypeItem);
-            //     $roomtyperesponse = Http::withToken($session)->withHeaders(
-            //         ['Accept' => 'application/vnd.api.v1+json'])->post(config('global.url').'api/room',
-            //     [
-
-            //         "property_id"=>$property_id,
-            //         "room_type_id"=>$roomTypeItem['id'],
-            //         "no_of_rooms"=>$roomItem['RoomTypeCode'],//ingka pass pannanum numer of
-            //         "description"=>$roomItem['RoomViewCode'],
-            //         "status_id"=>1
-
-
-            //     ]);
-
-
-            // }
-            // return $roomtypeid;
-
-
-
-            //  $roomtype= $roomtyperesponse->getBody();
-            // //  dd($finalArray);
-            //  dd($roomtype);
+        
             return redirect()->route('gustproperty.create')->with('success', 'Imported Successfully!');
         } else {
             return $response;

@@ -387,6 +387,7 @@
 
 
                             <div class="col-sm-12 col-md-7 offset-5">
+                            <br>
                                 <button type="submit" id="submit" class="btn btn-primary btn-lg submit">Create Guest Property</button>
                             </div>
 
