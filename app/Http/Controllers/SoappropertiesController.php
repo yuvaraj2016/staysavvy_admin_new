@@ -232,41 +232,39 @@ class SoappropertiesController extends Controller
                 "hotel_name" => $request->hotel_name,
             ]
         );
-       
+
 
         if ($guestresponse->status() === 200) {
             // return $guestresponse->json();
-         $propty_name=  $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelName'];
+            $propty_name =  $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelName'];
             // return $propty_name;
-$latitude = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelInfo'][0]['Position'][0]['Latitude'];
-// return $latitude;
+            $latitude = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelInfo'][0]['Position'][0]['Latitude'];
+            // return $latitude;
 
-$Longitude = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelInfo'][0]['Position'][0]['Longitude'];
-// return $Longitude;
-$city = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['CityName'][0];
-// return $city;
-$postalcode = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['PostalCode'][0];
-// return $postalcode;
-$CountryName = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['CountryName'][0];
-// return $CountryName;
-$StreetNmbr = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['StreetNmbr'][0];
-// return $StreetNmbr;
-$AddressLine = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['AddressLine'][0];
-// return $AddressLine;
+            $Longitude = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelInfo'][0]['Position'][0]['Longitude'];
+            // return $Longitude;
+            $city = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['CityName'][0];
+            // return $city;
+            $postalcode = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['PostalCode'][0];
+            // return $postalcode;
+            $CountryName = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['CountryName'][0];
+            // return $CountryName;
+            $StreetNmbr = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['StreetNmbr'][0];
+            // return $StreetNmbr;
+            $AddressLine = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['ContactInfos'][0]['ContactInfo'][0]['Address'][0]['AddressLine'][0];
+            // return $AddressLine;
 
-$address = $AddressLine."," .$StreetNmbr.",".$CountryName.",".$city.",".$postalcode;
-//  return $guestresponse;
+            $address = $AddressLine . "," . $StreetNmbr . "," . $CountryName . "," . $city . "," . $postalcode;
+            //  return $guestresponse;
 
 
-// $roomcode= $roomdetails['data'];
-// return $roomcode;
+            // $roomcode= $roomdetails['data'];
+            // return $roomcode;
 
-        }
-        
-        else {
+        } else {
 
-           
-// return "fgf";
+
+            // return "fgf";
             return redirect()->route('gustproperty.create')->with('error', $guestresponse['message']);
         }
 
@@ -433,25 +431,25 @@ $address = $AddressLine."," .$StreetNmbr.",".$CountryName.",".$city.",".$postalc
                     ],
                     [
                         'name' => 'postalcode',
-                        'contents' =>$postalcode
+                        'contents' => $postalcode
                     ],
                 ]
             );
         }
-        
-  
+
+
         if ($response->status() === 201) {
             // dd($response);
-            $property_id= $response->json()['id'];
+            $property_id = $response->json()['id'];
             // return  $property_id;
-            try{
+            try {
 
                 $roomresponse = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->post(
                     config('global.url') . 'api/roomDetails',
                     [
-                        "primary_lang_id"=>$request->primary_lang_id,
-                        "summary_only"=>$request->summary_only,
-                        "requested_currency"=>$request->requested_currency,
+                        "primary_lang_id" => $request->primary_lang_id,
+                        "summary_only" => $request->summary_only,
+                        "requested_currency" => $request->requested_currency,
                         "requestor_id" => $request->requestor_id,
                         "type" => $request->type,
                         "password" => $request->password,
@@ -465,89 +463,114 @@ $address = $AddressLine."," .$StreetNmbr.",".$CountryName.",".$city.",".$postalc
                     ]
                 );
                 //  return $response;
-            }catch (\Exception $e){
-                //buy a beer
-            
-            
-            }
-            // return $roomresponse;
-             $roomdetails = $roomresponse['data'];
-// return $roomdetails;
-
-
-             $roomRequestData = $roomdetails['OTA_HotelAvailRS'][0]['RoomStays'][0]['RoomStay'][0]['RoomTypes'][0]['RoomType'];
-             $finalArray = array();
-             foreach($roomRequestData as $roomItem){
-                 $roomDescription = '';
-                 foreach($roomItem['RoomDescription'] as $roomDescItem){
-                    $roomDescription = $roomDescItem['Name'];
-                 }
-                //  $roomData = (object)array(
-                //     "property_id"=>$property_id,
-                //     "name"=>$roomItem['BedTypeCode'],
-                //     "code"=>$roomItem['RoomTypeCode'],
-                //     "description"=>$roomDescription,
-                //     "status_id"=>1
-                // );
-                // array_push($finalArray, $roomData);
-                $roomtyperesponse = Http::withToken($session)->withHeaders(
-                    ['Accept' => 'application/vnd.api.v1+json'])->post(config('global.url').'api/confRoomType',
-                [
-        
-                    "property_id"=>$property_id,
-                    "name"=>$roomDescription,
-                    "code"=>$roomItem['RoomTypeCode'],
-                    "description"=>$roomItem['RoomViewCode'],
-                    "status_id"=>1
-
-
-                ]);
-                // $id= basename( $roomtyperesponse->Headers[0]->get('Location'));
-                // return $id;
-                // return response()->json($roomtyperesponse);
-                // $array = explode("\\",$string);
-                // dd($roomtyperesponse); 
-                // ->headers->get('Location')
-                 
-             }
-
-             try {
-
-                $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/property/' . $property_id);
-    
-                $response = json_decode($call->getBody()->getContents(), true);
-                //  return $response;
             } catch (\Exception $e) {
                 //buy a beer
-    
-    
+
+
             }
-            $roomtypeData = $response['data']['ConfRoomTypes']['data'];
-            foreach($roomtypeData as $roomTypeItem){
-            //    dd($roomTypeItem);
+            // return $roomresponse;
+            $roomdetails = $roomresponse['data'];
+            // return $roomdetails;
+
+
+            $roomRequestData = $roomdetails['OTA_HotelAvailRS'][0]['RoomStays'][0]['RoomStay'][0]['RoomTypes'][0]['RoomType'];
+            $finalArray = array();
+            foreach ($roomRequestData as $roomItem) {
+                $roomDescription = '';
+                foreach ($roomItem['RoomDescription'] as $roomDescItem) {
+                    $roomDescription = $roomDescItem['Name'];
+                }
+
+                // $maxOccupancy = '';
+                // foreach ($roomItem['Occupancy'] as $occupancy) {
+                //     $maxOccupancy = $occupancy['MaxOccupancy'];
+                // }
+
+
+
+
+
+
                 $roomtyperesponse = Http::withToken($session)->withHeaders(
-                    ['Accept' => 'application/vnd.api.v1+json'])->post(config('global.url').'api/room',
-                [
-        
-                    "property_id"=>$property_id,
-                    "room_type_id"=>$roomTypeItem['id'],
-                    "no_of_rooms"=>$roomItem['RoomTypeCode'],//ingka pass pannanum numer of
-                    "description"=>$roomItem['RoomViewCode'],
-                    "status_id"=>1
+                    ['Accept' => 'application/vnd.api.v1+json']
+                )->post(
+                    config('global.url') . 'api/confRoomType',
+                    [
+
+                        "property_id" => $property_id,
+                        "name" => $roomDescription,
+                        "code" => $roomItem['RoomTypeCode'],
+                        "description" => $roomItem['RoomViewCode'],
+                        "status_id" => 1
 
 
-                ]);
+                    ]
+                );
+                $id = basename($roomtyperesponse->header('Location'));
+                // return $id;
+                $roomtyperesponse = Http::withToken($session)->withHeaders(
+                    ['Accept' => 'application/vnd.api.v1+json']
+                )->post(
+                    config('global.url') . 'api/room',
+                    [
 
+                        "property_id" => $property_id,
+                        "room_type_id" => $id,
+                        "no_of_rooms" => $roomItem['NumberOfUnits'], //ingka pass pannanum numer of
+                        "available_rooms" => $roomItem['NumberOfUnits'],
+                        "max_adults" => $roomItem['Occupancy'][0]['MaxOccupancy'],
+                        "max_occupancy" => $roomItem['Occupancy'][0]['MaxOccupancy'],
+                        "max_children" => $roomItem['Occupancy'][0]['MaxOccupancy'],
+                        "room_location" => $roomItem['RoomViewCode'],
+                        "status_id" => 1,
 
+                        "url" => $roomItem['AdditionalDetails'][0]['AdditionalDetail'][0]['DetailDescription'][0]['URL'][0],
+                        "amount" => 100,
+
+                    ]
+                );
             }
-// return $roomtypeid;
+
+
+
+
+            //  try {
+
+            //     $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/property/' . $property_id);
+
+            //     $response = json_decode($call->getBody()->getContents(), true);
+            //     //  return $response;
+            // } catch (\Exception $e) {
+            //     //buy a beer
+
+
+            // }
+            // $roomtypeData = $response['data']['ConfRoomTypes']['data'];
+            // foreach($roomtypeData as $roomTypeItem){
+            // //    dd($roomTypeItem);
+            //     $roomtyperesponse = Http::withToken($session)->withHeaders(
+            //         ['Accept' => 'application/vnd.api.v1+json'])->post(config('global.url').'api/room',
+            //     [
+
+            //         "property_id"=>$property_id,
+            //         "room_type_id"=>$roomTypeItem['id'],
+            //         "no_of_rooms"=>$roomItem['RoomTypeCode'],//ingka pass pannanum numer of
+            //         "description"=>$roomItem['RoomViewCode'],
+            //         "status_id"=>1
+
+
+            //     ]);
+
+
+            // }
+            // return $roomtypeid;
 
 
 
             //  $roomtype= $roomtyperesponse->getBody();
             // //  dd($finalArray);
             //  dd($roomtype);
-            return redirect()->route('gustproperty.create')->with('success','Imported Successfully!');
+            return redirect()->route('gustproperty.create')->with('success', 'Imported Successfully!');
         } else {
             return $response;
 
@@ -843,8 +866,4 @@ $address = $AddressLine."," .$StreetNmbr.",".$CountryName.",".$city.",".$postalc
             return redirect()->route('properties.index')->with('error', $response->json()['message']);
         }
     }
-
-
-
-
 }
