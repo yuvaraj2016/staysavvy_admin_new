@@ -233,9 +233,9 @@ class SoappropertiesController extends Controller
             ]
         );
 
-
+// return $request->all();
         if ($guestresponse->status() === 200) {
-            // return $guestresponse->json();
+            //  return $guestresponse->json();
             $propty_name =  $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelName'];
             // return $propty_name;
             $latitude = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelInfo'][0]['Position'][0]['Latitude'];
@@ -270,44 +270,10 @@ class SoappropertiesController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // $session = session()->get('token');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
         $fileext = '';
         $filename = '';
         $taxes = '';
@@ -433,6 +399,53 @@ class SoappropertiesController extends Controller
                         'name' => 'postalcode',
                         'contents' => $postalcode
                     ],
+                    [
+                        'name' => 'gl_requestor_id',
+                        'contents' => $request->requestor_id
+                    ],
+                    [
+                        'name' => 'gl_type',
+                        'contents' => $request->type
+                    ],
+
+                    [
+                        'name' => 'gl_password',
+                        'contents' => $request->password
+                    ],
+                    [
+                        'name' => 'gl_name',
+                        'contents' => $request->name
+                    ],
+
+                    [
+                        'name' => 'gl_bc_primary',
+                        'contents' => $request->bc_primary
+                    ],
+                    [
+                        'name' => 'gl_bc_type',
+                        'contents' => $request->bc_type
+                    ],
+
+                    [
+                        'name' => 'gl_company_code',
+                        'contents' => $request->company_code
+                    ],
+                    [
+                        'name' => 'gl_company_name',
+                        'contents' => $request->company_name
+                    ],
+
+                    [
+                        'name' => 'gl_hotel_code',
+                        'contents' => $request->hotel_code
+                    ],
+                    [
+                        'name' => 'gl_hotel_name',
+                        'contents' => $request->hotel_name
+                    ],
+                    
+                    
+                    
                 ]
             );
         }
