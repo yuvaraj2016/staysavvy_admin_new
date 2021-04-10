@@ -487,7 +487,9 @@ class SoappropertiesController extends Controller
 
 
             $roomRequestData = $roomdetails['OTA_HotelAvailRS'][0]['RoomStays'][0]['RoomStay'][0]['RoomTypes'][0]['RoomType'];
+            $roomRatePlans = $roomdetails['OTA_HotelAvailRS'][0]['RoomStays'][0]['RoomStay'][0]['RatePlans'][0]['RatePlan'];
             $finalArray = array();
+            $i=0;
             foreach ($roomRequestData as $roomItem) {
                 $roomDescription = '';
                 foreach ($roomItem['RoomDescription'] as $roomDescItem) {
@@ -535,9 +537,12 @@ class SoappropertiesController extends Controller
 
                         "url" => $roomItem['AdditionalDetails'][0]['AdditionalDetail'][0]['DetailDescription'][0]['URL'][0],
                         "amount" => 100,
+                        "gl_room_type_code"=>$roomItem['RoomTypeCode'],
+                        "gl_rate_plan_code"=>$roomRatePlans[$i]['RatePlanCode'],
 
                     ]
                 );
+                $i++;
             }
         
             return redirect()->route('gustproperty.create')->with('success', 'Imported Successfully!');
