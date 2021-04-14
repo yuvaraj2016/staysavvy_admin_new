@@ -85,28 +85,37 @@
 
                
                             @if(session('success') !== null)
-                            <div class="succWrap">
-                            {{ session('success') }}
-                            </div>
-                                <!-- <div class='alert alert-success'>
+                                    <div class="succWrap">
+                                        {{ session('success') }}
+                                    </div>
+                                    <!-- <div class='alert alert-success'>
                                     {{ session('success') }}
                                 </div> -->
-                            @endif
+                                    @endif
 
-                            @if(session('error') !== null)
+                                    @if(session('errors') !== null)
 
-                                @foreach(session('error') as $v)
-                                   @foreach($v as $e)
+                                    @foreach(session('errors') as $v)
+                                    @foreach($v as $e)
 
-                                   <div class="errorWrap"><strong>ERROR</strong>:  {{ $e }} </div>
+                                    <div class="errorWrap"><strong>ERROR</strong>: {{ $e }} </div>
 
-                                   <!-- <div class='alert alert-danger'>
-                                       {{ $e }}
-                                    </div> -->
-                                   @endforeach
 
-                                @endforeach
-                            @endif
+                                    @endforeach
+
+                                    @endforeach
+                                    @endif
+
+
+                                    @if(session('error') !== null)
+                                    <div class="errorWrap"><strong>ERROR</strong>: {{session('error') }} </div>
+
+                                    @endif
+
+                                    @if(session('message') !== null)
+                                    <div class="errorWrap"><strong>ERROR</strong>: {{session('message') }} </div>
+
+                                    @endif
 
                             <!-- @if(session('success') !== null)
                                 <div class='alert alert-success'>

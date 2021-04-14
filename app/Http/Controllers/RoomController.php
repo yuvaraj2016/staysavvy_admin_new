@@ -385,7 +385,7 @@ public function store(Request $request)
     ]);
 
     }
-    if($response->status()===201){
+    if($response->status()===200 || $response->status()===201){
         $property_id= $request->property_id;
 
         try{
@@ -426,11 +426,24 @@ public function store(Request $request)
 
     }else{
 
-        // return $response['errors'];
+    //  return $response['errors'];
 
         $request->flash();
 
-        return redirect()->route('properties.index')->with('rerror',$response['errors']);
+        if(isset($response['errors']))
+        {
+            return redirect()->route('rooms.create')->with('errors',$response['errors']);
+        }
+        else if(isset($response['error']))
+        {
+            return redirect()->route('rooms.create')->with('error',$response['error']);
+        }
+        else if(isset($response['message']))
+        {
+            return redirect()->route('rooms.create')->with('message',$response['message']);
+        }
+
+        // return redirect()->route('rooms.create')->with('rerror',$response['errors']);
     }
 }
 
