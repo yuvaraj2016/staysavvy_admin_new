@@ -132,9 +132,23 @@ class AdminbookingController extends Controller
         }
          $rooms = $response['data'];
 
+
+         try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/users');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $users = $response['data'];
+// return $users;
          return view(
             'create_admin_booking', compact(
-                'statuses','property','bookingstauts','tax','paymentstatus','rooms'
+                'statuses','property','bookingstauts','tax','paymentstatus','rooms','users'
             )
             );
 
@@ -310,6 +324,7 @@ class AdminbookingController extends Controller
          "total_amount"=>$request->total_amount,
          "tax_amount"=>$request->tax_amount,
 "ecocauses"=>$ecocauses,
+
 
         //  "no_of_adults"=>$no_of_adults,
         //  "no_of_childs"=>$no_of_childs,
