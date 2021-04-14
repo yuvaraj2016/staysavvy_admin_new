@@ -611,7 +611,7 @@ class PropertiesController extends Controller
 
        
      
-        
+        // return $response;
 
         if($response->ok()){
 
@@ -704,7 +704,7 @@ class PropertiesController extends Controller
         ]
         
       );
-    //   return $response;
+    //   return $request->all();
         
         if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
             return redirect()->route('home');

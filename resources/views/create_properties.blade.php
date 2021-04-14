@@ -290,7 +290,10 @@
                                             <select  class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric" required>
                                                 <option value="" selected disabled>Select</option>
                                                 @foreach($crs as $scrs)
-                                                    <option value="{{ $scrs['id'] }}" {{ (old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option>
+                                                    <!-- <option value="{{ $scrs['id'] }}" {{ (old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option> -->
+                                               
+
+                                                    <option value="{{ $scrs['id'] }}" {{ (( $scrs['name'] === 'Stay Savvy') ? "selected" : "")}}>{{ $scrs['name'] }}</option>
                                                 @endforeach
                                             </select>
    
