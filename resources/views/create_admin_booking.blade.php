@@ -243,7 +243,7 @@
 
                     <div class="form-group row ">
 
-                        <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
                             <label class="col-form-label ">Guest Detail</label>
                             <select id="gun" class="js-example-basic-single" name="gu_name" id="" placeholder="status" required class="form-control selectric" required>
                                 <option value="" disabled>Select</option>
@@ -251,17 +251,22 @@
                                 <option value="{{ $user['user_id'] }}" {{ (old("gu_name") == $user['user_id'] ? "selected":"") }}>{{ $user['name'] }}</option>
                                 @endforeach
                             </select>
+                        </div> -->
+                        <div class="col-sm-4">
+                            <label class="col-form-label ">Guest Name</label>
+
+                            <input id="gun" name="gu_name" value="{{ old('gu_name') }}" class="summernote-simple form-control togst" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="col-form-label ">Guest Email</label>
 
-                            <input id="ge" name="gu_email" value="{{ old('gu_email') }}" class="summernote-simple form-control togst">
+                            <input id="ge" name="gu_email" value="{{ old('gu_email') }}" class="summernote-simple form-control togst" required>
                         </div>
 
                         <div class="col-sm-4">
                             <label class="col-form-label ">Guest Mobile No</label>
 
-                            <input id="gp" type="number" name="gu_phone" value="{{ old('gu_phone') }}" class="summernote-simple form-control togst">
+                            <input id="gp" type="number" name="gu_phone" value="{{ old('gu_phone') }}" class="summernote-simple form-control togst" required>
                         </div>
 
 
@@ -274,7 +279,7 @@
                         <div class="col-sm-4">
                             <label class="col-form-label ">Guest Address</label>
 
-                            <input id="ga" name="gu_address" value="{{ old('gu_address') }}" class="summernote-simple form-control togst">
+                            <input id="ga" name="gu_address" value="{{ old('gu_address') }}" class="summernote-simple form-control togst" required>
                         </div>
 
 
@@ -719,7 +724,12 @@
         });
     });
 </script>
-<script>
+
+
+<!-- gust details to written for this blow script 15.04.2021 -->
+
+
+<!-- <script>
     $(document).ready(function() {
         $('#gun').on('change', function() {
             // alert("hii");
@@ -741,7 +751,9 @@
             }
         });
     });
-</script>
+</script> -->
+
+<!-- end of gust details script -->
 </div>
 </div>
 @endsection

@@ -331,7 +331,7 @@ class AdminbookingController extends Controller
                 "gu_email" => $request->gu_email,
                 "gu_phone" => $request->gu_phone,
                 "gu_address" => $request->gu_address,
-                "isGuest" => $request->gu_name ==  2 ? 1 : 0
+                "isGuest" => 1
 
 
 
