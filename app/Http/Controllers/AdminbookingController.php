@@ -32,7 +32,7 @@ class AdminbookingController extends Controller
             $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/booking?page=' . $page);
 
             $response = json_decode($call->getBody()->getContents(), true);
-            //  return $response;
+            //   return $response;
         } catch (\Exception $e) {
             //buy a beer
 
