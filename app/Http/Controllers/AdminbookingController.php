@@ -331,6 +331,15 @@ class AdminbookingController extends Controller
         //  "total_guests"=>$total_guests,
         //  "amount"=>$amount,
             "status_id"=>$request->status_id,
+
+
+            "gu_name"=>$request->gu_name,
+            "gu_email"=>$request->gu_email,
+            "gu_phone"=>$request->gu_phone,
+            "gu_address"=>$request->gu_address,
+
+
+
            
         ]);
 //  return $response;
@@ -356,7 +365,7 @@ class AdminbookingController extends Controller
             return redirect()->route('adminbookings.create')->with('success','Booking Created Successfully!');
         }else{
             $request->flash();
-
+return $response;
             if(isset($response['errors']))
             {
                 return redirect()->route('adminbookings.create')->with('errors',$response['errors']);

@@ -245,7 +245,7 @@
 
                     <div class="col-sm-4">
                             <label class="col-form-label ">Guest Detail</label>
-                            <select class="js-example-basic-single" name="gu_name" id="" placeholder="status" required class="form-control selectric" required>
+                            <select id="gun" class="js-example-basic-single" name="gu_name" id="" placeholder="status" required class="form-control selectric" required>
                                 <option value="" disabled>Select</option>
                                 @foreach($users as $user)
                                 <option value="{{ $user['user_id'] }}" {{ (old("gu_name") == $user['user_id'] ? "selected":"") }}>{{ $user['name'] }}</option>
@@ -255,13 +255,13 @@
                         <div class="col-sm-4">
                             <label class="col-form-label ">Guest Email</label>
 
-                            <input  name="gu_email" value="{{ old('gu_email') }}" class="summernote-simple form-control togst" >
+                            <input id="ge"  name="gu_email" value="{{ old('gu_email') }}" class="summernote-simple form-control togst" >
                         </div>
 
                         <div class="col-sm-4">
                             <label class="col-form-label ">Guest Mobile No</label>
 
-                            <input type="number" name="gu_phone" value="{{ old('gu_phone') }}" class="summernote-simple form-control togst" >
+                            <input id="gp" type="number" name="gu_phone" value="{{ old('gu_phone') }}" class="summernote-simple form-control togst" >
                         </div>
 
 
@@ -274,7 +274,7 @@
                     <div class="col-sm-4">
                             <label class="col-form-label ">Guest Address</label>
 
-                            <input  name="gu_address" value="{{ old('gu_address') }}" class="summernote-simple form-control togst" >
+                            <input id="ga"  name="gu_address" value="{{ old('gu_address') }}" class="summernote-simple form-control togst" >
                         </div>
 
 
@@ -719,7 +719,31 @@
         });
     });
 </script>
+<script>
+    $(document).ready(function() {
+    $('#gun').on('change', function () {
+        // alert("hii");
+            var username = $(this).val();
+            console.log(username);
+            if (username  === '2') {
+                // alert("hii");
 
+                $('#ge').prop('required',true);
+                $('#gp').prop('required',true);
+                $('#ga').prop('required',true);
+              
+   
+
+            }
+            else{
+                $('#ge').removeAttr("required");
+                $('#gp').removeAttr("required");
+                $('#ga').removeAttr("required");
+            }
+    });
+});
+
+</script>
 </div>
 </div>
 @endsection
