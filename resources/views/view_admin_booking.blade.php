@@ -138,6 +138,65 @@
                         </div>
 
                         <div class="form-group row">
+                        <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Guest Name</label>
+                            @php
+                                                           if($bookingroom['gu_name'] !==''){@endphp
+                            <input type="text"  value="   {{ $bookingroom['gu_name'] }}" class="form-control" readonly>
+                            @php  }
+                                                           else{@endphp
+                                                            <input type="text"  value="NULL" class="form-control" readonly>
+                            @php   }@endphp  
+
+                           
+                            </div>
+
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Guest Email</label>
+                        
+                            @php
+                                                           if($bookingroom['gu_email'] !==''){@endphp
+                        
+                                <input type="text"  value="   {{ $bookingroom['gu_email'] }}" class="form-control" readonly>
+                                @php  }
+                                                           else{@endphp
+                            <input type="text"  value="NULL" class="form-control" readonly>
+                            @php   }@endphp  
+                           
+                           
+                            </div>
+
+
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Guest Mobile Number</label>
+                            @php
+                                                           if($bookingroom['gu_phone'] !==''){@endphp
+                          
+                            <input type="text"  value="   {{ $bookingroom['gu_phone'] }}" class="form-control" readonly>
+                         
+                            @php  }
+                                                           else{@endphp
+                            <input type="text"  value="NULL" class="form-control" readonly>
+                            @php   }@endphp  
+                         
+                            </div>
+
+
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Guest Address</label>
+                         
+                            @php
+                                                           if($bookingroom['gu_address'] !==''){@endphp
+                         
+                            <input type="text"  value="   {{ $bookingroom['gu_address'] }}" class="form-control" readonly>
+                            @php  }
+                                                           else{@endphp
+                            <input type="text"  value="NULL" class="form-control" readonly>
+                            @php   }@endphp  
+                          
+                          
+                            </div>
+
 
                         <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Tax Percentage</label>
@@ -182,13 +241,109 @@
                                        
                                                                   
                                         @endphp  
-                                        <input type="text"  value="    {{ $property_name }}" class="form-control" readonly>
+                                        <input type="text"  value="    {{ $property_name }}" class="form-control" readonly><br>
                                        
                                     
                                     @endforeach
                                    
 
 </div>
+
+
+
+
+<div class="col-sm-4 ">
+<label class="col-form-label text-md-right ">Booking Room Type </label>
+@foreach($bookingroom['BookingDetails']['data'] as $property)
+                                        
+                                           
+
+
+                                        @php if(count($bookingroom['BookingDetails']['data'])==1) 
+                                        {
+                                            $room_type =  $property['room_type_name'];
+                                            
+                                            // echo  $propertys;
+
+                                       
+                                        }else if(count($bookingroom['BookingDetails']['data'])>1) 
+                                        {
+                                            
+                                            if(!$loop->last)
+                                            {
+                                            $room_type = $property['room_type_name'].",";
+                                            }
+                                            else {
+                                             $room_type = $property['room_type_name'];
+                                            }
+                                            
+                                            
+                                      
+                                                                                         
+                                        }
+                                      
+                                       
+                                                                  
+                                        @endphp  
+                                        <input type="text"  value="    {{ $room_type }}" class="form-control" readonly><br>
+                                       
+                                    
+                                    @endforeach
+                                   
+
+</div>
+
+
+<div class="col-sm-4 ">
+<label class="col-form-label text-md-right ">No Of Rooms </label>
+@foreach($bookingroom['BookingDetails']['data'] as $property)
+                                        
+                                           
+
+
+                                        @php if(count($bookingroom['BookingDetails']['data'])==1) 
+                                        {
+                                            $no_rooms =  $property['no_of_rooms'];
+                                            
+                                            // echo  $propertys;
+
+                                       
+                                        }else if(count($bookingroom['BookingDetails']['data'])>1) 
+                                        {
+                                            
+                                            if(!$loop->last)
+                                            {
+                                            $no_rooms = $property['no_of_rooms'].",";
+                                            }
+                                            else {
+                                             $no_rooms = $property['no_of_rooms'];
+                                            }
+                                            
+                                            
+                                      
+                                                                                         
+                                        }
+                                      
+                                       
+                                                                  
+                                        @endphp  
+                                        <input type="text"  value="    {{ $no_rooms }}" class="form-control" readonly><br>
+                                       
+                                    
+                                    @endforeach
+                                   
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
                         <div class="col-sm-4 ">
 <label class="col-form-label text-md-right ">Commission Amount </label>

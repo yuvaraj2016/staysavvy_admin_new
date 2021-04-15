@@ -205,7 +205,7 @@
                                        
                                                                   
                                         @endphp  
-                                        <input type="text"  value="    {{ $property_name }}" class="form-control" readonly>
+                                        <input type="text"  value="    {{ $property_name }}" class="form-control" readonly><br>
                                        
                                     
                                     @endforeach
@@ -247,7 +247,7 @@
                                        
                                                                   
                                         @endphp  
-                                        <input type="text"  value="    {{ $property_name }}" class="form-control" readonly>
+                                        <input type="text"  value="    {{ $property_name }}" class="form-control" readonly><br>
                                        
                                     
                                     @endforeach
@@ -259,7 +259,72 @@
 
                         </div>
 
-                        <div class="form-group row ">
+
+
+<div class="form-group row">
+
+<div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Guest Name</label>
+                            @php
+                                                           if($Booking['gu_name'] !==''){@endphp
+                            <input type="text"  value="   {{ $Booking['gu_name'] }}" class="form-control" readonly>
+                            @php  }
+                                                           else{@endphp
+                                                            <input type="text"  value="NULL" class="form-control" readonly>
+                            @php   }@endphp  
+
+                           
+                            </div>
+
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Guest Email</label>
+                        
+                            @php
+                                                           if($Booking['gu_email'] !==''){@endphp
+                        
+                                <input type="text"  value="   {{ $Booking['gu_email'] }}" class="form-control" readonly>
+                                @php  }
+                                                           else{@endphp
+                            <input type="text"  value="NULL" class="form-control" readonly>
+                            @php   }@endphp  
+                           
+                           
+                            </div>
+
+
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Guest Mobile Number</label>
+                            @php
+                                                           if($Booking['gu_phone'] !==''){@endphp
+                          
+                            <input type="text"  value="   {{ $Booking['gu_phone'] }}" class="form-control" readonly>
+                         
+                            @php  }
+                                                           else{@endphp
+                            <input type="text"  value="NULL" class="form-control" readonly>
+                            @php   }@endphp  
+                         
+                            </div>
+
+
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Guest Address</label>
+                         
+                            @php
+                                                           if($Booking['gu_address'] !==''){@endphp
+                         
+                            <input type="text"  value="   {{ $Booking['gu_address'] }}" class="form-control" readonly>
+                            @php  }
+                                                           else{@endphp
+                            <input type="text"  value="NULL" class="form-control" readonly>
+                            @php   }@endphp  
+                          
+                          
+                            </div>
+
+
+
+
                         <div class="col-sm-4 ">
 <label class="col-form-label text-md-right ">Commission Amount </label>
 @foreach($Booking['CommissionDetails']['data'] as $amen)
