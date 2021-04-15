@@ -93,17 +93,17 @@
 
 
                                     <div class="form-group row ">
-                                    <div class="col-sm-2">
+                                        <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check In Date </label>
                                             <input type="date" id="sdate" name="check_in_date" value="{{ old('check_in_date') }}" class="summernote-simple form-control" required>
 
                                         </div>
 
                                         <div class="col-sm-2">
-                                        <label class="col-form-label text-md-right ">Check Out Date </label>
-                                        <input type="date" id="edate" name="check_out_date" value="{{ old('check_out_date') }}" class="summernote-simple form-control" required>
+                                            <label class="col-form-label text-md-right ">Check Out Date </label>
+                                            <input type="date" id="edate" name="check_out_date" value="{{ old('check_out_date') }}" class="summernote-simple form-control" required>
 
-                                    </div>
+                                        </div>
 
 
                                         <div class="col-sm-4">
@@ -125,7 +125,7 @@
                                                 @endforeach
                                             </select>
                                         </div> -->
-                                    
+
 
                                         {{-- <div class="col-sm-2">
                                             <label class="col-form-label text-md-right ">Check In Time </label>
@@ -133,7 +133,7 @@
                                         <!-- <input type="time" id="myTime" step="2"> -->
 
                                     </div> --}}
-                                 
+
                                     <div class="col-sm-4">
                                         <label class="col-form-label text-md-right ">Length Of Stay</label>
                                         <input id="lens" type="number" min="0" name="length_of_stay" value="{{ old('length_of_stay') }}" class="summernote-simple form-control lens" required readonly>
@@ -243,7 +243,7 @@
 
                     <div class="form-group row ">
 
-                    <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <label class="col-form-label ">Guest Detail</label>
                             <select id="gun" class="js-example-basic-single" name="gu_name" id="" placeholder="status" required class="form-control selectric" required>
                                 <option value="" disabled>Select</option>
@@ -255,13 +255,13 @@
                         <div class="col-sm-4">
                             <label class="col-form-label ">Guest Email</label>
 
-                            <input id="ge"  name="gu_email" value="{{ old('gu_email') }}" class="summernote-simple form-control togst" >
+                            <input id="ge" name="gu_email" value="{{ old('gu_email') }}" class="summernote-simple form-control togst">
                         </div>
 
                         <div class="col-sm-4">
                             <label class="col-form-label ">Guest Mobile No</label>
 
-                            <input id="gp" type="number" name="gu_phone" value="{{ old('gu_phone') }}" class="summernote-simple form-control togst" >
+                            <input id="gp" type="number" name="gu_phone" value="{{ old('gu_phone') }}" class="summernote-simple form-control togst">
                         </div>
 
 
@@ -271,10 +271,10 @@
 
 
                     <div class="form-group row ">
-                    <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <label class="col-form-label ">Guest Address</label>
 
-                            <input id="ga"  name="gu_address" value="{{ old('gu_address') }}" class="summernote-simple form-control togst" >
+                            <input id="ga" name="gu_address" value="{{ old('gu_address') }}" class="summernote-simple form-control togst">
                         </div>
 
 
@@ -477,10 +477,10 @@
             $('#room').empty('');
             // alert(sdate);
             //  alert(vendor_id);
-            if(!sdate || !edate ){
+            if (!sdate || !edate) {
                 alert("Please Select Check In Check Out Date");
             }
-         
+
 
             if (prope_id) {
                 $.ajax({
@@ -721,28 +721,26 @@
 </script>
 <script>
     $(document).ready(function() {
-    $('#gun').on('change', function () {
-        // alert("hii");
+        $('#gun').on('change', function() {
+            // alert("hii");
             var username = $(this).val();
             console.log(username);
-            if (username  === '2') {
+            if (username === '2') {
                 // alert("hii");
 
-                $('#ge').prop('required',true);
-                $('#gp').prop('required',true);
-                $('#ga').prop('required',true);
-              
-   
+                $('#ge').prop('required', true);
+                $('#gp').prop('required', true);
+                $('#ga').prop('required', true);
 
-            }
-            else{
+
+
+            } else {
                 $('#ge').removeAttr("required");
                 $('#gp').removeAttr("required");
                 $('#ga').removeAttr("required");
             }
+        });
     });
-});
-
 </script>
 </div>
 </div>
