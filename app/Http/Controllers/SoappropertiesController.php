@@ -551,7 +551,7 @@ class SoappropertiesController extends Controller
 foreach($conpolycy as $key => $value ){
     
 // dd($con);
-    $roomtyperesponse = Http::withToken($session)->withHeaders(
+    $policiesresponse = Http::withToken($session)->withHeaders(
         ['Accept' => 'application/vnd.api.v1+json']
     )->post(
         config('global.url') . 'api/confPolicy',
@@ -564,8 +564,20 @@ foreach($conpolycy as $key => $value ){
 
         ]
     );
+    $id = basename($policiesresponse->header('Location'));
+// return $id;
+
+$plyresponse = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/policy',
+    [
+
+        'property_id' => $property_id,
+        'policy_id' => $id,
+        'description' => 'tesing'
 
 
+    ]
+);
+// return $plyresponse;
 
 }
 
