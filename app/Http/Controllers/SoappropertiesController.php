@@ -257,9 +257,9 @@ class SoappropertiesController extends Controller
             $address = $AddressLine . "," . $StreetNmbr . "," . $CountryName . "," . $city . "," . $postalcode;
             //  return $guestresponse;
 
-
+            $conpolycy = $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['Policies'][0]['Policy'][0];
             // $roomcode= $roomdetails['data'];
-            // return $roomcode;
+            // return $conpolycy;
 
         } else {
 
@@ -544,6 +544,32 @@ class SoappropertiesController extends Controller
                 );
                 $i++;
             }
+//             foreach( $conpolycy as $key => $value )
+// {
+//     dd($key);
+// }
+foreach($conpolycy as $key => $value ){
+    
+// dd($con);
+    $roomtyperesponse = Http::withToken($session)->withHeaders(
+        ['Accept' => 'application/vnd.api.v1+json']
+    )->post(
+        config('global.url') . 'api/confPolicy',
+        [
+
+            "name" => $key,
+           
+            "status_id" => 1
+
+
+        ]
+    );
+
+
+
+}
+
+
         
             return redirect()->route('gustproperty.create')->with('success', 'Imported Successfully!');
         } else {
