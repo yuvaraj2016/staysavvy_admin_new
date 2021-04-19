@@ -570,7 +570,7 @@ foreach($conpolycy as $key => $value ){
 $policyArray = array();
 $policyObj['property_id'] = $property_id;
 $policyObj['policy_id'] = $id;
-$policyObj['description'] = 'test property_id';
+$policyObj['description'] = 'testings';
 array_push($policyArray,$policyObj);
 
 
