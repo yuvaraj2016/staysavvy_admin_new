@@ -567,13 +567,17 @@ foreach($conpolycy as $key => $value ){
     $id = basename($policiesresponse->header('Location'));
 // return $id;
 
+$policyArray = array();
+$policyObj['property_id'] = $property_id;
+$policyObj['policy_id'] = $id;
+$policyObj['description'] = 'test property_id';
+array_push($policyArray,$policyObj);
+
+
 $plyresponse = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/policy',
     [
 
-        'property_id' => $property_id,
-        'policy_id' => $id,
-        'description' => 'tesing'
-
+'policy'=> $policyArray
 
     ]
 );
