@@ -177,6 +177,21 @@ class EcorewardController extends Controller
         }
          $crewards = $response['data'];
 
+
+
+         try{
+
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/userReward');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //  return $response;
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+         $urewards = $response['data'];
+
              
         $response1 = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/getPropertyRelations/' . $pid.'?include=ActiveRewards,UserRewards');
                 
@@ -193,7 +208,7 @@ class EcorewardController extends Controller
             
 
             return view('user_reward', compact(
-               'rewards','crewards'
+               'rewards','crewards','id','urewards'
             ));
         }
     }

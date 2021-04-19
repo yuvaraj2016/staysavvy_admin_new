@@ -49,7 +49,7 @@
 
 
                                
-                                <form class="dropzone" action="{{route('user_reward.update',['rewards'=>$rewards['id']]) }}" method="post" id="editstatus" enctype="multipart/form-data">
+                                <form class="dropzone" action="{{route('user_reward.update',['rewards'=>$id]) }}" method="post" id="editstatus" enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf
 
@@ -81,7 +81,7 @@
                             <div class="form-group row ">
                                
 
-                       
+               
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">User Reward Status</label>
                                     <select class="js-example-basic-single col-sm-12" name="conf_reward_status_id" id="" placeholder="status" required class="form-control selectric" required>
@@ -95,6 +95,11 @@
                                         @endif
                                     </select>
                                 </div>
+
+                                <div class="col-sm-4">
+                                <img style="padding: 30px;" src="{{ isset($rewards['Assets']['data'][0]['links']['thumb']) ? $rewards['Assets']['data'][0]['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>
+                                </div>
+
                             </div>
 
 
