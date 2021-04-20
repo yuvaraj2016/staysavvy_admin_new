@@ -181,7 +181,7 @@ class EcorewardController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/userReward');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/userReward/'.$id);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;

@@ -86,10 +86,10 @@
                                     <label class="col-form-label text-md-right ">User Reward Status</label>
                                     <select class="js-example-basic-single col-sm-12" name="conf_reward_status_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
-                                        @if(isset($rewards))
+                                        @if(isset($urewards))
                                         @foreach($crewards as $creward)
                                        
-                                        <option value="{{ $creward['id'] }}"  {{ ($rewards['conf_reward_status_id'] == $creward['id']) ? "selected":(old("conf_reward_status_id") == $creward['id'] ? "selected":"") }}>{{ $creward['name'] }}</option>
+                                        <option value="{{ $creward['id'] }}"  {{ ($urewards['conf_reward_status_id'] == $creward['id']) ? "selected":(old("conf_reward_status_id") == $creward['id'] ? "selected":"") }}>{{ $creward['name'] }}</option>
     
                                         @endforeach
                                         @endif
@@ -97,7 +97,7 @@
                                 </div>
 
                                 <div class="col-sm-4">
-                                <img style="padding: 30px;" src="{{ isset($rewards['Assets']['data'][0]['links']['thumb']) ? $rewards['Assets']['data'][0]['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>
+                                <img style="padding: 30px;" src="{{ isset($urewards['Assets']['data'][0]['links']['thumb']) ? $urewards['Assets']['data'][0]['links']['thumb'].'?width=200&height=200' : asset('img/no-image.gif')  }}"/>
                                 </div>
 
                             </div>
