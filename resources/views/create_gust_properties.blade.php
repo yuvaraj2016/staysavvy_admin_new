@@ -409,18 +409,12 @@
     </section>
 </div>
 </div>
-
-<?php
-        $str = "This is some bold&lt;br/&gt; text.";
-echo htmlspecialchars_decode($str);
-?>
 @endsection
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo0SYQmZUcTfSLx1rAzBiNiE7H0QvSgg8&libraries=places&callback=initMap"></script>
 <script>
     $(document).ready(function(){
-
 	var map_input = $('#address')[0];
 	setTimeout(function(){initMap()},'5000');
 	function initMap() {
