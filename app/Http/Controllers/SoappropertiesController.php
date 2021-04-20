@@ -233,7 +233,7 @@ class SoappropertiesController extends Controller
             ]
         );
 
-// return $request->all();
+        // return $request->all();
         if ($guestresponse->status() === 200) {
             //  return $guestresponse->json();
             $propty_name =  $guestresponse['data']['OTA_HotelDescriptiveInfoRS'][0]['HotelDescriptiveContents'][0]['HotelDescriptiveContent'][0]['HotelName'];
@@ -273,7 +273,7 @@ class SoappropertiesController extends Controller
         // $session = session()->get('token');
 
 
-    
+
         $fileext = '';
         $filename = '';
         $taxes = '';
@@ -443,9 +443,9 @@ class SoappropertiesController extends Controller
                         'name' => 'gl_hotel_name',
                         'contents' => $request->hotel_name
                     ],
-                    
-                    
-                    
+
+
+
                 ]
             );
         }
@@ -489,7 +489,7 @@ class SoappropertiesController extends Controller
             $roomRequestData = $roomdetails['OTA_HotelAvailRS'][0]['RoomStays'][0]['RoomStay'][0]['RoomTypes'][0]['RoomType'];
             $roomRatePlans = $roomdetails['OTA_HotelAvailRS'][0]['RoomStays'][0]['RoomStay'][0]['RatePlans'][0]['RatePlan'];
             $finalArray = array();
-            $i=0;
+            $i = 0;
             foreach ($roomRequestData as $roomItem) {
                 $roomDescription = '';
                 foreach ($roomItem['RoomDescription'] as $roomDescItem) {
@@ -537,56 +537,96 @@ class SoappropertiesController extends Controller
 
                         "url" => $roomItem['AdditionalDetails'][0]['AdditionalDetail'][0]['DetailDescription'][0]['URL'][0],
                         "amount" => 100,
-                        "gl_room_type_code"=>$roomItem['RoomTypeCode'],
-                        "gl_rate_plan_code"=>$roomRatePlans[$i]['RatePlanCode'],
+                        "gl_room_type_code" => $roomItem['RoomTypeCode'],
+                        "gl_rate_plan_code" => $roomRatePlans[$i]['RatePlanCode'],
 
                     ]
                 );
                 $i++;
             }
-//             foreach( $conpolycy as $key => $value )
-// {
-//     dd($key);
-// }
-foreach($conpolycy as $key => $value ){
-    
-// dd($con);
-    $policiesresponse = Http::withToken($session)->withHeaders(
-        ['Accept' => 'application/vnd.api.v1+json']
-    )->post(
-        config('global.url') . 'api/confPolicy',
-        [
+            //             foreach( $conpolycy as $key => $value )
+            // {
+            //     dd($key);
+            // }
+            foreach ($conpolycy as $key => $value) {
+                $description = '';
+                if ($key === 'CheckoutCharges') {
+                    foreach ($value as $policyItemkey => $policyItemValue) {
+                        // dd($policyItemValue);
+                        $description = $policyItemValue['CheckoutCharge'][0]['Amount'];
+                    }
+                } else if ($key === 'PolicyInfo') {
+                    foreach ($value as $policyItemkey => $policyItemValue) {
+                        foreach ($policyItemValue as $policyItem1key => $policyItem1Value) {
+                            if ($policyItem1key === 'CheckInTime' || $policyItem1key === 'CheckOutTime' || $policyItem1key === 'MaxChildAge')
+                                $description .= $policyItem1key . '_' .   $policyItem1Value . ',';
+                            else if ($policyItem1key === 'Description'){
+                                $description .=  $policyItem1Value[0]['Text'][0];
+                            }
+                        }
+                    }
+                } else if ($key === 'PetsPolicies') {
+                    foreach ($value as $policyItemkeys => $policyItemValue) {
+                        $description ='Non Refundable Fee'.':'.$policyItemValue['PetsPolicy'][0]['NonRefundableFee'];
+                        $description .=  ',' .$policyItemValue['PetsPolicy'][0]['Description'][0]['Text'][0];
+                        
 
-            "name" => $key,
-           
-            "status_id" => 1
+                    }
+                    // dd( $description);
+                } else if ($key === 'CancelPolicy') {
+                    foreach ($value as $policyItemkeys => $policyItemValue) {
+                        $description =$policyItemValue['CancelPenalty'][0]['Deadline'][0]['OffsetUnitMultiplier'] .' '.$policyItemValue['CancelPenalty'][0]['Deadline'][0]['OffsetTimeUnit'] .' '.$policyItemValue['CancelPenalty'][0]['Deadline'][0]['OffsetDropTime'];
+                        $description .=  ',' .$policyItemValue['CancelPenalty'][0]['PenaltyDescription'][0]['Text'][0];
+
+                    }
+                    // dd( $description);
+                }else if ($key === 'GuaranteePaymentPolicy') {
+                    foreach ($value as $policyItemkeys => $policyItemValue) {
+                        $description =$policyItemValue['GuaranteePayment'][0]['Description'][0]['Text'][0];
+                        // $description .=  ',' .$policyItemValue['CancelPenalty'][0]['Description'][0]['Text'][0];
+
+                    }
+                    // dd( $description);
+                }
+                
+                // dd($con);
+                $policiesresponse = Http::withToken($session)->withHeaders(
+                    ['Accept' => 'application/vnd.api.v1+json']
+                )->post(
+                    config('global.url') . 'api/confPolicy',
+                    [
+
+                        "name" => $key,
+
+                        "status_id" => 1
 
 
-        ]
-    );
-    $id = basename($policiesresponse->header('Location'));
-// return $id;
+                    ]
+                );
+                $id = basename($policiesresponse->header('Location'));
+                // return $id;
 
-$policyArray = array();
-$policyObj['property_id'] = $property_id;
-$policyObj['policy_id'] = $id;
-$policyObj['description'] = 'testings';
-array_push($policyArray,$policyObj);
-
-
-$plyresponse = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'api/policy',
-    [
-
-'policy'=> $policyArray
-
-    ]
-);
-// return $plyresponse;
-
-}
+                $policyArray = array();
+                $policyObj['property_id'] = $property_id;
+                $policyObj['policy_id'] = $id;
+                $policyObj['description'] = $description;
+                array_push($policyArray, $policyObj);
 
 
-        
+                $plyresponse = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->post(
+                    config('global.url') . 'api/policy',
+                    [
+
+                        'policy' => $policyArray
+
+                    ]
+                );
+                // return $plyresponse;
+
+            }
+
+
+
             return redirect()->route('gustproperty.create')->with('success', 'Imported Successfully!');
         } else {
             return $response;
