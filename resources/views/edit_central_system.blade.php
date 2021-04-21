@@ -11,7 +11,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Edit Center System</h4>
+                        <h4>Edit Central Reservation System</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -21,11 +21,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">Edit Center System</p>
+                                <p class="">Edit Central Reservation System</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Center System</a>
+                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central System</a>
                         </li>
                        
                     </ul>
@@ -88,13 +88,13 @@
 
                                                     <div class="form-group row ">
                                                     <div class="col-sm-4">
-                                                        <label class="col-form-label text-md-right">coolthing Name</label>
+                                                        <label class="col-form-label text-md-right">Central Reservation System Name</label>
                                                       
                                                             <input value="{{ old('name',$centralsystem['name']) }}" name="name" class="summernote-simple form-control" required>
                                                         </div>
 
                                                         <div class="col-sm-4">
-                                <label class="col-form-label text-md-right c">Description</label>
+                                <label class="col-form-label text-md-right c">Central Reservation System Description</label>
                                 
                                     <input name="description" value="{{ $centralsystem['description'] }}" class="summernote-simple form-control" required>
                                

@@ -38,7 +38,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Central System List</h4>
+                        <h4>Central Reservation System List</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                             </a>
                         </li>
 
-                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central System List</a>
+                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central Reservation System List</a>
                         </li>
 
                     </ul>

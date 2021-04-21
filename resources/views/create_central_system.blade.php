@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Create Central System</h4>
+                        <h4>Create Central Reservation System</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">Create Central System</p>
+                                <p class="">Create Central Reservation System</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central System</a>
+                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central  System</a>
                         </li>
                        
                     </ul>
@@ -111,14 +111,14 @@
 
                             <div class="form-group row ">
                             <div class="col-sm-4 ">
-                                                        <label class="col-form-label text-md-right ">Room Name</label>
+                                                        <label class="col-form-label text-md-right ">Central Reservation System Name</label>
                                                         <input name="name" value="{{ old('name') }}" class="summernote-simple form-control" required>
                
                                                         </div>
 
                              
                             <div class="col-sm-4">
-                                <label class="col-form-label text-md-right c">Description</label>
+                                <label class="col-form-label text-md-right c">Central Reservation System Description</label>
                                 
                                     <input name="description" value="{{ old('description') }}" class="summernote-simple form-control" required>
                                
@@ -149,7 +149,7 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right "></label>
                                 <div class="col-sm-12 col-md-7 offset-5">
-                                    <button type="submit" id="submit" class="btn btn-primary">Create Central System</button>
+                                    <button type="submit" id="submit" class="btn btn-primary">Create Central Reservation System</button>
                                 </div>
                             </div>
 

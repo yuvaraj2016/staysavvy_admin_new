@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>View Central System</h4>
+                        <h4>View Central Reservation System</h4>
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                            
-                                <p class="">View Central System</p>
+                                <p class="">View Central Reservation System</p>
                           
                         </li>
                       
-                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central System</a>
+                        <li class="breadcrumb-item"><a href="{{ route('centralsystem.index') }}">Central  System</a>
                         </li>
                        
                     </ul>
@@ -77,11 +77,11 @@
                             <div class="form-group row">
 
                             <div class="col-sm-4 ">
-                                                        <label class="col-form-label text-md-right ">Central System Name</label>
+                                                        <label class="col-form-label text-md-right ">Central Reservation System Name</label>
                                                         <input type="text"  value="   {{ $centralsystem['name'] }}" class="form-control" readonly>
                                                         </div>
                                                         <div class="col-sm-4 ">
-                                                        <label class="col-form-label text-md-right ">Description</label>
+                                                        <label class="col-form-label text-md-right ">Central Reservation System Description</label>
                                                         <input type="text"  value="   {{ $centralsystem['description'] }}" class="form-control" readonly>
                                                         </div>
                                                         
