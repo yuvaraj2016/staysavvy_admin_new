@@ -645,11 +645,21 @@
         // alert("hii");
         var edate = new Date($('#edate').val());
         var sdate = new Date($('#sdate').val());
+        if (sdate < edate) {
 
-        days = (edate - sdate) / (1000 * 60 * 60 * 24);
+            days = (edate - sdate) / (1000 * 60 * 60 * 24);
         // days=days+1;
         // alert (days);
         $("#lens").val(days);
+
+        }
+        else{
+            alert("Please Enter Greater Than Checkin date");
+            $("#lens").val('');
+            $('#edate').val('');
+
+        }
+       
     });
 </script>
 <script>
