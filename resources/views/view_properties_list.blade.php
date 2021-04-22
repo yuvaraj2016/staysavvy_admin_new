@@ -125,7 +125,7 @@
                             <input type="text"  value="   {{ $properties['property_mgmt_system_name'] }}" class="form-control" readonly>
                             </div>
                             <div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">Central System</label>
+                            <label class="col-form-label text-md-right ">Central Reservation System</label>
                             <input type="text"  value="   {{ $properties['central_res_system_name'] }}" class="form-control" readonly>
                             </div>
              

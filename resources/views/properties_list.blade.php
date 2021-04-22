@@ -186,7 +186,7 @@
                                        <th>Host Name</th>
                                        <th>Property Images</th>
                                        <th>Property<br> Management System</th>
-                                       <th>Central<br> Management System</th>
+                                       <th>Central<br> Reservation System</th>
                                        <th>Property<br> Type Name</th>
                                        <th width="20%">Property Desc</th>
                                        <th>Room <br>Start Price</th>

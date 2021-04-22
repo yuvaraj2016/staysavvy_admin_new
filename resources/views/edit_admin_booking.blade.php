@@ -372,7 +372,7 @@
 </div>
 
                         <div class="col-sm-4 ">
-<label class="col-form-label text-md-right ">Commission Total Amount </label>
+<label class="col-form-label text-md-right "> Total Amount </label>
 @foreach($Booking['CommissionDetails']['data'] as $amen)
                                       
                                          
