@@ -400,6 +400,32 @@
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo0SYQmZUcTfSLx1rAzBiNiE7H0QvSgg8&libraries=places&callback=initMap"></script>
+
+<script>
+
+var MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+ 
+$(document).ready(function() {
+    $('#filer_input').change(function() {
+        // alert("hii");
+        // console.log(this.files);
+        fileSize = this.files[0].size;
+        if (fileSize > MAX_FILE_SIZE) {
+            this.setCustomValidity("File must not exceed 2 MB!");
+            this.reportValidity();
+        } else {
+            this.setCustomValidity("");
+        }
+    });
+});
+
+</script>
+
+
+
+
+
+
 <script>
     $(document).ready(function(){
 	var map_input = $('#address')[0];
