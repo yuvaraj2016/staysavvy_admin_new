@@ -87,7 +87,7 @@
                                                             @foreach($prop['Assets']['data'] as $props)
                                                             <!-- <label class="col-form-label text-md-right ">Property Image</label> -->
                                                             <div class="col-sm-2 offset-1 card">
-                                                            <figure class="figure">
+                                                            <figure class="figure" style="text-align: center!important;">
                                                                 <img style="padding: 20px;" src="{{ isset($props['links']['full']) ? $props['links']['full'].'?width=100&height=100' : asset('img/no-image.gif')  }}" />
 
                                                                 <figcaption class="mb-12 " style="text-align: center;"><b>{{$prop['name']}}</b></figcaption>
