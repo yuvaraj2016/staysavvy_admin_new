@@ -26,138 +26,145 @@ class DashboardController extends Controller
         // return $request->sdate;
         $id=session()->get('property_id');
         // $sdate= date("Y-m-d");
-         $sdate= date("Y-m-d");
-         $edate= date("Y-m-d", strtotime("+1 day"));
-        $token = session()->get('token');
-        try{
-
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/performanceOverview/'.$id.'/'.$sdate.'/'.$edate);
-
-            $response = json_decode($call->getBody()->getContents(), true);
-            //   return $response;
-        }catch (\Exception $e){
-       
-
-
+        if($id == null || $id == ''){
+            return redirect()->back()->with('message', 'Form has been saved');
         }
-        $performance = $response['performance_overviews'];
-
-        try{
-
-            $bocall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/bookingOverview/'.$id.'/'.$sdate.'/'.$edate);
-
-            $boresponse = json_decode($bocall->getBody()->getContents(), true);
-                // return $boresponse;
-        }catch (\Exception $e){
-       
-
-
+        else{
+            $sdate= date("Y-m-d");
+            $edate= date("Y-m-d", strtotime("+1 day"));
+           $token = session()->get('token');
+           try{
+   
+               $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/performanceOverview/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $response = json_decode($call->getBody()->getContents(), true);
+               //   return $response;
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $performance = $response['performance_overviews'];
+   
+           try{
+   
+               $bocall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/bookingOverview/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $boresponse = json_decode($bocall->getBody()->getContents(), true);
+                   // return $boresponse;
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $bookingobverview = $boresponse['booking_overviews'];
+   
+   
+   
+           try{
+   
+               $bocall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getCheckInDetails/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $avresponse = json_decode($bocall->getBody()->getContents(), true);
+                   //    return $avresponse;
+   
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $available = $avresponse['data'];
+   
+   
+           try{
+   
+               $bocall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getCheckOutDetails/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $depresponse = json_decode($bocall->getBody()->getContents(), true);
+                   //    return $avresponse;
+   
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $depature = $depresponse['data'];
+   
+   
+           try{
+   
+               $chcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/newBookingChart/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $cresponse = json_decode($chcall->getBody()->getContents(), true);
+                   // return $boresponse;
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $chart = $cresponse['new_booking_chart'];
+   
+   
+   
+           try{
+   
+               $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/reviewOverview/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $revresponse = json_decode($revcall->getBody()->getContents(), true);
+                   //  return $revresponse;
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $review = $revresponse['data'];
+   
+   
+           try{
+   
+               $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/vendorEcoReward/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $venrevresponse = json_decode($revcall->getBody()->getContents(), true);
+                   //  return $venrevresponse;
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $reward = $venrevresponse['data'];
+   
+   
+           try{
+   
+               $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/ecoImpactChart/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $venlinresponse = json_decode($revcall->getBody()->getContents(), true);
+                   //  return $venrevresponse;
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $vendorline = $venlinresponse['ecoimpact_chart'];
+   
+   
+   
+   
+           try{
+   
+               $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/ecoCauesesChart/'.$id.'/'.$sdate.'/'.$edate);
+   
+               $pieresponse = json_decode($revcall->getBody()->getContents(), true);
+                   //  return $venrevresponse;
+           }catch (\Exception $e){
+          
+   
+   
+           }
+           $piechart = $pieresponse['ecocauses_chart'];
+           return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature','reward','vendorline','piechart'));
         }
-        $bookingobverview = $boresponse['booking_overviews'];
 
-
-
-        try{
-
-            $bocall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getCheckInDetails/'.$id.'/'.$sdate.'/'.$edate);
-
-            $avresponse = json_decode($bocall->getBody()->getContents(), true);
-                //    return $avresponse;
-
-        }catch (\Exception $e){
-       
-
-
-        }
-        $available = $avresponse['data'];
-
-
-        try{
-
-            $bocall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/getCheckOutDetails/'.$id.'/'.$sdate.'/'.$edate);
-
-            $depresponse = json_decode($bocall->getBody()->getContents(), true);
-                //    return $avresponse;
-
-        }catch (\Exception $e){
-       
-
-
-        }
-        $depature = $depresponse['data'];
-
-
-        try{
-
-            $chcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/newBookingChart/'.$id.'/'.$sdate.'/'.$edate);
-
-            $cresponse = json_decode($chcall->getBody()->getContents(), true);
-                // return $boresponse;
-        }catch (\Exception $e){
-       
-
-
-        }
-        $chart = $cresponse['new_booking_chart'];
-
-
-
-        try{
-
-            $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/reviewOverview/'.$id.'/'.$sdate.'/'.$edate);
-
-            $revresponse = json_decode($revcall->getBody()->getContents(), true);
-                //  return $revresponse;
-        }catch (\Exception $e){
-       
-
-
-        }
-        $review = $revresponse['data'];
-
-
-        try{
-
-            $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/vendorEcoReward/'.$id.'/'.$sdate.'/'.$edate);
-
-            $venrevresponse = json_decode($revcall->getBody()->getContents(), true);
-                //  return $venrevresponse;
-        }catch (\Exception $e){
-       
-
-
-        }
-        $reward = $venrevresponse['data'];
-
-
-        try{
-
-            $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/ecoImpactChart/'.$id.'/'.$sdate.'/'.$edate);
-
-            $venlinresponse = json_decode($revcall->getBody()->getContents(), true);
-                //  return $venrevresponse;
-        }catch (\Exception $e){
-       
-
-
-        }
-        $vendorline = $venlinresponse['ecoimpact_chart'];
-
-
-
-
-        try{
-
-            $revcall = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/analytics/ecoCauesesChart/'.$id.'/'.$sdate.'/'.$edate);
-
-            $pieresponse = json_decode($revcall->getBody()->getContents(), true);
-                //  return $venrevresponse;
-        }catch (\Exception $e){
-       
-
-
-        }
-        $piechart = $pieresponse['ecocauses_chart'];
 // return  $chart ;
 
         // $pagination = $response['meta']['pagination'];
@@ -166,7 +173,7 @@ class DashboardController extends Controller
         
         // return "asd";
 
-          return view('dashboard', compact('performance','bookingobverview','chart','review','available','depature','reward','vendorline','piechart'));
+         
 
         // return view('dashboard');
 

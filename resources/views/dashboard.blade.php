@@ -20,6 +20,19 @@
         overflow: auto;
     }
 </style>
+<!-- <script>
+  var msg = '{{Session::get('alert')}}';
+  var exist = '{{Session::has('alert')}}';
+  if(exist){
+    alert(msg);
+  }s
+</script> -->
+@if (session()->has('message'))
+    <div class="alert alert-info">
+        {{ session('message') }}
+    </div>
+@endif
+
 <div class="pcoded-content">
     <div class="pcoded-inner-content">
         <!-- Main-body start -->
@@ -53,7 +66,11 @@
                 </div>
                 <!-- Page-header end -->
 
-
+                @if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
+    </div>
+@endif
                 <div class="page-body">
                     <div class="row">
                         <div class="col-xl-6">
