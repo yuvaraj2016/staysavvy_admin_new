@@ -33,40 +33,22 @@
 
     function imageFileValidation() {
         var image = document.getElementById("filer_input");
-        var total_file=document.getElementById("filer_input").files.length;
- for(var i=0;i<total_file;i++)
- {
-     const imageData = event.target.files[i];
-     var size = parseFloat(imageData.size / (1024 * 1024)).toFixed(2);
-     if (parseFloat(size) > 2) {
-                alert('Please select image size less than 2 MB');
-                $('.jFiler-items-list li:first-child').remove();
-            } else {
-                // alert('success');
-            }
-
- }
- setTimeout(function () {
-      var total_file=document.getElementById("filer_input").files.length;
-      console.log(total_file)
- for(var i=0;i<total_file;i++)
- {
-     const imageData = document.getElementById("filer_input").files[i];
-     var size = parseFloat(imageData.size / (1024 * 1024)).toFixed(2);
-     if (parseFloat(size) > 2) {
-       console.log('test');
+        var total_file = document.getElementById("filer_input").files.length;
+        for (var i = 0; i < total_file; i++) {
+            const imageData = event.target.files[i];
+            var size = parseFloat(imageData.size / (1024 * 1024)).toFixed(2);
+            if (parseFloat(size) > 2) {
                 // alert('Please select image size less than 2 MB');
-                $('.jFiler-items-list li:first-child').remove();
+                // $('.jFiler-items-list li:first-child').remove();
             } else {
                 // alert('success');
             }
 
- }
-  }, 60000);
-}
+        }
+    }
 
 
-    
+
     jQuery(document).on("click", ".submit", function(e) {
 
         if (document.getElementById("filer_input").files.length == 0) {
@@ -88,8 +70,6 @@
     });
 </script>
 <script type="text/javascript">
-
-    
     jQuery(document).on("click", ".submit", function(e) {
 
         if (document.getElementById("filer_input").files.length == 0) {
@@ -429,7 +409,7 @@
                                 <div class="col-sm-12 text-center">
 
                                     <label class="col-form-label text-md-right ">General Photos</label>
-                                    <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required onchange="imageFileValidation()">
+                                    <input data-jfiler-maxSize="2" type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required onchange="imageFileValidation()">
 
                                 </div>
 
