@@ -26,8 +26,11 @@ class DashboardController extends Controller
         // return $request->sdate;
         $id=session()->get('property_id');
         // $sdate= date("Y-m-d");
+        // dd($id);
         if($id == null || $id == ''){
-            return redirect()->back()->with('message', 'Form has been saved');
+
+
+            return redirect()->back()->with('success', 'Before View Home Page Should Fill Propery And Room And Policies');;
         }
         else{
             $sdate= date("Y-m-d");

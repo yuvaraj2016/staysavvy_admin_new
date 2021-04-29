@@ -27,9 +27,9 @@
     alert(msg);
   }s
 </script> -->
-@if (session()->has('message'))
-    <div class="alert alert-info">
-        {{ session('message') }}
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
     </div>
 @endif
 

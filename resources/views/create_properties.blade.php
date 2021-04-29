@@ -26,38 +26,70 @@
         transform: translateY(-50%);
     }
 </style>
+
+
 <script type="text/javascript">
     var MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
-    // $('#filer_input').change(function() {
     function imageFileValidation() {
         var image = document.getElementById("filer_input");
-        console.log('test');
-        // alert("hii");
-        console.log(image.files);
-        if (typeof(image.files) != "undefined") {
-            const imageArrayLength = image.files.length;
-            const finalData = image.files[imageArrayLength - 1];
-            var size = parseFloat(finalData.size / (1024 * 1024)).toFixed(2);
-            console.log(size);
-            if (parseFloat(size) > 2) {
+        var total_file=document.getElementById("filer_input").files.length;
+ for(var i=0;i<total_file;i++)
+ {
+     const imageData = event.target.files[i];
+     var size = parseFloat(imageData.size / (1024 * 1024)).toFixed(2);
+     if (parseFloat(size) > 2) {
                 alert('Please select image size less than 2 MB');
+                $('.jFiler-items-list li:first-child').remove();
             } else {
-                alert('success');
+                // alert('success');
             }
-        } else {
-            alert("This browser does not support HTML5.");
+
+ }
+ setTimeout(function () {
+      var total_file=document.getElementById("filer_input").files.length;
+      console.log(total_file)
+ for(var i=0;i<total_file;i++)
+ {
+     const imageData = document.getElementById("filer_input").files[i];
+     var size = parseFloat(imageData.size / (1024 * 1024)).toFixed(2);
+     if (parseFloat(size) > 2) {
+       console.log('test');
+                // alert('Please select image size less than 2 MB');
+                $('.jFiler-items-list li:first-child').remove();
+            } else {
+                // alert('success');
+            }
+
+ }
+  }, 60000);
+}
+
+
+    
+    jQuery(document).on("click", ".submit", function(e) {
+
+        if (document.getElementById("filer_input").files.length == 0) {
+            e.preventDefault();
+            // alert('Please Upload Property Image');
+            swal("Error", "Please upload Property Image");
         }
 
-        // fileSize = this.files[0].size;
-        // if (fileSize > MAX_FILE_SIZE) {
-        //     this.setCustomValidity("File must not exceed 2 MB!");
-        //     this.reportValidity();
-        // } else {
-        //     this.setCustomValidity("");
-        // }
-    }
-    // });
+    });
+
+    jQuery(document).on("click", ".room_submit", function(e) {
+
+        if (document.getElementById("room_image").files.length == 0) {
+            e.preventDefault();
+            // alert('Please Upload Room Image');
+            swal("Error", "Please upload Room Image");
+        }
+
+    });
+</script>
+<script type="text/javascript">
+
+    
     jQuery(document).on("click", ".submit", function(e) {
 
         if (document.getElementById("filer_input").files.length == 0) {

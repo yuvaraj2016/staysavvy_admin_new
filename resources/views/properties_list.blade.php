@@ -48,6 +48,10 @@
 }
    
 </style>
+
+
+
+
 <div class="page-wrapper">
 
     <div class="page-header m-t-50">
@@ -85,7 +89,11 @@
             </div>
             @endif
         -->
-     
+        @if(session()->has('success'))
+    <div class="errorWrap">
+        {{ session()->get('success') }}
+    </div>
+@endif
             <div class="col-sm-12">
                 <!-- HTML5 Export Buttons table start -->
                 <div class="card">
