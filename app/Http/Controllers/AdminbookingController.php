@@ -317,6 +317,7 @@ class AdminbookingController extends Controller
                 "total_guests" => $request->total_guests,
                 "total_amount" => $request->total_amount,
                 "tax_amount" => $request->tax_amount,
+                "comments" => $request->comments,
                 "ecocauses" => $ecocauses,
 
 

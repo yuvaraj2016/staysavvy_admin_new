@@ -319,6 +319,14 @@
 
 
 
+
+                        <div class="col-sm-4">
+                                                <label class="col-form-label text-md-right " > Comments</label>
+                                                <textarea name="comments" value="{{ old('comments') }}" minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
+
+                                            </div>
+
+
                     </div>
 
                     {{-- <div class="form-group row ">

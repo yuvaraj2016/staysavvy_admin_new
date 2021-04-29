@@ -417,7 +417,11 @@
 
 </div>
 
+<div class="col-sm-4">
+                                                <label class="col-form-label text-md-right " > Comments</label>
+                                                <textarea  minlength="5" maxlength="800" class="summernote-simple form-control" readonly>{{ $Booking['comments'] }}</textarea>
 
+                                            </div>
                         <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Booking Status</label>
                                                         <select  class="js-example-basic-single col-sm-12 form-control selectric" name="booking_status_id"  required>

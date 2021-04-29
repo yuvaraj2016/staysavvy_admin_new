@@ -407,7 +407,11 @@
 
 </div>
                       
+<div class="col-sm-4">
+                                                <label class="col-form-label text-md-right " > Comments</label>
+                                                <textarea   minlength="5" maxlength="800" class="summernote-simple form-control" readonly>{{ $bookingroom['comments'] }}</textarea>
 
+                                            </div>
              
                         </div>
                                                                        
