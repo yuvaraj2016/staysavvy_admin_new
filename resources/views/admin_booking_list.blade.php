@@ -62,7 +62,7 @@
 
                     <div class="card-header table-card-header">
                         <div class="row">
-                            <div class="section-header-button col-md-4">
+                            <div class="section-header-button col-md-6">
                     @if(collect(session('permissions'))->contains('Create booking'))
 
                          
@@ -85,9 +85,12 @@
                                @endif 
                                
                     @endif  
-                  
+                  <input  type="search" name="" id="bookref">
+                  <button id="search" type="submit" class="btn btn-secondary btn-sm"><i class="fa fa-search"></i></button>
+                  <button id="refresh" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i></button>
+                  <!-- <button type="button" id="bookrefsub" class="btn btn-primary" >Submit</button> -->
                             </div>
-                            <div class="section-header-button col-md-5">
+                            <div class="section-header-button col-md-3">
 
                             </div>
                             <div class="section-header-button col-md-3 ">
@@ -164,7 +167,7 @@
                                       
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="tableBody">
                            
                                 {{-- @dd($prodcategories) --}}
                                     @foreach($booking as $bookings )
@@ -424,6 +427,48 @@
 
 </script> --}}
 <script>
+$(document).ready(function(){
+    $('#search').on("click", function(){
+
+// alert("hii");
+var bookref = $("#bookref").val();
+        // alert(bookref);
+      
+        $.ajax({
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.api.v1+json'
+            },
+            url: "{{ url('allbookingajax')}}"+"/"+bookref,
+            type: "GET",
+            crossDomain: true,
+            beforeSend: function() {
+                // console.log('Aaaajax sss')
+                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+            },
+            success: function(responsedata) {
+                console.log(responsedata);
+                $('tableBody').empty();
+                responsedata.foreach( item => {
+                    $('#tableBody').append(
+                    '<tr><td>'+item.booked_on+'</td></tr>'
+                )
+                })
+               
+                
+                // console.log(responsedata);
+               
+            }
+        })
+
+    });
+
+
+
+});
+
 // $(document).ready(function(){
 //     $('.sa-remove').click(function () {
 //             var postId = $(this).data('id'); 

@@ -667,6 +667,49 @@ class AdminbookingController extends Controller
         }
     }
 
+
+
+
+    public function allbooking(Request $request)
+    {
+    // return $request->bookref;
+    // $id=session()->get('property_id');
+ 
+    $bookref=$request->bookref;
+ 
+    // $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/bookingSearch?key='.$bookref);
+
+        $allpresponse = json_decode($call->getBody()->getContents(), true);
+        //  return $allpresponse;
+    }catch (\Exception $e){
+   
+    }
+    $allbooking = $allpresponse['data'];
+    return $allbooking;
+    
+          
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Remove the specified resource from storage.
      *

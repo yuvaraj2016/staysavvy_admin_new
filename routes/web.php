@@ -81,6 +81,9 @@ Route::get('anapreformajax/{id}/{sdate}/{edate}','AnalyticsController@anapreform
 Route::get('allpropertyajax/{sdate}/{edate}','AnalyticsController@allproperty')->name('allproperty.ajax')->middleware('checktoken');
 
 
+Route::get('allbookingajax/{bookref}','AdminbookingController@allbooking')->name('allbooking.ajax')->middleware('checktoken');
+
+
 Route::get('proproomtype/{prope_id}','RoomController@proproomtype')->name('proproomtype.ajax')->middleware('checktoken');
 
 
