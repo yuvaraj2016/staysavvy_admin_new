@@ -427,106 +427,167 @@
 
 </script> --}}
 <script>
-$(document).ready(function(){
-    $('#search').on("click", function(){
+   $(document).ready(function(){
+       $('#search').on("click", function(){
+   
+   // alert("hii");
+   var bookref = $("#bookref").val();
+           // alert(bookref);
+         
+           $.ajax({
+   
+               headers: {
+                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                   'Content-Type': 'application/json',
+                   'Accept': 'application/vnd.api.v1+json'
+               },
+               url: "{{ url('allbookingajax')}}"+"/"+bookref,
+               type: "GET",
+               crossDomain: true,
+               beforeSend: function() {
+                   // console.log('Aaaajax sss')
+                   $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+               },
+               success: function(responsedata) {
+                //    console.log(responsedata);
+                   $('#tableBody').empty();
+                   responsedata.forEach( item => {
+                       let bookingAmt = '';
+                       let commissionAmt = '';
+                       item.BookingDetails.data.forEach(bookingItem => {
+                           if (bookingAmt) {
+                               bookingAmt += `,${bookingItem.amount}`;
+                           } else {
+                               bookingAmt = bookingItem.amount;
+                           }
+                       });
+        
+                       item.CommissionDetails.data.forEach(commissionItem => {
+                           if (commissionAmt) {
+                               commissionAmt += `,${commissionItem.commission_amount}`;
+                           } else {
+                               commissionAmt = commissionItem.commission_amount;
+                           }
+                       });
+                       
+                       $('#tableBody').append(
+                       '<tr><td>'+
+                       '<div class="d-flex">'+
+                                    '<ul class="list-group list-inline ml-1">'+
+                                       '+<li class="list-group-item border1">'+
+                                          '<a href="" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>'+
+                                       '</li>'+
+                                       '<li class="list-group-item border1">'+
+                                          '<a href=""  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>'+
+                                       '</li>'+
+                                       '<li class="list-group-item border1">'+
+                                          '<form id="" method="POST" action="">'+
+                                             '<div class="form-group">'+
+                                                '<a href="" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">'+
+                                                '<i class="fa fa-trash" style="position: relative;top:-5;color:#01a9ac"></i>'+
+                                                '</a>'+  
+                                             '</div>'+
+                                          '</form>'+
+                                       '</li>'+
+                                    '</ul>'+
+                                 '</div>'
+                       +'</td><td>'+item.property_name+'</td><td>'+item.booking_reference+'</td><td>'+item.booking_status_desc+'</td><td>'+item.UserInvoice.data.uPayment.data.payment_status+'</td><td>'+item.tax_name+'</td><td>'+item.tax_percentage+'</td><td>'+item.tax_amount+'</td><td>'+bookingAmt+'</td><td>'+commissionAmt+'</td><td>'+item.total_amount+'</td><td>'+item.status_desc+'</td><td>'+item.created_at+'</td></tr>'
+                       );
+                   });
+                   // console.log(responsedata);
+                  
+               }
+           })
+   
+       });
+   
+   
+   
+   });
+   
 
-// alert("hii");
-var bookref = $("#bookref").val();
-        // alert(bookref);
-      
-        $.ajax({
-
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Content-Type': 'application/json',
-                'Accept': 'application/vnd.api.v1+json'
-            },
-            url: "{{ url('allbookingajax')}}"+"/"+bookref,
-            type: "GET",
-            crossDomain: true,
-            beforeSend: function() {
-                // console.log('Aaaajax sss')
-                $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
-            },
-            success: function(responsedata) {
-                console.log(responsedata);
-                $('tableBody').empty();
-                responsedata.foreach( item => {
-                    $('#tableBody').append(
-                    '<tr><td>'+item.booked_on+'</td></tr>'
-                )
-                })
-               
-                
-                // console.log(responsedata);
-               
-            }
-        })
-
-    });
-
-
-
-});
-
-// $(document).ready(function(){
-//     $('.sa-remove').click(function () {
-//             var postId = $(this).data('id'); 
-//             swal({
-//                 title: "are u sure?",
-//                 text: "lorem lorem lorem",
-//                 type: "error",
-//                 showCancelButton: true,
-//                 confirmButtonClass: 'btn-danger waves-effect waves-light',
-//                 confirmButtonText: "Delete",
-//                 cancelButtonText: "Cancel",
-//                 closeOnConfirm: true,
-//                 closeOnCancel: true
-//             },
-//             function(){
-//                 window.location.href = "status.destroy/" + postId;
-//             }); here
-
-// });
-// });
-
-
-
-
-
-// $(document).on('click', '.sa-remove', function (e) {
-//     e.preventDefault();
-//     var id = $(this).data('id');
-//    alert(id);
-//     swal({
-//             title: "Are you sure!",
-//             type: "error",
-//             confirmButtonClass: "btn-danger",
-//             confirmButtonText: "Yes!",
-//             showCancelButton: true,
-//         },
-//         function() {
-//             $.ajax({
-//                 type: "POST",
-//                 url: "{{ url('status.destroy') }}",
-             
-//                 data: {id:id},
-//                 success: function (data) {
-                    
-//                               if (data.success){
-//                                     swalWithBootstrapButtons.fire(
-//                                         'Deleted!',
-//                                         'Your file has been deleted.',
-//                                         "success"
-//                                     );
-//                                     $("#"+id+"").remove(); // you can add name div to remove
-//                                 }
-//                     }         
-//             });
-//     });
-// });
 </script>
 
+<script>
+   $(document).ready(function(){
+       $('#refresh').on("click", function(){
+   
+   // alert("hii");
+//    var bookref = $("#bookref").val();
+           // alert(bookref);
+         
+           $.ajax({
+   
+               headers: {
+                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                   'Content-Type': 'application/json',
+                   'Accept': 'application/vnd.api.v1+json'
+               },
+               url: "{{ url('alladminbooking')}}",
+               type: "GET",
+               crossDomain: true,
+               beforeSend: function() {
+                   // console.log('Aaaajax sss')
+                   $('#response').html("<img src='{{ asset('files/assets/images/ajax-loader.gif') }}' />");
+               },
+               success: function(responsedata) {
+                   console.log(responsedata);
+                   $('#tableBody').empty();
+                   responsedata.forEach( item => {
+                       let bookingAmt = '';
+                       let commissionAmt = '';
+                       item.BookingDetails.data.forEach(bookingItem => {
+                           if (bookingAmt) {
+                               bookingAmt += `,${bookingItem.amount}`;
+                           } else {
+                               bookingAmt = bookingItem.amount;
+                           }
+                       });
+        
+                       item.CommissionDetails.data.forEach(commissionItem => {
+                           if (commissionAmt) {
+                               commissionAmt += `,${commissionItem.commission_amount}`;
+                           } else {
+                               commissionAmt = commissionItem.commission_amount;
+                           }
+                       });
+                       
+                       $('#tableBody').append(
+                       '<tr><td>'+
+                       '<div class="d-flex">'+
+                                    '<ul class="list-group list-inline ml-1">'+
+                                       '+<li class="list-group-item border1">'+
+                                          '<a href="" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>'+
+                                       '</li>'+
+                                       '<li class="list-group-item border1">'+
+                                          '<a href=""  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>'+
+                                       '</li>'+
+                                       '<li class="list-group-item border1">'+
+                                          '<form id="" method="POST" action="">'+
+                                             '<div class="form-group">'+
+                                                '<a href="" class="_delete_data"  data-toggle="tooltip" data-placement="top" title="Delete" style="background-color:#fff!important;position: relative;top:-1px!important; padding-top:3px!important;padding-bottom:8px!important;">'+
+                                                '<i class="fa fa-trash" style="position: relative;top:-5;color:#01a9ac"></i>'+
+                                                '</a>'+  
+                                             '</div>'+
+                                          '</form>'+
+                                       '</li>'+
+                                    '</ul>'+
+                                 '</div>'
+                       +'</td><td>'+item.property_name+'</td><td>'+item.booking_reference+'</td><td>'+item.booking_status_desc+'</td><td>'+item.UserInvoice.data.uPayment.data.payment_status+'</td><td>'+item.tax_name+'</td><td>'+item.tax_percentage+'</td><td>'+item.tax_amount+'</td><td>'+bookingAmt+'</td><td>'+commissionAmt+'</td><td>'+item.total_amount+'</td><td>'+item.status_desc+'</td><td>'+item.created_at+'</td></tr>'
+                       );
+                   });
+                   // console.log(responsedata);
+                  
+               }
+           })
+   
+       });
+   
+   
+   
+   });
+   
 
+</script>
 </section>
 @endsection

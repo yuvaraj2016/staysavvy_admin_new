@@ -672,12 +672,11 @@ class AdminbookingController extends Controller
 
     public function allbooking(Request $request)
     {
-    // return $request->bookref;
-    // $id=session()->get('property_id');
+
  
     $bookref=$request->bookref;
  
-    // $edate=$request->edate;
+
 
     $token = session()->get('token');
     try{
@@ -696,7 +695,29 @@ class AdminbookingController extends Controller
     }
 
 
+    public function alladminbooking(Request $request)
+    {
 
+ 
+    // $bookref=$request->bookref;
+ 
+    // $edate=$request->edate;
+
+    $token = session()->get('token');
+    try{
+
+        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/booking');
+
+        $allpresponse = json_decode($call->getBody()->getContents(), true);
+        //  return $allpresponse;
+    }catch (\Exception $e){
+   
+    }
+    $alladminbooking = $allpresponse['data'];
+    return $alladminbooking;
+    
+          
+    }
 
 
 
