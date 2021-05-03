@@ -26,25 +26,78 @@ class AdminbookingController extends Controller
     {
         //
 
-        $token = session()->get('token');
-        try {
+        // $token = session()->get('token');
+        // try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/booking?page=' . $page);
+        //     $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/booking?page=' . $page);
 
-            $response = json_decode($call->getBody()->getContents(), true);
-            //   return $response;
-        } catch (\Exception $e) {
-            //buy a beer
+        //     $response = json_decode($call->getBody()->getContents(), true);
+        //     //   return $response;
+        // } catch (\Exception $e) {
+        //     //buy a beer
 
 
+        // }
+        // $booking = $response['data'];
+        // $pagination = $response['meta']['pagination'];
+
+        // $lastpage = $pagination['total_pages'];
+
+        // // if ($response =='') {
+        // return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
+
+
+
+
+
+
+
+
+
+
+// newly added code on 03.05.2021
+
+$session = session()->get('token');
+        $bookref=$request->bookref;
+        // dd($bookref);
+    //  return $bookref;
+    
+   
+        if($bookref !== null){
+            try{
+    
+                $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/bookingSearch?key='.$bookref);
+        
+                $allpresponse = json_decode($call->getBody()->getContents(), true);
+                //    return $allpresponse;
+            }catch (\Exception $e){
+           
+            }
+            $booking = $allpresponse['data'];
+            $pagination = $allpresponse['meta']['pagination'];
+        
+            $lastpage = $pagination['total_pages'];
+            return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
+        }else{
+            try {
+    
+                $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/booking?page=' . $page);
+    
+                $response = json_decode($call->getBody()->getContents(), true);
+                //   return $response;
+            } catch (\Exception $e) {
+                //buy a beer
+    
+    
+            }
+            $booking = $response['data'];
+          
+    
+            $pagination = $response['meta']['pagination'];
+            $lastpage = $pagination['total_pages'];
+        
+            return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
         }
-        $booking = $response['data'];
-        $pagination = $response['meta']['pagination'];
-
-        $lastpage = $pagination['total_pages'];
-
-        // if ($response =='') {
-        return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
         // }
         // elseif($response !==''){
 
@@ -697,11 +750,11 @@ class AdminbookingController extends Controller
     // dd($bookref);
 //  return $bookref;
 
-    $token = session()->get('token');
+$session = session()->get('token');
     if($bookref !== null){
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/bookingSearch?key='.$bookref);
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/bookingSearch?key='.$bookref);
     
             $allpresponse = json_decode($call->getBody()->getContents(), true);
             //    return $allpresponse;
@@ -716,7 +769,7 @@ class AdminbookingController extends Controller
     }else{
         try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/booking?page=' . $page);
+            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/booking?page=' . $page);
 
             $response = json_decode($call->getBody()->getContents(), true);
             //   return $response;

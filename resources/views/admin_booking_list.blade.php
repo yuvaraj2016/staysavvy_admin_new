@@ -85,7 +85,7 @@
                                @endif 
                                
                     @endif  
-                    <form action="{{ route('allbooking.ajax') }}" class="swa-confirm" method="get" id="addstatus" enctype="multipart/form-data">
+                    <form action="{{ route('adminbookings.index') }}" class="swa-confirm" method="get" id="addstatus" enctype="multipart/form-data">
                                     @csrf
                   <input  type="search" name="bookref" id="bookref">
                   <button id="search" type="submit" class="btn btn-secondary btn-sm"><i class="fa fa-search"></i></button>
