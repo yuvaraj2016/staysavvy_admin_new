@@ -85,11 +85,14 @@
                                @endif 
                                
                     @endif  
-                  <input  type="search" name="" id="bookref">
+                    <form action="{{ route('allbooking.ajax') }}" class="swa-confirm" method="get" id="addstatus" enctype="multipart/form-data">
+                                    @csrf
+                  <input  type="search" name="bookref" id="bookref">
                   <button id="search" type="submit" class="btn btn-secondary btn-sm"><i class="fa fa-search"></i></button>
-                  <button id="refresh" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i></button>
+                  <a href="{{ url('adminbooking_list') }}">  <button id="refresh" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i></button></a>
                   <!-- <button type="button" id="bookrefsub" class="btn btn-primary" >Submit</button> -->
-                            </div>
+                           
+                    </form> </div>
                             <div class="section-header-button col-md-3">
 
                             </div>
@@ -402,6 +405,7 @@
 
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 {{-- <script>
     $(function () {
         $('.job-delete').click(function (event) {
@@ -426,7 +430,7 @@
     });
 
 </script> --}}
-<script>
+<!-- <script>
    $(document).ready(function(){
        $('#search').on("click", function(){
    
@@ -471,6 +475,10 @@
                        });
                        const view = `adminbookings/${item.id}`;
                        const edit = `adminbookings/${item.id}/edit`;
+                       const createdDate =new Date(item.created_at);
+                       console.log(createdDate);
+                       const date = moment(createdDate).format('Y-m-d H:i:s');
+                       console.log(date);
                        $('#tableBody').append(
                        '<tr><td>'+
                        '<div class="d-flex">'+
@@ -590,6 +598,6 @@
    });
    
 
-</script>
+</script> -->
 </section>
 @endsection

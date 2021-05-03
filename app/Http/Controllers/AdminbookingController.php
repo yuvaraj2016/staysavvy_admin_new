@@ -43,8 +43,28 @@ class AdminbookingController extends Controller
 
         $lastpage = $pagination['total_pages'];
 
-
+        // if ($response =='') {
         return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
+        // }
+        // elseif($response !==''){
+
+        //     $bookref=$request->bookref;
+                            
+        //         try{
+            
+        //             $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/bookingSearch?key='.$bookref);
+            
+        //             $allpresponse = json_decode($call->getBody()->getContents(), true);
+        //             //   return $allpresponse;
+        //         }catch (\Exception $e){
+               
+        //         }
+        //         $booking = $allpresponse['data'];
+        //         $pagination = $allpresponse['meta']['pagination'];
+            
+        //         $lastpage = $pagination['total_pages'];
+        //         return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
+        // }
     }
 
     /**
@@ -670,26 +690,74 @@ class AdminbookingController extends Controller
 
 
 
-    public function allbooking(Request $request)
+    public function allbooking(Request $request,$page = 1)
     {
 
- 
     $bookref=$request->bookref;
- 
-
+    // dd($bookref);
+//  return $bookref;
 
     $token = session()->get('token');
-    try{
+    if($bookref !== null){
+        try{
 
-        $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/bookingSearch?key='.$bookref);
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/bookingSearch?key='.$bookref);
+    
+            $allpresponse = json_decode($call->getBody()->getContents(), true);
+            //    return $allpresponse;
+        }catch (\Exception $e){
+       
+        }
+        $booking = $allpresponse['data'];
+        $pagination = $allpresponse['meta']['pagination'];
+    
+        $lastpage = $pagination['total_pages'];
+        return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
+    }else{
+        try {
 
-        $allpresponse = json_decode($call->getBody()->getContents(), true);
-        //  return $allpresponse;
-    }catch (\Exception $e){
-   
+            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/booking?page=' . $page);
+
+            $response = json_decode($call->getBody()->getContents(), true);
+            //   return $response;
+        } catch (\Exception $e) {
+            //buy a beer
+
+
+        }
+        $booking = $response['data'];
+      
+
+        $pagination = $response['meta']['pagination'];
+        $lastpage = $pagination['total_pages'];
+    
+        return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
     }
-    $allbooking = $allpresponse['data'];
-    return $allbooking;
+    // try{
+
+    //     $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/bookingSearch?key='.$bookref);
+
+    //     $allpresponse = json_decode($call->getBody()->getContents(), true);
+    //        return $allpresponse;
+    // }catch (\Exception $e){
+   
+    // }
+    // $booking = $allpresponse['data'];
+    // $pagination = $allpresponse['meta']['pagination'];
+
+    // $lastpage = $pagination['total_pages'];
+
+
+    // return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
+    // if ($allpresponse !=='') {
+
+    //     return view('admin_booking_list', compact('booking', 'pagination', 'lastpage'));
+
+    // }
+    // else{
+    //     return redirect()->route('adminbookings.index') ;
+    // }
+    // return $allbooking;
     
           
     }
