@@ -92,7 +92,8 @@
                   <a href="{{ url('adminbooking_list') }}">  <button id="refresh" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i></button></a>
                   <!-- <button type="button" id="bookrefsub" class="btn btn-primary" >Submit</button> -->
                            
-                    </form> </div>
+                    </form> 
+                    </div>
                             <div class="section-header-button col-md-3">
 
                             </div>
