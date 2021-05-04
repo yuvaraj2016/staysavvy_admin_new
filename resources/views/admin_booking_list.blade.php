@@ -85,8 +85,9 @@
                                @endif 
                                
                     @endif  
-                    <form action="{{ route('adminbookings.index') }}" class="swa-confirm" method="get" id="addstatus" enctype="multipart/form-data">
-                                    @csrf
+                    <form action="{{ route('adminbookings.index') }}" class="swa-confirm" method="get" id="addstatus" enctype="multipart/form-data" style="margin-top:-29px!important;margin-left: 143px !important;">
+                    <!-- {{!! csrf_token()}} -->
+
                   <input  type="search" name="bookref" id="bookref">
                   <button id="search" type="submit" class="btn btn-secondary btn-sm"><i class="fa fa-search"></i></button>
                   <a href="{{ url('adminbooking_list') }}">  <button id="refresh" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-refresh"></i></button></a>
