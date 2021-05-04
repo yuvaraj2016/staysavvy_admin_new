@@ -434,6 +434,24 @@
 </script> --}}
 <!-- <script>
    $(document).ready(function(){
+
+       if(refreshBtnPressed){
+       window.location.replace("http://127.0.0.1:8000/adminbooking_list");
+       refreshBtnPressed = false;
+       }
+       $('#refresh').on("click", function(){
+        refreshBtnPressed = true;
+
+
+       });
+   });
+
+</script> -->
+
+
+
+<!-- <script>
+   $(document).ready(function(){
        $('#search').on("click", function(){
    
    // alert("hii");
