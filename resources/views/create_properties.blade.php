@@ -228,10 +228,10 @@
                                                 <label class="col-form-label text-md-right ">Vendor Name</label>
 
                                                 @if(collect(session('roles'))->contains('Vendor'))
-                                                <input type="text" name="vendor_name" value="{{ session('username') }}" class="summernote-simple form-control" readonly>
-                                                <input type="hidden" name="vendor_id" value="{{ session('user_id') }}" class="summernote-simple form-control" required>
+                                                <input type="text" name="vendor_name" value="{{ session('username') }}" class="summernote-simple form-control hvr-shrink" readonly>
+                                                <input type="hidden" name="vendor_id" value="{{ session('user_id') }}" class="summernote-simple form-control hvr-shrink" required>
                                                 @else
-                                                <select class="js-example-basic-single col-sm-12" name="vendor_id" id="" required class="form-control selectric" required>
+                                                <select class="js-example-basic-single col-sm-12 hvr-shrink" name="vendor_id" id="" required class="form-control selectric" required>
                                                     <option value="" selected disabled>Select</option>
                                                     @foreach($vendors as $vendorss)
                                                     <option value="{{ $vendorss['user_id'] }}" {{ (old("user_id") == $vendorss['id'] ? "selected":"") }}>{{ $vendorss['name'] }}</option>
@@ -241,13 +241,13 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right">Properties Name ( Min Character:5 )</label>
-                                                <input name="name" value="{{ old('name') }}" minlength="5" maxlength="500" class="summernote-simple form-control" required>
+                                                <input name="name" value="{{ old('name') }}" minlength="5" maxlength="500" class="summernote-simple form-control hvr-shrink" required>
 
                                             </div>
 
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right ">Latitude </label>
-                                                <input type="number" name="latitude" step="any" value="{{ old('latitude') }}" class="summernote-simple form-control" required>
+                                                <input type="number" name="latitude" step="any" value="{{ old('latitude') }}" class="summernote-simple form-control hvr-shrink" required>
 
                                             </div>
 
@@ -261,17 +261,17 @@
 
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right ">Longitude </label>
-                                                <input type="number" name="longitude" step="any" value="{{ old('longitude') }}" class="summernote-simple form-control" required>
+                                                <input type="number" name="longitude" step="any" value="{{ old('longitude') }}" class="summernote-simple form-control hvr-shrink" required>
 
                                             </div>
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right ">City/Town </label>
-                                                <input name="city" value="{{ old('city') }}" class="summernote-simple form-control" required>
+                                                <input name="city" value="{{ old('city') }}" class="summernote-simple form-control hvr-shrink" required>
 
                                             </div>
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right ">Postal Code </label>
-                                                <input type="text" name="postalcode" value="{{ old('postalcode') }}" class="summernote-simple form-control" required>
+                                                <input type="text" name="postalcode" value="{{ old('postalcode') }}" class="summernote-simple form-control hvr-shrink" required>
 
                                             </div>
 
@@ -281,7 +281,7 @@
                                         <div class="form-group row ">
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right ">Properties Address ( Min Character:5 )</label>
-                                                <input name="address" value="{{ old('address') }}" minlength="5" maxlength="500" class="summernote-simple form-control" required>
+                                                <input name="address" value="{{ old('address') }}" minlength="5" maxlength="500" class="summernote-simple form-control hvr-shrink" required>
 
                                             </div>
 
@@ -293,7 +293,7 @@
                                             {{-- <input type="text" id="input"/> --}}
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="<b>Professional host</b> <br>Any party who rents out a property or properties for purposes relating to their trade, business, or profession (e.g. this is your main business, you're a property management company, collect VAT, have a business name, etc.)<br><b>Private / Non-professional host</b> <br>Any party who rents out a property or properties for purposes outside their trade, business, or profession. (e.g. this is a side business, you only rent out occasionally, etc.)">Host Type</label>
-                                                <select class="js-example-basic-single col-sm-12" name="host_type_id" id="" required class="form-control selectric" required>
+                                                <select class="js-example-basic-single col-sm-12" name="host_type_id" id="" required class="form-control selectric hvr-shrink" required>
                                                     <option value="" selected disabled>Select</option>
                                                     @foreach($host as $hosts)
                                                     <option value="{{ $hosts['id'] }}" {{ (old("host_type_id") == $hosts['id'] ? "selected":"") }}>{{ $hosts['name'] }}</option>
@@ -305,7 +305,7 @@
                                                 <label class="col-form-label text-md-right ">Property Management System</label>
                                                 {{-- <input name="property_mgmt_system" value="{{ old('property_mgmt_system') }}" class="summernote-simple form-control" required> --}}
 
-                                                <select class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id="" required class="form-control selectric" required>
+                                                <select class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id="" required class="form-control selectric hvr-shrink" required>
                                                     <option value="" selected disabled>Select</option>
                                                     @foreach($pms as $spms)
                                                     <option value="{{ $spms['id'] }}" {{ (old("property_mgmt_system_id") == $spms['id'] ? "selected":"") }}>{{ $spms['name'] }}</option>
@@ -326,7 +326,7 @@
 
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please put 'None' in the above boxes if none are used">Central Reservation System</label>
-                                                <select class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric" required>
+                                                <select class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" required class="form-control selectric hvr-shrink" required>
                                                     <option value="" selected disabled>Select</option>
                                                     @foreach($crs as $scrs)
                                                     <!-- <option value="{{ $scrs['id'] }}" {{ (old("central_res_system_id") == $scrs['id'] ? "selected":"") }}>{{ $scrs['name'] }}</option> -->
@@ -340,7 +340,7 @@
 
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please state which best describes your property">Property Type</label>
-                                                <select class="js-example-basic-single col-sm-12" name="property_type_id" id="" required class="form-control selectric" required>
+                                                <select class="js-example-basic-single col-sm-12" name="property_type_id" id="" required class="form-control selectric hvr-shrink" required>
                                                     <option value="" selected disabled>Select</option>
                                                     @foreach($property_type as $property_types)
                                                     <option value="{{ $property_types['id'] }}" {{ (old("property_type_id") == $property_types['id'] ? "selected":"") }}>{{ $property_types['name'] }}</option>
@@ -350,7 +350,7 @@
 
                                             <div class="col-sm-4">
                                                 <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property... maybe a bit of history, your values, attractions nearby etc"> General Desc ( Min Character:5 )</label>
-                                                <textarea name="general_description" value="{{ old('general_description') }}" minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
+                                                <textarea name="general_description" value="{{ old('general_description') }}" minlength="5" maxlength="800" class="summernote-simple form-control hvr-shrink" required></textarea>
 
                                             </div>
 
@@ -362,7 +362,7 @@
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Starting price </label>
-                                            <span class="ss"> <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control let" required></span>
+                                            <span class="ss"> <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control let hvr-shrink" required></span>
 
                                         </div>
 
@@ -378,7 +378,7 @@
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please state details of any taxes or charges that are included in your room rate">Taxes</label>
-                                    <select class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric" required>
+                                    <select class="js-example-basic-single col-sm-12" name="taxes[]" id="" multiple required class="form-control selectric hvr-shrink" required>
                                         <option value="" disabled>Select</option>
                                         @foreach($tax as $taxs)
                                         <option value="{{ $taxs['id'] }}" {{ (( $taxs['name'] === 'Gst') ? "selected" : "")}}>{{ $taxs['name'] }}</option>
@@ -388,7 +388,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Please list as many amenities as you would like to show  - for example, coffee making facilities, wifi etc">Amenity</label>
-                                    <select class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple required class="form-control selectric">
+                                    <select class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple required class="form-control selectric hvr-shrink">
                                         <option value="" disabled>Select</option>
                                         @foreach($amenity as $amenitys)
                                         <option value="{{ $amenitys['id'] }}" {{ (old("id") == $amenitys['id'] ? "selected":"") }}>{{ $amenitys['name'] }}</option>
@@ -398,7 +398,7 @@
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true">Cool Things To Do</label>
-                                    <select class="js-example-basic-single col-sm-12" name="coolthings[]" id="" multiple required class="form-control selectric">
+                                    <select class="js-example-basic-single col-sm-12" name="coolthings[]" id="" multiple required class="form-control selectric hvr-shrink">
                                         <option value="" disabled>Select</option>
                                         @foreach($Coolthing as $Coolthings)
                                         <option value="{{ $Coolthings['id'] }}" {{ (old("id") == $Coolthings['id'] ? "selected":"") }}>{{ $Coolthings['name'] }}</option>
@@ -409,7 +409,7 @@
                                 <div class="col-sm-12 text-center">
 
                                     <label class="col-form-label text-md-right ">General Photos</label>
-                                    <input data-jfiler-maxSize="2" type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required onchange="imageFileValidation()">
+                                    <input data-jfiler-maxSize="2" type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control hvr-shrink" required onchange="imageFileValidation()">
 
                                 </div>
 
