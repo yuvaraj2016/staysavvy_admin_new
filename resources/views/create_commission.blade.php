@@ -112,7 +112,7 @@
                             <div class="form-group row ">
                             <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Property</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="property_id" id="" multiple required class="form-control selectric" required>
+                                                        <select  class="js-example-basic-single col-sm-12 " name="property_id" id="" multiple required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($property as $propertys)
                                             <option value="{{ $propertys['id'] }}" {{ (old("id") == $propertys['id'] ? "selected":"") }}>{{ $propertys['name'] }}</option>
@@ -122,13 +122,13 @@
                             <div class="col-sm-4">
                                 <label class="col-form-label text-md-right c">From</label>
                                 
-                                    <input type="number" step="any" name="from" value="{{ old('from') }}" class="summernote-simple form-control" required>
+                                    <input type="number" step="any" name="from" value="{{ old('from') }}" class="summernote-simple form-control hvr-shrink" required>
                                
                             </div>
                             <div class="col-sm-4">
                                 <label class="col-form-label text-md-right c">To</label>
                                 
-                                    <input type="number" step="any" name="to"  value="{{ old('to') }}" class="summernote-simple form-control" required>
+                                    <input type="number" step="any" name="to"  value="{{ old('to') }}" class="summernote-simple form-control hvr-shrink" required>
                                
                             </div>
                             </div>
@@ -138,14 +138,14 @@
                             <div class="col-sm-4">
                                 <label class="col-form-label text-md-right c">Percentage</label>
                                 
-                                    <input type="number" step="any" name="percentage" value="{{ old('percentage') }}" class="summernote-simple form-control" required>
+                                    <input type="number" step="any" name="percentage" value="{{ old('percentage') }}" class="summernote-simple form-control hvr-shrink" required>
                                
                             </div>
 
 
                             <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Status</label>
-                                                        <select  class="js-example-basic-single col-sm-12" name="status_id" id="" multiple  class="form-control selectric" required>
+                                                        <select  class="js-example-basic-single col-sm-12" name="status_id" id="" multiple  class="form-control selectric " required>
                                         <option value="">Select</option>
                                         @foreach($statuses as $statusess)
                                             <option value="{{ $statusess['id'] }}" {{ (old("id") == $statusess['id'] ? "selected":"") }}>{{ $statusess['status_desc'] }}</option>

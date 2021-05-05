@@ -112,13 +112,13 @@
                             <div class="form-group row ">
                             <div class="col-sm-4 offset-1">
                                                         <label class="col-form-label text-md-right ">Booking Status Title</label>
-                                                        <input name="title" value="{{ old('title') }}" class="summernote-simple form-control" required>
+                                                        <input name="title" value="{{ old('title') }}" class="summernote-simple form-control hvr-shrink" required>
                
                                                         </div>
                             <div class="col-sm-4 offset-1">
                                 <label class="col-form-label text-md-right c">Booking Status Desc</label>
                                 
-                                    <textarea name="description" class="summernote-simple form-control" required>{{ old('description') }}</textarea>
+                                    <textarea name="description" class="summernote-simple form-control hvr-shrink" required>{{ old('description') }}</textarea>
                                
                             </div>
                             </div>
