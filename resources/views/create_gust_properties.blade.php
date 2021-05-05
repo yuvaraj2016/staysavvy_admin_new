@@ -141,19 +141,19 @@
                                     <div class="form-group row ">
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Request Id</label>
-                                            <input name="requestor_id" value="1" class="summernote-simple form-control" required>
+                                            <input name="requestor_id" value="1" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Type</label>
-                                            <input name="type" value="2" class="summernote-simple form-control" required>
+                                            <input name="type" value="2" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Password</label>
-                                            <input type="password" name="password" value="Staysavvy@12" class="summernote-simple form-control" required>
+                                            <input type="password" name="password" value="Staysavvy@12" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
                                     </div>
@@ -161,20 +161,20 @@
                                     <div class="form-group row ">
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Name</label>
-                                            <input name="name" value="Staysavvy" class="summernote-simple form-control" required>
+                                            <input name="name" value="Staysavvy" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Bc Primary</label>
-                                            <input name="bc_primary" value="1" class="summernote-simple form-control" required>
+                                            <input name="bc_primary" value="1" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Bc Type</label>
-                                            <input name="bc_type" value="2" class="summernote-simple form-control" required>
+                                            <input name="bc_type" value="2" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
                                     </div>
@@ -183,21 +183,21 @@
                                     <div class="form-group row ">
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Company Code</label>
-                                            <input name="company_code" value="250500" class="summernote-simple form-control" required>
+                                            <input name="company_code" value="250500" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Company Name</label>
-                                            <input name="company_name" value="Staysavvy" class="summernote-simple form-control" required>
+                                            <input name="company_name" value="Staysavvy" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Hotel Code</label>
-                                            <input name="hotel_code" value="57816" class="summernote-simple form-control" required>
+                                            <input name="hotel_code" value="57816" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
@@ -212,7 +212,7 @@
                                     <div class="form-group row ">
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Hotel Name</label>
-                                            <input name="hotel_name" value="{{ old('hotel_name') }}" class="summernote-simple form-control" required>
+                                            <input name="hotel_name" value="{{ old('hotel_name') }}" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
@@ -221,8 +221,8 @@
                                             <label class="col-form-label text-md-right ">Vendor Name</label>
 
                                             @if(collect(session('roles'))->contains('Vendor'))
-                                            <input type="text" name="vendor_name" value="{{ session('username') }}" class="summernote-simple form-control" readonly>
-                                            <input type="hidden" name="vendor_id" value="{{ session('user_id') }}" class="summernote-simple form-control" required>
+                                            <input type="text" name="vendor_name" value="{{ session('username') }}" class="summernote-simple form-control hvr-shrink" readonly>
+                                            <input type="hidden" name="vendor_id" value="{{ session('user_id') }}" class="summernote-simple form-control hvr-shrink" required>
                                             @else
                                             <select class="js-example-basic-single col-sm-12" name="vendor_id" id="" required class="form-control selectric" required>
                                                 <option value="" selected disabled>Select</option>
@@ -273,19 +273,19 @@
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property... maybe a bit of history, your values, attractions nearby etc"> General Desc ( Min Character:5 )</label>
-                                            <textarea name="general_description" value="{{ old('general_description') }}" minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
+                                            <textarea name="general_description" value="{{ old('general_description') }}" minlength="5" maxlength="800" class="summernote-simple form-control hvr-shrink" required></textarea>
 
                                         </div>
 
                                         {{-- <div class="col-sm-4">
                                                                     <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property's offer"> What We Offer ( Min Character:5 )</label>
-                                                                    <textarea name="what_we_offer" value="{{ old('what_we_offer') }}" minlength="5" maxlength="800" class="summernote-simple form-control" required></textarea>
+                                                                    <textarea name="what_we_offer" value="{{ old('what_we_offer') }}" minlength="5" maxlength="800" class="summernote-simple form-control hvr-shrink" required></textarea>
 
                                     </div> --}}
 
                                     <div class="col-sm-4">
                                         <label class="col-form-label text-md-right ">Room Start Price </label>
-                                        <span class="ss"> <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control let" required></span>
+                                        <span class="ss"> <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price') }}" class="summernote-simple form-control let hvr-shrink" required></span>
 
                                     </div>
 
@@ -332,7 +332,7 @@
                             <div class="col-sm-12 text-center">
 
                                 <label class="col-form-label text-md-right ">General Photos</label>
-                                <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control" required>
+                                <input type="file" name="file[]" id="filer_input" multiple="multiple" class="form-control hvr-shrink" required>
 
                             </div>
 
@@ -365,7 +365,7 @@
 
                             <div class="col-sm-4">
                                             <label class="col-form-label text-md-right ">Primary Language</label>
-                                            <input name="primary_lang_id" value="en" class="summernote-simple form-control" required>
+                                            <input name="primary_lang_id" value="en" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
@@ -373,7 +373,7 @@
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Summery</label>
-                                            <input name="summary_only" value="False" class="summernote-simple form-control" required>
+                                            <input name="summary_only" value="False" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
@@ -381,7 +381,7 @@
 
                                         <div class="col-sm-4">
                                             <label class="col-form-label text-md-right "> Currency</label>
-                                            <input name="requested_currency" value="USD" class="summernote-simple form-control" required>
+                                            <input name="requested_currency" value="USD" class="summernote-simple form-control hvr-shrink" required>
 
                                         </div>
 
