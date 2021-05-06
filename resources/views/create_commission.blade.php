@@ -49,10 +49,12 @@
   }
 
   .effect-19 {
-    border: 1px solid #ccc !important;
+    border: 1px solid #aaa !important;
     padding: 7px 14px;
     transition: 0.4s;
     background: transparent;
+    height:42px;
+
   }
 
   .effect-19~.focus-border:before,
@@ -63,7 +65,7 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background-color: #3399FF !important;
+    background-color: black !important;
     transition: 0.4s;
   }
 
@@ -80,7 +82,7 @@
     left: 0;
     width: 2px;
     height: 0;
-    background-color: #3399FF !important;
+    background-color: black !important;
     transition: 0.6s;
   }
 
