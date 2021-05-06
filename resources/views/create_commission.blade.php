@@ -1,6 +1,134 @@
 @extends('layouts.app')
 @section('content')
+<style>
 
+
+ 
+
+  h2 {
+    text-align: center;
+    color: #2079df;
+    font-size: 28px;
+    float: left;
+    width: 100%;
+    margin: 30px 0;
+    position: relative;
+    line-height: 58px;
+    font-weight: 400;
+  }
+
+  h2:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100px;
+    height: 2px;
+    background-color: #2079df;
+    margin-left: -50px;
+  }
+
+  /*= Reset CSS End
+================= */
+
+  /*= input focus effects css
+=========================== */
+  .col-sm-4 .input-effect {
+    padding: 0px!important;
+    width: 100%!important;
+    position: relative!important;
+  }
+
+  /* necessary to give position: relative to parent. */
+  input[type="text"] {
+    font: 15px/24px "Lato", Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+  }
+
+  .effect-19 {
+    border: 1px solid #ccc !important;
+    padding: 7px 14px;
+    transition: 0.4s;
+    background: transparent;
+  }
+
+  .effect-19~.focus-border:before,
+  .effect-19~.focus-border:after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #3399FF !important;
+    transition: 0.4s;
+  }
+
+  .effect-19~.focus-border:after {
+    top: auto;
+    bottom: 0;
+  }
+
+  .effect-19~.focus-border i:before,
+  .effect-19~.focus-border i:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background-color: #3399FF !important;
+    transition: 0.6s;
+  }
+
+  .effect-19~.focus-border i:after {
+    left: auto;
+    right: 0;
+  }
+
+  .effect-19:focus~.focus-border:before,
+  .effect-19:focus~.focus-border:after,
+  .has-content.effect-19~.focus-border:before,
+  .has-content.effect-19~.focus-border:after {
+    left: 0;
+    width: 100%;
+    transition: 0.4s;
+  }
+
+  .effect-19:focus~.focus-border i:before,
+  .effect-19:focus~.focus-border i:after,
+  .has-content.effect-19~.focus-border i:before,
+  .has-content.effect-19~.focus-border i:after {
+    top: -1px;
+    height: 100%;
+    transition: 0.6s;
+  }
+
+  .effect-19~label {
+    position: absolute;
+    left: 14px;
+    width: 100%;
+    top: 10px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+
+  .effect-19:focus~label,
+  .has-content.effect-19~label {
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    color: #3399FF;
+    transition: 0.3s;
+  }
+  /*= input focus effects css End
+=============================== */
+</style>
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
 <div class="page-wrapper">
 
@@ -121,15 +249,21 @@
                                                         </div>
                             <div class="col-sm-4">
                                 <label class="col-form-label text-md-right c">From</label>
-                                
-                                    <input type="number" step="any" name="from" value="{{ old('from') }}" class="summernote-simple form-control hvr-shrink" required>
-                               
+                                <div class="input-effect">
+                                    <input type="number" step="any" name="from" value="{{ old('from') }}" class="effect-19 summernote-simple form-control" required>
+                                    <span class="focus-border">
+            <i></i>
+          </span>
+                            </div>
                             </div>
                             <div class="col-sm-4">
                                 <label class="col-form-label text-md-right c">To</label>
-                                
-                                    <input type="number" step="any" name="to"  value="{{ old('to') }}" class="summernote-simple form-control hvr-shrink" required>
-                               
+                                <div class="input-effect">
+                                    <input type="number" step="any" name="to"  value="{{ old('to') }}" class="effect-19 summernote-simple form-control" required>
+                                    <span class="focus-border">
+            <i></i>
+          </span>
+                                </div>
                             </div>
                             </div>
 
@@ -137,11 +271,13 @@
 
                             <div class="col-sm-4">
                                 <label class="col-form-label text-md-right c">Percentage</label>
-                                
-                                    <input type="number" step="any" name="percentage" value="{{ old('percentage') }}" class="summernote-simple form-control hvr-shrink" required>
-                               
+                                <div class="input-effect">
+                                    <input type="number" step="any" name="percentage" value="{{ old('percentage') }}" class="effect-19 summernote-simple form-control " required>
+                                    <span class="focus-border">
+            <i></i>
+          </span>
                             </div>
-
+                            </div>
 
                             <div class="col-sm-4">
                                                         <label class="col-form-label text-md-right ">Status</label>
