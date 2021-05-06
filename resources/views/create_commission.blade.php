@@ -54,6 +54,8 @@
     transition: 0.4s;
     background: transparent;
     height:42px;
+    /* border-radius: 4px!important; */
+    border-radius: 4px 4px 4px 4px!important;
 
   }
 
@@ -61,11 +63,11 @@
   .effect-19~.focus-border:after {
     content: "";
     position: absolute;
-    top: -1px;
+    top: 0px;
     left: 50%;
     width: 0;
-    height: 2px;
-    background-color: black !important;
+    height: 1px;
+    background-color: #01a9ac !important;
     transition: 0.4s;
   }
 
@@ -80,9 +82,9 @@
     position: absolute;
     top: 50%;
     left: 0;
-    width: 2px;
+    width: 1px;
     height: 0;
-    background-color: black !important;
+    background-color: #01a9ac !important;
     transition: 0.6s;
   }
 
