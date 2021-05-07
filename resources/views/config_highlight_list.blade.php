@@ -175,7 +175,7 @@
                                     <td>
                                             {{ $Highlights['name'] }}
                                         </td>
-                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($Highlights['Assets']['data'][0]['links']) ? $Highlights['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
+                                        <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($Highlights['Assets']['data'][0]['links']) ? $Highlights['Assets']['data'][0]['links']['full'].'?width=100&height=100' : asset('img/no-image.gif')  }}"/></td>
                                      
 
 
