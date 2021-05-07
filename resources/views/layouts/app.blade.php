@@ -15,6 +15,15 @@
     <![endif]-->
     <!-- Meta -->
     <style>
+        th,tr,td{
+            text-align: center!important;
+            margin-left: auto!important;
+margin-right: auto!important;
+        }
+        .table td, .table th .ml-1{
+            vertical-align: inherit!important;
+        }
+     
         /* start newmenu css written below on 03.02.2021 */
 /* user down arrow removed */
 .dropdown-toggle::after {
