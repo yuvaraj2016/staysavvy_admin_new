@@ -1,5 +1,12 @@
 @extends('layouts.app')
 @section('content')
+
+<style>
+.select2-container .select2-selection--single .select2-selection__rendered {
+  display: initial!important;
+
+}
+</style>
 <script type="text/javascript">
     jQuery(document).on("click", ".submit", function(e) {
 
@@ -177,7 +184,7 @@
 
 
 <div class="form-group row mb-4 offset-3 col-md-6">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Property</label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3 offset-1">Property</label>
                                 <div class="col-sm-12 col-md-7">
                                     <select name="property_id" id="" placeholder="Status" required class="form-control js-example-basic-single selectric"  required>
                                         <option value="">Select</option>
