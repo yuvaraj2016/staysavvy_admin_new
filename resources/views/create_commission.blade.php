@@ -5,7 +5,7 @@
 
  
 
-  h2 {
+  /* h2 {
     text-align: center;
     color: #2079df;
     font-size: 28px;
@@ -33,14 +33,14 @@
 
   /*= input focus effects css
 =========================== */
-  .col-sm-4 .input-effect {
+  /* .col-sm-4 .input-effect {
     padding: 0px!important;
     width: 100%!important;
     position: relative!important;
-  }
+  } */
 
   /* necessary to give position: relative to parent. */
-  input[type="text"] {
+  /* input[type="text"] {
     font: 15px/24px "Lato", Arial, sans-serif;
     color: #333;
     width: 100%;
@@ -54,7 +54,7 @@
     transition: 0.4s;
     background: transparent;
     height:42px;
-    /* border-radius: 4px!important; */
+  
     border-radius: 4px 4px 4px 4px!important;
 
   }
@@ -129,7 +129,55 @@
     font-size: 12px;
     color: #3399FF;
     transition: 0.3s;
-  }
+  }  */
+
+  .ss {
+        display: block;
+        position: relative;
+    }
+
+    .let {
+        border: 2px solid #c9c9c9;
+        box-shadow: none;
+        /* font-family: "Roboto Regular", sans-serif; */
+        font-size: 20px;
+        height: 42px;
+        padding-left: 20px;
+    }
+
+    .ss::before {
+        content: "£";
+        font-family: "Roboto Regular", sans-serif;
+        font-size: 1.5em;
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+        display: initial !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        height: 36px !important;
+        border: 1px solid #1B476B !important
+    }
+
+    .select2-container--default .select2-selection--multiple {
+        border: 1px solid #1B476B !important
+    }
+    .select2-container .select2-selection--multiple{
+        height: 42px !important;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        margin-top:-1px!important;
+
+    }
+    .select2-container .select2-selection--multiple {
+        height: 37px !important;
+    }
   /*= input focus effects css End
 =============================== */
 </style>

@@ -1,6 +1,55 @@
 @extends('layouts.app')
 @section('content')
+<style>
 
+.ss {
+        display: block;
+        position: relative;
+    }
+
+    .let {
+        border: 2px solid #c9c9c9;
+        box-shadow: none;
+        /* font-family: "Roboto Regular", sans-serif; */
+        font-size: 20px;
+        height: 42px;
+        padding-left: 20px;
+    }
+
+    .ss::before {
+        content: "£";
+        font-family: "Roboto Regular", sans-serif;
+        font-size: 1.5em;
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+        display: initial !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        height: 36px !important;
+        border: 1px solid #1B476B !important
+    }
+
+    .select2-container--default .select2-selection--multiple {
+        border: 1px solid #1B476B !important
+    }
+    .select2-container .select2-selection--multiple{
+        height: 42px !important;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        margin-top:-1px!important;
+
+    }
+    .select2-container .select2-selection--multiple {
+        height: 37px !important;
+    }
+</style>
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
 <div class="page-wrapper">
 
