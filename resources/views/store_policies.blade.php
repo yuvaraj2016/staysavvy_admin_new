@@ -10,6 +10,9 @@
     border: 1px solid #01a9ac!important;
   
 }
+button, input, optgroup, select, textarea {
+    border: 1px solid #01a9ac!important;
+}
 </style>
 <script type="text/javascript">
     jQuery(document).on("click", ".submit", function(e) {
