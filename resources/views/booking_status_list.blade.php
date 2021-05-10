@@ -30,6 +30,16 @@
     display: none!important;
 
 }
+.table-bordered {
+    border: 2px solid gray !important;
+}
+.table > thead > tr > th {
+    border-bottom-color: darkgray!important;
+}
+.table-bordered td, .table-bordered th {
+    border: 1px solid gray!important;
+       
+}
 </style>
 <div class="page-wrapper">
 
