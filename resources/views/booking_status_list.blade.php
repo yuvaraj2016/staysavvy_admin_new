@@ -30,7 +30,7 @@
     display: none!important;
 
 }
-.table-bordered {
+/* .table-bordered {
     border: 2px solid gray !important;
 }
 .table > thead > tr > th {
@@ -42,7 +42,7 @@
 }
 .table-bordered thead td, .table-bordered thead th {
     border-bottom-width: 4px!important;
-}
+} */
 </style>
 <div class="page-wrapper">
 

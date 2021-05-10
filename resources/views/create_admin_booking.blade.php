@@ -34,11 +34,11 @@
 
     .select2-container--default .select2-selection--single {
         height: 36px !important;
-        border: 1px solid #1B476B !important
+        border: 1px solid #01a9ac !important
     }
 
     .select2-container--default .select2-selection--multiple {
-        border: 1px solid #1B476B !important
+        border: 1px solid #01a9ac !important
     }
     .select2-container .select2-selection--multiple{
         height: 42px !important;
@@ -50,6 +50,15 @@
     .select2-container .select2-selection--multiple {
         height: 37px !important;
     }
+    .form-control {
+    border: 1px solid #01a9ac !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 33px!important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    line-height: 14px!important;
+}
 
 </style>
 
