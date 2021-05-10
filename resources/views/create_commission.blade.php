@@ -299,27 +299,6 @@
                                         @endforeach
                                     </select>
                                                         </div>
-                            <div class="col-sm-4">
-                                <label class="col-form-label text-md-right c">From</label>
-                                <div class="input-effect">
-                                    <input type="number" step="any" name="from" value="{{ old('from') }}" class="effect-19 summernote-simple form-control" required>
-                                    <span class="focus-border">
-            <i></i>
-          </span>
-                            </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="col-form-label text-md-right c">To</label>
-                                <div class="input-effect">
-                                    <input type="number" step="any" name="to"  value="{{ old('to') }}" class="effect-19 summernote-simple form-control" required>
-                                    <span class="focus-border">
-            <i></i>
-          </span>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="form-group row ">
 
                             <div class="col-sm-4">
                                 <label class="col-form-label text-md-right c">Percentage</label>
@@ -340,6 +319,28 @@
                                         @endforeach
                                     </select>
                                                         </div>
+                            <!-- <div class="col-sm-4">
+                                <label class="col-form-label text-md-right c">From</label>
+                                <div class="input-effect">
+                                    <input type="number" step="any" name="from" value="{{ old('from') }}" class="effect-19 summernote-simple form-control" required>
+                                    <span class="focus-border">
+            <i></i>
+          </span>
+                            </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="col-form-label text-md-right c">To</label>
+                                <div class="input-effect">
+                                    <input type="number" step="any" name="to"  value="{{ old('to') }}" class="effect-19 summernote-simple form-control" required>
+                                    <span class="focus-border">
+            <i></i>
+          </span>
+                                </div>
+                            </div> -->
+                            </div>
+
+                            <div class="form-group row ">
+
 
 
 

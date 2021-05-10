@@ -80,7 +80,8 @@
                                                         <label class="col-form-label text-md-right ">Property Name</label>
                                                         <input type="text"  value="   {{ $confCommission['property_name'] }}" class="form-control" readonly>
                                                         </div>
-                                                        <div class="col-sm-4 ">
+
+                                                        {{--<div class="col-sm-4 ">
                                                         <label class="col-form-label text-md-right ">From</label>
                                                         <input type="text"  value="   {{ $confCommission['from'] }}" class="form-control" readonly>
                                                         </div>
@@ -88,6 +89,14 @@
 <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">To</label>
                             <input type="text"  value="   {{ $confCommission['to'] }}" class="form-control" readonly>
+                            </div>--}}
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">Percentage</label>
+                            <input type="text"  value="   {{ $confCommission['percentage'] }}" class="form-control" readonly>
+                            </div>
+                            <div class="col-sm-4 ">
+                            <label class="col-form-label text-md-right ">status Desc</label>
+                            <input type="text"  value="   {{ $confCommission['status_desc'] }}" class="form-control" readonly>
                             </div>
                                          
                                                     </div>
@@ -96,14 +105,7 @@
 
                                                     <div class="form-group row">
 
-<div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">Percentage</label>
-                            <input type="text"  value="   {{ $confCommission['percentage'] }}" class="form-control" readonly>
-                            </div>
-                            <div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">status Desc</label>
-                            <input type="text"  value="   {{ $confCommission['status_desc'] }}" class="form-control" readonly>
-                            </div>
+
                             <div class="col-sm-4 ">
                             <label class="col-form-label text-md-right ">Created At </label>
                             <input type="text"  value="    {{ date("Y-m-d H:i:s",$confCommission['created_at']) }}" class="form-control" readonly>

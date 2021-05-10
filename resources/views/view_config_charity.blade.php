@@ -75,8 +75,8 @@
                                                     
                                                         
                                                         <div class="col-sm-4 ">
-                            <label class="col-form-label text-md-right ">Eco Area Desc</label>
-                            <input type="text"  value="   {{ $charity['eco_area'] }}" class="form-control" readonly>
+                            <label class="col-form-label text-md-right ">Eco Charity Grop Name</label>
+                            <input type="text"  value="   {{ $charity['charity_group_name'] }}" class="form-control" readonly>
                             </div>
                            
                             <div class="col-sm-4 ">
