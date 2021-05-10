@@ -40,6 +40,9 @@
     border: 1px solid gray!important;
        
 }
+.table-bordered thead td, .table-bordered thead th {
+    border-bottom-width: 4px!important;
+}
 </style>
 <div class="page-wrapper">
 
