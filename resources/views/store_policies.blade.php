@@ -6,6 +6,10 @@
   display: initial!important;
 
 }
+.select2-container--default .select2-selection--single {
+    border: 1px solid #01a9ac!important;
+  
+}
 </style>
 <script type="text/javascript">
     jQuery(document).on("click", ".submit", function(e) {
