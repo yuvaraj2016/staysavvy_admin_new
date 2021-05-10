@@ -137,7 +137,7 @@
     }
 
     .let {
-        border: 2px solid #c9c9c9;
+        border: 2px solid #01a9ac;
         box-shadow: none;
         /* font-family: "Roboto Regular", sans-serif; */
         font-size: 20px;
@@ -162,11 +162,11 @@
 
     .select2-container--default .select2-selection--single {
         height: 36px !important;
-        border: 1px solid #1B476B !important
+        border: 1px solid #01a9ac !important
     }
 
     .select2-container--default .select2-selection--multiple {
-        border: 1px solid #1B476B !important
+        border: 1px solid #01a9ac !important
     }
     .select2-container .select2-selection--multiple{
         height: 42px !important;
@@ -178,6 +178,9 @@
     .select2-container .select2-selection--multiple {
         height: 37px !important;
     }
+    .form-control {
+    border: 1px solid #01a9ac !important;
+
   /*= input focus effects css End
 =============================== */
 </style>
