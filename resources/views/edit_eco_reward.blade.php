@@ -218,6 +218,7 @@
                         <table id="basic-btn" class="table table-striped table-bordered nowrap">
                             <thead>
                                 <tr>
+                                <th>Reward Image</th>
                                     <th>Name</th>
                                     <th>Date</th>
                                     <th>Vendor Reward</th>
@@ -239,6 +240,7 @@
                                 @endphp
 
                                 <tr>
+                                <td><img style="display: block;margin-left: auto;margin-right: auto;" src="{{ isset($userrewards['Assets']['data'][0]['links']) ? $userrewards['Assets']['data'][0]['links']['full'].'?width=100&height=75' : asset('img/no-image.gif')  }}"/></td>
                                     <td>
                                         {{ $userrewards['user_name'] }}
                                     </td>
