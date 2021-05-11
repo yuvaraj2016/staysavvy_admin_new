@@ -751,7 +751,7 @@ margin-top: 0px !important;
                                     <div class="col-sm-4 mt-3 ml-5 d-flex text-right" style="margin-left: 82px!important;">
                                         <!-- <p class="" style="font-weight: bold!important;margin-left:44px"><b>TEWIN BERY FORM HOTEL</b></p><br>
                                         <p class="" style="font-weight: bold!important;margin-left:44px;margin-top:-31px"><b>Stay Savvy Account</b></p> -->
-                                     <p  style="margin-right: -29px!important;margin-top:2px!important">   {{ ucfirst(session('username')) }}</p>
+                                     <p  style="margin-right: -29px!important;margin-top:2px!important;width: 185px!important;">   {{ ucfirst(session('username')) }}</p>
                                       
                                       
                                         <li class="nav-item dropdown" style="list-style: none;">
