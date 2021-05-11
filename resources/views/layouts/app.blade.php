@@ -15,6 +15,11 @@
     <![endif]-->
     <!-- Meta -->
     <style>
+    .fa-user-circle-o::before {
+    /* content: "\f2be"; */
+    margin-right: -33px!important;
+    margin-left: 41px!important;
+}
         th,tr,td{
             text-align: center!important;
             margin-left: auto!important;
@@ -688,28 +693,19 @@ margin-top: 0px !important;
                                         </a> -->
 
                                     </div>
-                                    <div class="col-sm-3 mt-3 ml-2 text-center">
+                                    <div class="col-sm-3 mt-2 ml-2 text-center">
                                         <!-- <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
                                         <a class="" href="#"><b>Stay Savvy Account</b></a> -->
 
-
+                                        {{ ucfirst(session('username')) }}
                                     </div>
                                     <div class="col-sm-1 d-flex mt-3">
-                                        <a class="d-inline" href="{{url('help')}}">
-                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
-
-                                        </a>
-
-                                        <!-- <a class="d-inline ml-2" href="#">
-                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
-                                          
-                                        </a> -->
-                                        <li class="nav-item dropdown" style="list-style: none;">
+                                    <li class="nav-item dropdown" style="list-style: none;">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
+                                                <i class="fa fa-user-circle-o" style="margin-right:-35px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
 
                                                 </i>
-                                                       {{ ucfirst(session('username')) }}
+                                                       <!-- {{ ucfirst(session('username')) }} -->
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
@@ -721,6 +717,16 @@ margin-top: 0px !important;
 
                                             </div>
                                         </li>
+                                        <a class="d-inline" href="{{url('help')}}">
+                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
+
+                                        </a>
+
+                                        <!-- <a class="d-inline ml-2" href="#">
+                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
+                                          
+                                        </a> -->
+                                     
                                         <!-- <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a> -->
                                     </div>
                                 </div>
@@ -742,25 +748,41 @@ margin-top: 0px !important;
                                         </a> -->
 
                                     </div>
-                                    <div class="col-sm-3 mt-2 ml-2 text-center">
+                                    <div class="col-sm-4 mt-3 ml-5 d-flex text-right" style="margin-left: 82px!important;">
                                         <!-- <p class="" style="font-weight: bold!important;margin-left:44px"><b>TEWIN BERY FORM HOTEL</b></p><br>
                                         <p class="" style="font-weight: bold!important;margin-left:44px;margin-top:-31px"><b>Stay Savvy Account</b></p> -->
+                                     <p  style="margin-right: -29px!important;margin-top:2px!important">   {{ ucfirst(session('username')) }}</p>
+                                      
+                                      
+                                        <li class="nav-item dropdown" style="list-style: none;">
+                                            <a class="nav-link dropdown-toggle mb-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: -35px;">
+                                                <i class="fa fa-user-circle-o" style="margin-left:15px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
+
+                                                </i>
+                                                <!-- {{ ucfirst(session('username')) }} -->
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                                <a class="dropdown-item {{ (request()->is('show_profiles')) ? 'active' : '' }}" href="{{ route('profile.index') }}">My Profile</a>
+
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item {{ (request()->is('logout')) ? 'active' : '' }}" href="{{ route('logout') }}">Logout</a>
 
 
-                                    </div>
-                                    <div class="col-sm-1 d-flex mt-3">
-                                    <a class="d-inline" href="{{url('help')}}">
-                                            <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
+                                            </div>
+                                        </li>
+                                      
+                                      
+                                      
+                                        <a class="d-inline" href="{{url('help')}}" style="margin-left: -14px!important;">
+                                            <i class="fa fa-question-circle mb-4" style="margin-left:5px!important;font-size:40px!important;"></i>
 
                                         </a>
-
-                                        <!-- <a class="d-inline ml-2" href="#">
-                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
-                                          
-                                        </a> -->
-                                        <li class="nav-item dropdown" style="list-style: none;">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 15px;">
-                                                <i class="fa fa-user-circle-o" style="margin-left:-5px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
+                                    </div>
+                                    <!-- <div class="col-sm-1 d-flex mt-3">
+                                    <li class="nav-item dropdown" style="list-style: none;">
+                                            <a class="nav-link dropdown-toggle mb-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: -35px;">
+                                                <i class="fa fa-user-circle-o" style="margin-left:15px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
 
                                                 </i>
                                                 {{ ucfirst(session('username')) }}
@@ -775,8 +797,18 @@ margin-top: 0px !important;
 
                                             </div>
                                         </li>
-                                        <!-- <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a> -->
-                                    </div>
+                                    <a class="d-inline" href="{{url('help')}}" style="margin-left: -14px!important;">
+                                            <i class="fa fa-question-circle mb-4" style="margin-left:5px!important;font-size:40px!important;"></i>
+
+                                        </a>
+
+                                        <a class="d-inline ml-2" href="#">
+                                            <i class="fa fa-user-circle-o" style="margin-left:5px!important;font-size:35px!important;margin-top:2px!important;"></i>
+                                          
+                                        </a>
+                                  
+                                        <a class="" href="#"><img style="border-radius:20px!important;width:130px;height:80px;" class="p-2" src="{{  asset('files/assets/images/HeckField1.jpg') }}"/></a>
+                                    </div> -->
                                 </div>
 
 
