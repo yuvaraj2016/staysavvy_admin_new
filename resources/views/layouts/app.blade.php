@@ -680,8 +680,8 @@ margin-top: 0px !important;
 
 
                                 <div class="row">
-                                    <div class="col-sm-6"></div>
-                                    <div class="col-sm-1 ">
+                                    <div class="col-sm-7"></div>
+                                    <div class="col-sm-0 ">
                                         <!-- <a class="d-inline" href="#">
                                             <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
                                           
@@ -737,8 +737,8 @@ margin-top: 0px !important;
 
 
                                 <div class="row">
-                                    <div class="col-sm-6"></div>
-                                    <div class="col-sm-1 ">
+                                    <div class="col-sm-7"></div>
+                                    <div class="col-sm-0">
                                         <!-- <a class="d-inline" href="#">
                                             <i class="fa fa-question-circle" style="margin-left:5px!important;font-size:40px!important;"></i>
                                           
@@ -753,7 +753,7 @@ margin-top: 0px !important;
                                     <div class="col-sm-4 mt-3 ml-5 d-flex text-right" style="margin-left: 82px!important;">
                                         <!-- <p class="" style="font-weight: bold!important;margin-left:44px"><b>TEWIN BERY FORM HOTEL</b></p><br>
                                         <p class="" style="font-weight: bold!important;margin-left:44px;margin-top:-31px"><b>Stay Savvy Account</b></p> -->
-                                     <p  style="margin-right: -29px!important;margin-top:2px!important;width: 185px!important;">   {{ ucfirst(session('username')) }}</p>
+                                     <p  style="margin-right: -29px!important;margin-top:2px!important;width: 215px!important;">   {{ ucfirst(session('username')) }}</p>
                                       
                                       
                                         <li class="nav-item dropdown" style="list-style: none;">
@@ -776,7 +776,7 @@ margin-top: 0px !important;
                                       
                                       
                                       
-                                        <a class="d-inline" href="{{url('help')}}" style="margin-left: -14px!important;">
+                                        <a class="d-inline" href="{{url('help')}}" style="margin-left: -39px!important;">
                                             <i class="fa fa-question-circle mb-4" style="margin-left:5px!important;font-size:40px!important;"></i>
 
                                         </a>
