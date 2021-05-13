@@ -693,18 +693,18 @@ margin-top: 0px !important;
                                         </a> -->
 
                                     </div>
-                                    <div class="col-sm-3 mt-3 ml-2 text-right" style="margin-left:-13px!important">
+                                    <div class="col-sm-3 mt-3 ml-2 text-right" style="margin-left:9px!important">
                                         <!-- <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
                                         <a class="" href="#"><b>Stay Savvy Account</b></a> -->
 
-                                      <p style="margin-right: -72px!important;margin-top:10px!important">  {{ ucfirst(session('username')) }}</p>
+                                      <p style="margin-right: -72px!important;margin-top:10px!important;width:299px!important">  {{ ucfirst(session('username')) }}</p>
 
                                         
                                     </div>
                                     <div class="col-sm-1 d-flex mt-3">
                                     <li class="nav-item dropdown" style="list-style: none;">
                                             <a class="nav-link dropdown-toggle mb-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa fa-user-circle-o" style="margin-right:-35px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
+                                                <i class="fa fa-user-circle-o" style="margin-right:-42px!important;font-size:35px!important;margin-top:-7px!important;display: inline-block!important;color:rebeccapurple!important;">
 
                                                 </i>
                                                        <!-- {{ ucfirst(session('username')) }} -->
