@@ -325,9 +325,9 @@ margin-top: 0px !important;
         }
 
         .navbar i.fa {
-            box-shadow: 0 2px 4px #01a9ac !important;
+            /* box-shadow: 0 2px 4px #01a9ac !important;
             background-color: #01a9ac !important;
-            border-color: #01a9ac !important;
+            border-color: #01a9ac !important; */
             border-radius: 50px !important;
             /* padding: px!important; */
             width: 30px !important;
@@ -557,6 +557,138 @@ margin-top: 0px !important;
     border:5px solid red!important; */
 
         }
+
+
+/* new menu contant written on 17.05.2021 */
+
+
+
+.header {
+    background-color: #1BF0B7 !important;
+    border-radius: 20px;
+    height: 75% !important;
+    font-weight: bold;
+  }
+
+
+
+
+.navbar {
+    padding: 0px!important;
+
+}
+
+.dropdown-menu .submenu {
+    display: none;
+    position: absolute!important;
+    right: 100%!important;
+    top: -7px!important;
+}
+.dropdown-menu {
+
+    right:0!important;
+}
+
+body.horizontal-icon .pcoded .pcoded-navbar, body.horizontal-icon-fixed .pcoded .pcoded-navbar {
+    height: 137px!important;
+}
+.pcoded[theme-layout="horizontal"][pcoded-device-type="phone"] .pcoded-navbar {
+    height: 251px !important;
+}
+
+        .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1346px!important;
+}
+
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+   
+    padding-right:inherit!important;
+    padding-left:inherit !important;
+
+}
+
+element {
+}
+body.horizontal-icon .pcoded .main-body, body.horizontal-icon-fixed .pcoded .main-body {
+    margin-top: 0px!important;
+}
+
+.navbar-nav .nav-item {
+    border: 0px;
+    margin-right: 0px !important;
+}
+
+/* .ss{
+	padding: 2px 12px 2px 2px;
+} */
+
+.dropdown-toggle::after {
+
+content: none !important;
+}
+
+.bg-primary1{
+	background-color: #1B476B !important;
+	color: white!important;
+}
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+
+	.dropdown-menu li{
+		position: relative;
+	}
+	.dropdown-menu .submenu{ 
+		display: none;
+		position: absolute;
+		left:100%; top:-7px;
+	}
+	.dropdown-menu .submenu-left{ 
+		right:100%; left:auto;
+	}
+
+	.dropdown-menu > li:hover{ background-color: #f1f1f1 }
+	.dropdown-menu > li:hover > .submenu{
+		display: block;
+	}
+}	
+/* ============ desktop view .end// ============ */
+
+/* ============ small devices ============ */
+@media (max-width: 991px) {
+
+.dropdown-menu .dropdown-menu{
+		margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
+}
+
+}	
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  .sst { 
+      /* display: block;  */
+      margin-right: 0px!important;
+      width: 0px!important;
+      position: absolute!important;
+      }  /* show it on small screens */
+      .ssd{
+        position: absolute!important; 
+        width: 10px!important;   
+      }
+}
+
+@media screen and (min-width: 401px) and (max-width: 1024px) {
+  .sst {
+    margin-right: 0px!important;
+      width: 0px!important;
+      position: absolute!important;
+       /* display: none;  */
+       }   /* hide it elsewhere */
+       .ssd{
+        position: absolute!important; 
+        width: 10px!important;  
+      }
+}
+/* ============ small devices .end// ============ */
     </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -602,7 +734,9 @@ margin-top: 0px !important;
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+<!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/> -->
 
 
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
@@ -660,14 +794,20 @@ margin-top: 0px !important;
 
 
 
+
             <div class="pcoded-main-container" style="margin-top:0px !important;padding-top:0px!important;">
 
 
 
                 {{-- Below Menu Code Reference -- https://bootsnipp.com/snippets/nNX3a --}}
 
-                <nav class="pcoded-navbar">
-                    <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;background:white!important;">
+             
+            <!-- <div class="container"> -->
+
+            <div class="pcoded-navbar">
+
+
+            <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;background:white!important;">
                         <div style="margin-left:30px!important; width:16%!important;float:left; margin-top:10px;">
                             <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" width="210px" height="auto" /></a>
                         </div>
@@ -693,11 +833,11 @@ margin-top: 0px !important;
                                         </a> -->
 
                                     </div>
-                                    <div class="col-sm-3 mt-3 ml-2 text-right" style="margin-left:9px!important">
+                                    <div class="col-sm-3 mt-3 ml-2 text-right ssd" style="margin-left:9px!important">
                                         <!-- <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
                                         <a class="" href="#"><b>Stay Savvy Account</b></a> -->
 
-                                      <p style="margin-right: -72px!important;margin-top:10px!important;width:299px!important">  {{ ucfirst(session('username')) }}</p>
+                                      <p class="sst" style="margin-right: -72px!important;margin-top:10px!important;width:299px!important">  {{ ucfirst(session('username')) }}</p>
 
                                         
                                     </div>
@@ -825,669 +965,409 @@ margin-top: 0px !important;
 
                     </div>
 
-                    <div class="pcoded-inner-navbar" style="background:#1B476B;">
-                        <ul class="pcoded-item pcoded-left-item col-md-12 " style="margin-left: 22.666667% !important;">
-                      
-                        @if(collect(session('roles'))->contains('Vendor'))
-                      
-                        <li class=" col-md-1" style="text-align: center;" >
-                            <!-- style="margin-right: 80px!important;" -->
-
-                                <!-- @if(collect(session('permissions'))->contains('List booking')) -->
-                                <a href="{{ route('dashboard.index') }}"> <span class="pcoded-micon"><i class="icofont icofont-home text-white" ></i></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Home</b></span> <span class="pcoded-mcaret"></span> </a>
-                                <!-- @endif -->
-
-                            </li>
-                       @endif
-                       
-                       
-                        @if(collect(session('roles'))->contains('Administrator'))
-                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;" >
-                            <!-- style="margin-right: 90px!important;" -->
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-user text-white" ></i></span>
-                                    <span class="pcoded-mtext text-white "><b>Users</b></span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                <ul class="pcoded-submenu">
-
-                                    <?php
-
-
-                                    /**
-                                     * List values from collection. Unlike $collection->lists('key'), this function allows using multiple keys.
-                                     *
-                                     * In newer Laravel versions things like that can be done with collection macros, but not in 5.0.
-                                     *
-                                     * @param Collection $collection
-                                     * @param array|string $properties
-                                     * @param string $id
-                                     * @return array
-                                     */
 
 
 
-                                    function checkpermissionexist($permissionarray)
-                                    {
-
-                                        $result = 0;
-
-                                        $coll = new collection(session('permissions'));
-
-                                        // $permarr = ['List users','List roles','List permissions'];
-
-                                        // retun $coll->contains('List users','List roles','List permissions');
-
-                                        foreach ($coll as $item) {
-
-                                            // echo $item;
-
-                                            if (in_array($item, $permissionarray)) {
-
-                                                $result++;
-                                            }
-                                        }
-
-                                        return $result;
-                                    }
 
 
-                                    ?>
-                                 
-                                    @if(checkpermissionexist(['List users','List roles','List permissions']) > 0)
+<!-- <div class="row mt-3" >
+<div class="col-md-3">
+<a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}"  width="210px" height="auto" style="margin-left: 48px;" /></a>
+</div>
+<div class="col-md-5 " style="border-radius: 22px;background-color: #1BF0B7">
+
+</div>
+<div class="col-md-1 " style="border-radius: 22px;margin-left: -35px;background-color: #1BF0B7">
+
+</div>
+<div class="col-md-1 " style="border-radius: 22px;margin-left: -35px ;text-align: center!important;background-color: #1BF0B7">
+<p>admin</p>
+</div>
+<div class="col-md-1 " style="border-radius: 22px;margin-left: -35px;text-align: center!important;background-color: #1BF0B7">
+<i class="fa fa-user" aria-hidden="true"></i>
+</div>
+<div class="col-md-1 " style="border-radius: 22px;margin-left: -35px;text-align: center!important;background-color: #1BF0B7">
+<i class="fa fa-user" aria-hidden="true"></i>
+</div>
+</div> -->
+<br>
+
+<!-- ============= COMPONENT ============== -->
+<nav class="col-lg-12 col-md-12 col-sm-12 navbar navbar-expand-lg navbar-dark bg-primary1" style="padding-top:0px!important">
+<div class="container-fluid">
+<!-- <a class="navbar-brand" href="#">Brand</a> -->
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="main_nav">
 
 
-                                    <li class="">
-                                        @if(collect(session('permissions'))->contains('List users'))
-                                        <a class=" {{ (request()->is('user_list')) ? 'active' : '' }}" href="{{  route('user.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main text-white">Users</span> <span class="pcoded-mcaret"></span> </a>
-                                        @endif
-                                    </li>
-                                    <li class="">
-                                        @if(collect(session('permissions'))->contains('List roles'))
-                                        <a class=" {{ (request()->is('role_list')) ? 'active' : '' }}" href="{{ route('role.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Roles</span> <span class="pcoded-mcaret"></span> </a>
-                                        @endif
-                                    </li>
-                                    <li class="">
-                                        @if(collect(session('permissions'))->contains('List permissions'))
+<ul class="navbar-nav offset-3">
 
-                                        <a class="{{ (request()->is('permission_list')) ? 'active' : '' }}" href="{{ route('permission.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Permissions</span> <span class="pcoded-mcaret"></span> </a>
-                                        @endif
-                                    </li>
-                                    @endif
-                                  
-
-                                </ul>
-                            </li>
-                            @endif
-
-                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
-                            <!-- style="margin-right: 80px!important;" -->
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-flag text-white"></i></span>
-                                    <span class="pcoded-mtext text-white "><b>Property</b></span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        @if(collect(session('permissions'))->contains('List property'))
-                                        <a class=" {{ (request()->is('properties_list')) ? 'active' : '' }}" href="{{ route('properties.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Property</span> <span class="pcoded-mcaret"></span> </a>
-                                        @endif
-                                    </li>
-                                    <li class="">
-                                        @if(collect(session('permissions'))->contains('List room'))
-                                        <a class=" {{ (request()->is('rooms_list')) ? 'active' : '' }}" href="{{ route('rooms.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Room</span> <span class="pcoded-mcaret"></span> </a>
-                                        @endif
-                                    </li>
-                                    <li class="">
-                                        @if(collect(session('permissions'))->contains('List policy'))
-                                        <a class=" {{ (request()->is('property_policies_list')) ? 'active' : '' }}" href="{{ route('property_policies_list') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Policy</span> <span class="pcoded-mcaret"></span> </a>
-                                        @endif
-                                    </li>
+@if(collect(session('roles'))->contains('Vendor'))
+<li class="nav-item  ">
+  <span class="pcoded-micon"><i class="icofont icofont-home text-white offset-1" style="line-height: 31px;"></i></span>    
+  <a class="nav-link" href="{{ route('dashboard.index') }}">Home </a> </li>
+@endif
 
 
-                                </ul>
-                            </li>
+@if(collect(session('roles'))->contains('Administrator'))
+          <li class="nav-item dropdown ">
+          <span class="pcoded-micon"><i class="fa fa-user text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Users </a>
+      <ul class="dropdown-menu">
+
+   
+
+<?php
 
 
-                            <li class="{{ (request()->is('stock_master_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
-                            <!-- style="margin-right: 80px!important;" -->
-
-                                @if(collect(session('permissions'))->contains('List booking'))
-                                <a href="{{ route('adminbookings.index') }}"> <span class="pcoded-micon"><i class="fa fa-cubes text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Booking</b></span> <span class="pcoded-mcaret"></span> </a>
-                                @endif
-
-                            </li>
-
-                            <li class="{{ (request()->is('overallreview_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
-                            <!-- style="margin-right: 80px!important;" -->
-
-                               
-                                <a href="{{ route('overallreview.index') }}" style="background: none !important;"> <span class="pcoded-micon"><i class="fa fa-pencil-square-o text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Reviews</b></span> <span class="pcoded-mcaret"></span> </a>
-                             
-
-                            </li>
+/**
+ * List values from collection. Unlike $collection->lists('key'), this function allows using multiple keys.
+ *
+ * In newer Laravel versions things like that can be done with collection macros, but not in 5.0.
+ *
+ * @param Collection $collection
+ * @param array|string $properties
+ * @param string $id
+ * @return array
+ */
 
 
-                            {{-- @if(collect(session('roles'))->contains('Administrator')) --}}
-                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-gbp text-white"></i></span>
-                                    <span class="pcoded-mtext text-white offset-1"><b>Finance</b></span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                @if(collect(session('roles'))->contains('Vendor'))
-                                    <li class="pcoded-hasmenu ">
-                                        <!-- <a href="javascript:void(0)" data-i18n="nav.authentication.main">
-                                            <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
-                                            <span class="pcoded-mtext">Payments</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a> -->
-                                        <!-- <ul class="pcoded-submenu">
-                                            <li class="">
-                                                {{-- @if(collect(session('permissions'))->contains('List config booking status')) --}}
 
-                                                <a class="{{ (request()->is('booking_status_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-bg-image">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">User Payments</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                {{-- @endif --}}
-                                            </li>
-                                            <li class="">
-                                                {{-- @if(collect(session('permissions'))->contains('List config commission')) --}}
+function checkpermissionexist($permissionarray)
+{
 
-                                                <a class=" {{ (request()->is('commission_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-soc-icon">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Vendor Payments</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                {{-- @endif --}}
-                                            </li>
-                                       
-                                            <li class="">
-                                                {{-- @if(collect(session('permissions'))->contains('List config commission')) --}}
+    $result = 0;
 
-                                                <a class=" {{ (request()->is('commission_list')) ? 'active' : '' }}" href="javascript:void(0)" data-i18n="nav.authentication.login-soc-icon">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Charity Payments</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                {{-- @endif --}}
-                                            </li>
-                                        </ul> -->
-                                    </li>
-                                    @endif
+    $coll = new collection(session('permissions'));
 
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" data-i18n="nav.authentication.main">
-                                            <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
-                                            <span class="pcoded-mtext">Invoice</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        @if(collect(session('roles'))->contains('Administrator'))
-                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config booking status'))
+    // $permarr = ['List users','List roles','List permissions'];
 
-                                                <a class=" {{ (request()->is('admin_invoice_list')) ? 'active' : '' }}" href="{{ route('admin.invoice') }}" data-i18n="nav.authentication.main">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Vendor Invoice</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <!-- <li class="">
-                                                @if(collect(session('permissions'))->contains('List config commission'))
+    // retun $coll->contains('List users','List roles','List permissions');
 
-                                                <a class=" {{ (request()->is('charity_invoice_list')) ? 'active' : '' }}" href="{{ route('charity.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Charity Invoice</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li> -->
-                                       
-                                        </ul>
-                                        @endif
+    foreach ($coll as $item) {
 
-                                        @if(collect(session('roles'))->contains('Vendor'))
-                                        <ul class="pcoded-submenu">
-                                            <li class="pcoded-hasmenu ">
-                                                <a class=" {{ (request()->is('admin_invoice_list')) ? 'active' : '' }}" href="{{ route('admin.invoice') }}" data-i18n="nav.authentication.login-soc-icon">
-                                                    <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
-                                                    <span class="pcoded-mtext">Invoice</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                             
+        // echo $item;
+
+        if (in_array($item, $permissionarray)) {
+
+            $result++;
+        }
+    }
+
+    return $result;
+}
+
+
+?>
+
+@if(checkpermissionexist(['List users','List roles','List permissions']) > 0)
+        <li>
+        @if(collect(session('permissions'))->contains('List users'))    
+        <a class="dropdown-item  {{ (request()->is('user_list')) ? 'active' : '' }}" href="{{  route('user.index') }}"> User</a>
+        @endif
+    </li>
+  
+        <li>
+        @if(collect(session('permissions'))->contains('List roles'))    
+        <a class="dropdown-item {{ (request()->is('role_list')) ? 'active' : '' }}" href="{{ route('role.index') }}"> Role </a>
+    @endif
+    </li>
+        <li>
+        @if(collect(session('permissions'))->contains('List permissions'))    
+        <a class="dropdown-item {{ (request()->is('permission_list')) ? 'active' : '' }}" href="{{ route('permission.index') }}"> Permission </a>
+        @endif
+    </li>
+    @endif
+      </ul>
+  </li>
+  @endif
+                        
+
+<li class="nav-item dropdown">
+<span class="pcoded-micon"><i class="fa fa-flag text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Property </a>
+   
+      <ul class="dropdown-menu">
+
+        <li>
+        @if(collect(session('permissions'))->contains('List property')) 
+        <a class="dropdown-item {{ (request()->is('properties_list')) ? 'active' : '' }}" href="{{ route('properties.index') }}"> Property</a>
+    @endif
+    </li>
+  
+        <li>
+        @if(collect(session('permissions'))->contains('List room'))  
+        <a class="dropdown-item {{ (request()->is('rooms_list')) ? 'active' : '' }}" href="{{ route('rooms.index') }}"> Room </a>
+    @endif
+    </li>
+        <li>
+        @if(collect(session('permissions'))->contains('List policy'))    
+        <a class="dropdown-item {{ (request()->is('property_policies_list')) ? 'active' : '' }}" href="{{ route('property_policies_list') }}"> Policy </a>
+        @endif
+        </li>
+      </ul>
+  </li>
+
+
+
+
+
+
+  <li class="nav-item  ">
+  @if(collect(session('permissions'))->contains('List booking'))
+  <span class="pcoded-micon"><i class="fa fa-cubes text-white offset-1" style="line-height: 31px;"></i></span>    
+  <a class="nav-link" href=" {{ route('adminbookings.index') }}">Booking </a>
+@endif
+</li>
+  <li class="nav-item ">
+  <span class="pcoded-micon"><i class="fa fa-pencil-square-o text-white offset-1" style="line-height: 31px;"></i></span>    
+  <a class="nav-link" href="{{ route('overallreview.index') }}"> Reviews </a></li>
+
+
+  <li class="nav-item dropdown">
+  <span class="pcoded-micon"><i class="fa fa-gbp text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Finance </a>
+      <ul class="dropdown-menu">
+
+        <li><a class="dropdown-item" href="#"> Invoice &raquo; </a>
+        @if(collect(session('roles'))->contains('Administrator'))
+             <ul class="submenu dropdown-menu">
+              <li><a class="dropdown-item {{ (request()->is('admin_invoice_list')) ? 'active' : '' }}" href="{{ route('admin.invoice') }}">Vendor Invoice</a></li>
+          
+             
+           </ul>
+           @endif
+           @if(collect(session('roles'))->contains('Vendor'))
+             <ul class="submenu dropdown-menu">
+              <li><a class="dropdown-item {{ (request()->is('admin_invoice_list')) ? 'active' : '' }}" href="{{ route('admin.invoice') }}"> Invoice</a></li>
+          
+             
+           </ul>
+           @endif
+        </li>
+        @if(collect(session('roles'))->contains('Administrator'))
+        <li><a class="dropdown-item" href="{{ route('admin.settlement') }}"> Settlement </a></li>
+        @endif
+      </ul>
+  </li>
+
+  @if(collect(session('roles'))->contains('Administrator'))
+  <li class="nav-item   "> 
+  <span class="pcoded-micon"><i class="fa fa-line-chart text-white offset-1" style="line-height: 31px;"></i></span>    
+  <a class="nav-link {{ (request()->is('analytics_list')) ? 'active' : '' }}" href=" {{ route('analytics.index') }}">Analytics </a> </li>
+@endif
+
+<li class="nav-item dropdown">
+<span class="pcoded-micon"><i class="fa fa-heart text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Eco </a>
+      <ul class="dropdown-menu">
+    
+        <li>
+        @if(collect(session('permissions'))->contains('List eco summary'))
+        <a class="dropdown-item {{ (request()->is('ecoarea_list')) ? 'active' : '' }}" href="{{ route('ecoarea.index') }}"> Eco Impact </a>
+        @endif
+    </li>
+  
+        <li>
+        <!-- @if(collect(session('permissions'))->contains('List eco summary')) -->
+            <a class="dropdown-item {{ (request()->is('eco_reward_list')) ? 'active' : '' }}" href="{{ route('ecoreward.index') }}"> Eco Reward </a>
+        <!-- @endif -->
+        </li>
+      
+      </ul>
+  </li>
+
+
+
+
+
+
+  @if(collect(session('roles'))->contains('Vendor'))
+
+  <li class="nav-item dropdown ">
+  <span class="pcoded-micon"><i class="fa fa-cog text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Config  </a>
+      <ul class="dropdown-menu">
+        <!-- <li><a class="dropdown-item" href="#"> Dropdown item 1 </a></li> -->
+        <li><a class="dropdown-item" href="#"> Property  </a>
+             <ul class="submenu dropdown-menu">
+              <li>
+              @if(collect(session('permissions'))->contains('List room type'))
+              <a class="dropdown-item {{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}">Room Type</a>
+              @endif
+            </li>
         
-                                            </ul>
-                                            @endif
-
-                                    </li>
-                                    @if(collect(session('roles'))->contains('Administrator'))
-                                    <li class="{{ (request()->is('admin_settlement_list')) ? 'active' : '' }} col-md-1"style="text-align: center;" >
-                            <!-- style="margin-right: 80px!important;" -->
-
-                                <!-- @if(collect(session('permissions'))->contains('List booking')) -->
-                                <a href="{{ route('admin.settlement') }}"> <span class="pcoded-micon"><i class="fa fa-cubes "></i><b>N</b></span> <span class="pcoded-mtext  " data-i18n="nav.navigate.main"> Settlement</span> <span class="pcoded-mcaret"></span> </a>
-                                <!-- @endif -->
-
-                            </li>
-@endif
-                                </ul>
-                            </li>
-                  
-
-                         {{-- @endif --}}
-
-
-
-
-                          
-                            
-                         @if(collect(session('roles'))->contains('Administrator'))
-
-                            <li class="{{ (request()->is('analytics_list')) ? 'active' : '' }} col-md-1" style="text-align: center;">
-                            <!-- style="margin-right: 80px!important;" -->
-
-                                <a href="{{ route('analytics.index') }}" style="background:none!important;"> <span class="pcoded-micon"><i class="fa fa-line-chart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white " data-i18n="nav.navigate.main"><b>Analytics</b></span> <span class="pcoded-mcaret"></span> </a>
-
-                            </li>
+            
+           </ul>
+        </li>
+      </ul>
+  </li>
 
 @endif
-                         
 
-                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;" >
-                            <!-- style="margin-right: 80px!important;" -->
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-heart text-white"></i></span>
-                                    <span class="pcoded-mtext text-white "><b>Eco</b></span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                <!-- <ul class="pcoded-submenu">
-                                    <li class="">
-                                        @if(collect(session('permissions'))->contains('List eco summary'))
-
-                                        <a href="{{ route('ecoarea.index') }}" style="background: none !important;"> <span class="pcoded-micon"><i class="fa fa-heart text-white"></i><b>N</b></span> <span class="pcoded-mtext text-white" data-i18n="nav.navigate.main"><b>Eco Area</b></span> <span class="pcoded-mcaret"></span> </a>
-                                        @endif
-                                    </li>
-
-
-
-                                </ul> -->
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        @if(collect(session('permissions'))->contains('List eco summary'))
-                                        <a class=" {{ (request()->is('ecoarea_list')) ? 'active' : '' }}" href="{{ route('ecoarea.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Eco Impact</span> <span class="pcoded-mcaret"></span> </a>
-                                        @endif
-                                    </li>
-                                    <li class="">
-                                        <!-- @if(collect(session('permissions'))->contains('List room')) -->
-                                        <a class=" {{ (request()->is('eco_reward_list')) ? 'active' : '' }}" href="{{ route('ecoreward.index') }}"> <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span> <span class="pcoded-mtext" data-i18n="nav.navigate.main">Eco Reward</span> <span class="pcoded-mcaret"></span> </a>
-                                        <!-- @endif -->
-                                    </li>
-                                 
-
-
-                                </ul>
-                            </li>
-
-
-
-                            @if(collect(session('roles'))->contains('Vendor'))
-                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
-                                    <span class="pcoded-mtext text-white "><b>Config</b></span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" data-i18n="nav.authentication.main">
-                                            <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
-                                            <span class="pcoded-mtext">Property</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        <ul class="pcoded-submenu">
-                                        <li class="">
-                                                @if(collect(session('permissions'))->contains('List room type'))
-
-
-
-                                                <a class="{{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}" data-i18n="nav.authentication.login-soc-h-f">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Room Type</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                     
-                                 
-
-
-                                        </ul>
-                                    </li>
-                                
-                                </ul>
-                            </li>
-                   
-                            @endif
-
-
-
-
-
-
-
-
-
-
-
-                            @if(collect(session('roles'))->contains('Administrator'))
-                            <li class="pcoded-hasmenu col-md-1" style="text-align: center;">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="fa fa-cog text-white"></i></span>
-                                    <span class="pcoded-mtext text-white "><b>Config</b></span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" data-i18n="nav.authentication.main">
-                                            <span class="pcoded-micon"><i class="ti-id-badge"></i></span>
-                                            <span class="pcoded-mtext">Booking</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config booking status'))
-
-                                                <a class="{{ (request()->is('booking_status_list')) ? 'active' : '' }}" href="{{ route('booksts.index') }}" data-i18n="nav.authentication.login-bg-image">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Booking Status</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config commission'))
 
-                                                <a class=" {{ (request()->is('commission_list')) ? 'active' : '' }}" href="{{ route('commission.index') }}" data-i18n="nav.authentication.login-soc-icon">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Booking Commission</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <!-- <li class="">
-                                                @if(collect(session('permissions'))->contains('List room type'))
 
 
 
-                                                <a class="{{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}" data-i18n="nav.authentication.login-soc-h-f">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Room Type</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li> -->
-
-
-
-
-                                        </ul>
-                                    </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" data-i18n="nav.maintenance.main">
-                                            <span class="pcoded-micon"><i class="ti-settings"></i></span>
-                                            <span class="pcoded-mtext">Property</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List property type'))
-
-
-                                                <a class="{{ (request()->is('property_list')) ? 'active' : '' }}" href="{{ route('property.index') }}" data-i18n="nav.maintenance.error">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Property Type</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List room type'))
-
-
-
-                                                <a class="{{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}" data-i18n="nav.authentication.login-soc-h-f">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Room Type</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config policy'))
-
-
-
-                                                <a class="{{ (request()->is('config_policies_list')) ? 'active' : '' }}" href="{{ route('config_policies.index') }}" data-i18n="nav.maintenance.comming-soon">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Policy</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List property mgmt system'))
-
-
-
-                                                <a class="{{ (request()->is('property_management_list')) ? 'active' : '' }}" href="{{ route('property_management.index') }}" data-i18n="nav.maintenance.offline-ui">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Property Management</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List central res system'))
-
-
-
-                                                <a class="{{ (request()->is('central_system_list')) ? 'active' : '' }}" href="{{ route('centralsystem.index') }}" data-i18n="nav.maintenance.offline-ui">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Central System</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-
-
-
-
-
-
-
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List host type'))
-
-
-
-                                                <a class="{{ (request()->is('host_list')) ? 'active' : '' }}" href="{{ route('host.index') }}" data-i18n="nav.maintenance.offline-ui">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Host Type</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-
-                                            <li class="">
-
-
-                                                @if(collect(session('permissions'))->contains('List tax'))
-
-
-
-                                                <a class="{{ (request()->is('tax_list')) ? 'active' : '' }}" href="{{ route('tax.index') }}" data-i18n="nav.maintenance.offline-ui">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Tax</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-                                            <li class="">
-
-
-                                                @if(collect(session('permissions'))->contains('List amenity'))
-
-
-
-                                                <a class="{{ (request()->is('amenity_list')) ? 'active' : '' }}" href="{{ route('amenity.index') }}" data-i18n="nav.maintenance.offline-ui">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Amenity</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <li class="">
-
-
-
-                                                @if(collect(session('permissions'))->contains('List coolthing'))
-
-
-
-                                                <a class="{{ (request()->is('coolthing_list')) ? 'active' : '' }}" href="{{ route('coolthing.index') }}" data-i18n="nav.maintenance.offline-ui">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Coolthing</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li class="pcoded-hasmenu ">
-
-                                        <a href="javascript:void(0)" data-i18n="nav.user-profile.main">
-                                            <span class="pcoded-micon"><i class="ti-user"></i></span>
-                                            <span class="pcoded-mtext">Review</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config review'))
-
-
-                                                <a class=" {{ (request()->is('review_list')) ? 'active' : '' }}" href="{{ route('review.index') }}" data-i18n="nav.user-profile.timeline">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Review</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-
-                                        </ul>
-                                    </li>
-
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" data-i18n="nav.e-commerce.main">
-                                            <span class="pcoded-micon"><i class="ti-shopping-cart"></i></span>
-                                            <span class="pcoded-mtext">Eco</span>
-
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a class="{{ (request()->is('highlight_list')) ? 'active' : '' }}" href="{{ route('highlight.index') }}" data-i18n="nav.e-commerce.product">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Eco Area</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config charity'))
-                                                <a class="{{ (request()->is('charity_list')) ? 'active' : '' }}" href="{{ route('charity.index') }}" data-i18n="nav.e-commerce.product">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext"> Charity</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List conf charity group'))
-                                                <a class="{{ (request()->is('charity_group_list')) ? 'active' : '' }}" href="{{ route('charity_group.index') }}" data-i18n="nav.e-commerce.product">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext"> Charity Group</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" data-i18n="nav.email.main">
-                                            <span class="pcoded-micon"><i class="ti-email"></i></span>
-                                            <span class="pcoded-mtext">Status</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config status'))
-
-
-                                                <a class=" {{ (request()->is('status_list')) ? 'active' : '' }}" href="{{ route('status.index') }}" data-i18n="nav.email.compose-mail">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Status</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config payment status'))
-
-                                                <a class=" {{ (request()->is('payment_list')) ? 'active' : '' }}" href="{{ route('payment.index') }}" data-i18n="nav.email.inbox">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Payment Status</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-                                            <li class="">
-                                                @if(collect(session('permissions'))->contains('List config reward status'))
-
-                                                <a class=" {{ (request()->is('reward_list')) ? 'active' : '' }}" href="{{ route('reward.index') }}" data-i18n="nav.email.inbox">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext">Reward Status</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                                @endif
-                                            </li>
-
-
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            @endif
-                        </ul>
-                    </div>
-                </nav>
-
+  @if(collect(session('roles'))->contains('Administrator'))
+
+  <li class="nav-item dropdown ">
+  <span class="pcoded-micon"><i class="fa fa-cog text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Config  </a>
+      <ul class="dropdown-menu" style="margin-left: -61px!important;">
+        <!-- <li><a class="dropdown-item" href="#"> Dropdown item 1 </a></li> -->
+        <li><a class="dropdown-item" href="#"> Booking  </a>
+             <ul class="submenu dropdown-menu">
+              <li>
+              @if(collect(session('permissions'))->contains('List config booking status'))    
+              <a class="dropdown-item {{ (request()->is('booking_status_list')) ? 'active' : '' }}" href="{{ route('booksts.index') }}">Booking Status</a>
+              @endif
+            </li>
+              <li>
+              @if(collect(session('permissions'))->contains('List config commission'))
+              <a class="dropdown-item {{ (request()->is('commission_list')) ? 'active' : '' }}" href="{{ route('commission.index') }}">Booking Commission</a>
+            @endif
+            </li>
+            
+           </ul>
+        </li>
+        <li><a class="dropdown-item" href="#"> Property </a>
+             <ul class="submenu dropdown-menu">
+              <li>
+              @if(collect(session('permissions'))->contains('List property type'))    
+              
+              <a class="dropdown-item {{ (request()->is('property_list')) ? 'active' : '' }}" href="{{ route('property.index') }}">Property Type</a>
+            @endif
+            </li>
+              <li>
+              @if(collect(session('permissions'))->contains('List room type')) 
+              <a class="dropdown-item {{ (request()->is('booking_room_list')) ? 'active' : '' }}" href="{{ route('roomtype.index') }}">Room Type</a>
+            @endif
+            </li>
+              <li>
+              @if(collect(session('permissions'))->contains('List config policy'))    
+              <a class="dropdown-item {{ (request()->is('config_policies_list')) ? 'active' : '' }}" href="{{ route('config_policies.index') }}">Policy</a>
+            @endif
+            </li>
+              <li>
+              @if(collect(session('permissions'))->contains('List property mgmt system'))    
+              <a class="dropdown-item {{ (request()->is('property_management_list')) ? 'active' : '' }}" href="{{ route('property_management.index') }}">Property Management</a>
+            @endif
+            </li>
+
+            <li>
+              @if(collect(session('permissions'))->contains('List central res system'))    
+              <a class="dropdown-item {{ (request()->is('central_system_list')) ? 'active' : '' }}" href="{{  route('centralsystem.index') }}">Central System</a>
+            @endif
+            </li>
+
+            <li>
+            @if(collect(session('permissions'))->contains('List host type'))
+              <a class="dropdown-item {{ (request()->is('host_list')) ? 'active' : '' }}" href="{{ route('host.index') }}">Host Type</a>
+            @endif
+            </li>
+
+            <li>
+            @if(collect(session('permissions'))->contains('List tax'))   
+              <a class="dropdown-item {{ (request()->is('tax_list')) ? 'active' : '' }}" href="{{ route('tax.index') }}">Tax</a>
+            @endif
+            </li>
+
+
+            <li>
+            @if(collect(session('permissions'))->contains('List amenity'))
+              <a class="dropdown-item {{ (request()->is('amenity_list')) ? 'active' : '' }}" href="{{ route('amenity.index') }}">Amenity</a>
+            @endif
+            </li>
+
+            <li>
+            @if(collect(session('permissions'))->contains('List coolthing'))
+              <a class="dropdown-item {{ (request()->is('coolthing_list')) ? 'active' : '' }}" href="{{ route('coolthing.index') }}">Coolthing</a>
+            @endif
+            </li>
+
+            
+           </ul>
+        </li>
+        <li><a class="dropdown-item" href="#"> Review</a>
+             <ul class="submenu dropdown-menu">
+              <li>
+              @if(collect(session('permissions'))->contains('List config review'))    
+              <a class="dropdown-item {{ (request()->is('review_list')) ? 'active' : '' }}" href="{{ route('review.index') }}">Review</a>
+            @endif
+            </li>
+         
+           </ul>
+        </li>
+
+
+
+        <li><a class="dropdown-item" href="#"> Eco </a>
+             <ul class="submenu dropdown-menu">
+              <li>
+              <!-- @if(collect(session('permissions'))->contains('List config review'))     -->
+              <a class="dropdown-item{{ (request()->is('highlight_list')) ? 'active' : '' }}" href="{{ route('highlight.index') }}">Eco Area</a>
+            <!-- @endif -->
+            </li>
+            <li>
+            @if(collect(session('permissions'))->contains('List config charity'))
+              <a class="dropdown-item {{ (request()->is('charity_list')) ? 'active' : '' }}" href="{{ route('charity.index') }}">Charity</a>
+            @endif
+            </li>
+
+            <li>
+            @if(collect(session('permissions'))->contains('List conf charity group'))
+              <a class="dropdown-item {{ (request()->is('charity_group_list')) ? 'active' : '' }}" href="{{ route('charity_group.index') }}">Charity Group</a>
+            @endif
+            </li>
+         
+           </ul>
+        </li>
+
+
+
+
+
+        <li><a class="dropdown-item" href="#"> Status</a>
+             <ul class="submenu dropdown-menu">
+              <li>
+              @if(collect(session('permissions'))->contains('List config status'))
+              <a class="dropdown-item {{ (request()->is('status_list')) ? 'active' : '' }}" href="{{ route('status.index') }}">Status</a>
+            @endif
+            </li>
+            <li>
+            @if(collect(session('permissions'))->contains('List config payment status'))
+              <a class="dropdown-item  {{ (request()->is('payment_list')) ? 'active' : '' }}" href="{{ route('payment.index') }}">Payment Status</a>
+            @endif
+            </li>
+
+            <li>
+            @if(collect(session('permissions'))->contains('List config reward status'))
+              <a class="dropdown-item {{ (request()->is('reward_list')) ? 'active' : '' }}" href="{{ route('reward.index') }}">Reward Status</a>
+            @endif
+            </li>
+         
+           </ul>
+        </li>
+       
+      </ul>
+  </li>
+  @endif
+</ul>
+
+
+
+</div> <!-- navbar-collapse.// -->
+</div> <!-- container-fluid.// -->
+</nav>
+
+<!-- ============= COMPONENT END// ============== -->
+
+
+
+</div><!-- container //  -->
 
 
 
@@ -1604,7 +1484,8 @@ margin-top: 0px !important;
                         <div class="pcoded-inner-content">
 
                             <!-- Main-body start -->
-                            <div class="main-body" style="padding-top:70px!important;">
+                            <div class="main-body" style="padding-top:130px!important;">
+                            <!-- <div class="main-body"> -->
 
                                 @yield('content')
 
