@@ -837,7 +837,7 @@ content: none !important;
                                         <!-- <a class="" href="#" style="font-weight: bold!important;"><b>TEWIN BERY FORM HOTEL</b></a><br>
                                         <a class="" href="#"><b>Stay Savvy Account</b></a> -->
 
-                                      <p class="sst" style="margin-right: -72px!important;margin-top:10px!important;width:299px!important">  {{ ucfirst(session('username')) }}</p>
+                                      <p class="sst" style="margin-right: -72px!important;margin-top:10px!important;">  {{ ucfirst(session('username')) }}</p>
 
                                         
                                     </div>
