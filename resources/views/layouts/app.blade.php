@@ -679,6 +679,13 @@ content: none !important;
         margin-right: 2px !important;
 
       }
+      .mar{
+          margin-left: 35px!important;
+      }
+      
+      .mar1{
+          margin-left: 50px!important;
+      }
 }
 
 @media screen and (min-width: 401px) and (max-width: 1024px) {
@@ -696,6 +703,13 @@ content: none !important;
         margin-left: 72px !important;
         margin-right: 2px !important;
 
+      }
+      .mar{
+          margin-left: 35px!important;
+      }
+      
+      .mar1{
+          margin-left: 50px!important;
       }
 }
 /* ============ small devices .end// ============ */
@@ -1023,8 +1037,8 @@ content: none !important;
 
 @if(collect(session('roles'))->contains('Administrator'))
           <li class="nav-item dropdown ">
-          <span class="pcoded-micon"><i class="fa fa-user text-white offset-1" style="line-height: 31px;"></i></span>
-      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Users </a>
+          <span class="pcoded-micon  mar"><i class="fa fa-user text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle mar1" href="#" data-bs-toggle="dropdown"> Users </a>
       <ul class="dropdown-menu">
 
    
@@ -1096,8 +1110,8 @@ function checkpermissionexist($permissionarray)
                         
 
 <li class="nav-item dropdown">
-<span class="pcoded-micon"><i class="fa fa-flag text-white offset-1" style="line-height: 31px;"></i></span>
-      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Property </a>
+<span class="pcoded-micon mar"><i class="fa fa-flag text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle mar1" href="#" data-bs-toggle="dropdown"> Property </a>
    
       <ul class="dropdown-menu">
 
@@ -1127,18 +1141,18 @@ function checkpermissionexist($permissionarray)
 
   <li class="nav-item  ">
   @if(collect(session('permissions'))->contains('List booking'))
-  <span class="pcoded-micon"><i class="fa fa-cubes text-white offset-1" style="line-height: 31px;"></i></span>    
-  <a class="nav-link" href=" {{ route('adminbookings.index') }}">Booking </a>
+  <span class="pcoded-micon mar"><i class="fa fa-cubes text-white offset-1" style="line-height: 31px;"></i></span>    
+  <a class="nav-link mar1" href=" {{ route('adminbookings.index') }}">Booking </a>
 @endif
 </li>
   <li class="nav-item ">
-  <span class="pcoded-micon"><i class="fa fa-pencil-square-o text-white offset-1" style="line-height: 31px;"></i></span>    
-  <a class="nav-link" href="{{ route('overallreview.index') }}"> Reviews </a></li>
+  <span class="pcoded-micon mar"><i class="fa fa-pencil-square-o text-white offset-1" style="line-height: 31px;"></i></span>    
+  <a class="nav-link mar1" href="{{ route('overallreview.index') }}"> Reviews </a></li>
 
 
   <li class="nav-item dropdown">
-  <span class="pcoded-micon"><i class="fa fa-gbp text-white offset-1" style="line-height: 31px;"></i></span>
-      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Finance </a>
+  <span class="pcoded-micon mar"><i class="fa fa-gbp text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle mar1" href="#" data-bs-toggle="dropdown"> Finance </a>
       <ul class="dropdown-menu">
 
         <li><a class="dropdown-item" href="#"> Invoice &raquo; </a>
@@ -1165,13 +1179,13 @@ function checkpermissionexist($permissionarray)
 
   @if(collect(session('roles'))->contains('Administrator'))
   <li class="nav-item   "> 
-  <span class="pcoded-micon"><i class="fa fa-line-chart text-white offset-1" style="line-height: 31px;"></i></span>    
-  <a class="nav-link {{ (request()->is('analytics_list')) ? 'active' : '' }}" href=" {{ route('analytics.index') }}">Analytics </a> </li>
+  <span class="pcoded-micon mar"><i class="fa fa-line-chart text-white offset-1" style="line-height: 31px;"></i></span>    
+  <a class="nav-link mar1 {{ (request()->is('analytics_list')) ? 'active' : '' }}" href=" {{ route('analytics.index') }}">Analytics </a> </li>
 @endif
 
 <li class="nav-item dropdown">
-<span class="pcoded-micon"><i class="fa fa-heart text-white offset-1" style="line-height: 31px;"></i></span>
-      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Eco </a>
+<span class="pcoded-micon mar"><i class="fa fa-heart text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle mar1" href="#" data-bs-toggle="dropdown"> Eco </a>
       <ul class="dropdown-menu">
     
         <li>
@@ -1197,8 +1211,8 @@ function checkpermissionexist($permissionarray)
   @if(collect(session('roles'))->contains('Vendor'))
 
   <li class="nav-item dropdown ">
-  <span class="pcoded-micon"><i class="fa fa-cog text-white offset-1" style="line-height: 31px;"></i></span>
-      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Config  </a>
+  <span class="pcoded-micon mar"><i class="fa fa-cog text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle mar1" href="#" data-bs-toggle="dropdown">  Config  </a>
       <ul class="dropdown-menu">
         <!-- <li><a class="dropdown-item" href="#"> Dropdown item 1 </a></li> -->
         <li><a class="dropdown-item" href="#"> Property  </a>
@@ -1224,8 +1238,8 @@ function checkpermissionexist($permissionarray)
   @if(collect(session('roles'))->contains('Administrator'))
 
   <li class="nav-item dropdown ">
-  <span class="pcoded-micon"><i class="fa fa-cog text-white offset-1" style="line-height: 31px;"></i></span>
-      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Config  </a>
+  <span class="pcoded-micon mar"><i class="fa fa-cog text-white offset-1" style="line-height: 31px;"></i></span>
+      <a class="nav-link dropdown-toggle mar1" href="#" data-bs-toggle="dropdown">  Config  </a>
       <ul class="dropdown-menu" style="margin-left: -61px!important;">
         <!-- <li><a class="dropdown-item" href="#"> Dropdown item 1 </a></li> -->
         <li><a class="dropdown-item" href="#"> Booking  </a>
