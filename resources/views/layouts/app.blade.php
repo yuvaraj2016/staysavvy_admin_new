@@ -807,13 +807,13 @@ content: none !important;
             <div class="pcoded-navbar">
 
 
-            <div class="row" style="padding-bottom:10px!important;margin-left:0px!important;background:white!important;">
+            <div class="row" style="padding-bottom:2px!important;margin-left:0px!important;background:white!important;">
                         <div style="margin-left:30px!important; width:16%!important;float:left; margin-top:10px;">
-                            <a class="navbar-brand mt-2" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" width="210px" height="auto" /></a>
+                            <a class="navbar-brand mt-3" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" width="210px" height="auto" /></a>
                         </div>
 
                         <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
-                            <div class="mt-3 col-md-12" style="background-color:#1BF0B7; border-radius:20px; height:75%!important;font-weight:bold;">
+                            <div class="mt-4 col-md-12" style="background-color:#1BF0B7; border-radius:20px; height:75%!important;font-weight:bold;">
                             <!-- width:1014px; -->
                                 @if(collect(session('roles'))->contains('Administrator'))
 
