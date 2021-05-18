@@ -674,6 +674,11 @@ content: none !important;
         position: absolute!important; 
         width: 10px!important;   
       }
+      .fa-user-circle-o::before {
+        margin-left: 72px !important;
+        margin-right: 2px !important;
+
+      }
 }
 
 @media screen and (min-width: 401px) and (max-width: 1024px) {
@@ -686,6 +691,11 @@ content: none !important;
        .ssd{
         position: absolute!important; 
         width: 10px!important;  
+      }
+      .fa-user-circle-o::before {
+        margin-left: 72px !important;
+        margin-right: 2px !important;
+
       }
 }
 /* ============ small devices .end// ============ */
