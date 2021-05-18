@@ -686,6 +686,9 @@ content: none !important;
       .mar1{
           margin-left: 50px!important;
       }
+      .mar2{
+          margin-left: 50px!important;
+      }
 }
 
 @media screen and (min-width: 401px) and (max-width: 1024px) {
@@ -710,6 +713,9 @@ content: none !important;
       
       .mar1{
           margin-left: 50px!important;
+      }
+      .mar2{
+          margin-left: 62px!important;
       }
 }
 /* ============ small devices .end// ============ */
@@ -1185,7 +1191,7 @@ function checkpermissionexist($permissionarray)
 
 <li class="nav-item dropdown">
 <span class="pcoded-micon mar"><i class="fa fa-heart text-white offset-1" style="line-height: 31px;"></i></span>
-      <a class="nav-link dropdown-toggle mar1" href="#" data-bs-toggle="dropdown"> Eco </a>
+      <a class="nav-link dropdown-toggle mar2" href="#" data-bs-toggle="dropdown"> Eco </a>
       <ul class="dropdown-menu">
     
         <li>
