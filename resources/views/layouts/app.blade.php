@@ -920,7 +920,7 @@ content: none !important;
                                         </a> -->
 
                                     </div>
-                                    <div class="col-sm-4 mt-3 ml-5 d-flex text-right" style="margin-left: 82px!important;">
+                                    <div class="col-sm-4 mt-3 ml-5 d-flex text-right " style="margin-left: 82px!important;">
                                         <!-- <p class="" style="font-weight: bold!important;margin-left:44px"><b>TEWIN BERY FORM HOTEL</b></p><br>
                                         <p class="" style="font-weight: bold!important;margin-left:44px;margin-top:-31px"><b>Stay Savvy Account</b></p> -->
                                      <p  style="margin-right: -29px!important;margin-top:2px!important;width: 215px!important;">   {{ ucfirst(session('username')) }}</p>
@@ -1036,8 +1036,8 @@ content: none !important;
 
 @if(collect(session('roles'))->contains('Vendor'))
 <li class="nav-item  ">
-  <span class="pcoded-micon"><i class="icofont icofont-home text-white offset-1" style="line-height: 31px;"></i></span>    
-  <a class="nav-link" href="{{ route('dashboard.index') }}">Home </a> </li>
+  <span class="pcoded-micon mar"><i class="icofont icofont-home text-white offset-1" style="line-height: 31px;"></i></span>    
+  <a class="nav-link mar1" href="{{ route('dashboard.index') }}">Home </a> </li>
 @endif
 
 

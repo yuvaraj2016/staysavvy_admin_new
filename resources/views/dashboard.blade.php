@@ -503,12 +503,12 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;">From</h6>
-                                            <input type="date" id="sdate2" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                                            <input type="date" id="reviewStartDate" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;margin-left:11px">Until</h6>
-                                            <input type="date" id="edate2" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:13px">
+                                            <input type="date" id="reviewEndDate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:13px">
 
                                         </div>
 
@@ -559,8 +559,8 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
                                                 </div>
                                             </div>
                                             @endforeach
-                                            @php } else @endphp
-                                            @php {@endphp
+                                            @php } else{ @endphp
+                                        
                                             <h5 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h5>
                                             @php }@endphp
 
@@ -1260,8 +1260,9 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
 
 
         $('#booksubmit2').on("click", function() {
-            var sdate = $("#sdate2").val();
-            var edate = $("#edate2").val();
+            $('#revcontant').empty('');
+            var sdate = $("#reviewStartDate").val();
+            var edate = $("#reviewEndDate").val();
             var propid = <?php echo session()->get('property_id'); ?>
 
             $.ajax({
@@ -1295,7 +1296,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
                             // alert(val.user_email);
 
 
-                            reviewhtml = reviewhtml + ' <div class="form-group row"> <div class="col-sm-4">' +
+                            reviewhtml = reviewhtml + ' <div class="form-group row reviewData"> <div class="col-sm-4">' +
 
                                 '<p  id="ue" style="margin-top: 11px;">' + val.user_email + '</p>' +
 
