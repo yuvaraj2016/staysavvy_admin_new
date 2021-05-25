@@ -841,7 +841,7 @@ content: none !important;
              
             <!-- <div class="container"> -->
 
-            <div class="pcoded-navbar">
+            <div class="pcoded-navbar" style="margin-top: -10px!important;">
 
 
             <div class="row" style="padding-bottom:2px!important;margin-left:0px!important;background:white!important;">
@@ -1030,7 +1030,7 @@ content: none !important;
 <br>
 
 <!-- ============= COMPONENT ============== -->
-<nav class="col-lg-12 col-md-12 col-sm-12 navbar navbar-expand-lg navbar-dark bg-primary1" style="padding-top:0px!important">
+<nav class="col-lg-12 col-md-12 col-sm-12 navbar navbar-expand-lg navbar-dark bg-primary1" style="padding-top:0px!important;margin-top:-11px!important">
 <div class="container-fluid">
 <!-- <a class="navbar-brand" href="#">Brand</a> -->
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
