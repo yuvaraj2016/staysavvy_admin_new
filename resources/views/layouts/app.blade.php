@@ -29,6 +29,13 @@ margin-right: auto!important;
             vertical-align: inherit!important;
         }
      
+
+
+        .col-form-label {
+       
+       font-size: 13px!important;
+        }
+
         /* start newmenu css written below on 03.02.2021 */
 /* user down arrow removed */
 .dropdown-toggle::after {

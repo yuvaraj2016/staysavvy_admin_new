@@ -82,7 +82,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <p style="width:222px;margin-top:18px;margin-left:-9px;" > <i class=" fa fa-newspaper-o"></i> Booking Overview</p>
+                                                <p style="width:222px;margin-top:18px;margin-left:-14px;" > <i class=" fa fa-newspaper-o"></i><b> Booking Overview</b></p>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -91,20 +91,20 @@
 
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:16px">From</h6>
+                                            <h6 style="margin-top: 11px;margin-left:1px">From</h6>
                                             <input type="date" id="sdate1" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 151px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:19px">Until</h6>
-                                            <input type="date" id="edate1" name="edate" class="form-control offset-1" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 151px;">
+                                            <h6 style="margin-top: 11px;margin-left:10px">Until</h6>
+                                            <input type="date" id="edate1" name="edate" class="form-control offset-1" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 150px;">
 
                                         </div>
 
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1">
-                                                <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 16px;margin-left:63px;padding: 6px 0px 0px 16px;">   <i class="fa fa-search" style="font-size:20px!important;"></i></button>
+                                                <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 16px;margin-left:23px;padding: 11px 11px 0px 19px;">  Submit</button>
                                             </div>
                                         </div>
 
@@ -142,7 +142,7 @@
                                             <div class="col-sm-2 card" id="arai" style="text-align: center;">
                                                 <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px ">Arrivals</label>
 
-                                                <p id="ac" style="text-align: center;"><b style="font-size:17px">{{$bookingobverview['arrivals_count']}}</b></p>
+                                                <p id="ac" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['arrivals_count']}}</b></p>
 
 
                                             </div>
@@ -150,7 +150,7 @@
                                             <div class="col-sm-3 offset-1 card" id="dep">
                                                 <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px">Departures</label>
 
-                                                <p id="dc" style="text-align: center;"><b style="font-size:17px">{{$bookingobverview['departures_count']}}</b> </p>
+                                                <p id="dc" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['departures_count']}}</b> </p>
 
 
                                             </div>
@@ -159,14 +159,14 @@
                                             <div class="col-sm-2 offset-1 card" id="newbook">
                                                 <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">New Bookings</label>
 
-                                                <p id="nbc" style="text-align: center;"><b style="font-size:17px"> {{$bookingobverview['new_booking_count']}}</b></p>
+                                                <p id="nbc" style="text-align: center;"><b style="font-size:14px"> {{$bookingobverview['new_booking_count']}}</b></p>
 
 
                                             </div>
                                             <div class="col-sm-2 offset-1 card" id="stayor">
                                                 <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">Stay Overs</label>
 
-                                                <p name="name" id="stover" style="text-align: center;"><b style="font-size:17px">{{$bookingobverview['stay_over']}}</b></p>
+                                                <p name="name" id="stover" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['stay_over']}}</b></p>
 
                                             </div>
                                             <!-- <div class="col-sm-2 ">
@@ -240,7 +240,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <h5 style="width: 130px;margin-top:18px"> <i class="fa fa-line-chart"></i> Performance</h5>
+                                                <p style="width: 108px;margin-top:18px"> <i class="fa fa-line-chart"></i><b> Performance</b></p>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -250,12 +250,12 @@
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;">From</h6>
-                                            <input type="date" id="sdate" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                                            <input type="date" id="sdate" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 151px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:12px">Until</h6>
-                                            <input type="date" id="edate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:12px">
+                                            <h6 style="margin-top: 11px;margin-left:6px">Until</h6>
+                                            <input type="date" id="edate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 151px;margin-left:6px">
 
                                         </div>
 
@@ -283,7 +283,7 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Average Daily Rate</label>
 
-                                                <p id="dr" style="text-align: center;"><b style="font-size: 17px;">£ {{$performance['daily_rate']}}</b></p>
+                                                <p id="dr" style="text-align: center;"><b style="font-size: 14px;">£ {{$performance['daily_rate']}}</b></p>
 
 
                                             </div>
@@ -291,19 +291,19 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Cancellation Rate</label>
 
-                                                <p id="cr" style="text-align: center;"><b style="font-size: 17px;">{{$performance['cancel_rate']}}</b> </p>
+                                                <p id="cr" style="text-align: center;"><b style="font-size: 14px;">{{$performance['cancel_rate']}}</b> </p>
 
                                             </div>
 
                                             <div class="col-sm-2 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Revenue</label>
 
-                                                <p id="rev" style="text-align: center; width:80px"><b style="font-size: 17px;">£ {{$performance['revenue']}}</b></p>
+                                                <p id="rev" style="text-align: center; width:80px"><b style="font-size: 14px;">£ {{$performance['revenue']}}</b></p>
                                             </div>
                                             <div class="col-sm-2 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Stayed</label>
 
-                                                <p id="stay" style="text-align: center;"><b style="font-size: 17px;">{{$performance['nights_stayed']}}</b></p>
+                                                <p id="stay" style="text-align: center;"><b style="font-size: 14px;">{{$performance['nights_stayed']}}</b></p>
 
                                             </div>
 
@@ -330,7 +330,7 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Eco-Score</label>
 
-                                                <p id="ssc" style="text-align: center;"><b style="font-size: 17px;"> {{$performance['ss_score']}}</b></p>
+                                                <p id="ssc" style="text-align: center;"><b style="font-size: 14px;"> {{$performance['ss_score']}}</b></p>
 
 
                                             </div>
@@ -339,7 +339,7 @@
                                             <div class="col-sm-4 " style="text-align: center;">
                                                 <label class="col-form-label text-md-right c">Bookings Made</label>
 
-                                                <p id="bm" style="text-align: center;"><b style="font-size: 17px;">{{$performance['booking_made']}}</b></p>
+                                                <p id="bm" style="text-align: center;"><b style="font-size: 14px;">{{$performance['booking_made']}}</b></p>
 
 
                                             </div>
@@ -361,7 +361,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <h5 style="width: 260px;margin-top:15px"> <i class="fa fa-heart text-green"></i> Eco Summary</h5>
+                                                <p style="width: 112px;margin-top:15px"> <i class="fa fa-heart text-green"></i><b> Eco Summary</b></p>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -371,12 +371,12 @@
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;">From</h6>
-                                            <input type="date" id="sdate2" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                                            <input type="date" id="sdate2" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 151px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:12px">Until</h6>
-                                            <input type="date" id="edate2" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:12px">
+                                            <h6 style="margin-top: 11px;margin-left:6px">Until</h6>
+                                            <input type="date" id="edate2" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 151px;margin-left:6px">
 
                                         </div>
 
@@ -494,7 +494,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <h5 style="width: 233px;margin-top:17px"> <i class="fa fa-pencil-square"></i> Eco Review</h5>
+                                                <p style="width: 133px;margin-top:17px"> <i class="fa fa-pencil-square"></i><b> Eco Review</b></p>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -503,12 +503,12 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
 
                                         <div class="col-sm-3 ">
                                             <h6 style="margin-top: 11px;">From</h6>
-                                            <input type="date" id="reviewStartDate" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                                            <input type="date" id="reviewStartDate" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 151px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:11px">Until</h6>
-                                            <input type="date" id="reviewEndDate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;margin-left:13px">
+                                            <h6 style="margin-top: 11px;margin-left:6px">Until</h6>
+                                            <input type="date" id="reviewEndDate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 151px;margin-left:6px">
 
                                         </div>
 
@@ -717,12 +717,12 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
                 success: function(responsedata) {
                     // alert(responsedata.cancel_rate);
 
-                    $('#dr').html(responsedata.daily_rate);
-                    $('#cr').html(responsedata.cancel_rate);
-                    $('#rev').html(responsedata.revenue);
-                    $('#ssc').html(responsedata.ss_score);
-                    $('#bm').html(responsedata.booking_made);
-                    $('#stay').html(responsedata.nights_stayed);
+                    $('#dr').html(responsedata.daily_rate).css("font-weight","Bold").css("font-size","13px");
+                    $('#cr').html(responsedata.cancel_rate).css("font-weight","Bold").css("font-size","13px");
+                    $('#rev').html(responsedata.revenue).css("font-weight","Bold").css("font-size","13px");
+                    $('#ssc').html(responsedata.ss_score).css("font-weight","Bold").css("font-size","13px");
+                    $('#bm').html(responsedata.booking_made).css("font-weight","Bold").css("font-size","13px");
+                    $('#stay').html(responsedata.nights_stayed).css("font-weight","Bold").css("font-size","13px");
 
 
                 }
