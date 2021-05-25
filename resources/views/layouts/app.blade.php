@@ -846,7 +846,7 @@ content: none !important;
 
             <div class="row" style="padding-bottom:2px!important;margin-left:0px!important;background:white!important;">
                         <div style="margin-left:30px!important; width:16%!important;float:left; margin-top:10px;">
-                            <a class="navbar-brand mt-3" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" width="210px" height="auto" /></a>
+                            <a class="navbar-brand mt-4" href="#"><img src="{{  asset('files/assets/images/StaySavvy-Logo.png') }}" width="210px" height="auto" /></a>
                         </div>
 
                         <div style="margin-left:24px!important;border:0px solid red!important; width:77%!important;float:left;">
