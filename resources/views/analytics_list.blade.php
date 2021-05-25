@@ -128,12 +128,12 @@
                          
                         <div class="col-sm-3 offset-1">
                                 <h6 style="margin-top: 11px;">From</h6>
-                                <input type="date" id="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 148px;">
+                                <input type="date" id="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 150px;">
                             </div>
 
                             <div class="col-sm-2 " style="margin-left: -111px;">
                                 <h6 style="margin-top: 11px;">Until</h6>
-                                <input type="date" id="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 148px;">
+                                <input type="date" id="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 150px;">
 
                             </div>
 
