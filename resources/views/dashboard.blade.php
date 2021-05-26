@@ -395,26 +395,22 @@
 
                                     </div>
                                 </form>
-                            </div>
+                            <!-- </div>
 
                             <div class="card" style="margin-top: -16px;">
-                                <!-- <div class="card-header">
-                                                        <h5>Pie chart</h5>
-                                                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                   
+                                <div class="card-block"> -->
+                                  
+                                    <div class="ct-chart " id="chart1" style="margin-top: -16px;"></div>
 
-                                                    </div> -->
-                                <div class="card-block">
-                                    <!-- <div id="pie-chart" style="height:300px"></div> -->
-                                    <div class="ct-chart " id="chart1"></div>
+                                <!-- </div> -->
 
-                                </div>
-
-                            </div>
+                            <!-- </div>-->
 
                             <div class="card" style="margin-top: -16px;">
 
 
-                                <div class="card-block">
+                                <div class="card-block"> 
                                     <h5 id="ecs" style="display: none;text-align: center;
 margin: 0;
 position: absolute;
@@ -431,7 +427,11 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
 
 
 
-                            <div class="card">
+
+                            <!-- </div> -->
+
+
+                            <div class="card" style="margin-top: -29px!important;">
 
                                 <div class="card-block">
                                     <div id="" style="height:100px; display: inline-block;
@@ -473,6 +473,9 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
                                     </div>
                                 </div>
                             </div>
+                            </div>
+
+                            
                         </div>
 
 
