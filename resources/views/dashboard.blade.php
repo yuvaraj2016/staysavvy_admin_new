@@ -19,6 +19,18 @@
         width: 100%;
         overflow: auto;
     }
+    .card .card-block table tr {
+        padding-bottom: 0px!important;
+
+    }
+    table {
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid green;
+    padding: 10px;
+    text-align: left;
+  }
 </style>
 <!-- <script>
   var msg = '{{Session::get('alert')}}';
@@ -110,31 +122,27 @@
 
                                     </div>
                                 </form>
-                            </div>
-                            <div class="card" style="margin-top: -16px;">
-                                <!-- <div class="card-header">
-                                                        <h5>Line chart</h5>
-                                                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-
-                                                    </div> -->
-                                <div class="card-block">
+                            <!-- </div>
+                            <div class="" style="margin-top: -16px;">
+                           
+                                <div class=""> -->
                                     {{-- <p id="cdempty" style="display: none;">No data found for chart</p> --}}
 
                                     {{-- <div id="main" style="height:300px"></div> --}}
 
-                                    <div class="ct-chart" id="chart"></div>
+                                    <div class="ct-chart" id="chart" style="margin-top: -40px!important;"></div>
 
 
 
 
-                                </div>
-                            </div>
+                                <!-- </div> -->
+                            <!-- </div>
 
 
                             <div class="card" style="padding: 0px 10px 0px 10px;">
 
-                                <div class="card-block">
-                                    <div id="" style="height:100px">
+                                <div class="card-block"> -->
+                                    <div id="" class="card-block" style="height:130px ;padding: 25px -2px 0px 28px;margin-top:-28px!important">
 
 
                                         <div class="form-group row ">
@@ -182,16 +190,22 @@
 
 
                                     </div>
-                                </div>
-                            </div>
 
 
-                            <div class="card" style="margin-top: -16px;">
 
-                                <div class="card-block">
-                                    <div id="" style="height:100px; display: inline-block;
-    width: 100%;
-    overflow: auto;">
+
+
+
+                                <!-- </div> -->
+                            <!-- </div> -->
+
+
+                            <!-- <div class="card" style="margin-top: -16px;">
+
+                                <div class="card-block"> -->
+                                    <div class="card-block" id="" style="height:130px; display: inline-block;
+    /* width: 100%; */
+    overflow: auto;margin-top: 1px;">
 
                                         <div class="dt-responsive table-responsive">
                                             <table id="arr">
@@ -227,7 +241,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            <!-- </div> -->
                         </div>
 
 
@@ -268,15 +282,11 @@
 
                                     </div>
                                 </form>
-                            </div>
+                            <!-- </div>
                             <div class="card" style="margin-top: -16px;">
-                                <!-- <div class="card-header">
-                                                        <h5>Line chart</h5>
-                                                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-
-                                                    </div> -->
-                                <div class="card-block">
-                                    <div id="main" style="height:106px">
+            
+                                <div class="card-block"> -->
+                                    <div id="main" style="height:106px;margin-top: -16px;">
 
 
                                         <div class="form-group row ">
@@ -312,18 +322,14 @@
                                         <!-- <div id="chart" style="height: 300px;"></div>             -->
 
                                     </div>
-                                </div>
-                            </div>
+                                <!-- </div> -->
+                            <!-- </div>
 
 
                             <div class="card" style="margin-top: -16px;">
-                                <!-- <div class="card-header">
-                                                        <h5>Line chart</h5>
-                                                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-
-                                                    </div> -->
-                                <div class="card-block">
-                                    <div id="main" style="height:106px">
+                            
+                                <div class="card-block"> -->
+                                    <div id="main" style="height:106px;margin-top: -16px;">
 
 
                                         <div class="form-group row ">
@@ -346,7 +352,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <!-- </div> -->
                         </div>
 
 
