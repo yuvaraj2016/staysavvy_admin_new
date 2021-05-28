@@ -1043,7 +1043,7 @@ content: none !important;
 
 @if(collect(session('roles'))->contains('Vendor'))
 <li class="nav-item  ">
-  <span class="pcoded-micon mar"><i class="icofont icofont-home text-white offset-1" style="line-height: 31px;"></i></span>    
+  <span class="pcoded-micon mar1"><i class="icofont icofont-home text-white offset-2" style="line-height: 31px;"></i></span>    
   <a class="nav-link mar1" href="{{ route('dashboard.index') }}">Home </a> </li>
 @endif
 
