@@ -19,29 +19,39 @@
         width: 100%;
         overflow: auto;
     }
+
     .card .card-block table tr {
-        padding-bottom: 0px!important;
+        padding-bottom: 0px !important;
 
     }
+
     table {
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid green;
-    padding: 10px;
-    text-align: left;
-    font-size: 11px !important;
-  }
-  th{
-      font-size: 13px!important;
-  }
-  .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
-    stroke: green!important;
-  
-}
-.ct-series-a .ct-area{
-fill: green!important;
-}
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid green;
+        padding: 10px;
+        text-align: left;
+        font-size: 11px !important;
+    }
+
+    th {
+        font-size: 13px !important;
+    }
+
+    .ct-series-a .ct-bar,
+    .ct-series-a .ct-line,
+    .ct-series-a .ct-point,
+    .ct-series-a .ct-slice-donut {
+        stroke: green !important;
+
+    }
+
+    .ct-series-a .ct-area {
+        fill: green !important;
+    }
 </style>
 <!-- <script>
   var msg = '{{Session::get('alert')}}';
@@ -51,9 +61,9 @@ fill: green!important;
   }s
 </script> -->
 @if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
+<div class="alert alert-success">
+    {{ session()->get('message') }}
+</div>
 @endif
 
 <div class="pcoded-content">
@@ -90,10 +100,10 @@ fill: green!important;
                 <!-- Page-header end -->
 
                 @if (session('alert'))
-    <div class="alert alert-success">
-        {{ session('alert') }}
-    </div>
-@endif
+                <div class="alert alert-success">
+                    {{ session('alert') }}
+                </div>
+                @endif
                 <div class="page-body">
                     <div class="row">
                         <div class="col-xl-6">
@@ -105,7 +115,7 @@ fill: green!important;
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <p style="width:222px;margin-top:18px;margin-left:-14px;" > <i class=" fa fa-newspaper-o"></i><b> Booking Overview</b></p>
+                                                <p style="width:222px;margin-top:18px;margin-left:-14px;"> <i class=" fa fa-newspaper-o"></i><b> Booking Overview</b></p>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -127,80 +137,80 @@ fill: green!important;
                                         <div class="form-group  ">
                                             <label class="col-form-label text-md-right "></label>
                                             <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1">
-                                                <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 16px;margin-left:23px;padding: 11px 11px 0px 19px;">  Submit</button>
+                                                <button type="button" id="booksubmit1" class="btn btn-primary" style="margin-top: 16px;margin-left:23px;padding: 11px 11px 0px 19px;"> Submit</button>
                                             </div>
                                         </div>
 
                                     </div>
                                 </form>
-                            <!-- </div>
+                                <!-- </div>
                             <div class="" style="margin-top: -16px;">
                            
                                 <div class=""> -->
-                                    {{-- <p id="cdempty" style="display: none;">No data found for chart</p> --}}
+                                {{-- <p id="cdempty" style="display: none;">No data found for chart</p> --}}
 
-                                    {{-- <div id="main" style="height:300px"></div> --}}
+                                {{-- <div id="main" style="height:300px"></div> --}}
 
-                                    <div class="ct-chart" id="chart" style="margin-top: -40px!important;"></div>
+                                <div class="ct-chart" id="chart" style="margin-top: -40px!important;"></div>
 
 
 
 
                                 <!-- </div> -->
-                            <!-- </div>
+                                <!-- </div>
 
 
                             <div class="card" style="padding: 0px 10px 0px 10px;">
 
                                 <div class="card-block"> -->
-                                    <div id="" class="card-block" style="height:130px ;padding: 25px -2px 0px 28px;margin-top:-28px!important">
+                                <div id="" class="card-block" style="height:130px ;padding: 25px -2px 0px 28px;margin-top:-28px!important">
 
 
-                                        <div class="form-group row ">
+                                    <div class="form-group row ">
 
-                                            <div class="col-sm-2 card" id="arai" style="text-align: center;">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px ">Arrivals</label>
+                                        <div class="col-sm-2 card" id="arai" style="text-align: center;">
+                                            <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px ">Arrivals</label>
 
-                                                <p id="ac" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['arrivals_count']}}</b></p>
-
-
-                                            </div>
-
-                                            <div class="col-sm-3 offset-1 card" id="dep">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px">Departures</label>
-
-                                                <p id="dc" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['departures_count']}}</b> </p>
+                                            <p id="ac" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['arrivals_count']}}</b></p>
 
 
-                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3 offset-1 card" id="dep">
+                                            <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px">Departures</label>
+
+                                            <p id="dc" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['departures_count']}}</b> </p>
 
 
-                                            <div class="col-sm-2 offset-1 card" id="newbook">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">New Bookings</label>
-
-                                                <p id="nbc" style="text-align: center;"><b style="font-size:14px"> {{$bookingobverview['new_booking_count']}}</b></p>
+                                        </div>
 
 
-                                            </div>
-                                            <div class="col-sm-2 offset-1 card" id="stayor">
-                                                <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">Stay Overs</label>
+                                        <div class="col-sm-2 offset-1 card" id="newbook">
+                                            <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">New Bookings</label>
 
-                                                <p name="name" id="stover" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['stay_over']}}</b></p>
+                                            <p id="nbc" style="text-align: center;"><b style="font-size:14px"> {{$bookingobverview['new_booking_count']}}</b></p>
 
-                                            </div>
-                                            <!-- <div class="col-sm-2 ">
+
+                                        </div>
+                                        <div class="col-sm-2 offset-1 card" id="stayor">
+                                            <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">Stay Overs</label>
+
+                                            <p name="name" id="stover" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['stay_over']}}</b></p>
+
+                                        </div>
+                                        <!-- <div class="col-sm-2 ">
                                                 <label class="col-form-label text-md-right c">Enquries</label>
 
                                                 <p name="name" style="text-align: center;">0</p>
 
                                             </div> -->
-                                        </div>
-
-
-                                        <!-- <div id="chart" style="height: 300px;"></div>             -->
-
-
                                     </div>
+
+
+                                    <!-- <div id="chart" style="height: 300px;"></div>             -->
+
+
+                                </div>
 
 
 
@@ -208,50 +218,50 @@ fill: green!important;
 
 
                                 <!-- </div> -->
-                            <!-- </div> -->
+                                <!-- </div> -->
 
 
-                            <!-- <div class="card" style="margin-top: -16px;">
+                                <!-- <div class="card" style="margin-top: -16px;">
 
                                 <div class="card-block"> -->
-                                    <div class="card-block" id="" style="height:130px; display: inline-block;
+                                <div class="card-block" id="" style="height:130px; display: inline-block;
     /* width: 100%; */
     overflow: auto;margin-top: 1px;">
 
-                                        <div class="dt-responsive table-responsive">
-                                            <table id="arr">
-                                                <thead>
-                                                    <tr style="float: right;">
-                                                        <th class="col-md-2">User Name</th>
-                                                        <th class="col-md-2">Date Range</th>
+                                    <div class="dt-responsive table-responsive">
+                                        <table id="arr">
+                                            <thead>
+                                                <tr style="float: right;">
+                                                    <th class="col-md-2">User Name</th>
+                                                    <th class="col-md-2">Date Range</th>
 
-                                                        <th class="col-md-2">Total Guests</th>
-                                                        <th class="">Total Amount</th>
-
-
+                                                    <th class="col-md-2">Total Guests</th>
+                                                    <th class="">Total Amount</th>
 
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach($available as $avail)
-                                                    <tr>
-                                                        <td class="" style="text-align:center;width:25%" id="un">{{ $avail['user_name'] }}</td>
 
-                                                        <td class="" style="text-align:center;width:25%" id="pn">{{ $avail['date_range_human'] }}</td>
 
-                                                        <td class="" style="text-align:center;width:25%" id="br">{{ $avail['total_guests'] }}</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($available as $avail)
+                                                <tr>
+                                                    <td class="" style="text-align:center;width:25%" id="un">{{ $avail['user_name'] }}</td>
 
-                                                        <td class="" style="text-align:center;width:25%" id="ta">{{ $avail['total_amount'] }}</td>
+                                                    <td class="" style="text-align:center;width:25%" id="pn">{{ $avail['date_range_human'] }}</td>
 
-                                                    </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    <td class="" style="text-align:center;width:25%" id="br">{{ $avail['total_guests'] }}</td>
 
+                                                    <td class="" style="text-align:center;width:25%" id="ta">{{ $avail['total_amount'] }}</td>
+
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
+
                                 </div>
+                            </div>
                             <!-- </div> -->
                         </div>
 
@@ -293,76 +303,76 @@ fill: green!important;
 
                                     </div>
                                 </form>
-                            <!-- </div>
+                                <!-- </div>
                             <div class="card" style="margin-top: -16px;">
             
                                 <div class="card-block"> -->
-                                    <div id="main" style="height:106px;margin-top: -16px;">
+                                <div id="main" style="height:106px;margin-top: -16px;">
 
 
-                                        <div class="form-group row ">
-                                            <div class="col-sm-4 " style="text-align: center;">
-                                                <label class="col-form-label text-md-right c">Average Daily Rate</label>
+                                    <div class="form-group row ">
+                                        <div class="col-sm-4 " style="text-align: center;">
+                                            <label class="col-form-label text-md-right c">Average Daily Rate</label>
 
-                                                <p id="dr" style="text-align: center;"><b style="font-size: 14px;">£ {{$performance['daily_rate']}}</b></p>
+                                            <p id="dr" style="text-align: center;"><b style="font-size: 14px;">£ {{$performance['daily_rate']}}</b></p>
 
-
-                                            </div>
-
-                                            <div class="col-sm-4 " style="text-align: center;">
-                                                <label class="col-form-label text-md-right c">Cancellation Rate</label>
-
-                                                <p id="cr" style="text-align: center;"><b style="font-size: 14px;">{{$performance['cancel_rate']}}</b> </p>
-
-                                            </div>
-
-                                            <div class="col-sm-2 " style="text-align: center;">
-                                                <label class="col-form-label text-md-right c">Revenue</label>
-
-                                                <p id="rev" style="text-align: center; width:80px"><b style="font-size: 14px;">£ {{$performance['revenue']}}</b></p>
-                                            </div>
-                                            <div class="col-sm-2 " style="text-align: center;">
-                                                <label class="col-form-label text-md-right c">Stayed</label>
-
-                                                <p id="stay" style="text-align: center;"><b style="font-size: 14px;">{{$performance['nights_stayed']}}</b></p>
-
-                                            </div>
 
                                         </div>
 
-                                        <!-- <div id="chart" style="height: 300px;"></div>             -->
+                                        <div class="col-sm-4 " style="text-align: center;">
+                                            <label class="col-form-label text-md-right c">Cancellation Rate</label>
+
+                                            <p id="cr" style="text-align: center;"><b style="font-size: 14px;">{{$performance['cancel_rate']}}</b> </p>
+
+                                        </div>
+
+                                        <div class="col-sm-2 " style="text-align: center;">
+                                            <label class="col-form-label text-md-right c">Revenue</label>
+
+                                            <p id="rev" style="text-align: center; width:80px"><b style="font-size: 14px;">£ {{$performance['revenue']}}</b></p>
+                                        </div>
+                                        <div class="col-sm-2 " style="text-align: center;">
+                                            <label class="col-form-label text-md-right c">Stayed</label>
+
+                                            <p id="stay" style="text-align: center;"><b style="font-size: 14px;">{{$performance['nights_stayed']}}</b></p>
+
+                                        </div>
 
                                     </div>
+
+                                    <!-- <div id="chart" style="height: 300px;"></div>             -->
+
+                                </div>
                                 <!-- </div> -->
-                            <!-- </div>
+                                <!-- </div>
 
 
                             <div class="card" style="margin-top: -16px;">
                             
                                 <div class="card-block"> -->
-                                    <div id="main" style="height:106px;margin-top: -16px;">
+                                <div id="main" style="height:106px;margin-top: -16px;">
 
 
-                                        <div class="form-group row ">
-                                            <div class="col-sm-4 " style="text-align: center;">
-                                                <label class="col-form-label text-md-right c">Eco-Score</label>
+                                    <div class="form-group row ">
+                                        <div class="col-sm-4 " style="text-align: center;">
+                                            <label class="col-form-label text-md-right c">Eco-Score</label>
 
-                                                <p id="ssc" style="text-align: center;"><b style="font-size: 14px;"> {{$performance['ss_score']}}</b></p>
-
-
-                                            </div>
+                                            <p id="ssc" style="text-align: center;"><b style="font-size: 14px;"> {{$performance['ss_score']}}</b></p>
 
 
-                                            <div class="col-sm-4 " style="text-align: center;">
-                                                <label class="col-form-label text-md-right c">Bookings Made</label>
-
-                                                <p id="bm" style="text-align: center;"><b style="font-size: 14px;">{{$performance['booking_made']}}</b></p>
+                                        </div>
 
 
-                                            </div>
+                                        <div class="col-sm-4 " style="text-align: center;">
+                                            <label class="col-form-label text-md-right c">Bookings Made</label>
+
+                                            <p id="bm" style="text-align: center;"><b style="font-size: 14px;">{{$performance['booking_made']}}</b></p>
+
+
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             <!-- </div> -->
                         </div>
 
@@ -406,87 +416,87 @@ fill: green!important;
 
                                     </div>
                                 </form>
-                            <!-- </div>
+                                <!-- </div>
 
                             <div class="card" style="margin-top: -16px;">
                    
                                 <div class="card-block"> -->
-                                  
-                                    <div class="ct-chart " id="chart1" style="margin-top: -16px;"></div>
+
+                                <div class="ct-chart " id="chart1" style="margin-top: -16px;"></div>
 
                                 <!-- </div> -->
 
-                            <!-- </div>-->
+                                <!-- </div>-->
 
-                            <div class="card" style="margin-top: -16px;">
+                                <div class="card" style="margin-top: -16px;">
 
 
-                                <div class="card-block"> 
-                                    <h6 id="ecs" style="display: none;text-align: center;
+                                    <div class="card-block">
+                                        <h6 id="ecs" style="display: none;text-align: center;
 margin: 0;
 position: absolute;
 top: 50%;
 left: 50%;
 -ms-transform: translate(-50%, -50%);
 transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
-                                    <canvas id="oilChart" width="400" height="200"></canvas>
+                                        <canvas id="oilChart" width="400" height="200"></canvas>
+
+                                    </div>
+
 
                                 </div>
 
 
-                            </div>
 
 
+                                <!-- </div> -->
 
 
-                            <!-- </div> -->
+                                <div class="card" style="margin-top: -29px!important;">
 
-
-                            <div class="card" style="margin-top: -29px!important;">
-
-                                <div class="card-block">
-                                    <div id="" style="height:100px; display: inline-block;
+                                    <div class="card-block">
+                                        <div id="" style="height:100px; display: inline-block;
     width: 100%;
     overflow: auto;">
-                                        <p><b>Eco Reward</b></p>
-                                        <div class="dt-responsive table-responsive">
-                                            <table id="vrew">
-                                                <thead style="float: left;width:100%">
-                                                    <tr>
-                                                        <th class="col-md-3" style="max-width:28%!important">User Name</th>
-                                                        <th class="col-md-3" style="max-width:28%!important">Date Range</th>
+                                            <p><b>Eco Reward</b></p>
+                                            <div class="dt-responsive table-responsive">
+                                                <table id="vrew">
+                                                    <thead style="float: left;width:100%">
+                                                        <tr>
+                                                            <th class="col-md-3" style="max-width:28%!important">User Name</th>
+                                                            <th class="col-md-3" style="max-width:28%!important">Date Range</th>
 
-                                                        <th class="col-md-3" style="max-width:28%!important">Booking Ref</th>
-                                                        <th class="col-md-3" style="max-width:28%!important">Status</th>
-
-
+                                                            <th class="col-md-3" style="max-width:28%!important">Booking Ref</th>
+                                                            <th class="col-md-3" style="max-width:28%!important">Status</th>
 
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach($reward as $avail)
-                                                    <tr>
-                                                        <td class="col-md-3" id="vun">{{ $avail['user_name'] }}</td>
 
-                                                        <td class="col-md-3" id="vdr">{{ $avail['date_range_human'] }}</td>
 
-                                                        <td class="col-md-3" id="vbr">{{ $avail['booking_reference'] }}</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($reward as $avail)
+                                                        <tr>
+                                                            <td class="col-md-3" id="vun">{{ $avail['user_name'] }}</td>
 
-                                                        <td class="col-md-3" id="vs">{{ $avail['conf_reward_status_name'] }}</td>
+                                                            <td class="col-md-3" id="vdr">{{ $avail['date_range_human'] }}</td>
 
-                                                    </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
+                                                            <td class="col-md-3" id="vbr">{{ $avail['booking_reference'] }}</td>
+
+                                                            <td class="col-md-3" id="vs">{{ $avail['conf_reward_status_name'] }}</td>
+
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-                            </div>
 
-                            
+
                         </div>
 
 
@@ -541,7 +551,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
 
                                     </div>
                                 </form>
-                            <!-- </div>
+                                <!-- </div>
 
                             <div class="card" style="margin-top: -16px;"> -->
 
@@ -580,7 +590,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                                             </div>
                                             @endforeach
                                             @php } else{ @endphp
-                                        
+
                                             <h6 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h6>
                                             @php }@endphp
 
@@ -680,7 +690,9 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
 
 
     <script>
+        let onLoadPieChartData = [];
         var oilCanvas = document.getElementById("oilChart");
+        var ctx = oilCanvas.getContext('2d');
 
         Chart.defaults.global.defaultFontFamily = "Lato";
         Chart.defaults.global.defaultFontSize = 18;
@@ -691,6 +703,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
         var ds = @php echo json_encode($piechart['datasets']);
         @endphp;
 
+        onLoadPieChartData = ds;
         if (lab == '' && ds == '') {
             // alert("hii");
             $('#ecs').css('display', 'block');
@@ -701,17 +714,34 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                 labels: @php echo json_encode($piechart['labels']);@endphp,
                 datasets: [{
                     data: @php echo json_encode($piechart['datasets']);@endphp,
-
-
-
-
+                    backgroundColor: getRandomColorForOnLoadData(),
                 }]
             };
 
-            var pieChart = new Chart(oilCanvas, {
+            console.log('OnLoadPieChartData', oilData)
+
+            var pieChart = new Chart(ctx, {
                 type: 'pie',
                 data: oilData
             });
+        }
+
+        function getRandomColorForOnLoadData() {
+            console.log('onLoadPieChartData', onLoadPieChartData)
+            var letters = '0123456789ABCDEF'.split('');
+            var color = [];
+            for (var i = 0; i < onLoadPieChartData.length; i++) {
+                var max2 = 150;
+                var min2 = 100;
+                var max1 = 100;
+                var min1 = 50;
+                var green1 = Math.floor(Math.random() * (max2 - min2 + 1)) + min2;
+                var green2 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+                color.push(`rgb(0,${green1},${green2})`);
+            }
+            console.log(color)
+            return color;
+
         }
     </script>
     <script>
@@ -740,12 +770,12 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                 success: function(responsedata) {
                     // alert(responsedata.cancel_rate);
 
-                    $('#dr').html(responsedata.daily_rate).css("font-weight","Bold").css("font-size","13px");
-                    $('#cr').html(responsedata.cancel_rate).css("font-weight","Bold").css("font-size","13px");
-                    $('#rev').html(responsedata.revenue).css("font-weight","Bold").css("font-size","13px");
-                    $('#ssc').html(responsedata.ss_score).css("font-weight","Bold").css("font-size","13px");
-                    $('#bm').html(responsedata.booking_made).css("font-weight","Bold").css("font-size","13px");
-                    $('#stay').html(responsedata.nights_stayed).css("font-weight","Bold").css("font-size","13px");
+                    $('#dr').html(responsedata.daily_rate).css("font-weight", "Bold").css("font-size", "13px");
+                    $('#cr').html(responsedata.cancel_rate).css("font-weight", "Bold").css("font-size", "13px");
+                    $('#rev').html(responsedata.revenue).css("font-weight", "Bold").css("font-size", "13px");
+                    $('#ssc').html(responsedata.ss_score).css("font-weight", "Bold").css("font-size", "13px");
+                    $('#bm').html(responsedata.booking_made).css("font-weight", "Bold").css("font-size", "13px");
+                    $('#stay').html(responsedata.nights_stayed).css("font-weight", "Bold").css("font-size", "13px");
 
 
                 }
@@ -919,12 +949,12 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
 
 
 
-
+        let pieChartData = [];
         // reward onclick fuction given below on 18.03.2021
 
         $('#reward').on("click", function() {
             //  alert("hiiiii")
-
+            pieChartData = [];
             var sdate = $("#sdate2").val();
             // alert(sdate1);
             var edate = $("#edate2").val();
@@ -1012,31 +1042,32 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                     var lab = responsedata.labels;
 
                     var ds = responsedata.datasets;
-
+                    pieChartData = ds;
                     if (lab == '' && ds == '') {
                         // alert("hii");
                         $('#ecs').css('display', 'block');
                         $('#oilChart').css('display', 'none');
 
                     } else {
+                        $('#oilChart').html('');
                         $('#ecs').css('display', 'none');
                         $('#oilChart').css('display', 'block');
-                        var oilCanvas = document.getElementById("oilChart");
-
+                        var oilBtnClickCanvas = document.getElementById("oilChart");
+                       var ctx = oilBtnClickCanvas.getContext('2d');
                         // Chart.defaults.global.defaultFontFamily = "Lato";
                         Chart.defaults.global.defaultFontSize = 18;
 
-                        var oilData = {
+                        var oilBtnClickData = {
                             labels: responsedata.labels,
                             datasets: [{
                                 data: responsedata.datasets,
-
+                                backgroundColor: getRandomColor(),
                             }]
                         };
 
-                        var pieChart = new Chart(oilCanvas, {
+                        var pieChart = new Chart(ctx, {
                             type: 'pie',
-                            data: oilData
+                            data: oilBtnClickData
                         });
 
 
@@ -1115,6 +1146,26 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
             })
 
         });
+
+
+
+        function getRandomColor() {
+            console.log('pieChartData', pieChartData)
+            var letters = '0123456789ABCDEF'.split('');
+            var color = [];
+            for (var i = 0; i < pieChartData.length; i++) {
+                var max2 = 150;
+                var min2 = 100;
+                var max1 = 100;
+                var min1 = 50;
+                var green1 = Math.floor(Math.random() * (max2 - min2 + 1)) + min2;
+                var green2 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+                color.push(`rgb(0,${green1},${green2})`);
+            }
+            console.log(color)
+            return color;
+
+        }
 
         // end of Reward onclick fuction given below on 18.03.2021
 
