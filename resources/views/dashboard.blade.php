@@ -37,6 +37,10 @@
   }
   .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
     stroke: green!important;
+  
+}
+.ct-series-a .ct-area{
+fill: green!important;
 }
 </style>
 <!-- <script>
