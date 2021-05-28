@@ -35,6 +35,9 @@
   th{
       font-size: 13px!important;
   }
+  .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+    stroke: green!important;
+}
 </style>
 <!-- <script>
   var msg = '{{Session::get('alert')}}';
