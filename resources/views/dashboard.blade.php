@@ -30,6 +30,10 @@
     border: 1px solid green;
     padding: 10px;
     text-align: left;
+    font-size: 11px !important;
+  }
+  th{
+      font-size: 13px!important;
   }
 </style>
 <!-- <script>
@@ -103,12 +107,12 @@
 
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:1px">From</h6>
+                                            <h6 style="margin-top: 11px;margin-left:1px"><b>From</b></h6>
                                             <input type="date" id="sdate1" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 151px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:10px">Until</h6>
+                                            <h6 style="margin-top: 11px;margin-left:10px"><b>Until</b></h6>
                                             <input type="date" id="edate1" name="edate" class="form-control offset-1" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 150px;">
 
                                         </div>
@@ -254,7 +258,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="card-header">
-                                                <p style="width: 108px;margin-top:18px"> <i class="fa fa-line-chart"></i><b> Performance</b></p>
+                                                <p style="width: 118px;margin-top:18px"> <i class="fa fa-line-chart"></i><b> Performance</b></p>
                                                 <!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> -->
 
                                             </div>
@@ -263,12 +267,12 @@
 
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;">From</h6>
+                                            <h6 style="margin-top: 11px;"><b>From</b></h6>
                                             <input type="date" id="sdate" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 151px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:6px">Until</h6>
+                                            <h6 style="margin-top: 11px;margin-left:6px"><b>Until</b></h6>
                                             <input type="date" id="edate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 151px;margin-left:6px">
 
                                         </div>
@@ -376,12 +380,12 @@
 
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;">From</h6>
+                                            <h6 style="margin-top: 11px;"><b>From</b></h6>
                                             <input type="date" id="sdate2" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 151px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:6px">Until</h6>
+                                            <h6 style="margin-top: 11px;margin-left:6px"><b>Until</b></h6>
                                             <input type="date" id="edate2" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 151px;margin-left:6px">
 
                                         </div>
@@ -411,13 +415,13 @@
 
 
                                 <div class="card-block"> 
-                                    <h5 id="ecs" style="display: none;text-align: center;
+                                    <h6 id="ecs" style="display: none;text-align: center;
 margin: 0;
 position: absolute;
 top: 50%;
 left: 50%;
 -ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
+transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                                     <canvas id="oilChart" width="400" height="200"></canvas>
 
                                 </div>
@@ -437,7 +441,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
                                     <div id="" style="height:100px; display: inline-block;
     width: 100%;
     overflow: auto;">
-                                        <h6>Eco Reward</h6>
+                                        <p><b>Eco Reward</b></p>
                                         <div class="dt-responsive table-responsive">
                                             <table id="vrew">
                                                 <thead style="float: left;width:100%">
@@ -511,12 +515,12 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
 
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;">From</h6>
+                                            <h6 style="margin-top: 11px;"><b>From</b></h6>
                                             <input type="date" id="reviewStartDate" name="sdate" class="form-control" value="<?php echo date("Y-m-d"); ?>" style="width: 151px;">
                                         </div>
 
                                         <div class="col-sm-3 ">
-                                            <h6 style="margin-top: 11px;margin-left:6px">Until</h6>
+                                            <h6 style="margin-top: 11px;margin-left:6px"><b>Until</b></h6>
                                             <input type="date" id="reviewEndDate" name="edate" class="form-control" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" style="width: 151px;margin-left:6px">
 
                                         </div>
@@ -530,14 +534,14 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
 
                                     </div>
                                 </form>
-                            </div>
+                            <!-- </div>
 
-                            <div class="card" style="margin-top: -16px;">
+                            <div class="card" style="margin-top: -16px;"> -->
 
                                 <div class="card-block">
                                     <div id="pie-chart" style="height:300px;display: inline-block;
     width: 100%;
-    overflow: auto;">
+    overflow: auto;margin-top: -16px;">
 
 
 
@@ -570,7 +574,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
                                             @endforeach
                                             @php } else{ @endphp
                                         
-                                            <h5 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h5>
+                                            <h6 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h6>
                                             @php }@endphp
 
                                         </div>
@@ -585,6 +589,9 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h5>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
 
                     </div>
