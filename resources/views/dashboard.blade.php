@@ -440,7 +440,10 @@ left: 50%;
 -ms-transform: translate(-50%, -50%);
 transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                                         <canvas id="oilChart" width="400" height="200"></canvas>
-
+                                        <canvas id="oilChartBtnClick" width="400" height="200"></canvas>
+                                        <div id="pieChartSpinner" class="loader" style="text-align: center;font-size: 40px;color: green;">
+                                            <i class="fa fa-circle-o-notch fa-spin"></i>
+                                        </div>
                                     </div>
 
 
@@ -690,6 +693,8 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
 
 
     <script>
+        $('#pieChartSpinner').show();
+        $('#oilChartBtnClick').css('display', 'none');
         let onLoadPieChartData = [];
         var oilCanvas = document.getElementById("oilChart");
         var ctx = oilCanvas.getContext('2d');
@@ -707,8 +712,10 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
         if (lab == '' && ds == '') {
             // alert("hii");
             $('#ecs').css('display', 'block');
+            $('#pieChartSpinner').hide();
 
         } else {
+            $('#pieChartSpinner').hide();
             $('#ecs').css('display', 'none');
             var oilData = {
                 labels: @php echo json_encode($piechart['labels']);@endphp,
@@ -953,6 +960,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
         // reward onclick fuction given below on 18.03.2021
 
         $('#reward').on("click", function() {
+            $("#pieChartSpinner").show();
             //  alert("hiiiii")
             pieChartData = [];
             var sdate = $("#sdate2").val();
@@ -1046,13 +1054,21 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                     if (lab == '' && ds == '') {
                         // alert("hii");
                         $('#ecs').css('display', 'block');
+                        $('#oilChartBtnClick').css('display', 'none');
                         $('#oilChart').css('display', 'none');
+                        $("#pieChartSpinner").hide();
 
                     } else {
-                        $('#oilChart').html('');
+                        // $("#pieChartSpinner").hide();
+                        // $('#oilChart').html('');
+                        // $('#ecs').css('display', 'none');
+                        // $('#oilChart').css('display', 'block');
+                        $("#pieChartSpinner").hide();
                         $('#ecs').css('display', 'none');
-                        $('#oilChart').css('display', 'block');
-                        var oilBtnClickCanvas = document.getElementById("oilChart");
+                        $('#oilChart').css('display', 'none');
+                        $('#oilChartBtnClick').css('display', 'block');
+
+                        var oilBtnClickCanvas = document.getElementById("oilChartBtnClick");
                        var ctx = oilBtnClickCanvas.getContext('2d');
                         // Chart.defaults.global.defaultFontFamily = "Lato";
                         Chart.defaults.global.defaultFontSize = 18;
