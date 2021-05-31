@@ -166,9 +166,12 @@
                                 <div id="" class="card-block" style="height:130px ;padding: 25px -2px 0px 28px;margin-top:-28px!important">
 
 
-                                    <div class="form-group row ">
+                                    <div class="form-group row " style="display: flex;
+justify-content: space-between;
+flex-direction: row;
+flex-wrap: wrap;">
 
-                                        <div class="col-sm-2 card" id="arai" style="text-align: center;">
+                                        <div class="col-sm-2 card" id="arai" style="text-align: center;margin-left: 22px;">
                                             <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px ">Arrivals</label>
 
                                             <p id="ac" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['arrivals_count']}}</b></p>
@@ -176,7 +179,7 @@
 
                                         </div>
 
-                                        <div class="col-sm-3 offset-1 card" id="dep">
+                                        <div class="col-sm-3  card" id="dep">
                                             <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;margin-top:23px">Departures</label>
 
                                             <p id="dc" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['departures_count']}}</b> </p>
@@ -185,14 +188,14 @@
                                         </div>
 
 
-                                        <div class="col-sm-2 offset-1 card" id="newbook">
+                                        <div class="col-sm-2 card" id="newbook">
                                             <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">New Bookings</label>
 
                                             <p id="nbc" style="text-align: center;"><b style="font-size:14px"> {{$bookingobverview['new_booking_count']}}</b></p>
 
 
                                         </div>
-                                        <div class="col-sm-2 offset-1 card" id="stayor">
+                                        <div class="col-sm-2  card" id="stayor" style="margin-right: 26px;">
                                             <label class="col-form-label text-md-right c" style=" cursor: pointer;text-align:center!important;width: 67px;margin-top:5px">Stay Overs</label>
 
                                             <p name="name" id="stover" style="text-align: center;"><b style="font-size:14px">{{$bookingobverview['stay_over']}}</b></p>
@@ -835,7 +838,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
 
                     var x = 1;
                     if (responsedata.length == 0) {
-                        arrival = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Arrival</p>';
+                        arrival = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);margin-top: 132px!important;color: black;">No Data Found In Arrival</p>';
                     } else {
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
@@ -913,7 +916,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                     var x = 1;
 
                     if (responsedata.length == 0) {
-                        bookingnew = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In New Booking</p>';
+                        bookingnew = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);margin-top: 132px!important;color: black;">No Data Found In New Booking</p>';
                     } else {
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
@@ -1128,7 +1131,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                     var reward = '';
                     var x = 1;
                     if (responsedata.length == 0) {
-                        reward = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Reward</p>';
+                        reward = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color: black;">No Data Found In Reward</p>';
                     } else {
 
 
@@ -1235,7 +1238,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                     var depature = '';
                     var x = 1;
                     if (responsedata.length == 0) {
-                        depature = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Depature</p>';
+                        depature = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);margin-top: 132px!important;color:black!important">No Data Found In Depature</p>';
                     } else {
 
 
@@ -1308,7 +1311,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                     var stayover = '';
                     var x = 1;
                     if (responsedata.length == 0) {
-                        stayover = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Stay-overs</h6>';
+                        stayover = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);margin-top: 132px!important;color:black!important;">No Data Found In Stay-overs</h6>';
                     } else {
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
@@ -1379,7 +1382,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
 
                     var x = 1;
                     if (responsedata.length == 0) {
-                        reviewhtml = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No Data Found In Reviews</h6>';
+                        reviewhtml = '<h6 style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color:black!important">No Data Found In Reviews</h6>';
                     } else {
 
                         $.each(responsedata, function(key, val) {
