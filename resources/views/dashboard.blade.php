@@ -637,7 +637,59 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
 
                             <div class="card" style="margin-top: -16px;"> -->
 
-                                <div class="card-block">
+
+
+                            <div class="card-block" id="pie-chart" style="height:130px; display: inline-block;
+    /* width: 100%; */
+    overflow: auto;margin-top: 1px;">
+     
+                                <table class="table "  id="revcontant1">
+    <!-- <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Rating</th>
+        <th>Review</th>
+      
+      </tr>
+    </thead> -->
+    <thead>
+
+    @php if(count($review) > 0){@endphp
+
+@foreach($review as $rev)
+                                                        <tr>
+                                                            <td class="col-md-3" style="color:black" id="vun">{{ $rev['user_email'] }}</td>
+
+                                                            <td class="col-md-3" style="color:black" id="vdr">{{ $rev['review'] }}</td>
+
+                                                            <td class="col-md-3" style="color:black" id="vbr">{{ $rev['rating'] }}</td>
+
+
+                                                        </tr>
+                                                        @endforeach
+                                            @php }else{ @endphp
+
+                                            <h6 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color:black!important;">No data Available</h6>
+                                            @php }@endphp
+
+    </thead>
+                                </table>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <!-- <div class="card-block">
                                     <div id="pie-chart" style="height:300px;display: inline-block;
     width: 100%;
     overflow: auto;margin-top: -16px;">
@@ -686,7 +738,11 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
 
 
                                     </div>
-                                </div>
+                                </div> -->
+
+
+
+
                             </div>
 
 
@@ -1429,7 +1485,7 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
 
 
         $('#booksubmit2').on("click", function() {
-            $('#revcontant').empty('');
+            $('#revcontant1').empty('');
             var sdate = $("#reviewStartDate").val();
             var edate = $("#reviewEndDate").val();
             var propid = <?php echo session()->get('property_id'); ?>
@@ -1465,21 +1521,33 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
                             // alert(val.user_email);
 
 
-                            reviewhtml = reviewhtml + ' <div class="form-group row reviewData"> <div class="col-sm-4">' +
+                            // reviewhtml = reviewhtml + ' <div class="form-group row reviewData"> <div class="col-sm-4">' +
 
-                                '<p  id="ue" style="margin-top: 11px;">' + val.user_email + '</p>' +
+                            //     '<p  id="ue" style="margin-top: 11px;">' + val.user_email + '</p>' +
 
-                                '</div>' +
-                                '<div class="col-sm-4 ">' +
+                            //     '</div>' +
+                            //     '<div class="col-sm-4 ">' +
 
-                                '<p id="rw" style="margin-top: 11px;">' + val.review + '</p>' +
+                            //     '<p id="rw" style="margin-top: 11px;">' + val.review + '</p>' +
 
-                                '</div>' +
-                                '<div class="col-sm-4 ">' +
+                            //     '</div>' +
+                            //     '<div class="col-sm-4 ">' +
 
-                                '<p id="rat" style="margin-top: 11px;">' + val.rating + '<i class="fa fa-star"></i></p>' +
+                            //     '<p id="rat" style="margin-top: 11px;">' + val.rating + '<i class="fa fa-star"></i></p>' +
 
-                                '</div></div>';
+                            //     '</div></div>';
+
+
+                                reviewhtml = reviewhtml + '<thead><tr style="margin-padding:0px">' +
+                                ' <td class="" style="text-align:center;color:black!important;" id="un">' + val.user_email + '</td>' +
+
+                                '<td class="" style="text-align:center;color:black!important;" id="pn">' + val.review + '</td>' +
+
+                                '<td class="" style="text-align:center;color:black!important;" id="br">' + val.rating + '<i class="fa fa-star"></i></td>' +
+
+                               
+
+                                ' </tr> </thead>';
                             // $('#ue').html(responsedata.user_email);
                             //         $('#rw').html(responsedata.review);
                             //         $('#rat').html(responsedata.rating);
@@ -1487,8 +1555,8 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
                     }
                     // alert(reviewhtml.replace("NaN",""));
                     var revhtml = reviewhtml.replace("NaN", "");
-                    $('#revcontant').html('');
-                    $('#revcontant').html(revhtml);
+                    $('#revcontant1').html('');
+                    $('#revcontant1').html(revhtml);
 
                     // $.each(responsedata as rdata){
                     //     alert(rdata.user_email);
