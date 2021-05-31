@@ -494,6 +494,45 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
                                 <!-- </div> -->
 
 
+
+                                <div class="card-block" id="" style="height:130px; display: inline-block;
+    /* width: 100%; */
+    overflow: auto;margin-top: 1px;">
+       <p><b>Eco Reward</b></p>
+                                <table class="table "  id="vrew">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Date Range</th>
+        <th>Booking Ref</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <thead>
+    @foreach($reward as $avail)
+                                                        <tr>
+                                                            <td class="col-md-3" style="color:black" id="vun">{{ $avail['user_name'] }}</td>
+
+                                                            <td class="col-md-3" style="color:black" id="vdr">{{ $avail['date_range_human'] }}</td>
+
+                                                            <td class="col-md-3" style="color:black" id="vbr">{{ $avail['booking_reference'] }}</td>
+
+                                                            <td class="col-md-3" style="color:black" id="vs">{{ $avail['conf_reward_status_name'] }}</td>
+
+                                                        </tr>
+                                                        @endforeach
+    </thead>
+                                </table>
+                                </div>
+
+
+
+
+
+
+
+<!-- this code hidden on 31.05.2021 -->
+<!-- 
                                 <div class="card" style="margin-top: -29px!important;">
 
                                     <div class="card-block">
@@ -535,7 +574,8 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+                                <!-- this code hidden on 31.05.2021 -->
                             </div>
 
 
@@ -1167,7 +1207,7 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
                     var reward = '';
                     var x = 1;
                     if (responsedata.length == 0) {
-                        reward = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color: black;">No Data Found In Reward</p>';
+                        reward = '<p style="text-align:center;margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color: black;margin-top: 279px;">No Data Found In Reward</p>';
                     } else {
 
 
