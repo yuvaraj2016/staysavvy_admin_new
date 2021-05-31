@@ -52,6 +52,11 @@
     .ct-series-a .ct-area {
         fill: green !important;
     }
+    .table td, .table th {
+
+        border-top: 1px solid green!important;
+    }
+ 
 </style>
 <!-- <script>
   var msg = '{{Session::get('alert')}}';
@@ -106,7 +111,7 @@
                 @endif
                 <div class="page-body">
                     <div class="row">
-                        <div class="col-xl-6">
+                        <div class="col-xl-6 col-md-6 col-lg-6 col-sm-6">
                             <div class="card">
                                 <form action="" class="swa-confirm" method="post" id="addstatus" enctype="multipart/form-data">
                                     <div class="form-group row ">
@@ -222,12 +227,40 @@ flex-wrap: wrap;">
 
                                 <!-- </div> -->
                                 <!-- </div> -->
+                                <div class="card-block" id="" style="height:130px; display: inline-block;
+    /* width: 100%; */
+    overflow: auto;margin-top: 1px;">
+                                <table class="table "  id="arr">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Date Range</th>
+        <th>Total Guests</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <thead>
+    @foreach($available as $avail)
+                                                <tr>
+                                                    <td class="" style="text-align:center;color:black" id="un">{{ $avail['user_name'] }}</td>
 
+                                                    <td class="" style="text-align:center;color:black" id="pn">{{ $avail['date_range_human'] }}</td>
+
+                                                    <td class="" style="text-align:center;color:black" id="br">{{ $avail['total_guests'] }}</td>
+
+                                                    <td class="" style="text-align:center;color:black" id="ta">{{ $avail['total_amount'] }}</td>
+
+                                                </tr>
+                                                @endforeach
+      </thead>
+  </table>
+                                </div>
 
                                 <!-- <div class="card" style="margin-top: -16px;">
 
                                 <div class="card-block"> -->
-                                <div class="card-block" id="" style="height:130px; display: inline-block;
+                                <!-- this code hidden on 31.05.2021 -->
+                                <!-- <div class="card-block" id="" style="height:130px; display: inline-block;
     /* width: 100%; */
     overflow: auto;margin-top: 1px;">
 
@@ -263,13 +296,16 @@ flex-wrap: wrap;">
                                         </table>
                                     </div>
 
-                                </div>
+                                </div> -->
+                                   <!-- this code hidden on 31.05.2021 -->
                             </div>
                             <!-- </div> -->
+
+                      
                         </div>
 
 
-                        <div class="col-xl-6">
+                        <div class="col-xl-6 col-sm-6 col-lg-6 col-md-6">
                             <div class="card">
                                 <form action="" class="swa-confirm" method="post" id="addstatus" enctype="multipart/form-data">
                                     <div class="form-group row ">
@@ -441,7 +477,7 @@ position: absolute;
 top: 50%;
 left: 50%;
 -ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
+transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Chart</h6>
                                         <canvas id="oilChart" width="400" height="200"></canvas>
                                         <canvas id="oilChartBtnClick" width="400" height="200"></canvas>
                                         <div id="pieChartSpinner" class="loader" style="text-align: center;font-size: 40px;color: green;">
@@ -597,7 +633,7 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                                             @endforeach
                                             @php } else{ @endphp
 
-                                            <h6 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">No data Available</h6>
+                                            <h6 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color:black!important;">No data Available</h6>
                                             @php }@endphp
 
                                         </div>
@@ -843,22 +879,22 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 arrival = arrival + '  <thead>' +
-                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th >Total Amount</th> ' +
+                                    ' <tr">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th >Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
 
 
-                            arrival = arrival + '<tr style="margin-padding:10px">' +
-                                ' <td class="" style="text-align:center;width:25%" id="un">' + val.user_name + '</td>' +
+                            arrival = arrival + '<thead><tr style="margin-padding:0px">' +
+                                ' <td class="" style="text-align:center;color:black!important;" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="" style="text-align:center;width:25%" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="" style="text-align:center;width:25%" id="br">' + val.total_guests + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="br">' + val.total_guests + '</td>' +
 
-                                '<td class="" style="text-align:center;width:25%" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="ta">' + val.total_amount + '</td>' +
 
-                                ' </tr> ';
+                                ' </tr></thead> ';
 
 
                         })
@@ -921,21 +957,21 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 bookingnew = bookingnew + '  <thead>' +
-                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
+                                    ' <tr >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
 
-                            bookingnew = bookingnew + '<tr style="margin-padding:0px;">' +
-                                ' <td class="" style="width: 25%;text-align:center" id="un">' + val.user_name + '</td>' +
+                            bookingnew = bookingnew + '<thead><tr style="margin-padding:0px;">' +
+                                ' <td class="" style="text-align:center;color:black!important;" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="br">' + val.total_guests + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="br">' + val.total_guests + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="ta">' + val.total_amount + '</td>' +
 
-                                ' </tr> ';
+                                ' </tr></thead> ';
 
 
                         })
@@ -1138,21 +1174,21 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 reward = reward + '  <thead>' +
-                                    ' <tr  style="float: right;margin-right:16px" >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Booking Ref</th>  <th  class="col-md-2">Status</th> ' +
+                                    ' <tr >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Booking Ref</th>  <th  class="col-md-2">Status</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
 
-                            reward = reward + '<tr style="margin-padding:0px">' +
-                                ' <td class="" style="width: 25%;text-align:center" id="un">' + val.user_name + '</td>' +
+                            reward = reward + '<thead><tr style="margin-padding:0px">' +
+                                ' <td class="" style="text-align:center;color:black!important;" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="br">' + val.booking_reference + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="br">' + val.booking_reference + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="ta">' + val.conf_reward_status_name + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="ta">' + val.conf_reward_status_name + '</td>' +
 
-                                ' </tr> ';
+                                ' </tr></thead> ';
 
 
                         })
@@ -1245,21 +1281,21 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 depature = depature + '  <thead>' +
-                                    ' <tr  style="float: right;" >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
+                                    ' <tr  >  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
 
-                            depature = depature + '<tr style="margin-padding:0px">' +
-                                ' <td class="" style="width: 25%;text-align:center" id="un">' + val.user_name + '</td>' +
+                            depature = depature + '<thead><tr style="margin-padding:0px">' +
+                                ' <td class="" style="text-align:center;color:black!important;" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="br">' + val.total_guests + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="br">' + val.total_guests + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="ta">' + val.total_amount + '</td>' +
 
-                                ' </tr> ';
+                                ' </tr> </thead>';
 
 
                         })
@@ -1316,21 +1352,21 @@ transform: translate(-50%, -50%);">No Data Found In Pie Chart</h6>
                         $.each(responsedata, function(key, val) {
                             if (x == 1) {
                                 stayover = stayover + '  <thead>' +
-                                    ' <tr style="float: right;">  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
+                                    ' <tr>  <th class="col-md-2">User Name</th>  <th class="col-md-2">Date Range</th> <th class="col-md-2">Total Guests</th>  <th>Total Amount</th> ' +
                                     ' </tr>  </thead>';
                             }
                             x++;
 
-                            stayover = stayover + '<tr style="margin-padding:0px">' +
-                                ' <td class="" style="width: 25%;text-align:center" id="un">' + val.user_name + '</td>' +
+                            stayover = stayover + '<thead><tr style="margin-padding:0px">' +
+                                ' <td class="" style="text-align:center;color:black!important;" id="un">' + val.user_name + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="pn">' + val.date_range_human + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="pn">' + val.date_range_human + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="br">' + val.total_guests + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="br">' + val.total_guests + '</td>' +
 
-                                '<td class="" style="width: 25%;text-align:center" id="ta">' + val.total_amount + '</td>' +
+                                '<td class="" style="text-align:center;color:black!important;" id="ta">' + val.total_amount + '</td>' +
 
-                                ' </tr> ';
+                                ' </tr> </thead>';
 
 
                         })
