@@ -57,6 +57,12 @@
         border-top: 1px solid green!important;
     }
  
+
+    .ct-label {
+  
+    color: black!important;
+
+}
 </style>
 <!-- <script>
   var msg = '{{Session::get('alert')}}';
