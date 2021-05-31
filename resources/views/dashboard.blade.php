@@ -669,7 +669,7 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
                                                         @endforeach
                                             @php }else{ @endphp
 
-                                            <h6 style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color:black!important;">No data Available</h6>
+                                            <h6 id="rs" style="text-align: center;  margin: 0;position: absolute; top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color:black!important;">No data Available</h6>
                                             @php }@endphp
 
     </thead>
@@ -1486,6 +1486,7 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
 
         $('#booksubmit2').on("click", function() {
             $('#revcontant1').empty('');
+            $('#rs').empty('');
             var sdate = $("#reviewStartDate").val();
             var edate = $("#reviewEndDate").val();
             var propid = <?php echo session()->get('property_id'); ?>
@@ -1555,6 +1556,7 @@ transform: translate(-50%, -50%);color:black!important">No Data Found In Pie Cha
                     }
                     // alert(reviewhtml.replace("NaN",""));
                     var revhtml = reviewhtml.replace("NaN", "");
+
                     $('#revcontant1').html('');
                     $('#revcontant1').html(revhtml);
 
