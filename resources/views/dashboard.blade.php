@@ -63,6 +63,14 @@
     color: black!important;
 
 }
+.table > thead > tr > th {
+    border-bottom-color: green!important;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 1px solid green!important;
+        border-bottom-color: green;
+}
 </style>
 <!-- <script>
   var msg = '{{Session::get('alert')}}';
