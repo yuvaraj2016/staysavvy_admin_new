@@ -394,6 +394,13 @@ $session = session()->get('token');
                 "ecocauses" => $ecocauses,
 
 
+
+
+                "card_type" => $request->card_type,
+                "card_no" => $request->card_no,
+                "expiry_month" => $request->expiry_month,
+                "expiry_year" => $request->expiry_year,
+                "cvv" => $request->cvv,
                 //  "no_of_adults"=>$no_of_adults,
                 //  "no_of_childs"=>$no_of_childs,
                 //  "total_guests"=>$total_guests,
@@ -431,6 +438,7 @@ $session = session()->get('token');
 
         if ($response->status() === 200 || $response->status() === 201) {
 
+            // return $response;
             return redirect()->route('adminbookings.create')->with('success', 'Booking Created Successfully!');
         } else {
             $request->flash();

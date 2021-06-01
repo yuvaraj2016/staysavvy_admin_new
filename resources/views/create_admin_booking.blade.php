@@ -379,7 +379,55 @@
                             </select>
                         </div>
 
+                        <div class="col-sm-2">
+                                                <label class="col-form-label text-md-right " > Card Type</label>
+                                                <input name="card_type" value="{{ old('card_type') }}" class="summernote-simple form-control" required>
 
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="col-form-label text-md-right " > CVV</label>
+                                                <input type="number" name="cvv" value="{{ old('cvv') }}" class="summernote-simple form-control" required>
+
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label text-md-right " > Card Number</label>
+                                                <input type="number" name="card_no" value="{{ old('card_no') }}" class="summernote-simple form-control" required>
+
+                                            </div>
+
+
+                                            <div class="col-sm-2">
+                            <label class="col-form-label ">Month</label>
+
+
+                                            <select class="js-example-basic-single" name="expiry_month" id="month" required class="form-control selectric" >
+    <option value="">Select</option>
+    <?php
+
+    for ($i = 0; $i < 12;   $i++) {
+    $date_str = date('M', strtotime("+ $i months"));
+    echo "<option value=$i>".$date_str ."</option>";
+
+    } ?>
+    </select>
+                                            </div>
+                   
+                                            <div class="col-sm-2">
+                            <label class="col-form-label ">Year</label>
+
+                            <select class="js-example-basic-single" name="expiry_year" id="year" required class="form-control selectric" >
+<option value="">Select Year</option>
+<?php
+for ($year = 2021; $year <= 2050; $year++) {
+$selected = (isset($getYear) && $getYear == $year) ? 'selected' : '';
+echo "<option value=$year $selected>$year</option>";
+}
+?>
+</select>
+                                            </div>
+
+                                         
 
 
                         <div class="col-sm-4">
