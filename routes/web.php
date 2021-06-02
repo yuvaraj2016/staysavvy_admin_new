@@ -309,7 +309,7 @@ Route::resource('profile', 'ProfileController')->except('index')->middleware('ch
 
 Route::get('show_profile/{page?}','ProfileController@index')->name('profile.index')->middleware('checktoken');
 
-
+Route::get('view_profile/{page?}','ProfileController@viewprofile')->name('view_profile')->middleware('checktoken');
 
 Route::put('update_password', 'ProfileController@updatepassword')->name('update_password')->middleware('checktoken');
 

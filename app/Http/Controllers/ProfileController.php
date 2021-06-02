@@ -44,6 +44,38 @@ class ProfileController extends Controller
           return view('show_profile', compact('profile'));
     }
 
+
+
+
+    public function viewprofile(Request $request)
+    {
+        //
+
+        $token = session()->get('token');
+        try{
+
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/me/viewprofile');
+
+            $response = json_decode($call->getBody()->getContents(), true);
+        
+        }catch (\Exception $e){
+            //buy a beer
+
+
+        }
+        $viewprofile = $response['data'];
+    //    return $viewprofile;
+        // $pagination = $response['meta']['pagination'];
+
+        // $lastpage = $pagination['total_pages'];
+
+          return view('view_profile', compact('viewprofile'));
+    }
+
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *
