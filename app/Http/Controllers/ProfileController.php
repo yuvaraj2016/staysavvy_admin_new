@@ -195,6 +195,26 @@ class ProfileController extends Controller
     }
 
 
+
+
+    public function editprofile()
+    {
+        $session = session()->get('token');
+
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') .'/api/me/viewprofile');
+    //    return $response;
+
+        if($response->ok()){
+
+            $profile=   $response->json()['data'];
+           // return $profile;
+            return view('editprofile', compact(
+                'profile'
+            ));
+        }
+    }
+
+
     public function passwordedit()
     {
         $session = session()->get('token');
@@ -228,6 +248,52 @@ class ProfileController extends Controller
             "name"=>$request->name,
             "email"=>$request->email
             
+        ]
+        
+      );
+
+        
+        if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
+            return redirect()->route('home');
+        }
+        if($response->status()===200){
+            return redirect()->back()->with('success','Profile Updated Successfully!');
+        }else{
+            return redirect()->back()->with('error',$response->json()['message']);
+        }
+
+    }
+
+
+    public function updateprofile(Request $request)
+    {
+
+    //    return $request->all();
+        $session = session()->get('token');
+      
+        $response = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->post(config('global.url').'/api/me/updateprofile', 
+        [
+            "_method"=> 'PUT',
+            "user_email"=>$request->user_email,
+            "first_name"=>$request->first_name,
+            "last_name"=>$request->last_name,
+            "middle_name"=>$request->middle_name,
+            "username"=>$request->username,
+            "phone_no"=>$request->phone_no,
+            "address_line1"=>$request->address_line1,
+            "address_line2"=>$request->address_line2,
+            "preferred_language"=>$request->preferred_language,
+            "country"=>$request->country,
+            "city"=>$request->city,
+            "state"=>$request->state,
+            "zip"=>$request->zip,
+            "gender"=>$request->gender,
+
+
+            "birth_date"=>$request->birth_date,
+            "profession"=>$request->profession,
+            "nationality"=>$request->nationality,
+            "additional_info"=>$request->additional_info,
         ]
         
       );

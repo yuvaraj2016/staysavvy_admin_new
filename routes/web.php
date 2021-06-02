@@ -311,6 +311,9 @@ Route::get('show_profile/{page?}','ProfileController@index')->name('profile.inde
 
 Route::get('view_profile/{page?}','ProfileController@viewprofile')->name('view_profile')->middleware('checktoken');
 
+Route::get('editprofile/{id}/edit','ProfileController@editprofile')->name('editprofile')->middleware('checktoken');
+Route::put('editprofile','ProfileController@updateprofile')->name('editprofile')->middleware('checktoken');
+
 Route::put('update_password', 'ProfileController@updatepassword')->name('update_password')->middleware('checktoken');
 
 Route::get('change_password','ProfileController@passwordedit')->name('change_password.index')->middleware('checktoken');

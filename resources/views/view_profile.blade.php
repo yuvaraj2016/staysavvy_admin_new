@@ -102,12 +102,15 @@
                           
                             
                                     <tr>
+                                    @php
+                                        $id=$viewprofile['id'];
+                                    @endphp
                                     <td>
                                             <div class="d-flex">
                                                 <ul class="list-group list-inline ml-1">
                                                     <li class="list-group-item border1">
                                                   
-                                                    <a href="#" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{ url('editprofile/'.$id.'/edit') }}" class=" d-inline font1 " id="alert1" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-edit"></i></a>
                            
                                                 </li>
                                                                                      
