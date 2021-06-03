@@ -164,7 +164,7 @@
                                        <th>Tax Percentage</th>
                                        <th>Tax Amount</th>
                                        <!-- <th>Payment Status</th> -->
-                                       <th>Booking Amount</th>
+                                       <!-- <th>Booking Amount</th> -->
                                        <th>Commission Amount</th>
                                       <th>Total Amount</th>
                                         <th>Status Desc</th>
@@ -252,7 +252,7 @@
                                       
                                     
 
-                                        <td>
+                                        <!-- <td>
                                       
                                         @foreach($bookings['BookingDetails']['data'] as $property)
                                         
@@ -290,7 +290,7 @@
                                         
                                         @endforeach
                                        
-                                        </td>
+                                        </td> -->
 
                                         <td>
                                       
