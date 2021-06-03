@@ -164,70 +164,70 @@
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Address Line 1</label>
 
-                                    <input  value="{{ old('address_line1',$profile['address_line1']) }}" name="address_line1" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('address_line1',$profile['address_line1']) }}" name="address_line1" class="summernote-simple form-control" >
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Address Line 2</label>
 
-                                    <input  value="{{ old('address_line2',$profile['address_line2']) }}" name="address_line2" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('address_line2',$profile['address_line2']) }}" name="address_line2" class="summernote-simple form-control" >
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Language</label>
 
-                                    <input  value="{{ old('preferred_language',$profile['preferred_language']) }}" name="preferred_language" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('preferred_language',$profile['preferred_language']) }}" name="preferred_language" class="summernote-simple form-control" >
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Country</label>
 
-                                    <input  value="{{ old('country',$profile['country']) }}" name="country" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('country',$profile['country']) }}" name="country" class="summernote-simple form-control" >
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">City</label>
 
-                                    <input  value="{{ old('city',$profile['city']) }}" name="city" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('city',$profile['city']) }}" name="city" class="summernote-simple form-control" >
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">State</label>
 
-                                    <input  value="{{ old('state',$profile['state']) }}" name="state" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('state',$profile['state']) }}" name="state" class="summernote-simple form-control" >
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Zip</label>
 
-                                    <input  value="{{ old('zip',$profile['zip']) }}" name="zip" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('zip',$profile['zip']) }}" name="zip" class="summernote-simple form-control" >
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Gender</label>
 
-                                    <input  value="{{ old('gender',$profile['gender']) }}" name="gender" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('gender',$profile['gender']) }}" name="gender" class="summernote-simple form-control" >
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Birth Date</label>
 
-                                    <input type="date" value="{{ old('birth_date',$profile['birth_date']) }}" name="birth_date" class="summernote-simple form-control" required>
+                                    <input type="date" value="{{ old('birth_date',$profile['birth_date']) }}" name="birth_date" class="summernote-simple form-control" >
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Profession</label>
 
-                                    <input  value="{{ old('profession',$profile['profession']) }}" name="profession" class="summernote-simple form-control" required>
+                                    <input  value="{{ old('profession',$profile['profession']) }}" name="profession" class="summernote-simple form-control" >
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Nationality</label>
 
-                                    <input value="{{ old('nationality',$profile['nationality']) }}" name="nationality" class="summernote-simple form-control" required>
+                                    <input value="{{ old('nationality',$profile['nationality']) }}" name="nationality" class="summernote-simple form-control" >
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right">Additional Info</label>
 
-                                    <input value="{{ old('additional_info',$profile['additional_info']) }}" name="additional_info" class="summernote-simple form-control" required>
+                                    <input value="{{ old('additional_info',$profile['additional_info']) }}" name="additional_info" class="summernote-simple form-control" >
                                 </div>
 
 
