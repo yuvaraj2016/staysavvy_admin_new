@@ -59,7 +59,17 @@
                 <div class="page-header-title">
                     <div class="d-inline">
                         <h4>Edit Properties</h4>
+                        <!-- <a href="#"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> -->
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
+                    </div>
+                  
+                    <div class="d-inline">
+                    @if($properties['central_res_system_name'] === "Guest Line")
+                     
+                    <a href="" id="sync" class="btn btn-primary offset-2" style="box-shadow: 0 2px 6px #acb5f6;
+                                background-color: #6777ef;
+                                border-color: #6777ef;border-radius:30px">Sync</a>
+                   @endif
                     </div>
                 </div>
             </div>
@@ -70,6 +80,9 @@
 
                             <p>Edit Properties</p>
 
+
+
+                          
                         </li>
 
                         <li class="breadcrumb-item"><a href="{{ route('properties.index') }}">Properties</a>
