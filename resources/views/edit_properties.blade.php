@@ -63,14 +63,14 @@
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
                   
-                    <div class="d-inline">
+                    <!-- <div class="d-inline">
                     @if($properties['central_res_system_name'] === "Guest Line")
                      
                     <a href="" id="sync" class="btn btn-primary offset-2" style="box-shadow: 0 2px 6px #acb5f6;
                                 background-color: #6777ef;
                                 border-color: #6777ef;border-radius:30px">Sync</a>
                    @endif
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-4">
