@@ -115,20 +115,25 @@
                             <div class="succWrap">
                             {{ session('success') }}
                             </div>
-                                <!-- <div class='alert alert-success'>
-                                    {{ session('success') }}
-                                </div> -->
+                             
                             @endif
-
-                      
 
                             @if(session('error') !== null)
 
-                                <div class='alert alert-danger'>
-                                    {{session('error') }}
+                                    @foreach(session('error') as $v)
+                                    @foreach($v as $e)
+                                    <div class='alert alert-red'>
+                                        {{ $e }}
                                     </div>
+                                    @endforeach
 
+                                    @endforeach
+                                    {{-- <div class='alert alert-red'>
+                                {{ session('error') }}
+                            </div> --}}
                             @endif
+
+                     
                             
                         
                             <div class="form-group row">
