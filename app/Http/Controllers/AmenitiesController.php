@@ -265,7 +265,7 @@ class AmenitiesController extends Controller
 
         if($response->status()==204){
 
-             return redirect()->route('amenity.index')->with('success','Tax Deleted Sucessfully !..');
+             return redirect()->route('amenity.index')->with('success','Amenities Deleted Sucessfully !..');
         }
         else{
 

@@ -24,6 +24,7 @@
         top: 50%;
         transform: translateY(-50%);
     }
+
     .select2-container .select2-selection--single .select2-selection__rendered {
         display: initial !important;
     }
@@ -36,18 +37,22 @@
     .select2-container--default .select2-selection--multiple {
         border: 1px solid #01a9ac !important
     }
-    .select2-container .select2-selection--multiple{
+
+    .select2-container .select2-selection--multiple {
         height: 42px !important;
     }
+
     .form-control {
-    border: 1px solid #01a9ac !important;
-}
-.select2-container--default .select2-selection--single .select2-selection__rendered{
-    line-height: 33px!important;
-}
-.select2-container--default .select2-selection--multiple .select2-selection__rendered {
-    line-height: 14px!important;
-}
+        border: 1px solid #01a9ac !important;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 33px !important;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+        line-height: 14px !important;
+    }
 </style>
 
 {{-- <a href="{{ route('albums.index') }}">back</a> --}}
@@ -62,7 +67,7 @@
                         <!-- <a href="#"  class=" d-inline font1 edit-confirmation" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> -->
                         {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                     </div>
-                  
+
                     <!-- <div class="d-inline">
                     @if($properties['central_res_system_name'] === "Guest Line")
                      
@@ -82,7 +87,7 @@
 
 
 
-                          
+
                         </li>
 
                         <li class="breadcrumb-item"><a href="{{ route('properties.index') }}">Properties</a>
@@ -147,9 +152,9 @@
 
                             <div class="form-group row ">
                                 <div class="col-sm-4">
-                                   
+
                                     <label class="col-form-label text-md-right ">Vendors</label>
-                                    <select class="js-example-basic-single col-sm-12" name="vendor_id"  placeholder="status" required class="form-control selectric" required>
+                                    <select class="js-example-basic-single col-sm-12" name="vendor_id" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($vendors as $vendorss)
                                         <option value="{{ $vendorss['user_id'] }}" {{ ($properties['vendor_id'] == $vendorss['user_id']) ? "selected":(old("vendor_id") == $vendorss['user_id'] ? "selected":"") }}>{{ $vendorss['name'] }}</option>
@@ -162,38 +167,38 @@
                                     <input type="text" id="category_short_code" name="name" value="{{ old('name',$properties['name']) }}" class="form-control" required>
                                 </div>
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right " > Latitude</label>
-                                    <input  name="latitude" value="{{ old('latitude',$properties['latitude']) }}"  class="summernote-simple form-control" required>
+                                    <label class="col-form-label text-md-right "> Latitude</label>
+                                    <input name="latitude" id="lat" value="{{ old('latitude',$properties['latitude']) }}" class="summernote-simple form-control" required>
 
                                 </div>
 
-                               
 
 
-    
+
+
 
                             </div>
 
                             <div class="form-group row ">
 
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right " > Longitude </label>
-                                    <input  name="longitude" value="{{ old('longitude',$properties['longitude']) }}"  class="summernote-simple form-control" required>
+                                    <label class="col-form-label text-md-right "> Longitude </label>
+                                    <input name="longitude" id="long" value="{{ old('longitude',$properties['longitude']) }}" class="summernote-simple form-control" required>
 
                                 </div>
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right " >City/town</label>
-                                    <input name="city" value="{{ old('city',$properties['city']) }}" class="summernote-simple form-control" required>
+                                    <label class="col-form-label text-md-right ">City/town</label>
+                                    <input name="city" id="ciy" value="{{ old('city',$properties['city']) }}" class="summernote-simple form-control" required>
 
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right " > Postal code</label>
-                                    <input type="text" name="postalcode" value="{{ old('postalcode',$properties['postalcode']) }}"  class="summernote-simple form-control" required>
+                                    <label class="col-form-label text-md-right "> Postal code</label>
+                                    <input type="text" name="postalcode" id="posc" value="{{ old('postalcode',$properties['postalcode']) }}" class="summernote-simple form-control" required>
 
                                 </div>
 
-                             </div>
+                            </div>
 
                             <div class="form-group row ">
                                 <div class="col-sm-4">
@@ -202,14 +207,14 @@
                                     <input type="text" id="address" name="address" value="{{ old('address',$properties['address']) }}" class="form-control" required>
 
                                 </div>
-                            <!-- <div class="col-sm-4">
+                                <!-- <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Properties Location</label>
                                     <input type="text" id="location" name="location" value="{{ old('location',$properties['location']) }}" class="form-control" required>
 
                                 </div> -->
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Host Type</label>
-                                    <select class="js-example-basic-single col-sm-12" name="host_type_id" id="" placeholder="status" required class="form-control selectric" required>
+                                    <select class="js-example-basic-single col-sm-12" name="host_type_id" id="host" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($host as $hosts)
                                         <option value="{{ $hosts['id'] }}" {{ ($properties['host_type_id'] == $hosts['id']) ? "selected":(old("host_type_id") == $hosts['id'] ? "selected":"") }}>{{ $hosts['name'] }}</option>
@@ -220,7 +225,7 @@
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Property Management System</label>
                                     {{-- <input  id="property_mgmt_system" name="property_mgmt_system" value="{{ old('property_mgmt_system',$properties['property_mgmt_system']) }}" class="form-control" required> --}}
-                                    <select class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id="" placeholder="status" required class="form-control selectric" required>
+                                    <select class="js-example-basic-single col-sm-12" name="property_mgmt_system_id" id="pms" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($pms as $spms)
                                         <option value="{{ $spms['id'] }}" {{ ($properties['property_mgmt_system_id'] == $spms['id']) ? "selected":(old("property_management_system_id") == $spms['id'] ? "selected":"") }}>{{ $spms['name'] }}</option>
@@ -236,11 +241,11 @@
 
 
                             <div class="form-group row ">
-                       
+
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Central Reservation System</label>
-                                    <input   name="central_res_system_id" value="{{ old('central_res_system_id',$properties['central_res_system_id']) }}" class="form-control" style="display: none;">
-                                    <input  name="central_res_system_name" value="{{ old('central_res_system_name',$properties['central_res_system_name']) }}" class="form-control" readonly>
+                                    <input name="central_res_system_id" value="{{ old('central_res_system_id',$properties['central_res_system_id']) }}" class="form-control" style="display: none;">
+                                    <input name="central_res_system_name" value="{{ old('central_res_system_name',$properties['central_res_system_name']) }}" class="form-control" readonly>
                                     <!-- <select class="js-example-basic-single col-sm-12" name="central_res_system_id" id="" placeholder="status" required class="form-control selectric" required>
                                         <option value="">Select</option>
                                         @foreach($crs as $scrs)
@@ -265,7 +270,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="col-form-label text-md-right ">Room Start Price</label>
-                                    <input type="number" name="room_start_price" step="any" value="{{ old('room_start_price',$properties['room_start_price']) }}" class="summernote-simple form-control" required>
+                                    <input type="number" name="room_start_price" step="any" id="stprice" value="{{ old('room_start_price',$properties['room_start_price']) }}" class="summernote-simple form-control" required>
 
                                 </div>
 
@@ -317,148 +322,263 @@
                                 </div>
                                 @php
 
-$amenid = [];
+                                $amenid = [];
 
-foreach($properties['Amenities']['data'] as $amenityid)
-{
-
-$amenid[] = $amenityid['id'];
-}
-@endphp
-
-<div class="col-sm-4">
-    <label class="col-form-label text-md-right ">Amenity</label>
-    <select class="js-example-basic-single col-sm-12" name="amenities[]" id="" multiple placeholder="status" required class="form-control selectric">
-        <option value="">Select</option>
-        @foreach($amenity as $amenitys)
-
-
-        <option value="{{ $amenitys['id'] }}" {{ (collect($amenid)->contains($amenitys['id'])) ? 'selected':((collect(old('amenitys'))->contains($amenitys['id'])) ? 'selected':'') }}>{{ $amenitys['name'] }}</option>
-        
-
-        @endforeach
-    </select>
-</div>
-
-
-                          
-                      
-                               
-                                {{-- <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property's offer"> What We Offer ( Min Character:5 )</label>
-                                    <input name="what_we_offer" value="{{ old('what_we_offer',$properties['what_we_offer']) }}" minlength="5" maxlength="800" class="summernote-simple form-control" required>
-
-                                </div> --}}
-
-                                @php
-
-                                $coolthingids = [];
-
-                                foreach($properties['Coolthings']['data'] as $coolthingid)
+                                foreach($properties['Amenities']['data'] as $amenityid)
                                 {
 
-                                $coolthingids[] = $coolthingid['id'];
+                                $amenid[] = $amenityid['id'];
                                 }
                                 @endphp
+
                                 <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right ">Coolthing</label>
-                                    <select class="js-example-basic-single col-sm-12" name="coolthings[]" id="" multiple placeholder="status" required class="form-control selectric">
+                                    <label class="col-form-label text-md-right ">Amenity</label>
+                                    <select class="js-example-basic-single col-sm-12" name="amenities[]" id="amenity" multiple placeholder="status" required class="form-control selectric">
                                         <option value="">Select</option>
-                                        @foreach($Coolthing as $Coolthings)
+                                        @foreach($amenity as $amenitys)
 
 
-                                        <option value="{{ $Coolthings['id'] }}" {{ (collect($coolthingids)->contains($Coolthings['id'])) ? 'selected':((collect(old('amenitys'))->contains($Coolthings['id'])) ? 'selected':'') }}>{{ $Coolthings['name'] }}</option>
-                                        e
+                                        <option value="{{ $amenitys['id'] }}" {{ (collect($amenid)->contains($amenitys['id'])) ? 'selected':((collect(old('amenitys'))->contains($amenitys['id'])) ? 'selected':'') }}>{{ $amenitys['name'] }}</option>
+
 
                                         @endforeach
                                     </select>
                                 </div>
 
+
+
+
+
+                                {{-- <div class="col-sm-4">
+                                    <label class="col-form-label text-md-right " data-toggle="tooltip" data-html="true" title="Tell us about your property's offer"> What We Offer ( Min Character:5 )</label>
+                                    <input name="what_we_offer" value="{{ old('what_we_offer',$properties['what_we_offer']) }}" minlength="5" maxlength="800" class="summernote-simple form-control" required>
+
+                            </div> --}}
+
+                            @php
+
+                            $coolthingids = [];
+
+                            foreach($properties['Coolthings']['data'] as $coolthingid)
+                            {
+
+                            $coolthingids[] = $coolthingid['id'];
+                            }
+                            @endphp
+                            <div class="col-sm-4">
+                                <label class="col-form-label text-md-right ">Coolthing</label>
+                                <select class="js-example-basic-single col-sm-12" name="coolthings[]" id="" multiple placeholder="status" required class="form-control selectric">
+                                    <option value="">Select</option>
+                                    @foreach($Coolthing as $Coolthings)
+
+
+                                    <option value="{{ $Coolthings['id'] }}" {{ (collect($coolthingids)->contains($Coolthings['id'])) ? 'selected':((collect(old('amenitys'))->contains($Coolthings['id'])) ? 'selected':'') }}>{{ $Coolthings['name'] }}</option>
+                                    e
+
+                                    @endforeach
+                                </select>
                             </div>
 
-                            <div class="form-group row ">
-
-                            
-
-
-
-
-                                <div class="col-sm-4">
-                                    <label class="col-form-label text-md-right ">Click below to edit images</label><br>
-                                    <a href="{{ url('properties/'.$properties['id'].'/edit/assets') }}" class="btn btn-blue">Edit Image</a>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                            <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right "></label>
-                                <div class="col-sm-12 col-md-7 offset-5">
-                                    <button type="submit" class="btn btn-blue">Update </button>
-                                    <a href="{{ url('properties_list') }}" class=" d-inline text-center btn btn-blue back"><i class="icofont icofont-arrow-left"></i>Back&nbsp;&nbsp;</a>
-                                </div>
-                            </div>
-
-                            </form>
                         </div>
+
+                        <div class="form-group row ">
+
+
+
+
+
+
+                            <div class="col-sm-4">
+                                <label class="col-form-label text-md-right ">Click below to edit images</label><br>
+                                <!-- <a href="{{ url('properties/'.$properties['id'].'/edit/assets') }}" class="btn btn-blue" id="img">Edit Image</a> -->
+
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right "></label>
+                            <div class="col-sm-12 col-md-7 offset-5">
+                                <button type="submit" id="upt" class="btn btn-blue">Update </button>
+                                <a href="{{ url('properties_list') }}" class=" d-inline text-center btn btn-blue back"><i class="icofont icofont-arrow-left"></i>Back&nbsp;&nbsp;</a>
+                            </div>
+                        </div>
+
+                        </form>
+                        <button class="btn btn-blue" id="image">Edit Image</button>
                     </div>
                 </div>
             </div>
     </div>
-    </section>
-    @endsection
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</div>
+</section>
+@endsection
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function(e) {
-            $('#formsubmit').on('click', function() {
+<script type="text/javascript">
+    var oldpropname = '';
+    var oldlatitude = '';
+    var oldlongitude = '';
+    var oldcity = '';
+    var oldpostalcode = '';
+    var oldaddress = '';
+    var olddesc = '';
+    var oldstartprice = '';
+    var oldhost = '';
+    var oldpms = '';
+    var oldAmenityArray = [];
 
+    var isUpdateBtnPressed = false;
+    var prop = {}
+    $(document).ready(function(e) {
+        $('#image').on('click', function() {
+            var isValueChanged = false;
+            var newprop = $('#category_short_code').val();
+            var newlatitude = $('#lat').val();
+            var newlongitude = $('#long').val();
+            var newcity = $('#ciy').val();
+            var newpostalcode = $('#posc').val();
+            var newaddress = $('#address').val();
+            var newdesc = $('#general_description').val();
+            var newstartprice = $('#stprice').val();
+            var newhost = $('#host').val();
+            var newpms = $('#pms').val();
+
+
+
+            if (oldpropname !== newprop)
+                isValueChanged = true;
+            if (oldlatitude !== newlatitude)
+                isValueChanged = true;
+            if (oldlongitude !== newlongitude)
+                isValueChanged = true;
+            if (oldcity !== newcity)
+                isValueChanged = true;
+            if (oldpostalcode !== newpostalcode)
+                isValueChanged = true;
+            if (oldaddress !== newaddress)
+                isValueChanged = true;
+            if (olddesc !== newdesc)
+                isValueChanged = true;
+            if (oldstartprice !== newstartprice)
+                isValueChanged = true;
+            if (oldhost.toString() !== newhost.toString()) {
+                console.log('host');
+                isValueChanged = true;
+            }
+            if (oldpms.toString() !== newpms.toString()) {
+                console.log('pms');
+                isValueChanged = true;
+            }
+
+
+            var newAmenityArray = $('select[name= "amenities[]"]').map(function() {
+                return $(this).val();
+            }).get();
+            var aminityArray = [];
+            newAmenityArray.forEach(newItem => {
+                aminityArray.push(parseFloat(newItem));
             });
-            $('#upload').on('click', function() {
-                var form_data = new FormData();
-                var ins = document.getElementById('filer_input').files.length;
-                for (var x = 0; x < ins; x++) {
-                    form_data.append("file[]", document.getElementById('filer_input').files[x]);
-                }
-                // alert(form_data);
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    url: "http://ecommerce-api.hridham.com/api/ProdCat/1",
-                    headers: 'Authorization: Bearer ' // point to server-side PHP script 
-                    dataType: 'json', // what to expect back from the PHP script
-                    // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: {
-                        file: form_data
-                    },
-                    type: 'patch',
-                    success: function(response) {
+            // if (!compare(oldAmenityArray, newAmenityArray) || !compare(newAmenityArray, oldAmenityArray))
+            //     isValueChanged = true;
 
-                        $('#msg').html(response); // display success response from the PHP script
-                    },
-                    error: function(response) {
-                        // alert(response.message);
 
-                        console.log(response);
-                        $('#msg').html(response); // display error response from the PHP script
-                    }
-                });
-            });
+            // if (!(oldAmenityArray.every(amenityItem => newAmenityArray.includes(amenityItem))) && (newAmenityArray.every(amenityItem => oldAmenityArray.includes(amenityItem))))
+            //     isValueChanged = true;
+            // console.log(oldAmenityArray.every(amenityItem => newAmenityArray.includes(amenityItem)));
+            // console.log(newAmenityArray.every(amenityItem => oldAmenityArray.includes(amenityItem)));
+            if (!(JSON.stringify(oldAmenityArray) == JSON.stringify(aminityArray))) {
+                console.log('new console false');
+                isValueChanged = true;
+            } else
+                console.log('new console true');
+            console.log('oldAmenityArray', oldAmenityArray);
+
+            console.log('newAmenityArray', newAmenityArray);
+
+            console.log('oldhost', oldhost);
+
+            console.log('newhost', newhost);
+
+
+            console.log('oldpms', oldpms);
+
+            console.log('newpms', newpms);
+            console.log(prop);
+
+            if (!isUpdateBtnPressed && isValueChanged)
+                swal("Some changes are made..So please update & then try to edit image");
+            else
+                window.location.pathname = 'properties/' + prop.id + '/edit/assets';
         });
 
+        function compareArrays(arr1, arr2) {
 
-        $(document).ready(function() {
-            $("#formsubmit").click(function() {
-                $("#myForm").submit(); // Submit the form
+            // compare arrays
+            const result = JSON.stringify(arr1) == JSON.stringify(arr2)
+
+            // if result is true
+            if (result) {
+                console.log('The arrays have the same elements.');
+            } else {
+                console.log('The arrays have different elements.');
+            }
+
+        }
+
+        const array1 = [1, 3, 5, 8];
+        const array2 = [1, 3, 2, 8];
+
+        compareArrays(array1, array2);
+
+
+
+        function compare(arr1, arr2) {
+            let result = true;
+            arr1.forEach(oldArrayItem => {
+                const isItemFound = arr2.some(function(newArrayItem) {
+                    if (oldArrayItem !== newArrayItem)
+                        return o1.id === o2.id; // return the ones with equal id
+                });
+                if (!isItemFound)
+                    result = false;
             });
-        });
-    </script>
+            console.log('result', result)
+            return result;
+        }
+
+
+    });
+
+    $('#upt').on('click', function() {
+        isUpdateBtnPressed = true;
+    });
+
+
+    $(document).ready(function() {
+        prop = @json($properties);
+        console.log(prop);
+
+        oldpropname = prop.name;
+        oldlatitude = prop.latitude;
+        oldlongitude = prop.longitude;
+        oldcity = prop.city;
+        oldpostalcode = prop.postalcode;
+        oldaddress = prop.address;
+        olddesc = prop.general_description;
+        oldstartprice = prop.room_start_price;
+        oldhost = prop.host_type_id;
+
+        oldpms = prop.property_mgmt_system_id;
+        if (prop.Amenities && prop.Amenities.data)
+            prop.Amenities.data.forEach(amenityItem => {
+                oldAmenityArray.push(amenityItem.id);
+            });
+
+    });
+</script>

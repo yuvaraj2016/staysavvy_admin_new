@@ -48,6 +48,26 @@
     <div class="page-body">
         <div class="row">
        
+        @if(session('success') !== null)
+                                    <div class="succWrap">
+                                        {{ session('success') }}
+                                    </div>
+                               
+                                    @endif
+
+
+
+                             
+
+                                    @if(session('error') !== null)
+
+                               
+                                  
+                                    <div class="errorWrap"><strong>ERROR</strong>:    {{ session('error') }} </div>
+
+                                  
+                              
+                            @endif
             <div class="col-sm-12">
                 <!-- HTML5 Export Buttons table start -->
                 <div class="card">
