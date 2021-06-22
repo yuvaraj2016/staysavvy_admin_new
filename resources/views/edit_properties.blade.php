@@ -432,7 +432,8 @@
     var oldhost = '';
     var oldpms = '';
     var oldAmenityArray = [];
-
+    var oldtaxArray = [];
+    var oldcoolthingArray =[];
     var isUpdateBtnPressed = false;
     var prop = {}
     $(document).ready(function(e) {
@@ -484,32 +485,54 @@
             newAmenityArray.forEach(newItem => {
                 aminityArray.push(parseFloat(newItem));
             });
-            // if (!compare(oldAmenityArray, newAmenityArray) || !compare(newAmenityArray, oldAmenityArray))
-            //     isValueChanged = true;
-
-
-            // if (!(oldAmenityArray.every(amenityItem => newAmenityArray.includes(amenityItem))) && (newAmenityArray.every(amenityItem => oldAmenityArray.includes(amenityItem))))
-            //     isValueChanged = true;
-            // console.log(oldAmenityArray.every(amenityItem => newAmenityArray.includes(amenityItem)));
-            // console.log(newAmenityArray.every(amenityItem => oldAmenityArray.includes(amenityItem)));
+       
             if (!(JSON.stringify(oldAmenityArray) == JSON.stringify(aminityArray))) {
                 console.log('new console false');
                 isValueChanged = true;
-            } else
-                console.log('new console true');
-            console.log('oldAmenityArray', oldAmenityArray);
-
-            console.log('newAmenityArray', newAmenityArray);
-
-            console.log('oldhost', oldhost);
-
-            console.log('newhost', newhost);
+            } 
 
 
-            console.log('oldpms', oldpms);
+            var newtaxArray = $('select[name= "taxes[]"]').map(function() {
+                return $(this).val();
+            }).get();
+            var taxArray = [];
+            newtaxArray.forEach(newItem => {
+                taxArray.push(parseFloat(newItem));
+            });
+       
+            if (!(JSON.stringify(oldtaxArray) == JSON.stringify(taxArray))) {
+                console.log('new console false');
+                isValueChanged = true;
+            }
+            
+            
+            var newcoolthingArray = $('select[name= "coolthings[]"]').map(function() {
+                return $(this).val();
+            }).get();
+            var coolthingArray = [];
+            newcoolthingArray.forEach(newItem => {
+                coolthingArray.push(parseFloat(newItem));
+            });
+       
+            if (!(JSON.stringify(oldcoolthingArray) == JSON.stringify(coolthingArray))) {
+                console.log('new console false');
+                isValueChanged = true;
+            } 
+            // else
+            //     console.log('new console true');
+            // console.log('oldAmenityArray', oldAmenityArray);
 
-            console.log('newpms', newpms);
-            console.log(prop);
+            // console.log('newAmenityArray', aminityArray);
+
+            // console.log('oldhost', oldhost);
+
+            // console.log('newhost', newhost);
+
+
+            // console.log('oldpms', oldpms);
+
+            // console.log('newpms', newpms);
+            // console.log(prop);
 
             if (!isUpdateBtnPressed && isValueChanged)
                 swal("Some changes are made..So please update & then try to edit image");
@@ -517,40 +540,9 @@
                 window.location.pathname = 'properties/' + prop.id + '/edit/assets';
         });
 
-        function compareArrays(arr1, arr2) {
-
-            // compare arrays
-            const result = JSON.stringify(arr1) == JSON.stringify(arr2)
-
-            // if result is true
-            if (result) {
-                console.log('The arrays have the same elements.');
-            } else {
-                console.log('The arrays have different elements.');
-            }
-
-        }
-
-        const array1 = [1, 3, 5, 8];
-        const array2 = [1, 3, 2, 8];
-
-        compareArrays(array1, array2);
+   
 
 
-
-        function compare(arr1, arr2) {
-            let result = true;
-            arr1.forEach(oldArrayItem => {
-                const isItemFound = arr2.some(function(newArrayItem) {
-                    if (oldArrayItem !== newArrayItem)
-                        return o1.id === o2.id; // return the ones with equal id
-                });
-                if (!isItemFound)
-                    result = false;
-            });
-            console.log('result', result)
-            return result;
-        }
 
 
     });
@@ -578,6 +570,16 @@
         if (prop.Amenities && prop.Amenities.data)
             prop.Amenities.data.forEach(amenityItem => {
                 oldAmenityArray.push(amenityItem.id);
+            });
+
+            if (prop.Taxes && prop.Taxes.data)
+            prop.Taxes.data.forEach(taxItem => {
+                oldtaxArray.push(taxItem.id);
+            });
+
+            if (prop.Coolthings && prop.Coolthings.data)
+            prop.Coolthings.data.forEach(coolthingItem => {
+                oldcoolthingArray.push(coolthingItem.id);
             });
 
     });
