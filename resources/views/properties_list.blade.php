@@ -196,7 +196,7 @@
                                        <th>Property<br> Management System</th>
                                        <th>Central<br> Reservation System</th>
                                        <th>Property<br> Type Name</th>
-                                       <th width="20%">Property Desc</th>
+                                       <!-- <th width="20%">Property Desc</th> -->
                                        <th>Room <br>Start Price</th>
                                        <th>Taxes</th>
                                        <th>Amenity</th>
@@ -273,14 +273,14 @@
                                         <td  class="longtext">
                                             {{ $propertys['property_type_name'] }}
                                         </td>
-                                        <td class="longtext">
+                                        <!-- <td class="longtext">
                                             @if(strlen($propertys['general_description']) > 200)
                                            
                                              {{ Str::limit($propertys['general_description'], 200)."..." }}
                                              @else
                                              {{ $propertys['general_description'] }}
                                              @endif
-                                        </td>
+                                        </td> -->
                                         <td>
                                             {{ $propertys['room_start_price'] }}
                                         </td>
