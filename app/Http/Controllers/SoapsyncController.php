@@ -889,9 +889,9 @@ class SoapsyncController extends Controller
         );
         //   return $response;
 
-        if ($response->headers()['Content-Type'][0] == "text/html; charset=UTF-8") {
-            return redirect()->route('home');
-        }
+        // if ($response->headers()['Content-Type'][0] == "text/html; charset=UTF-8") {
+        //     return redirect()->route('home');
+        // }
         if ($response->status() === 200) {
             return redirect()->back()->with('success', 'Properties Updated Successfully!');
         } else if ($response->status() === 403) {

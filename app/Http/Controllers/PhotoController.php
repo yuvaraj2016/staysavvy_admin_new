@@ -165,9 +165,9 @@ class PhotoController extends Controller
             ]);
         }
 
-        if ($response->headers()['Content-Type'][0] == "text/html; charset=UTF-8") {
-            return redirect()->route('home');
-        }
+        // if ($response->headers()['Content-Type'][0] == "text/html; charset=UTF-8") {
+        //     return redirect()->route('home');
+        // }
         if ($response->status() === 200) {
             return redirect()->route('albums.photo.edit', ['album' => $album_id, 'photo' => $photo_id])->with('success', 'Photo Updated Successfully!');
         } else {

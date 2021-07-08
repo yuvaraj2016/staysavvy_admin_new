@@ -333,9 +333,9 @@ class UserController extends Controller
       );
 
         
-        if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
-            return redirect()->route('home');
-        }
+        // if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
+        //     return redirect()->route('home');
+        // }
         if($response->status()===200 || $response->status()===201){
             return redirect()->back()->with('success','User Updated Successfully!');
         }else{

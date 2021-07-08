@@ -238,9 +238,9 @@ class BookingroomController extends Controller
       );
 
         
-        if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
-            return redirect()->route('home');
-        }
+        // if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
+        //     return redirect()->route('home');
+        // }
         if($response->status()===200){
             return redirect()->back()->with('success','Booking Room Type Updated Successfully!');
         }else{

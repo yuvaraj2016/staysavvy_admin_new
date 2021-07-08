@@ -455,9 +455,9 @@ public function neweco(Request $request)
 
 
           //return $response;
-        if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
-            return redirect()->route('home');
-        }
+        // if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
+        //     return redirect()->route('home');
+        // }
         if($response->status()===201){
             return redirect()->back()->with('success','Eco Area Saved Updated Successfully!');
         }else{
