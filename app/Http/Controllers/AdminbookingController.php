@@ -131,7 +131,7 @@ $session = session()->get('token');
         $token = session()->get('token');
         try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/property');
+            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/property?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -143,7 +143,7 @@ $session = session()->get('token');
         $property = $response['data'];
         try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confBookingStatus');
+            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confBookingStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -155,7 +155,7 @@ $session = session()->get('token');
         $bookingstauts = $response['data'];
         try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confTax');
+            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confTax?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
 
@@ -166,7 +166,7 @@ $session = session()->get('token');
 
         try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confPaymentStatus');
+            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confPaymentStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
         } catch (\Exception $e) {
@@ -175,7 +175,7 @@ $session = session()->get('token');
 
         try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -188,7 +188,7 @@ $session = session()->get('token');
 
         try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/room');
+            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/room?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -202,7 +202,7 @@ $session = session()->get('token');
 
         try {
 
-            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/users');
+            $call = Http::withToken($token)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/users?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -609,7 +609,7 @@ $session = session()->get('token');
 
         try {
 
-            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/property');
+            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/property?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -621,7 +621,7 @@ $session = session()->get('token');
         $property = $response['data'];
         try {
 
-            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confBookingStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confBookingStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -633,7 +633,7 @@ $session = session()->get('token');
         $bookingstauts = $response['data'];
         try {
 
-            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confTax');
+            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confTax?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
         } catch (\Exception $e) {
@@ -642,7 +642,7 @@ $session = session()->get('token');
 
         try {
 
-            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confPaymentStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confPaymentStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
         } catch (\Exception $e) {
@@ -651,7 +651,7 @@ $session = session()->get('token');
 
         try {
 
-            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/confStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -664,7 +664,7 @@ $session = session()->get('token');
 
         try {
 
-            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/room');
+            $call = Http::withToken($session)->withHeaders(['Accept' => 'application/vnd.api.v1+json', 'Content-Type' => 'application/json'])->get(config('global.url') . '/api/room?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;

@@ -58,7 +58,7 @@ class RoomController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -70,7 +70,7 @@ class RoomController extends Controller
          $property = $response['data'];
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -82,7 +82,7 @@ class RoomController extends Controller
          $confRoomType = $response['data'];
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -95,7 +95,7 @@ class RoomController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -491,7 +491,7 @@ public function store(Request $request)
 
         try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -503,7 +503,7 @@ public function store(Request $request)
          $property = $response['data'];
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -515,7 +515,7 @@ public function store(Request $request)
          $statuses = $response['data'];
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -527,7 +527,7 @@ public function store(Request $request)
          $amenity = $response['data'];
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;

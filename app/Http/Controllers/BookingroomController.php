@@ -55,7 +55,7 @@ class BookingroomController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
         //  return $response;
@@ -69,7 +69,7 @@ class BookingroomController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?limit=1000');
 
             $prpresponse = json_decode($call->getBody()->getContents(), true);
         //  return $response;
@@ -169,7 +169,7 @@ class BookingroomController extends Controller
 
         try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -182,7 +182,7 @@ class BookingroomController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?limit=1000');
 
             $prpresponse = json_decode($call->getBody()->getContents(), true);
         //  return $response;
