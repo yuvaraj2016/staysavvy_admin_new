@@ -72,7 +72,7 @@ class PropertiesController extends Controller
 
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confTax');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confTax?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -87,7 +87,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -101,7 +101,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyMgmtSystem');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyMgmtSystem?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -114,7 +114,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -127,7 +127,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -140,7 +140,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confHostType');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confHostType?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -153,7 +153,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyType');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyType?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -168,7 +168,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confRoomType?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -180,7 +180,7 @@ class PropertiesController extends Controller
          $confRoomType = $response['data'];
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -193,7 +193,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -205,7 +205,7 @@ class PropertiesController extends Controller
          $Coolthing = $response['data'];
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendors_list');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendors_list?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -489,7 +489,7 @@ class PropertiesController extends Controller
        
         try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confTax');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confTax?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -502,7 +502,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confAmenity?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -515,7 +515,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyMgmtSystem');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyMgmtSystem?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -528,7 +528,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCentralResSystem?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            
@@ -542,7 +542,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confStatus?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -555,7 +555,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confHostType');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confHostType?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -568,7 +568,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyType');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPropertyType?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -582,7 +582,7 @@ class PropertiesController extends Controller
 
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confCoolthing?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -594,7 +594,7 @@ class PropertiesController extends Controller
          $Coolthing = $response['data'];
          try{
 
-            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendors_list');
+            $call = Http::withToken($session)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/vendors_list?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
            

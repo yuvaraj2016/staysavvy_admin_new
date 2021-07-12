@@ -167,7 +167,7 @@ class PoliciesController extends Controller
         $token = session()->get('token');
         try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/property?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
@@ -179,7 +179,7 @@ class PoliciesController extends Controller
          $property = $response['data'];
          try{
 
-            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPolicy');
+            $call = Http::withToken($token)->withHeaders(['Accept'=>'application/vnd.api.v1+json','Content-Type'=>'application/json'])->get(config('global.url') . '/api/confPolicy?limit=1000');
 
             $response = json_decode($call->getBody()->getContents(), true);
             //  return $response;
