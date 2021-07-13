@@ -71,9 +71,9 @@ class PhotoController extends Controller
             ]);
         }
 
-        if ($response->headers()['Content-Type'][0] == "text/html; charset=UTF-8") {
-            return redirect()->route('home');
-        }
+        // if ($response->headers()['Content-Type'][0] == "text/html; charset=UTF-8") {
+        //     return redirect()->route('home');
+        // }
         if ($response->status() === 201) {
             return redirect()->route('albums.photo.create', ['album' => $album_id])->with('success', 'Photo Created Successfully!');
         } else {
@@ -186,9 +186,9 @@ class PhotoController extends Controller
     {
         $session = session()->get('token');
         $response=Http::withToken($session)->delete(config('global.url').'/admin/gallery/deletePhotos/'.$photo_id);
-        if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
-            return redirect()->route('home');
-        }
+        // if($response->headers()['Content-Type'][0]=="text/html; charset=UTF-8"){
+        //     return redirect()->route('home');
+        // }
         if($response->ok()){
             // $albums=   $response->json()['message'];
             // $photos=$response->json()['photos'];
